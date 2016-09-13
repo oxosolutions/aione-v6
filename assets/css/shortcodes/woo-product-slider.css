@@ -1,0 +1,10 @@
+.oxo-woo-product-slider {
+  overflow: hidden;
+  margin-bottom: 55px;
+}
+.oxo-woo-product-slider .oxo-rollover .price {
+  margin-top: 5px;
+}
+.oxo-woo-product-slider .oxo-rollover .price .amount {
+  font-size: 18px;
+}

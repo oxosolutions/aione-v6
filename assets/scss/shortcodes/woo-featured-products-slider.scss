@@ -1,0 +1,78 @@
+.oxo-woo-featured-products-slider {
+	position: relative;
+	margin-bottom: 25px;
+
+	.oxo-carousel-wrapper {
+		overflow: hidden;
+	}
+
+	.oxo-rollover-content {
+		.price {
+			margin-top: 3px;
+
+			.amount {
+			  font-size: 25px;
+			}
+		}
+	}
+
+	.oxo-carousel-nav {
+		.oxo-nav-prev,
+		.oxo-nav-next {
+			margin-top: -31px;
+			height: 63px;
+			width: 63px;
+
+			&:before {
+				content: $left-arrow-large;
+				line-height: 63px;
+				font-size: 25px;
+			}
+		}
+
+		.oxo-nav-next {
+			&:before {
+				content: $right-arrow-large;
+			}
+		}
+	}
+}
+
+/* Used for both woo carousels */
+.oxo-woo-slider {
+	.oxo-rollover-content {
+		.oxo-rollover-title {
+			margin: 0;
+			line-height: normal;
+		}
+  }
+
+	.oxo-carousel-title-below-image {
+		.oxo-product-buttons {
+			position: static;
+
+			a {
+				&:first-child,
+				&:last-child {
+					display: inline-block;
+					float: none;
+					margin: 0;
+				}
+			}
+		}
+
+		.oxo-rollover-linebreak {
+			display: block;
+      margin-bottom: 8px;
+		}
+	}
+
+  .oxo-classic-product-image-wrapper {
+    .cart-loading > a {
+      color: #fff !important;
+    }
+  }
+  .cart-loading .view-cart {
+    display: none;
+  }
+}

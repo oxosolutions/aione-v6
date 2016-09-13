@@ -1,0 +1,96 @@
+/* =================================================================================================
+Table of Contents
+----------------------------------------------------------------------------------------------------
+	01 Page Title Bar
+	
+================================================================================================= */
+/* Page Title Bar
+================================================================================================= */
+.oxo-page-title-bar {
+  clear: both;
+  padding: 0 10px;
+  height: 87px;
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #f6f6f6;
+  border-top: 1px solid #d2d3d4;
+  border-bottom: 1px solid #d2d3d4;
+}
+.oxo-page-title-bar h1,
+.oxo-page-title-bar h3 {
+  margin: 0;
+  padding: 0;
+  line-height: 26px;
+  font-weight: normal;
+  font: 14px 'MuseoSlab500Regular', arial, helvetica, sans-serif;
+  color: #343333;
+}
+.oxo-page-title-bar h1 {
+  font-size: 18px;
+}
+.oxo-page-title-row {
+  overflow: hidden;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 940px;
+}
+.oxo-page-title-wrapper {
+  display: table;
+  z-index: 1;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.oxo-page-title-captions {
+  display: table-cell;
+  vertical-align: middle;
+  width: 45%;
+}
+.page-title-bar-search .oxo-page-title-captions {
+  width: auto;
+}
+.oxo-page-title-secondary {
+  display: table-cell;
+  vertical-align: middle;
+  width: 45%;
+  text-align: right;
+}
+.oxo-page-title-secondary .searchform {
+  display: inline-block;
+  width: 100%;
+  max-width: 250px;
+}
+.oxo-breadcrumbs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.oxo-breadcrumbs span {
+  display: inline-block;
+}
+.oxo-page-title-bar-center .oxo-page-title-captions {
+  text-align: center;
+  width: auto;
+}
+.oxo-page-title-bar-center .oxo-page-title-secondary {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.oxo-page-title-bar-center .searchform {
+  margin-top: 10px;
+}
+.oxo-page-title-bar-right .oxo-page-title-row {
+  direction: rtl;
+}
+.oxo-page-title-bar-right .oxo-page-title-captions,
+.oxo-page-title-bar-right .oxo-page-title-secondary {
+  direction: ltr;
+}
+.oxo-page-title-bar-right .oxo-page-title-captions {
+  text-align: right;
+}
+.oxo-page-title-bar-right .oxo-page-title-secondary {
+  text-align: left;
+}

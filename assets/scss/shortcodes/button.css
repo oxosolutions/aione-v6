@@ -1,0 +1,40 @@
+/*
+Error: Invalid CSS after "...im-line-height ": expected ")", was "$dim-font, $dim..."
+        on line 1 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\shortcodes\button.scss
+
+1: @mixin button-dimensions( $dim-height, $dim-padding-horizontal, $dim-padding-vertical, $dim-line-height $dim-font, $dim-3d-top ) {
+2: 	padding: $dim-padding-vertical $dim-padding-horizontal;
+3: 	line-height: $dim-line-height;
+4: 	font-size: $dim-font;
+5: 
+6: 	&.button-3d:active {
+
+Backtrace:
+D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\shortcodes\button.scss:1
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1165:in `expected'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/lexer.rb:220:in `expected!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/parser.rb:580:in `assert_tok'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/parser.rb:440:in `defn_arglist!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/parser.rb:121:in `parse_mixin_definition_arglist'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1027:in `sass_script'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:229:in `mixin_directive'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:219:in `special_directive'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:194:in `directive'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:660:in `block_child'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:650:in `block_contents'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:117:in `stylesheet'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:42:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:393:in `_to_tree'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:268:in `render'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:404:in `run'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Program Files/Koala/bin/sass:18:in `load'
+C:/Program Files/Koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...im-line-height \": expected \")\", was \"$dim-font, $dim...\"\A         on line 1 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\shortcodes\button.scss\A \A 1: @mixin button-dimensions( $dim-height, $dim-padding-horizontal, $dim-padding-vertical, $dim-line-height $dim-font, $dim-3d-top ) {\A 2: 	padding: $dim-padding-vertical $dim-padding-horizontal;\A 3: 	line-height: $dim-line-height;\A 4: 	font-size: $dim-font;\A 5: \A 6: 	&.button-3d:active {"; }

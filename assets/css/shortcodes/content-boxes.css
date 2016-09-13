@@ -1,0 +1,109 @@
+/*
+Error: Undefined variable: "$primary-color".
+        on line 31 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\shortcodes\content-boxes.scss
+
+26: 		margin-bottom: 15px;
+27: 
+28: 		.heading-link {
+29: 			&:hover {
+30: 				.content-box-heading {
+31: 					color: $primary-color;
+32: 				}
+33: 			
+34: 				.fontawesome-icon {
+35: 					background-color: $primary-color;
+36: 					border-color: $primary-color;
+
+Backtrace:
+D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\shortcodes\content-boxes.scss:31
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Program Files/Koala/bin/sass:18:in `load'
+C:/Program Files/Koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$primary-color\".\A         on line 31 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\shortcodes\content-boxes.scss\A \A 26: 		margin-bottom: 15px;\A 27: \A 28: 		.heading-link {\A 29: 			&:hover {\A 30: 				.content-box-heading {\A 31: 					color: $primary-color;\A 32: 				}\A 33: 			\A 34: 				.fontawesome-icon {\A 35: 					background-color: $primary-color;\A 36: 					border-color: $primary-color;"; }

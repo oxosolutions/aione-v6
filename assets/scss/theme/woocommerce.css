@@ -1,0 +1,40 @@
+/*
+Error: Invalid CSS after "...bkit-keyframes ": expected ":", was "mask {"
+        on line 2471 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\theme\woocommerce.scss
+
+2466: .subcategory-products {
+2467:   clear: both;
+2468:   padding-top: 25px;
+2469: }
+2470: 
+2471: $-webkit-keyframes mask {
+2472:   25% {
+2473:     -webkit-transform: rotate(270deg);
+2474:   }
+2475:   50% {
+2476:     -webkit-transform: rotate(90deg);
+
+Backtrace:
+D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\theme\woocommerce.scss:2471
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1165:in `expected'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1101:in `expected'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1096:in `tok!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:605:in `variable'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:660:in `block_child'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:653:in `block_contents'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:117:in `stylesheet'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:42:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:393:in `_to_tree'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:268:in `render'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:404:in `run'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Program Files/Koala/bin/sass:18:in `load'
+C:/Program Files/Koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...bkit-keyframes \": expected \":\", was \"mask {\"\A         on line 2471 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\theme\woocommerce.scss\A \A 2466: .subcategory-products {\A 2467:   clear: both;\A 2468:   padding-top: 25px;\A 2469: }\A 2470: \A 2471: $-webkit-keyframes mask {\A 2472:   25% {\A 2473:     -webkit-transform: rotate(270deg);\A 2474:   }\A 2475:   50% {\A 2476:     -webkit-transform: rotate(90deg);"; }

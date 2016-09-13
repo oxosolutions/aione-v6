@@ -1,0 +1,29 @@
+.oxo-sharing-box {
+	display: table;
+	margin-bottom: 55px;
+	padding: 20px;
+	height: 70px;
+	width: 100%;
+	background-color: #f6f6f6;
+	
+	
+	&.boxed-icons {
+		padding: 15px 20px;
+	}
+	
+	h4,
+	.oxo-social-networks {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	
+	.oxo-social-networks {
+		text-align: right;
+		
+		.oxo-social-network-icon {
+			margin-bottom: 0;
+		}
+	}
+}
+
+//standard stylings for social links in social-links.scss

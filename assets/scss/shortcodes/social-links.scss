@@ -1,0 +1,81 @@
+.oxo-social-links {
+	//margin-bottom: $default-margin-bottom; 
+}
+
+$icon-color: #46494A;
+$boxed-icon-color: #fff;
+$boxed-icon-bg: $icon-color;
+
+.oxo-social-networks {
+	overflow: hidden;
+
+	.oxo-social-networks-wrapper {
+		margin: 0 -10px;
+	}
+
+	.oxo-social-network-icon {
+		display: inline-block;
+		margin: 0 10px 10px 10px;
+		font-size: 16px;
+		color: $icon-color;
+		
+
+		&:hover {
+			opacity: 0.8;
+		}
+		&:before {
+			color: inherit;
+		}
+	}
+	
+	&.boxed-icons {
+		.oxo-social-networks-wrapper {
+			margin: 0 -5px;
+		}	
+	
+		.oxo-social-network-icon {
+			margin: 0 5px 10px 5px;
+			padding: 8px;		
+			background-color: $boxed-icon-bg;
+			border: none;
+			@include border-radius( 3px );
+			@include box-shadow( 0 1px 1px rgba( 0, 0, 0, 0.2 ) );
+			@include backgroundclip( inherit );
+			border: 1px solid $boxed-icon-bg;
+			color: $boxed-icon-color;
+		}
+	}
+}
+ 
+.oxo-social-links-footer {
+	display: table-cell;
+	vertical-align: middle;
+	width: 40%;
+	text-align: right;
+	
+	.oxo-social-networks {
+		margin-top: 10px;	
+	}
+}
+
+.widget {
+	.oxo-social-networks {
+		.oxo-social-networks-wrapper {
+			margin: 0 -5.5px;
+		}		
+	
+		.oxo-social-network-icon {
+			margin: 0 5.5px 14px 5.5px;
+		}
+		
+		&.boxed-icons {
+			.oxo-social-networks-wrapper {
+				margin: 0 -3.5px;
+			}			
+		
+			.oxo-social-network-icon {
+				margin: 0 3.5px 10px 3.5px;		
+			}
+		}
+	}
+}

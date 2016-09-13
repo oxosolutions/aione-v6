@@ -1,0 +1,41 @@
+/*
+Error: Invalid CSS after "...bkit-keyframes ": expected ":", was "oxo-bounce-delay {"
+        on line 525 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\theme\theme.scss
+
+520:     display: inline-block;
+521:     margin-left: 7px;
+522:   }
+523: }
+524: 
+525: $-webkit-keyframes oxo-bounce-delay {
+526:   0%, 80%, 100% { -webkit-transform: scale(0.0) }
+527:   40% { -webkit-transform: scale(1.0) }
+528: }
+529: 
+530: @keyframes oxo-bounce-delay {
+
+Backtrace:
+D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\theme\theme.scss:525
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1165:in `expected'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1101:in `expected'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1096:in `tok!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:605:in `variable'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:660:in `block_child'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:653:in `block_contents'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:117:in `stylesheet'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:42:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:393:in `_to_tree'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Program Files/Koala/bin/sass:18:in `load'
+C:/Program Files/Koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...bkit-keyframes \": expected \":\", was \"oxo-bounce-delay {\"\A         on line 525 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\theme\theme.scss\A \A 520:     display: inline-block;\A 521:     margin-left: 7px;\A 522:   }\A 523: }\A 524: \A 525: $-webkit-keyframes oxo-bounce-delay {\A 526:   0%, 80%, 100% { -webkit-transform: scale(0.0) }\A 527:   40% { -webkit-transform: scale(1.0) }\A 528: }\A 529: \A 530: @keyframes oxo-bounce-delay {"; }

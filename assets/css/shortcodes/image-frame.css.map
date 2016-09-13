@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACf,OAAO,EAAE,YAAY;EACrB,OAAO,EAAE,CAAC;EACV,QAAQ,EAAE,QAAQ;EAClB,SAAS,EAAE,IAAI;EACf,uFAA2D;IAC1D,OAAO,EAAE,GAAG;EAEb,wCAA2B;IAC1B,MAAM,EAAE,CAAC;;;AAMX,wBAAyB;EACxB,UAAU,EAAE,MAAM",
+"sources": ["../../sass/shortcodes/image-frame.scss"],
+"names": [],
+"file": "image-frame.css"
+}

@@ -1,0 +1,45 @@
+/*
+Error: Invalid CSS after "...con-ie.png')\9"": expected "{", was ";"
+        on line 136 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\plugins\iLightbox\skins\light-skin.scss
+
+131:   background-color: #f6f3ff;
+132: }
+133: 
+134: .isMobile .ilightbox-toolbar.light a.ilightbox-fullscreen {
+135:   background-image: url('#{$template-directory}assets/images/iLightbox/light-skin/fullscreen-icon-64.png');
+136:   -:";background-image/*\**\/: url('#{$template-directory}assets/images/iLightbox/light-skin/fullscreen-icon-ie.png')\9";
+137: }
+138: 
+139: .isMobile .ilightbox-toolbar.light a.ilightbox-close {
+140:   background-image: url('#{$template-directory}assets/images/iLightbox/light-skin/x-mark-icon-64.png');
+141:   -:";background-image/*\**\/: url('#{$template-directory}assets/images/iLightbox/light-skin/x-mark-icon-ie.png')\9";
+
+Backtrace:
+D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\plugins\iLightbox\skins\light-skin.scss:136
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1165:in `expected'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1101:in `expected'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1096:in `tok!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:641:in `block'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:711:in `declaration_or_ruleset'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:661:in `block_child'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:653:in `block_contents'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:642:in `block'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:635:in `ruleset'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:660:in `block_child'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:653:in `block_contents'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:117:in `stylesheet'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/scss/parser.rb:42:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:393:in `_to_tree'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:268:in `render'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:404:in `run'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Program Files/Koala/bin/sass:18:in `load'
+C:/Program Files/Koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...con-ie.png')\9\"\": expected \"{\", was \";\"\A         on line 136 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\scss\plugins\iLightbox\skins\light-skin.scss\A \A 131:   background-color: #f6f3ff;\A 132: }\A 133: \A 134: .isMobile .ilightbox-toolbar.light a.ilightbox-fullscreen {\A 135:   background-image: url('#{$template-directory}assets/images/iLightbox/light-skin/fullscreen-icon-64.png');\A 136:   -:\";background-image/*\**/: url('#{$template-directory}assets/images/iLightbox/light-skin/fullscreen-icon-ie.png')\9\";\A 137: }\A 138: \A 139: .isMobile .ilightbox-toolbar.light a.ilightbox-close {\A 140:   background-image: url('#{$template-directory}assets/images/iLightbox/light-skin/x-mark-icon-64.png');\A 141:   -:\";background-image/*\**/: url('#{$template-directory}assets/images/iLightbox/light-skin/x-mark-icon-ie.png')\9\";"; }

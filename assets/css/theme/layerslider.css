@@ -1,0 +1,65 @@
+/*
+Error: Undefined variable: "$left-arrow-large".
+        on line 54 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\theme\layerslider.scss
+
+49: 	text-align: center;
+50: }
+51: .ls-aione .ls-nav-prev:before,
+52: .ls-aione .ls-nav-next:before {
+53: 	margin-left: -2px;
+54: 	content: $left-arrow-large;
+55: 	line-height: 63px;
+56: 	font-family: $icon-font;
+57: 	font-size: 25px;
+58: 	-webkit-font-smoothing: antialiased;
+59: 	color: #fff;
+
+Backtrace:
+D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\theme\layerslider.scss:54
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Program Files/Koala/bin/sass:18:in `load'
+C:/Program Files/Koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$left-arrow-large\".\A         on line 54 of D:\SERVER\apache2\htdocs\aione\wp-content\themes\aione\assets\sass\theme\layerslider.scss\A \A 49: 	text-align: center;\A 50: }\A 51: .ls-aione .ls-nav-prev:before,\A 52: .ls-aione .ls-nav-next:before {\A 53: 	margin-left: -2px;\A 54: 	content: $left-arrow-large;\A 55: 	line-height: 63px;\A 56: 	font-family: $icon-font;\A 57: 	font-size: 25px;\A 58: 	-webkit-font-smoothing: antialiased;\A 59: 	color: #fff;"; }

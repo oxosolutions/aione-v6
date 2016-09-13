@@ -1,0 +1,17 @@
+.oxo-sharing-box {
+  display: table;
+  margin-bottom: 55px;
+  padding: 20px;
+  height: 70px;
+  width: 100%;
+  background-color: #f6f6f6; }
+  .oxo-sharing-box.boxed-icons {
+    padding: 15px 20px; }
+  .oxo-sharing-box h4,
+  .oxo-sharing-box .oxo-social-networks {
+    display: table-cell;
+    vertical-align: middle; }
+  .oxo-sharing-box .oxo-social-networks {
+    text-align: right; }
+    .oxo-sharing-box .oxo-social-networks .oxo-social-network-icon {
+      margin-bottom: 0; }

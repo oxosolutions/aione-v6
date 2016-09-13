@@ -1,0 +1,12 @@
+.oxo-highlight {
+	padding: 0.1em 0.3em;
+	line-height: 1.7em;
+
+	&.rounded {
+		@include border-radius( 4px );
+	}
+
+	&.dark {
+		color: #ccc;
+	}
+}

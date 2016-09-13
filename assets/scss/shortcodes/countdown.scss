@@ -1,0 +1,86 @@
+.oxo-countdown {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	-webkit-align-items: center;
+	align-items: center;
+	padding: 30px;
+
+	&.oxo-no-bg {
+		padding: 0;
+	}
+
+	.oxo-countdown-heading-wrapper {
+		line-height: 25px;
+	}
+
+	.oxo-countdown-heading {
+		font-size: 18px;
+		font-weight: bold;
+		letter-spacing: 2px;
+	}
+
+	.oxo-countdown-subheading {
+		font-size: 13px;
+		letter-spacing: 1px;
+	}
+
+	.oxo-countdown-counter-wrapper {
+		-webkit-flex-grow: 1;
+		flex-grow: 1;
+		overflow: hidden;
+		margin: 0 10px;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	.oxo-dash-wrapper {
+		display: inline-block;
+		padding: 5px;
+
+		&.oxo-no-bg {
+			padding-left: 10px;
+			padding-right: 10px;
+
+			.oxo-dash {
+				padding: 0;
+			}
+		}
+	}
+
+	.oxo-dash {
+		padding: 12px 22px;
+		text-align: center;
+	}
+
+	.oxo-digit {
+		display: inline-block;
+
+		> div {
+			width: 11px;
+		}
+	}
+
+	.oxo-first-digit {
+		display: none;
+	}
+
+	.oxo-dash-title {
+		display: inline-block;
+		padding-left: 5px;
+		min-width: 46px;
+	}
+
+	.oxo-countdown-link {
+		letter-spacing: 2px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+	}
+}

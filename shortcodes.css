@@ -1,0 +1,4962 @@
+.group {
+  zoom: 1;
+}
+.group:before,
+.group:after {
+  content: " ";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+/* Flexbox */
+.oxo-alert,
+.tribe-events-notices {
+  position: relative;
+  padding: 25px;
+  border-radius: 0;
+  font-size: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.oxo-alert.alert-shadow,
+.tribe-events-notices.alert-shadow {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.oxo-alert .close,
+.tribe-events-notices .close {
+  position: absolute;
+  box-sizing: content-box;
+  right: -1px;
+  top: -1px;
+  height: 25px;
+  width: 25px;
+  line-height: 25px;
+  opacity: 1;
+  border: 1px solid;
+  border-color: inherit;
+  color: inherit;
+  font-size: 15px;
+  transition: all .2s;
+}
+.oxo-alert .close:hover,
+.tribe-events-notices .close:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.oxo-alert .alert-icon,
+.tribe-events-notices .alert-icon {
+  margin-right: 10px;
+}
+.oxo-alert.alert-blank,
+.tribe-events-notices.alert-blank {
+  border: 1px solid #747474;
+}
+.oxo-alert.alert-info,
+.tribe-events-notices.alert-info {
+  background-color: #fff;
+  border-color: #D7D6D6;
+  color: inherit;
+}
+.tribe-events-notices {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-color: #D7D6D6;
+  color: inherit;
+  text-shadow: none;
+}
+/* All styles in Aione/less/theme/blog.less */
+.oxo-button-wrapper {
+  display: inline;
+}
+.oxo-button-wrapper.oxo-aligncenter {
+  display: block;
+}
+.oxo-button,
+.post-password-form input[type="submit"],
+.wpcf7-submit,
+.gform_wrapper .gform_button,
+.gform_wrapper .button,
+.woocommerce .checkout #place_order,
+.bbp-submit-wrapper .button {
+  display: inline-block;
+  position: relative;
+  outline: 0;
+  zoom: 1;
+  border: 1px solid rgba(0, 0, 0, 0);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all .2s;
+}
+.oxo-button:before,
+.post-password-form input[type="submit"]:before,
+.wpcf7-submit:before,
+.gform_wrapper .gform_button:before,
+.gform_wrapper .button:before,
+.woocommerce .checkout #place_order:before,
+.bbp-submit-wrapper .button:before,
+.oxo-button:after,
+.post-password-form input[type="submit"]:after,
+.wpcf7-submit:after,
+.gform_wrapper .gform_button:after,
+.gform_wrapper .button:after,
+.woocommerce .checkout #place_order:after,
+.bbp-submit-wrapper .button:after {
+  content: " ";
+  display: table;
+}
+.oxo-button:after,
+.post-password-form input[type="submit"]:after,
+.wpcf7-submit:after,
+.gform_wrapper .gform_button:after,
+.gform_wrapper .button:after,
+.woocommerce .checkout #place_order:after,
+.bbp-submit-wrapper .button:after {
+  clear: both;
+}
+.oxo-button:hover,
+.post-password-form input[type="submit"]:hover,
+.wpcf7-submit:hover,
+.gform_wrapper .gform_button:hover,
+.gform_wrapper .button:hover,
+.woocommerce .checkout #place_order:hover,
+.bbp-submit-wrapper .button:hover {
+  transition: all .3s;
+}
+.oxo-button:focus,
+.post-password-form input[type="submit"]:focus,
+.wpcf7-submit:focus,
+.gform_wrapper .gform_button:focus,
+.gform_wrapper .button:focus,
+.woocommerce .checkout #place_order:focus,
+.bbp-submit-wrapper .button:focus {
+  outline: 0;
+}
+.oxo-button-text,
+.oxo-button-icon-divider,
+.oxo-button i {
+  transition: all .2s;
+}
+.oxo-button-text:hover,
+.oxo-button-icon-divider:hover,
+.oxo-button i:hover {
+  transition: all .3s;
+}
+.ls-container .button,
+.ls-container .oxo-button {
+  transition: none !important;
+}
+.ls-container .button:hover,
+.ls-container .oxo-button:hover {
+  transition: none !important;
+}
+#wrapper .oxo-button-square,
+.oxo-body .oxo-button-square,
+#wrapper .button-square {
+  border-radius: 0;
+}
+#wrapper .oxo-button-round,
+.oxo-body .oxo-button-round,
+#wrapper .button-round {
+  border-radius: 2px;
+}
+#wrapper .oxo-button-round.button-3d,
+.oxo-body .oxo-button-round.button-3d,
+#wrapper .button-round.button-3d {
+  border-radius: 4px;
+}
+#wrapper .oxo-button-pill,
+.oxo-body .oxo-button-pill,
+#wrapper .button-pill {
+  border-radius: 25px !important;
+}
+.oxo-body .oxo-button-small,
+.button-small,
+.button.small,
+.post-password-form input[type="submit"],
+#bbp_user_edit_submit,
+.woocommerce .single_add_to_cart_button,
+.bbp-submit-wrapper .button {
+  padding: 9px 20px;
+  line-height: 14px;
+  font-size: 12px;
+}
+.oxo-body .oxo-button-small.button-3d:active,
+.button-small.button-3d:active,
+.button.small.button-3d:active,
+.post-password-form input[type="submit"].button-3d:active,
+#bbp_user_edit_submit.button-3d:active,
+.woocommerce .single_add_to_cart_button.button-3d:active,
+.bbp-submit-wrapper .button.button-3d:active {
+  top: 2px;
+}
+.oxo-body .oxo-button-small .oxo-button-text-left,
+.button-small .oxo-button-text-left,
+.button.small .oxo-button-text-left,
+.post-password-form input[type="submit"] .oxo-button-text-left,
+#bbp_user_edit_submit .oxo-button-text-left,
+.woocommerce .single_add_to_cart_button .oxo-button-text-left,
+.bbp-submit-wrapper .button .oxo-button-text-left {
+  display: inline-block;
+  padding-left: 25px;
+}
+.oxo-body .oxo-button-small .oxo-button-text-right,
+.button-small .oxo-button-text-right,
+.button.small .oxo-button-text-right,
+.post-password-form input[type="submit"] .oxo-button-text-right,
+#bbp_user_edit_submit .oxo-button-text-right,
+.woocommerce .single_add_to_cart_button .oxo-button-text-right,
+.bbp-submit-wrapper .button .oxo-button-text-right {
+  display: inline-block;
+  padding-right: 25px;
+}
+.oxo-body .oxo-button-small .button-icon-divider-left,
+.button-small .button-icon-divider-left,
+.button.small .button-icon-divider-left,
+.post-password-form input[type="submit"] .button-icon-divider-left,
+#bbp_user_edit_submit .button-icon-divider-left,
+.woocommerce .single_add_to_cart_button .button-icon-divider-left,
+.bbp-submit-wrapper .button .button-icon-divider-left {
+  padding: 0 10px;
+}
+.oxo-body .oxo-button-small .button-icon-divider-left.oxo-megamenu-image,
+.button-small .button-icon-divider-left.oxo-megamenu-image,
+.button.small .button-icon-divider-left.oxo-megamenu-image,
+.post-password-form input[type="submit"] .button-icon-divider-left.oxo-megamenu-image,
+#bbp_user_edit_submit .button-icon-divider-left.oxo-megamenu-image,
+.woocommerce .single_add_to_cart_button .button-icon-divider-left.oxo-megamenu-image,
+.bbp-submit-wrapper .button .button-icon-divider-left.oxo-megamenu-image {
+  padding: 0 5px;
+}
+.oxo-body .oxo-button-small .button-icon-divider-right,
+.button-small .button-icon-divider-right,
+.button.small .button-icon-divider-right,
+.post-password-form input[type="submit"] .button-icon-divider-right,
+#bbp_user_edit_submit .button-icon-divider-right,
+.woocommerce .single_add_to_cart_button .button-icon-divider-right,
+.bbp-submit-wrapper .button .button-icon-divider-right {
+  padding: 0 10px;
+}
+.oxo-body .oxo-button-small .button-icon-divider-right.oxo-megamenu-image,
+.button-small .button-icon-divider-right.oxo-megamenu-image,
+.button.small .button-icon-divider-right.oxo-megamenu-image,
+.post-password-form input[type="submit"] .button-icon-divider-right.oxo-megamenu-image,
+#bbp_user_edit_submit .button-icon-divider-right.oxo-megamenu-image,
+.woocommerce .single_add_to_cart_button .button-icon-divider-right.oxo-megamenu-image,
+.bbp-submit-wrapper .button .button-icon-divider-right.oxo-megamenu-image {
+  padding: 0 5px;
+}
+.oxo-body .oxo-button-small .button-icon-divider-left i,
+.button-small .button-icon-divider-left i,
+.button.small .button-icon-divider-left i,
+.post-password-form input[type="submit"] .button-icon-divider-left i,
+#bbp_user_edit_submit .button-icon-divider-left i,
+.woocommerce .single_add_to_cart_button .button-icon-divider-left i,
+.bbp-submit-wrapper .button .button-icon-divider-left i,
+.oxo-body .oxo-button-small .button-icon-divider-right i,
+.button-small .button-icon-divider-right i,
+.button.small .button-icon-divider-right i,
+.post-password-form input[type="submit"] .button-icon-divider-right i,
+#bbp_user_edit_submit .button-icon-divider-right i,
+.woocommerce .single_add_to_cart_button .button-icon-divider-right i,
+.bbp-submit-wrapper .button .button-icon-divider-right i,
+.oxo-body .oxo-button-small .button-icon-divider-left img,
+.button-small .button-icon-divider-left img,
+.button.small .button-icon-divider-left img,
+.post-password-form input[type="submit"] .button-icon-divider-left img,
+#bbp_user_edit_submit .button-icon-divider-left img,
+.woocommerce .single_add_to_cart_button .button-icon-divider-left img,
+.bbp-submit-wrapper .button .button-icon-divider-left img,
+.oxo-body .oxo-button-small .button-icon-divider-right img,
+.button-small .button-icon-divider-right img,
+.button.small .button-icon-divider-right img,
+.post-password-form input[type="submit"] .button-icon-divider-right img,
+#bbp_user_edit_submit .button-icon-divider-right img,
+.woocommerce .single_add_to_cart_button .button-icon-divider-right img,
+.bbp-submit-wrapper .button .button-icon-divider-right img {
+  top: 50%;
+  margin-top: -6px;
+  display: block;
+}
+.oxo-body .oxo-button-medium,
+.button-medium,
+.button.medium,
+.woocommerce .checkout #place_order,
+.ticket-selector-submit-btn[type=submit] {
+  padding: 11px 23px;
+  line-height: 16px;
+  font-size: 13px;
+}
+.oxo-body .oxo-button-medium.button-3d:active,
+.button-medium.button-3d:active,
+.button.medium.button-3d:active,
+.woocommerce .checkout #place_order.button-3d:active,
+.ticket-selector-submit-btn[type=submit].button-3d:active {
+  top: 3px;
+}
+.oxo-body .oxo-button-medium .oxo-button-text-left,
+.button-medium .oxo-button-text-left,
+.button.medium .oxo-button-text-left,
+.woocommerce .checkout #place_order .oxo-button-text-left,
+.ticket-selector-submit-btn[type=submit] .oxo-button-text-left {
+  display: inline-block;
+  padding-left: 28px;
+}
+.oxo-body .oxo-button-medium .oxo-button-text-right,
+.button-medium .oxo-button-text-right,
+.button.medium .oxo-button-text-right,
+.woocommerce .checkout #place_order .oxo-button-text-right,
+.ticket-selector-submit-btn[type=submit] .oxo-button-text-right {
+  display: inline-block;
+  padding-right: 28px;
+}
+.oxo-body .oxo-button-medium .button-icon-divider-left,
+.button-medium .button-icon-divider-left,
+.button.medium .button-icon-divider-left,
+.woocommerce .checkout #place_order .button-icon-divider-left,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-left {
+  padding: 0 12.5px;
+}
+.oxo-body .oxo-button-medium .button-icon-divider-left.oxo-megamenu-image,
+.button-medium .button-icon-divider-left.oxo-megamenu-image,
+.button.medium .button-icon-divider-left.oxo-megamenu-image,
+.woocommerce .checkout #place_order .button-icon-divider-left.oxo-megamenu-image,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-left.oxo-megamenu-image {
+  padding: 0 6.25px;
+}
+.oxo-body .oxo-button-medium .button-icon-divider-right,
+.button-medium .button-icon-divider-right,
+.button.medium .button-icon-divider-right,
+.woocommerce .checkout #place_order .button-icon-divider-right,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-right {
+  padding: 0 12.5px;
+}
+.oxo-body .oxo-button-medium .button-icon-divider-right.oxo-megamenu-image,
+.button-medium .button-icon-divider-right.oxo-megamenu-image,
+.button.medium .button-icon-divider-right.oxo-megamenu-image,
+.woocommerce .checkout #place_order .button-icon-divider-right.oxo-megamenu-image,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-right.oxo-megamenu-image {
+  padding: 0 6.25px;
+}
+.oxo-body .oxo-button-medium .button-icon-divider-left i,
+.button-medium .button-icon-divider-left i,
+.button.medium .button-icon-divider-left i,
+.woocommerce .checkout #place_order .button-icon-divider-left i,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-left i,
+.oxo-body .oxo-button-medium .button-icon-divider-right i,
+.button-medium .button-icon-divider-right i,
+.button.medium .button-icon-divider-right i,
+.woocommerce .checkout #place_order .button-icon-divider-right i,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-right i,
+.oxo-body .oxo-button-medium .button-icon-divider-left img,
+.button-medium .button-icon-divider-left img,
+.button.medium .button-icon-divider-left img,
+.woocommerce .checkout #place_order .button-icon-divider-left img,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-left img,
+.oxo-body .oxo-button-medium .button-icon-divider-right img,
+.button-medium .button-icon-divider-right img,
+.button.medium .button-icon-divider-right img,
+.woocommerce .checkout #place_order .button-icon-divider-right img,
+.ticket-selector-submit-btn[type=submit] .button-icon-divider-right img {
+  top: 50%;
+  margin-top: -6.5px;
+  display: block;
+}
+.oxo-body .oxo-button-large,
+.button-large,
+.button.large,
+#tribe-bar-form .tribe-bar-submit input[type=submit] {
+  padding: 13px 29px;
+  line-height: 17px;
+  font-size: 14px;
+}
+.oxo-body .oxo-button-large.button-3d:active,
+.button-large.button-3d:active,
+.button.large.button-3d:active,
+#tribe-bar-form .tribe-bar-submit input[type=submit].button-3d:active {
+  top: 4px;
+}
+.oxo-body .oxo-button-large .oxo-button-text-left,
+.button-large .oxo-button-text-left,
+.button.large .oxo-button-text-left,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .oxo-button-text-left {
+  display: inline-block;
+  padding-left: 34px;
+}
+.oxo-body .oxo-button-large .oxo-button-text-right,
+.button-large .oxo-button-text-right,
+.button.large .oxo-button-text-right,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .oxo-button-text-right {
+  display: inline-block;
+  padding-right: 34px;
+}
+.oxo-body .oxo-button-large .button-icon-divider-left,
+.button-large .button-icon-divider-left,
+.button.large .button-icon-divider-left,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-left {
+  padding: 0 14.5px;
+}
+.oxo-body .oxo-button-large .button-icon-divider-left.oxo-megamenu-image,
+.button-large .button-icon-divider-left.oxo-megamenu-image,
+.button.large .button-icon-divider-left.oxo-megamenu-image,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-left.oxo-megamenu-image {
+  padding: 0 7.25px;
+}
+.oxo-body .oxo-button-large .button-icon-divider-right,
+.button-large .button-icon-divider-right,
+.button.large .button-icon-divider-right,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-right {
+  padding: 0 14.5px;
+}
+.oxo-body .oxo-button-large .button-icon-divider-right.oxo-megamenu-image,
+.button-large .button-icon-divider-right.oxo-megamenu-image,
+.button.large .button-icon-divider-right.oxo-megamenu-image,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-right.oxo-megamenu-image {
+  padding: 0 7.25px;
+}
+.oxo-body .oxo-button-large .button-icon-divider-left i,
+.button-large .button-icon-divider-left i,
+.button.large .button-icon-divider-left i,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-left i,
+.oxo-body .oxo-button-large .button-icon-divider-right i,
+.button-large .button-icon-divider-right i,
+.button.large .button-icon-divider-right i,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-right i,
+.oxo-body .oxo-button-large .button-icon-divider-left img,
+.button-large .button-icon-divider-left img,
+.button.large .button-icon-divider-left img,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-left img,
+.oxo-body .oxo-button-large .button-icon-divider-right img,
+.button-large .button-icon-divider-right img,
+.button.large .button-icon-divider-right img,
+#tribe-bar-form .tribe-bar-submit input[type=submit] .button-icon-divider-right img {
+  top: 50%;
+  margin-top: -7px;
+  display: block;
+}
+.oxo-body .oxo-button-xlarge,
+.button-xlarge,
+.button.xlarge {
+  padding: 17px 40px;
+  line-height: 21px;
+  font-size: 18px;
+}
+.oxo-body .oxo-button-xlarge.button-3d:active,
+.button-xlarge.button-3d:active,
+.button.xlarge.button-3d:active {
+  top: 6px;
+}
+.oxo-body .oxo-button-xlarge .oxo-button-text-left,
+.button-xlarge .oxo-button-text-left,
+.button.xlarge .oxo-button-text-left {
+  display: inline-block;
+  padding-left: 45px;
+}
+.oxo-body .oxo-button-xlarge .oxo-button-text-right,
+.button-xlarge .oxo-button-text-right,
+.button.xlarge .oxo-button-text-right {
+  display: inline-block;
+  padding-right: 45px;
+}
+.oxo-body .oxo-button-xlarge .button-icon-divider-left,
+.button-xlarge .button-icon-divider-left,
+.button.xlarge .button-icon-divider-left {
+  padding: 0 18.5px;
+}
+.oxo-body .oxo-button-xlarge .button-icon-divider-left.oxo-megamenu-image,
+.button-xlarge .button-icon-divider-left.oxo-megamenu-image,
+.button.xlarge .button-icon-divider-left.oxo-megamenu-image {
+  padding: 0 9.25px;
+}
+.oxo-body .oxo-button-xlarge .button-icon-divider-right,
+.button-xlarge .button-icon-divider-right,
+.button.xlarge .button-icon-divider-right {
+  padding: 0 18.5px;
+}
+.oxo-body .oxo-button-xlarge .button-icon-divider-right.oxo-megamenu-image,
+.button-xlarge .button-icon-divider-right.oxo-megamenu-image,
+.button.xlarge .button-icon-divider-right.oxo-megamenu-image {
+  padding: 0 9.25px;
+}
+.oxo-body .oxo-button-xlarge .button-icon-divider-left i,
+.button-xlarge .button-icon-divider-left i,
+.button.xlarge .button-icon-divider-left i,
+.oxo-body .oxo-button-xlarge .button-icon-divider-right i,
+.button-xlarge .button-icon-divider-right i,
+.button.xlarge .button-icon-divider-right i,
+.oxo-body .oxo-button-xlarge .button-icon-divider-left img,
+.button-xlarge .button-icon-divider-left img,
+.button.xlarge .button-icon-divider-left img,
+.oxo-body .oxo-button-xlarge .button-icon-divider-right img,
+.button-xlarge .button-icon-divider-right img,
+.button.xlarge .button-icon-divider-right img {
+  top: 50%;
+  margin-top: -9px;
+  display: block;
+}
+.button span {
+  line-height: normal;
+}
+@media only screen and (max-width: 800px) {
+  .rev_slider .oxo-button,
+  .rev_slider .button,
+  .ls-container .oxo-button,
+  .ls-container .button {
+    padding: 0 20px;
+    line-height: 30px;
+    font-size: 12px;
+    font-size: 10px !important;
+    line-height: 30px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .rev_slider .oxo-button.button-3d:active,
+  .rev_slider .button.button-3d:active,
+  .ls-container .oxo-button.button-3d:active,
+  .ls-container .button.button-3d:active {
+    top: 2px;
+  }
+  .rev_slider .oxo-button .oxo-button-text-left,
+  .rev_slider .button .oxo-button-text-left,
+  .ls-container .oxo-button .oxo-button-text-left,
+  .ls-container .button .oxo-button-text-left {
+    display: inline-block;
+    padding-left: 25px;
+  }
+  .rev_slider .oxo-button .oxo-button-text-right,
+  .rev_slider .button .oxo-button-text-right,
+  .ls-container .oxo-button .oxo-button-text-right,
+  .ls-container .button .oxo-button-text-right {
+    display: inline-block;
+    padding-right: 25px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-left,
+  .rev_slider .button .button-icon-divider-left,
+  .ls-container .oxo-button .button-icon-divider-left,
+  .ls-container .button .button-icon-divider-left {
+    padding: 0 10px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-left.oxo-megamenu-image,
+  .rev_slider .button .button-icon-divider-left.oxo-megamenu-image,
+  .ls-container .oxo-button .button-icon-divider-left.oxo-megamenu-image,
+  .ls-container .button .button-icon-divider-left.oxo-megamenu-image {
+    padding: 0 5px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-right,
+  .rev_slider .button .button-icon-divider-right,
+  .ls-container .oxo-button .button-icon-divider-right,
+  .ls-container .button .button-icon-divider-right {
+    padding: 0 10px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-right.oxo-megamenu-image,
+  .rev_slider .button .button-icon-divider-right.oxo-megamenu-image,
+  .ls-container .oxo-button .button-icon-divider-right.oxo-megamenu-image,
+  .ls-container .button .button-icon-divider-right.oxo-megamenu-image {
+    padding: 0 5px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-left i,
+  .rev_slider .button .button-icon-divider-left i,
+  .ls-container .oxo-button .button-icon-divider-left i,
+  .ls-container .button .button-icon-divider-left i,
+  .rev_slider .oxo-button .button-icon-divider-right i,
+  .rev_slider .button .button-icon-divider-right i,
+  .ls-container .oxo-button .button-icon-divider-right i,
+  .ls-container .button .button-icon-divider-right i,
+  .rev_slider .oxo-button .button-icon-divider-left img,
+  .rev_slider .button .button-icon-divider-left img,
+  .ls-container .oxo-button .button-icon-divider-left img,
+  .ls-container .button .button-icon-divider-left img,
+  .rev_slider .oxo-button .button-icon-divider-right img,
+  .rev_slider .button .button-icon-divider-right img,
+  .ls-container .oxo-button .button-icon-divider-right img,
+  .ls-container .button .button-icon-divider-right img {
+    top: 50%;
+    margin-top: -6px;
+    display: block;
+  }
+  .rev_slider .oxo-button.button-3d:active,
+  .rev_slider .button.button-3d:active,
+  .ls-container .oxo-button.button-3d:active,
+  .ls-container .button.button-3d:active {
+    top: 2px !important;
+  }
+  .rev_slider .oxo-button span,
+  .rev_slider .button span,
+  .ls-container .oxo-button span,
+  .ls-container .button span {
+    font-size: 10px !important;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .rev_slider .oxo-button,
+  .rev_slider .button,
+  .ls-container .oxo-button,
+  .ls-container .button {
+    padding: 0 20px;
+    line-height: 20px;
+    font-size: 10px;
+    font-size: 10px !important;
+    line-height: 20px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .rev_slider .oxo-button.button-3d:active,
+  .rev_slider .button.button-3d:active,
+  .ls-container .oxo-button.button-3d:active,
+  .ls-container .button.button-3d:active {
+    top: 2px;
+  }
+  .rev_slider .oxo-button .oxo-button-text-left,
+  .rev_slider .button .oxo-button-text-left,
+  .ls-container .oxo-button .oxo-button-text-left,
+  .ls-container .button .oxo-button-text-left {
+    display: inline-block;
+    padding-left: 25px;
+  }
+  .rev_slider .oxo-button .oxo-button-text-right,
+  .rev_slider .button .oxo-button-text-right,
+  .ls-container .oxo-button .oxo-button-text-right,
+  .ls-container .button .oxo-button-text-right {
+    display: inline-block;
+    padding-right: 25px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-left,
+  .rev_slider .button .button-icon-divider-left,
+  .ls-container .oxo-button .button-icon-divider-left,
+  .ls-container .button .button-icon-divider-left {
+    padding: 0 11px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-left.oxo-megamenu-image,
+  .rev_slider .button .button-icon-divider-left.oxo-megamenu-image,
+  .ls-container .oxo-button .button-icon-divider-left.oxo-megamenu-image,
+  .ls-container .button .button-icon-divider-left.oxo-megamenu-image {
+    padding: 0 5.5px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-right,
+  .rev_slider .button .button-icon-divider-right,
+  .ls-container .oxo-button .button-icon-divider-right,
+  .ls-container .button .button-icon-divider-right {
+    padding: 0 11px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-right.oxo-megamenu-image,
+  .rev_slider .button .button-icon-divider-right.oxo-megamenu-image,
+  .ls-container .oxo-button .button-icon-divider-right.oxo-megamenu-image,
+  .ls-container .button .button-icon-divider-right.oxo-megamenu-image {
+    padding: 0 5.5px;
+  }
+  .rev_slider .oxo-button .button-icon-divider-left i,
+  .rev_slider .button .button-icon-divider-left i,
+  .ls-container .oxo-button .button-icon-divider-left i,
+  .ls-container .button .button-icon-divider-left i,
+  .rev_slider .oxo-button .button-icon-divider-right i,
+  .rev_slider .button .button-icon-divider-right i,
+  .ls-container .oxo-button .button-icon-divider-right i,
+  .ls-container .button .button-icon-divider-right i,
+  .rev_slider .oxo-button .button-icon-divider-left img,
+  .rev_slider .button .button-icon-divider-left img,
+  .ls-container .oxo-button .button-icon-divider-left img,
+  .ls-container .button .button-icon-divider-left img,
+  .rev_slider .oxo-button .button-icon-divider-right img,
+  .rev_slider .button .button-icon-divider-right img,
+  .ls-container .oxo-button .button-icon-divider-right img,
+  .ls-container .button .button-icon-divider-right img {
+    top: 50%;
+    margin-top: -5px;
+    display: block;
+  }
+  .rev_slider .oxo-button.button-3d:active,
+  .rev_slider .button.button-3d:active,
+  .ls-container .oxo-button.button-3d:active,
+  .ls-container .button.button-3d:active {
+    top: 2px !important;
+  }
+  .rev_slider .oxo-button span,
+  .rev_slider .button span,
+  .ls-container .oxo-button span,
+  .ls-container .button span {
+    font-size: 10px !important;
+  }
+}
+button.oxo-button.button-3d:active {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 1px 2px 3px 2px rgba(0, 0, 0, 0.3), 0 0 0 #000000;
+}
+.button-icon-left {
+  margin-right: 10px;
+}
+.button-icon-right {
+  margin-left: 10px;
+}
+.button-icon-divider-left,
+.button-icon-divider-right {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.button-icon-divider-left i,
+.button-icon-divider-right i {
+  position: relative;
+}
+.button-icon-divider-left img,
+.button-icon-divider-right img {
+  position: relative;
+}
+.button-small .button-icon-divider-left img,
+.button-small .button-icon-divider-right img {
+  max-width: 22px;
+}
+.button-medium .button-icon-divider-left img,
+.button-medium .button-icon-divider-right img {
+  max-width: 23px;
+}
+.button-large .button-icon-divider-left img,
+.button-large .button-icon-divider-right img {
+  max-width: 24px;
+}
+.button-xlarge .button-icon-divider-left img,
+.button-xlarge .button-icon-divider-right img {
+  max-width: 25px;
+}
+.button-icon-divider-left {
+  left: 0;
+  border-right: 1px solid;
+}
+.button-icon-divider-right {
+  right: 0;
+  border-left: 1px solid;
+}
+.oxo-button.button-green,
+.oxo-button.button-green.wpcf7-submit,
+.button.green {
+  background: #d1e990;
+  background-image: linear-gradient(to top, #aad75d, #d1e990);
+  border: 1px solid #9dba60;
+  color: #54770f;
+}
+.oxo-button.button-green .button-icon-divider-left,
+.oxo-button.button-green.wpcf7-submit .button-icon-divider-left,
+.button.green .button-icon-divider-left,
+.oxo-button.button-green .button-icon-divider-right,
+.oxo-button.button-green.wpcf7-submit .button-icon-divider-right,
+.button.green .button-icon-divider-right {
+  border-color: #9dba60;
+}
+.oxo-button.button-green:hover,
+.oxo-button.button-green.wpcf7-submit:hover,
+.button.green:hover,
+.oxo-button.button-green:focus,
+.oxo-button.button-green.wpcf7-submit:focus,
+.button.green:focus,
+.oxo-button.button-green:active,
+.oxo-button.button-green.wpcf7-submit:active,
+.button.green:active {
+  background: #aad75d;
+  background-image: linear-gradient(to top, #d1e990, #aad75d);
+  border: 1px solid #9dba60;
+  color: #54770f;
+}
+.oxo-button.button-green:hover .button-icon-divider-left,
+.oxo-button.button-green.wpcf7-submit:hover .button-icon-divider-left,
+.button.green:hover .button-icon-divider-left,
+.oxo-button.button-green:focus .button-icon-divider-left,
+.oxo-button.button-green.wpcf7-submit:focus .button-icon-divider-left,
+.button.green:focus .button-icon-divider-left,
+.oxo-button.button-green:active .button-icon-divider-left,
+.oxo-button.button-green.wpcf7-submit:active .button-icon-divider-left,
+.button.green:active .button-icon-divider-left,
+.oxo-button.button-green:hover .button-icon-divider-right,
+.oxo-button.button-green.wpcf7-submit:hover .button-icon-divider-right,
+.button.green:hover .button-icon-divider-right,
+.oxo-button.button-green:focus .button-icon-divider-right,
+.oxo-button.button-green.wpcf7-submit:focus .button-icon-divider-right,
+.button.green:focus .button-icon-divider-right,
+.oxo-button.button-green:active .button-icon-divider-right,
+.oxo-button.button-green.wpcf7-submit:active .button-icon-divider-right,
+.button.green:active .button-icon-divider-right {
+  border-color: #9dba60;
+}
+.no-cssgradients .oxo-button.button-green:hover,
+.no-cssgradients .oxo-button.button-green.wpcf7-submit:hover,
+.no-cssgradients .button.green:hover,
+.no-cssgradients .oxo-button.button-green:focus,
+.no-cssgradients .oxo-button.button-green.wpcf7-submit:focus,
+.no-cssgradients .button.green:focus,
+.no-cssgradients .oxo-button.button-green:active,
+.no-cssgradients .oxo-button.button-green.wpcf7-submit:active,
+.no-cssgradients .button.green:active {
+  background-color: #AAD75D;
+}
+.no-cssgradients .oxo-button.button-green,
+.no-cssgradients .oxo-button.button-green.wpcf7-submit,
+.no-cssgradients .button.green {
+  background-color: #D1E990;
+}
+.oxo-button.button-green.button-3d.oxo-button-small,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-small,
+.button.green.button-3d.oxo-button-small,
+.oxo-button.button-green.button-3d.button-small,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-small,
+.button.green.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #54770f, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-green.button-3d.oxo-button-small:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.green.button-3d.oxo-button-small:active,
+.oxo-button.button-green.button-3d.button-small:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-small:active,
+.button.green.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #54770f, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-green.button-3d.oxo-button-medium,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-medium,
+.button.green.button-3d.oxo-button-medium,
+.oxo-button.button-green.button-3d.button-medium,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-medium,
+.button.green.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #54770f, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-green.button-3d.oxo-button-medium:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.green.button-3d.oxo-button-medium:active,
+.oxo-button.button-green.button-3d.button-medium:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-medium:active,
+.button.green.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #54770f, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-green.button-3d.oxo-button-large,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-large,
+.button.green.button-3d.oxo-button-large,
+.oxo-button.button-green.button-3d.button-large,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-large,
+.button.green.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #54770f, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-green.button-3d.oxo-button-large:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.green.button-3d.oxo-button-large:active,
+.oxo-button.button-green.button-3d.button-large:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-large:active,
+.button.green.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #54770f, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-green.button-3d.oxo-button-xlarge,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.green.button-3d.oxo-button-xlarge,
+.oxo-button.button-green.button-3d.button-xlarge,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-xlarge,
+.button.green.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #54770f, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-green.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.green.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-green.button-3d.button-xlarge:active,
+.oxo-button.button-green.wpcf7-submit.button-3d.button-xlarge:active,
+.button.green.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #54770f, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen,
+.oxo-button.button-darkgreen.wpcf7-submit,
+.button.darkgreen {
+  background: #d0e0a5;
+  background-image: linear-gradient(to top, #a8c76a, #d0e0a5);
+  border: 1px solid #9dba60;
+  color: #54770f;
+}
+.oxo-button.button-darkgreen .button-icon-divider-left,
+.oxo-button.button-darkgreen.wpcf7-submit .button-icon-divider-left,
+.button.darkgreen .button-icon-divider-left,
+.oxo-button.button-darkgreen .button-icon-divider-right,
+.oxo-button.button-darkgreen.wpcf7-submit .button-icon-divider-right,
+.button.darkgreen .button-icon-divider-right {
+  border-color: #9dba60;
+}
+.oxo-button.button-darkgreen:hover,
+.oxo-button.button-darkgreen.wpcf7-submit:hover,
+.button.darkgreen:hover,
+.oxo-button.button-darkgreen:focus,
+.oxo-button.button-darkgreen.wpcf7-submit:focus,
+.button.darkgreen:focus,
+.oxo-button.button-darkgreen:active,
+.oxo-button.button-darkgreen.wpcf7-submit:active,
+.button.darkgreen:active {
+  background: #a8c76a;
+  background-image: linear-gradient(to top, #d0e0a5, #a8c76a);
+  border: 1px solid #9dba60;
+  color: #54770f;
+}
+.oxo-button.button-darkgreen:hover .button-icon-divider-left,
+.oxo-button.button-darkgreen.wpcf7-submit:hover .button-icon-divider-left,
+.button.darkgreen:hover .button-icon-divider-left,
+.oxo-button.button-darkgreen:focus .button-icon-divider-left,
+.oxo-button.button-darkgreen.wpcf7-submit:focus .button-icon-divider-left,
+.button.darkgreen:focus .button-icon-divider-left,
+.oxo-button.button-darkgreen:active .button-icon-divider-left,
+.oxo-button.button-darkgreen.wpcf7-submit:active .button-icon-divider-left,
+.button.darkgreen:active .button-icon-divider-left,
+.oxo-button.button-darkgreen:hover .button-icon-divider-right,
+.oxo-button.button-darkgreen.wpcf7-submit:hover .button-icon-divider-right,
+.button.darkgreen:hover .button-icon-divider-right,
+.oxo-button.button-darkgreen:focus .button-icon-divider-right,
+.oxo-button.button-darkgreen.wpcf7-submit:focus .button-icon-divider-right,
+.button.darkgreen:focus .button-icon-divider-right,
+.oxo-button.button-darkgreen:active .button-icon-divider-right,
+.oxo-button.button-darkgreen.wpcf7-submit:active .button-icon-divider-right,
+.button.darkgreen:active .button-icon-divider-right {
+  border-color: #9dba60;
+}
+.no-cssgradients .oxo-button.button-darkgreen:hover,
+.no-cssgradients .oxo-button.button-darkgreen.wpcf7-submit:hover,
+.no-cssgradients .button.darkgreen:hover,
+.no-cssgradients .oxo-button.button-darkgreen:focus,
+.no-cssgradients .oxo-button.button-darkgreen.wpcf7-submit:focus,
+.no-cssgradients .button.darkgreen:focus,
+.no-cssgradients .oxo-button.button-darkgreen:active,
+.no-cssgradients .oxo-button.button-darkgreen.wpcf7-submit:active,
+.no-cssgradients .button.darkgreen:active {
+  background-color: #a8c76a;
+}
+.no-cssgradients .oxo-button.button-darkgreen,
+.no-cssgradients .oxo-button.button-darkgreen.wpcf7-submit,
+.no-cssgradients .button.darkgreen {
+  background-color: #d0e0a5;
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-small,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-small,
+.button.darkgreen.button-3d.oxo-button-small,
+.oxo-button.button-darkgreen.button-3d.button-small,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-small,
+.button.darkgreen.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #54770f, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-small:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.darkgreen.button-3d.oxo-button-small:active,
+.oxo-button.button-darkgreen.button-3d.button-small:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-small:active,
+.button.darkgreen.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #54770f, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-medium,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-medium,
+.button.darkgreen.button-3d.oxo-button-medium,
+.oxo-button.button-darkgreen.button-3d.button-medium,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-medium,
+.button.darkgreen.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #54770f, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-medium:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.darkgreen.button-3d.oxo-button-medium:active,
+.oxo-button.button-darkgreen.button-3d.button-medium:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-medium:active,
+.button.darkgreen.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #54770f, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-large,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-large,
+.button.darkgreen.button-3d.oxo-button-large,
+.oxo-button.button-darkgreen.button-3d.button-large,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-large,
+.button.darkgreen.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #54770f, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-large:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.darkgreen.button-3d.oxo-button-large:active,
+.oxo-button.button-darkgreen.button-3d.button-large:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-large:active,
+.button.darkgreen.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #54770f, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-xlarge,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.darkgreen.button-3d.oxo-button-xlarge,
+.oxo-button.button-darkgreen.button-3d.button-xlarge,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-xlarge,
+.button.darkgreen.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #54770f, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgreen.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.darkgreen.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-darkgreen.button-3d.button-xlarge:active,
+.oxo-button.button-darkgreen.wpcf7-submit.button-3d.button-xlarge:active,
+.button.darkgreen.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #54770f, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange,
+.oxo-button.button-orange.wpcf7-submit,
+.button.orange {
+  background: #fbdc86;
+  background-image: linear-gradient(to top, #f8bf56, #fbdc86);
+  border: 1px solid #c0830b;
+  color: #c0830b;
+}
+.oxo-button.button-orange .button-icon-divider-left,
+.oxo-button.button-orange.wpcf7-submit .button-icon-divider-left,
+.button.orange .button-icon-divider-left,
+.oxo-button.button-orange .button-icon-divider-right,
+.oxo-button.button-orange.wpcf7-submit .button-icon-divider-right,
+.button.orange .button-icon-divider-right {
+  border-color: #c0830b;
+}
+.oxo-button.button-orange:hover,
+.oxo-button.button-orange.wpcf7-submit:hover,
+.button.orange:hover,
+.oxo-button.button-orange:focus,
+.oxo-button.button-orange.wpcf7-submit:focus,
+.button.orange:focus,
+.oxo-button.button-orange:active,
+.oxo-button.button-orange.wpcf7-submit:active,
+.button.orange:active {
+  background: #f8bf56;
+  background-image: linear-gradient(to top, #fbdc86, #f8bf56);
+  border: 1px solid #c0830b;
+  color: #c0830b;
+}
+.oxo-button.button-orange:hover .button-icon-divider-left,
+.oxo-button.button-orange.wpcf7-submit:hover .button-icon-divider-left,
+.button.orange:hover .button-icon-divider-left,
+.oxo-button.button-orange:focus .button-icon-divider-left,
+.oxo-button.button-orange.wpcf7-submit:focus .button-icon-divider-left,
+.button.orange:focus .button-icon-divider-left,
+.oxo-button.button-orange:active .button-icon-divider-left,
+.oxo-button.button-orange.wpcf7-submit:active .button-icon-divider-left,
+.button.orange:active .button-icon-divider-left,
+.oxo-button.button-orange:hover .button-icon-divider-right,
+.oxo-button.button-orange.wpcf7-submit:hover .button-icon-divider-right,
+.button.orange:hover .button-icon-divider-right,
+.oxo-button.button-orange:focus .button-icon-divider-right,
+.oxo-button.button-orange.wpcf7-submit:focus .button-icon-divider-right,
+.button.orange:focus .button-icon-divider-right,
+.oxo-button.button-orange:active .button-icon-divider-right,
+.oxo-button.button-orange.wpcf7-submit:active .button-icon-divider-right,
+.button.orange:active .button-icon-divider-right {
+  border-color: #c0830b;
+}
+.no-cssgradients .oxo-button.button-orange:hover,
+.no-cssgradients .oxo-button.button-orange.wpcf7-submit:hover,
+.no-cssgradients .button.orange:hover,
+.no-cssgradients .oxo-button.button-orange:focus,
+.no-cssgradients .oxo-button.button-orange.wpcf7-submit:focus,
+.no-cssgradients .button.orange:focus,
+.no-cssgradients .oxo-button.button-orange:active,
+.no-cssgradients .oxo-button.button-orange.wpcf7-submit:active,
+.no-cssgradients .button.orange:active {
+  background-color: #f8bf56;
+}
+.no-cssgradients .oxo-button.button-orange,
+.no-cssgradients .oxo-button.button-orange.wpcf7-submit,
+.no-cssgradients .button.orange {
+  background-color: #fbdc86;
+}
+.oxo-button.button-orange.button-3d.oxo-button-small,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-small,
+.button.orange.button-3d.oxo-button-small,
+.oxo-button.button-orange.button-3d.button-small,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-small,
+.button.orange.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #c0830b, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange.button-3d.oxo-button-small:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.orange.button-3d.oxo-button-small:active,
+.oxo-button.button-orange.button-3d.button-small:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-small:active,
+.button.orange.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #c0830b, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange.button-3d.oxo-button-medium,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-medium,
+.button.orange.button-3d.oxo-button-medium,
+.oxo-button.button-orange.button-3d.button-medium,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-medium,
+.button.orange.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #c0830b, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange.button-3d.oxo-button-medium:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.orange.button-3d.oxo-button-medium:active,
+.oxo-button.button-orange.button-3d.button-medium:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-medium:active,
+.button.orange.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #c0830b, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange.button-3d.oxo-button-large,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-large,
+.button.orange.button-3d.oxo-button-large,
+.oxo-button.button-orange.button-3d.button-large,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-large,
+.button.orange.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #c0830b, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange.button-3d.oxo-button-large:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.orange.button-3d.oxo-button-large:active,
+.oxo-button.button-orange.button-3d.button-large:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-large:active,
+.button.orange.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #c0830b, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange.button-3d.oxo-button-xlarge,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.orange.button-3d.oxo-button-xlarge,
+.oxo-button.button-orange.button-3d.button-xlarge,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-xlarge,
+.button.orange.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #c0830b, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-orange.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.orange.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-orange.button-3d.button-xlarge:active,
+.oxo-button.button-orange.wpcf7-submit.button-3d.button-xlarge:active,
+.button.orange.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #c0830b, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue,
+.oxo-button.button-blue.wpcf7-submit,
+.button.blue {
+  background: #b5e0f7;
+  background-image: linear-gradient(to top, #76c7f1, #b5e0f7);
+  border: 1px solid #1172c1;
+  color: #1172c1;
+}
+.oxo-button.button-blue .button-icon-divider-left,
+.oxo-button.button-blue.wpcf7-submit .button-icon-divider-left,
+.button.blue .button-icon-divider-left,
+.oxo-button.button-blue .button-icon-divider-right,
+.oxo-button.button-blue.wpcf7-submit .button-icon-divider-right,
+.button.blue .button-icon-divider-right {
+  border-color: #1172c1;
+}
+.oxo-button.button-blue:hover,
+.oxo-button.button-blue.wpcf7-submit:hover,
+.button.blue:hover,
+.oxo-button.button-blue:focus,
+.oxo-button.button-blue.wpcf7-submit:focus,
+.button.blue:focus,
+.oxo-button.button-blue:active,
+.oxo-button.button-blue.wpcf7-submit:active,
+.button.blue:active {
+  background: #76c7f1;
+  background-image: linear-gradient(to top, #b5e0f7, #76c7f1);
+  border: 1px solid #1172c1;
+  color: #1172c1;
+}
+.oxo-button.button-blue:hover .button-icon-divider-left,
+.oxo-button.button-blue.wpcf7-submit:hover .button-icon-divider-left,
+.button.blue:hover .button-icon-divider-left,
+.oxo-button.button-blue:focus .button-icon-divider-left,
+.oxo-button.button-blue.wpcf7-submit:focus .button-icon-divider-left,
+.button.blue:focus .button-icon-divider-left,
+.oxo-button.button-blue:active .button-icon-divider-left,
+.oxo-button.button-blue.wpcf7-submit:active .button-icon-divider-left,
+.button.blue:active .button-icon-divider-left,
+.oxo-button.button-blue:hover .button-icon-divider-right,
+.oxo-button.button-blue.wpcf7-submit:hover .button-icon-divider-right,
+.button.blue:hover .button-icon-divider-right,
+.oxo-button.button-blue:focus .button-icon-divider-right,
+.oxo-button.button-blue.wpcf7-submit:focus .button-icon-divider-right,
+.button.blue:focus .button-icon-divider-right,
+.oxo-button.button-blue:active .button-icon-divider-right,
+.oxo-button.button-blue.wpcf7-submit:active .button-icon-divider-right,
+.button.blue:active .button-icon-divider-right {
+  border-color: #1172c1;
+}
+.no-cssgradients .oxo-button.button-blue:hover,
+.no-cssgradients .oxo-button.button-blue.wpcf7-submit:hover,
+.no-cssgradients .button.blue:hover,
+.no-cssgradients .oxo-button.button-blue:focus,
+.no-cssgradients .oxo-button.button-blue.wpcf7-submit:focus,
+.no-cssgradients .button.blue:focus,
+.no-cssgradients .oxo-button.button-blue:active,
+.no-cssgradients .oxo-button.button-blue.wpcf7-submit:active,
+.no-cssgradients .button.blue:active {
+  background-color: #76c7f1;
+}
+.no-cssgradients .oxo-button.button-blue,
+.no-cssgradients .oxo-button.button-blue.wpcf7-submit,
+.no-cssgradients .button.blue {
+  background-color: #b5e0f7;
+}
+.oxo-button.button-blue.button-3d.oxo-button-small,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-small,
+.button.blue.button-3d.oxo-button-small,
+.oxo-button.button-blue.button-3d.button-small,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-small,
+.button.blue.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #1172c1, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue.button-3d.oxo-button-small:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.blue.button-3d.oxo-button-small:active,
+.oxo-button.button-blue.button-3d.button-small:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-small:active,
+.button.blue.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #1172c1, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue.button-3d.oxo-button-medium,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-medium,
+.button.blue.button-3d.oxo-button-medium,
+.oxo-button.button-blue.button-3d.button-medium,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-medium,
+.button.blue.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #1172c1, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue.button-3d.oxo-button-medium:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.blue.button-3d.oxo-button-medium:active,
+.oxo-button.button-blue.button-3d.button-medium:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-medium:active,
+.button.blue.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #1172c1, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue.button-3d.oxo-button-large,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-large,
+.button.blue.button-3d.oxo-button-large,
+.oxo-button.button-blue.button-3d.button-large,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-large,
+.button.blue.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #1172c1, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue.button-3d.oxo-button-large:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.blue.button-3d.oxo-button-large:active,
+.oxo-button.button-blue.button-3d.button-large:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-large:active,
+.button.blue.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #1172c1, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue.button-3d.oxo-button-xlarge,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.blue.button-3d.oxo-button-xlarge,
+.oxo-button.button-blue.button-3d.button-xlarge,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-xlarge,
+.button.blue.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #1172c1, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-blue.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.blue.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-blue.button-3d.button-xlarge:active,
+.oxo-button.button-blue.wpcf7-submit.button-3d.button-xlarge:active,
+.button.blue.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #1172c1, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue,
+.oxo-button.button.button-darkblue.wpcf7-submit,
+.button.darkblue {
+  background: #428bca;
+  background-image: linear-gradient(to top, #2a6496, #428bca);
+  border: 1px solid #072c5e;
+  color: #072c5e;
+}
+.oxo-button.button.button-darkblue .button-icon-divider-left,
+.oxo-button.button.button-darkblue.wpcf7-submit .button-icon-divider-left,
+.button.darkblue .button-icon-divider-left,
+.oxo-button.button.button-darkblue .button-icon-divider-right,
+.oxo-button.button.button-darkblue.wpcf7-submit .button-icon-divider-right,
+.button.darkblue .button-icon-divider-right {
+  border-color: #072c5e;
+}
+.oxo-button.button.button-darkblue:hover,
+.oxo-button.button.button-darkblue.wpcf7-submit:hover,
+.button.darkblue:hover,
+.oxo-button.button.button-darkblue:focus,
+.oxo-button.button.button-darkblue.wpcf7-submit:focus,
+.button.darkblue:focus,
+.oxo-button.button.button-darkblue:active,
+.oxo-button.button.button-darkblue.wpcf7-submit:active,
+.button.darkblue:active {
+  background: #2a6496;
+  background-image: linear-gradient(to top, #428bca, #2a6496);
+  border: 1px solid #072c5e;
+  color: #072c5e;
+}
+.oxo-button.button.button-darkblue:hover .button-icon-divider-left,
+.oxo-button.button.button-darkblue.wpcf7-submit:hover .button-icon-divider-left,
+.button.darkblue:hover .button-icon-divider-left,
+.oxo-button.button.button-darkblue:focus .button-icon-divider-left,
+.oxo-button.button.button-darkblue.wpcf7-submit:focus .button-icon-divider-left,
+.button.darkblue:focus .button-icon-divider-left,
+.oxo-button.button.button-darkblue:active .button-icon-divider-left,
+.oxo-button.button.button-darkblue.wpcf7-submit:active .button-icon-divider-left,
+.button.darkblue:active .button-icon-divider-left,
+.oxo-button.button.button-darkblue:hover .button-icon-divider-right,
+.oxo-button.button.button-darkblue.wpcf7-submit:hover .button-icon-divider-right,
+.button.darkblue:hover .button-icon-divider-right,
+.oxo-button.button.button-darkblue:focus .button-icon-divider-right,
+.oxo-button.button.button-darkblue.wpcf7-submit:focus .button-icon-divider-right,
+.button.darkblue:focus .button-icon-divider-right,
+.oxo-button.button.button-darkblue:active .button-icon-divider-right,
+.oxo-button.button.button-darkblue.wpcf7-submit:active .button-icon-divider-right,
+.button.darkblue:active .button-icon-divider-right {
+  border-color: #072c5e;
+}
+.no-cssgradients .oxo-button.button.button-darkblue:hover,
+.no-cssgradients .oxo-button.button.button-darkblue.wpcf7-submit:hover,
+.no-cssgradients .button.darkblue:hover,
+.no-cssgradients .oxo-button.button.button-darkblue:focus,
+.no-cssgradients .oxo-button.button.button-darkblue.wpcf7-submit:focus,
+.no-cssgradients .button.darkblue:focus,
+.no-cssgradients .oxo-button.button.button-darkblue:active,
+.no-cssgradients .oxo-button.button.button-darkblue.wpcf7-submit:active,
+.no-cssgradients .button.darkblue:active {
+  background-color: #2A6496;
+}
+.no-cssgradients .oxo-button.button.button-darkblue,
+.no-cssgradients .oxo-button.button.button-darkblue.wpcf7-submit,
+.no-cssgradients .button.darkblue {
+  background-color: #428BCA;
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-small,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-small,
+.button.darkblue.button-3d.oxo-button-small,
+.oxo-button.button.button-darkblue.button-3d.button-small,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-small,
+.button.darkblue.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #072c5e, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-small:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.darkblue.button-3d.oxo-button-small:active,
+.oxo-button.button.button-darkblue.button-3d.button-small:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-small:active,
+.button.darkblue.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #072c5e, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-medium,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-medium,
+.button.darkblue.button-3d.oxo-button-medium,
+.oxo-button.button.button-darkblue.button-3d.button-medium,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-medium,
+.button.darkblue.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #072c5e, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-medium:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.darkblue.button-3d.oxo-button-medium:active,
+.oxo-button.button.button-darkblue.button-3d.button-medium:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-medium:active,
+.button.darkblue.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #072c5e, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-large,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-large,
+.button.darkblue.button-3d.oxo-button-large,
+.oxo-button.button.button-darkblue.button-3d.button-large,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-large,
+.button.darkblue.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #072c5e, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-large:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.darkblue.button-3d.oxo-button-large:active,
+.oxo-button.button.button-darkblue.button-3d.button-large:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-large:active,
+.button.darkblue.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #072c5e, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-xlarge,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.darkblue.button-3d.oxo-button-xlarge,
+.oxo-button.button.button-darkblue.button-3d.button-xlarge,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-xlarge,
+.button.darkblue.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #072c5e, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button.button-darkblue.button-3d.oxo-button-xlarge:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.darkblue.button-3d.oxo-button-xlarge:active,
+.oxo-button.button.button-darkblue.button-3d.button-xlarge:active,
+.oxo-button.button.button-darkblue.wpcf7-submit.button-3d.button-xlarge:active,
+.button.darkblue.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #072c5e, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red,
+.oxo-button.button-red.wpcf7-submit,
+.button.red {
+  background: #fd9c9c;
+  background-image: linear-gradient(to top, #fc7d7d, #fd9c9c);
+  border: 1px solid #9d1111;
+  color: #9d1111;
+}
+.oxo-button.button-red .button-icon-divider-left,
+.oxo-button.button-red.wpcf7-submit .button-icon-divider-left,
+.button.red .button-icon-divider-left,
+.oxo-button.button-red .button-icon-divider-right,
+.oxo-button.button-red.wpcf7-submit .button-icon-divider-right,
+.button.red .button-icon-divider-right {
+  border-color: #9d1111;
+}
+.oxo-button.button-red:hover,
+.oxo-button.button-red.wpcf7-submit:hover,
+.button.red:hover,
+.oxo-button.button-red:focus,
+.oxo-button.button-red.wpcf7-submit:focus,
+.button.red:focus,
+.oxo-button.button-red:active,
+.oxo-button.button-red.wpcf7-submit:active,
+.button.red:active {
+  background: #fc7d7d;
+  background-image: linear-gradient(to top, #fd9c9c, #fc7d7d);
+  border: 1px solid #9d1111;
+  color: #9d1111;
+}
+.oxo-button.button-red:hover .button-icon-divider-left,
+.oxo-button.button-red.wpcf7-submit:hover .button-icon-divider-left,
+.button.red:hover .button-icon-divider-left,
+.oxo-button.button-red:focus .button-icon-divider-left,
+.oxo-button.button-red.wpcf7-submit:focus .button-icon-divider-left,
+.button.red:focus .button-icon-divider-left,
+.oxo-button.button-red:active .button-icon-divider-left,
+.oxo-button.button-red.wpcf7-submit:active .button-icon-divider-left,
+.button.red:active .button-icon-divider-left,
+.oxo-button.button-red:hover .button-icon-divider-right,
+.oxo-button.button-red.wpcf7-submit:hover .button-icon-divider-right,
+.button.red:hover .button-icon-divider-right,
+.oxo-button.button-red:focus .button-icon-divider-right,
+.oxo-button.button-red.wpcf7-submit:focus .button-icon-divider-right,
+.button.red:focus .button-icon-divider-right,
+.oxo-button.button-red:active .button-icon-divider-right,
+.oxo-button.button-red.wpcf7-submit:active .button-icon-divider-right,
+.button.red:active .button-icon-divider-right {
+  border-color: #9d1111;
+}
+.no-cssgradients .oxo-button.button-red:hover,
+.no-cssgradients .oxo-button.button-red.wpcf7-submit:hover,
+.no-cssgradients .button.red:hover,
+.no-cssgradients .oxo-button.button-red:focus,
+.no-cssgradients .oxo-button.button-red.wpcf7-submit:focus,
+.no-cssgradients .button.red:focus,
+.no-cssgradients .oxo-button.button-red:active,
+.no-cssgradients .oxo-button.button-red.wpcf7-submit:active,
+.no-cssgradients .button.red:active {
+  background-color: #fc7d7d;
+}
+.no-cssgradients .oxo-button.button-red,
+.no-cssgradients .oxo-button.button-red.wpcf7-submit,
+.no-cssgradients .button.red {
+  background-color: #fd9c9c;
+}
+.oxo-button.button-red.button-3d.oxo-button-small,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-small,
+.button.red.button-3d.oxo-button-small,
+.oxo-button.button-red.button-3d.button-small,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-small,
+.button.red.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #9d1111, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red.button-3d.oxo-button-small:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.red.button-3d.oxo-button-small:active,
+.oxo-button.button-red.button-3d.button-small:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-small:active,
+.button.red.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #9d1111, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red.button-3d.oxo-button-medium,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-medium,
+.button.red.button-3d.oxo-button-medium,
+.oxo-button.button-red.button-3d.button-medium,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-medium,
+.button.red.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #9d1111, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red.button-3d.oxo-button-medium:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.red.button-3d.oxo-button-medium:active,
+.oxo-button.button-red.button-3d.button-medium:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-medium:active,
+.button.red.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #9d1111, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red.button-3d.oxo-button-large,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-large,
+.button.red.button-3d.oxo-button-large,
+.oxo-button.button-red.button-3d.button-large,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-large,
+.button.red.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #9d1111, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red.button-3d.oxo-button-large:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.red.button-3d.oxo-button-large:active,
+.oxo-button.button-red.button-3d.button-large:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-large:active,
+.button.red.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #9d1111, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red.button-3d.oxo-button-xlarge,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.red.button-3d.oxo-button-xlarge,
+.oxo-button.button-red.button-3d.button-xlarge,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-xlarge,
+.button.red.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #9d1111, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-red.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.red.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-red.button-3d.button-xlarge:active,
+.oxo-button.button-red.wpcf7-submit.button-3d.button-xlarge:active,
+.button.red.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #9d1111, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred,
+.oxo-button.button-darkred.wpcf7-submit,
+.button.darkred {
+  background: #fe2020;
+  background-image: linear-gradient(to top, #b01818, #fe2020);
+  border: 1px solid #690e0e;
+  color: #690e0e;
+}
+.oxo-button.button-darkred .button-icon-divider-left,
+.oxo-button.button-darkred.wpcf7-submit .button-icon-divider-left,
+.button.darkred .button-icon-divider-left,
+.oxo-button.button-darkred .button-icon-divider-right,
+.oxo-button.button-darkred.wpcf7-submit .button-icon-divider-right,
+.button.darkred .button-icon-divider-right {
+  border-color: #690e0e;
+}
+.oxo-button.button-darkred:hover,
+.oxo-button.button-darkred.wpcf7-submit:hover,
+.button.darkred:hover,
+.oxo-button.button-darkred:focus,
+.oxo-button.button-darkred.wpcf7-submit:focus,
+.button.darkred:focus,
+.oxo-button.button-darkred:active,
+.oxo-button.button-darkred.wpcf7-submit:active,
+.button.darkred:active {
+  background: #b01818;
+  background-image: linear-gradient(to top, #fe2020, #b01818);
+  border: 1px solid #690e0e;
+  color: #690e0e;
+}
+.oxo-button.button-darkred:hover .button-icon-divider-left,
+.oxo-button.button-darkred.wpcf7-submit:hover .button-icon-divider-left,
+.button.darkred:hover .button-icon-divider-left,
+.oxo-button.button-darkred:focus .button-icon-divider-left,
+.oxo-button.button-darkred.wpcf7-submit:focus .button-icon-divider-left,
+.button.darkred:focus .button-icon-divider-left,
+.oxo-button.button-darkred:active .button-icon-divider-left,
+.oxo-button.button-darkred.wpcf7-submit:active .button-icon-divider-left,
+.button.darkred:active .button-icon-divider-left,
+.oxo-button.button-darkred:hover .button-icon-divider-right,
+.oxo-button.button-darkred.wpcf7-submit:hover .button-icon-divider-right,
+.button.darkred:hover .button-icon-divider-right,
+.oxo-button.button-darkred:focus .button-icon-divider-right,
+.oxo-button.button-darkred.wpcf7-submit:focus .button-icon-divider-right,
+.button.darkred:focus .button-icon-divider-right,
+.oxo-button.button-darkred:active .button-icon-divider-right,
+.oxo-button.button-darkred.wpcf7-submit:active .button-icon-divider-right,
+.button.darkred:active .button-icon-divider-right {
+  border-color: #690e0e;
+}
+.no-cssgradients .oxo-button.button-darkred:hover,
+.no-cssgradients .oxo-button.button-darkred.wpcf7-submit:hover,
+.no-cssgradients .button.darkred:hover,
+.no-cssgradients .oxo-button.button-darkred:focus,
+.no-cssgradients .oxo-button.button-darkred.wpcf7-submit:focus,
+.no-cssgradients .button.darkred:focus,
+.no-cssgradients .oxo-button.button-darkred:active,
+.no-cssgradients .oxo-button.button-darkred.wpcf7-submit:active,
+.no-cssgradients .button.darkred:active {
+  background-color: #b01818;
+}
+.no-cssgradients .oxo-button.button-darkred,
+.no-cssgradients .oxo-button.button-darkred.wpcf7-submit,
+.no-cssgradients .button.darkred {
+  background-color: #fe2020;
+}
+.oxo-button.button-darkred.button-3d.oxo-button-small,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-small,
+.button.darkred.button-3d.oxo-button-small,
+.oxo-button.button-darkred.button-3d.button-small,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-small,
+.button.darkred.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #690e0e, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred.button-3d.oxo-button-small:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.darkred.button-3d.oxo-button-small:active,
+.oxo-button.button-darkred.button-3d.button-small:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-small:active,
+.button.darkred.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #690e0e, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred.button-3d.oxo-button-medium,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-medium,
+.button.darkred.button-3d.oxo-button-medium,
+.oxo-button.button-darkred.button-3d.button-medium,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-medium,
+.button.darkred.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #690e0e, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred.button-3d.oxo-button-medium:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.darkred.button-3d.oxo-button-medium:active,
+.oxo-button.button-darkred.button-3d.button-medium:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-medium:active,
+.button.darkred.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #690e0e, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred.button-3d.oxo-button-large,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-large,
+.button.darkred.button-3d.oxo-button-large,
+.oxo-button.button-darkred.button-3d.button-large,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-large,
+.button.darkred.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #690e0e, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred.button-3d.oxo-button-large:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.darkred.button-3d.oxo-button-large:active,
+.oxo-button.button-darkred.button-3d.button-large:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-large:active,
+.button.darkred.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #690e0e, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred.button-3d.oxo-button-xlarge,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.darkred.button-3d.oxo-button-xlarge,
+.oxo-button.button-darkred.button-3d.button-xlarge,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-xlarge,
+.button.darkred.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #690e0e, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkred.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.darkred.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-darkred.button-3d.button-xlarge:active,
+.oxo-button.button-darkred.wpcf7-submit.button-3d.button-xlarge:active,
+.button.darkred.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #690e0e, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink,
+.oxo-button.button-pink.wpcf7-submit,
+.button.pink {
+  background: #fda1d5;
+  background-image: linear-gradient(to top, #fc84c8, #fda1d5);
+  border: 1px solid #a31366;
+  color: #a31366;
+}
+.oxo-button.button-pink .button-icon-divider-left,
+.oxo-button.button-pink.wpcf7-submit .button-icon-divider-left,
+.button.pink .button-icon-divider-left,
+.oxo-button.button-pink .button-icon-divider-right,
+.oxo-button.button-pink.wpcf7-submit .button-icon-divider-right,
+.button.pink .button-icon-divider-right {
+  border-color: #a31366;
+}
+.oxo-button.button-pink:hover,
+.oxo-button.button-pink.wpcf7-submit:hover,
+.button.pink:hover,
+.oxo-button.button-pink:focus,
+.oxo-button.button-pink.wpcf7-submit:focus,
+.button.pink:focus,
+.oxo-button.button-pink:active,
+.oxo-button.button-pink.wpcf7-submit:active,
+.button.pink:active {
+  background: #fc84c8;
+  background-image: linear-gradient(to top, #fda1d5, #fc84c8);
+  border: 1px solid #a31366;
+  color: #a31366;
+}
+.oxo-button.button-pink:hover .button-icon-divider-left,
+.oxo-button.button-pink.wpcf7-submit:hover .button-icon-divider-left,
+.button.pink:hover .button-icon-divider-left,
+.oxo-button.button-pink:focus .button-icon-divider-left,
+.oxo-button.button-pink.wpcf7-submit:focus .button-icon-divider-left,
+.button.pink:focus .button-icon-divider-left,
+.oxo-button.button-pink:active .button-icon-divider-left,
+.oxo-button.button-pink.wpcf7-submit:active .button-icon-divider-left,
+.button.pink:active .button-icon-divider-left,
+.oxo-button.button-pink:hover .button-icon-divider-right,
+.oxo-button.button-pink.wpcf7-submit:hover .button-icon-divider-right,
+.button.pink:hover .button-icon-divider-right,
+.oxo-button.button-pink:focus .button-icon-divider-right,
+.oxo-button.button-pink.wpcf7-submit:focus .button-icon-divider-right,
+.button.pink:focus .button-icon-divider-right,
+.oxo-button.button-pink:active .button-icon-divider-right,
+.oxo-button.button-pink.wpcf7-submit:active .button-icon-divider-right,
+.button.pink:active .button-icon-divider-right {
+  border-color: #a31366;
+}
+.no-cssgradients .oxo-button.button-pink:hover,
+.no-cssgradients .oxo-button.button-pink.wpcf7-submit:hover,
+.no-cssgradients .button.pink:hover,
+.no-cssgradients .oxo-button.button-pink:focus,
+.no-cssgradients .oxo-button.button-pink.wpcf7-submit:focus,
+.no-cssgradients .button.pink:focus,
+.no-cssgradients .oxo-button.button-pink:active,
+.no-cssgradients .oxo-button.button-pink.wpcf7-submit:active,
+.no-cssgradients .button.pink:active {
+  background-color: #fc84c8;
+}
+.no-cssgradients .oxo-button.button-pink,
+.no-cssgradients .oxo-button.button-pink.wpcf7-submit,
+.no-cssgradients .button.pink {
+  background-color: #fda1d5;
+}
+.oxo-button.button-pink.button-3d.oxo-button-small,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-small,
+.button.pink.button-3d.oxo-button-small,
+.oxo-button.button-pink.button-3d.button-small,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-small,
+.button.pink.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #a31366, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink.button-3d.oxo-button-small:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.pink.button-3d.oxo-button-small:active,
+.oxo-button.button-pink.button-3d.button-small:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-small:active,
+.button.pink.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #a31366, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink.button-3d.oxo-button-medium,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-medium,
+.button.pink.button-3d.oxo-button-medium,
+.oxo-button.button-pink.button-3d.button-medium,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-medium,
+.button.pink.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #a31366, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink.button-3d.oxo-button-medium:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.pink.button-3d.oxo-button-medium:active,
+.oxo-button.button-pink.button-3d.button-medium:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-medium:active,
+.button.pink.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #a31366, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink.button-3d.oxo-button-large,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-large,
+.button.pink.button-3d.oxo-button-large,
+.oxo-button.button-pink.button-3d.button-large,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-large,
+.button.pink.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #a31366, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink.button-3d.oxo-button-large:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.pink.button-3d.oxo-button-large:active,
+.oxo-button.button-pink.button-3d.button-large:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-large:active,
+.button.pink.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #a31366, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink.button-3d.oxo-button-xlarge,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.pink.button-3d.oxo-button-xlarge,
+.oxo-button.button-pink.button-3d.button-xlarge,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-xlarge,
+.button.pink.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #a31366, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-pink.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.pink.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-pink.button-3d.button-xlarge:active,
+.oxo-button.button-pink.wpcf7-submit.button-3d.button-xlarge:active,
+.button.pink.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #a31366, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray,
+.oxo-button.button-lightgray.wpcf7-submit,
+.button.lightgray {
+  background: #fbfbfb;
+  background-image: linear-gradient(to top, #f0f0f0, #fbfbfb);
+  border: 1px solid #ababab;
+  color: #ababab;
+}
+.oxo-button.button-lightgray .button-icon-divider-left,
+.oxo-button.button-lightgray.wpcf7-submit .button-icon-divider-left,
+.button.lightgray .button-icon-divider-left,
+.oxo-button.button-lightgray .button-icon-divider-right,
+.oxo-button.button-lightgray.wpcf7-submit .button-icon-divider-right,
+.button.lightgray .button-icon-divider-right {
+  border-color: #ababab;
+}
+.oxo-button.button-lightgray:hover,
+.oxo-button.button-lightgray.wpcf7-submit:hover,
+.button.lightgray:hover,
+.oxo-button.button-lightgray:focus,
+.oxo-button.button-lightgray.wpcf7-submit:focus,
+.button.lightgray:focus,
+.oxo-button.button-lightgray:active,
+.oxo-button.button-lightgray.wpcf7-submit:active,
+.button.lightgray:active {
+  background: #f0f0f0;
+  background-image: linear-gradient(to top, #fbfbfb, #f0f0f0);
+  border: 1px solid #ababab;
+  color: #ababab;
+}
+.oxo-button.button-lightgray:hover .button-icon-divider-left,
+.oxo-button.button-lightgray.wpcf7-submit:hover .button-icon-divider-left,
+.button.lightgray:hover .button-icon-divider-left,
+.oxo-button.button-lightgray:focus .button-icon-divider-left,
+.oxo-button.button-lightgray.wpcf7-submit:focus .button-icon-divider-left,
+.button.lightgray:focus .button-icon-divider-left,
+.oxo-button.button-lightgray:active .button-icon-divider-left,
+.oxo-button.button-lightgray.wpcf7-submit:active .button-icon-divider-left,
+.button.lightgray:active .button-icon-divider-left,
+.oxo-button.button-lightgray:hover .button-icon-divider-right,
+.oxo-button.button-lightgray.wpcf7-submit:hover .button-icon-divider-right,
+.button.lightgray:hover .button-icon-divider-right,
+.oxo-button.button-lightgray:focus .button-icon-divider-right,
+.oxo-button.button-lightgray.wpcf7-submit:focus .button-icon-divider-right,
+.button.lightgray:focus .button-icon-divider-right,
+.oxo-button.button-lightgray:active .button-icon-divider-right,
+.oxo-button.button-lightgray.wpcf7-submit:active .button-icon-divider-right,
+.button.lightgray:active .button-icon-divider-right {
+  border-color: #ababab;
+}
+.no-cssgradients .oxo-button.button-lightgray:hover,
+.no-cssgradients .oxo-button.button-lightgray.wpcf7-submit:hover,
+.no-cssgradients .button.lightgray:hover,
+.no-cssgradients .oxo-button.button-lightgray:focus,
+.no-cssgradients .oxo-button.button-lightgray.wpcf7-submit:focus,
+.no-cssgradients .button.lightgray:focus,
+.no-cssgradients .oxo-button.button-lightgray:active,
+.no-cssgradients .oxo-button.button-lightgray.wpcf7-submit:active,
+.no-cssgradients .button.lightgray:active {
+  background-color: #f0f0f0;
+}
+.no-cssgradients .oxo-button.button-lightgray,
+.no-cssgradients .oxo-button.button-lightgray.wpcf7-submit,
+.no-cssgradients .button.lightgray {
+  background-color: #fbfbfb;
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-small,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-small,
+.button.lightgray.button-3d.oxo-button-small,
+.oxo-button.button-lightgray.button-3d.button-small,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-small,
+.button.lightgray.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #ababab, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-small:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.lightgray.button-3d.oxo-button-small:active,
+.oxo-button.button-lightgray.button-3d.button-small:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-small:active,
+.button.lightgray.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #ababab, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-medium,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-medium,
+.button.lightgray.button-3d.oxo-button-medium,
+.oxo-button.button-lightgray.button-3d.button-medium,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-medium,
+.button.lightgray.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #ababab, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-medium:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.lightgray.button-3d.oxo-button-medium:active,
+.oxo-button.button-lightgray.button-3d.button-medium:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-medium:active,
+.button.lightgray.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #ababab, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-large,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-large,
+.button.lightgray.button-3d.oxo-button-large,
+.oxo-button.button-lightgray.button-3d.button-large,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-large,
+.button.lightgray.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #ababab, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-large:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.lightgray.button-3d.oxo-button-large:active,
+.oxo-button.button-lightgray.button-3d.button-large:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-large:active,
+.button.lightgray.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #ababab, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-xlarge,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.lightgray.button-3d.oxo-button-xlarge,
+.oxo-button.button-lightgray.button-3d.button-xlarge,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-xlarge,
+.button.lightgray.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #ababab, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-lightgray.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.lightgray.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-lightgray.button-3d.button-xlarge:active,
+.oxo-button.button-lightgray.wpcf7-submit.button-3d.button-xlarge:active,
+.button.lightgray.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #ababab, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray,
+.oxo-button.button-darkgray.wpcf7-submit,
+.button.darkgray {
+  background: #c0c0c0;
+  background-image: linear-gradient(to top, #9e9e9e, #c0c0c0);
+  border: 1px solid #434c50;
+  color: #434c50;
+}
+.oxo-button.button-darkgray .button-icon-divider-left,
+.oxo-button.button-darkgray.wpcf7-submit .button-icon-divider-left,
+.button.darkgray .button-icon-divider-left,
+.oxo-button.button-darkgray .button-icon-divider-right,
+.oxo-button.button-darkgray.wpcf7-submit .button-icon-divider-right,
+.button.darkgray .button-icon-divider-right {
+  border-color: #434c50;
+}
+.oxo-button.button-darkgray:hover,
+.oxo-button.button-darkgray.wpcf7-submit:hover,
+.button.darkgray:hover,
+.oxo-button.button-darkgray:focus,
+.oxo-button.button-darkgray.wpcf7-submit:focus,
+.button.darkgray:focus,
+.oxo-button.button-darkgray:active,
+.oxo-button.button-darkgray.wpcf7-submit:active,
+.button.darkgray:active {
+  background: #9e9e9e;
+  background-image: linear-gradient(to top, #c0c0c0, #9e9e9e);
+  border: 1px solid #434c50;
+  color: #434c50;
+}
+.oxo-button.button-darkgray:hover .button-icon-divider-left,
+.oxo-button.button-darkgray.wpcf7-submit:hover .button-icon-divider-left,
+.button.darkgray:hover .button-icon-divider-left,
+.oxo-button.button-darkgray:focus .button-icon-divider-left,
+.oxo-button.button-darkgray.wpcf7-submit:focus .button-icon-divider-left,
+.button.darkgray:focus .button-icon-divider-left,
+.oxo-button.button-darkgray:active .button-icon-divider-left,
+.oxo-button.button-darkgray.wpcf7-submit:active .button-icon-divider-left,
+.button.darkgray:active .button-icon-divider-left,
+.oxo-button.button-darkgray:hover .button-icon-divider-right,
+.oxo-button.button-darkgray.wpcf7-submit:hover .button-icon-divider-right,
+.button.darkgray:hover .button-icon-divider-right,
+.oxo-button.button-darkgray:focus .button-icon-divider-right,
+.oxo-button.button-darkgray.wpcf7-submit:focus .button-icon-divider-right,
+.button.darkgray:focus .button-icon-divider-right,
+.oxo-button.button-darkgray:active .button-icon-divider-right,
+.oxo-button.button-darkgray.wpcf7-submit:active .button-icon-divider-right,
+.button.darkgray:active .button-icon-divider-right {
+  border-color: #434c50;
+}
+.no-cssgradients .oxo-button.button-darkgray:hover,
+.no-cssgradients .oxo-button.button-darkgray.wpcf7-submit:hover,
+.no-cssgradients .button.darkgray:hover,
+.no-cssgradients .oxo-button.button-darkgray:focus,
+.no-cssgradients .oxo-button.button-darkgray.wpcf7-submit:focus,
+.no-cssgradients .button.darkgray:focus,
+.no-cssgradients .oxo-button.button-darkgray:active,
+.no-cssgradients .oxo-button.button-darkgray.wpcf7-submit:active,
+.no-cssgradients .button.darkgray:active {
+  background-color: #9e9e9e;
+}
+.no-cssgradients .oxo-button.button-darkgray,
+.no-cssgradients .oxo-button.button-darkgray.wpcf7-submit,
+.no-cssgradients .button.darkgray {
+  background-color: #c0c0c0;
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-small,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-small,
+.button.darkgray.button-3d.oxo-button-small,
+.oxo-button.button-darkgray.button-3d.button-small,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-small,
+.button.darkgray.button-3d.button-small {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #434c50, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-small:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-small:active,
+.button.darkgray.button-3d.oxo-button-small:active,
+.oxo-button.button-darkgray.button-3d.button-small:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-small:active,
+.button.darkgray.button-3d.button-small:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #434c50, 1px 4px 4px 2px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-medium,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-medium,
+.button.darkgray.button-3d.oxo-button-medium,
+.oxo-button.button-darkgray.button-3d.button-medium,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-medium,
+.button.darkgray.button-3d.button-medium {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 3px 0px #434c50, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-medium:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-medium:active,
+.button.darkgray.button-3d.oxo-button-medium:active,
+.oxo-button.button-darkgray.button-3d.button-medium:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-medium:active,
+.button.darkgray.button-3d.button-medium:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #434c50, 1px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-large,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-large,
+.button.darkgray.button-3d.oxo-button-large,
+.oxo-button.button-darkgray.button-3d.button-large,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-large,
+.button.darkgray.button-3d.button-large {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 4px 0px #434c50, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-large:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-large:active,
+.button.darkgray.button-3d.oxo-button-large:active,
+.oxo-button.button-darkgray.button-3d.button-large:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-large:active,
+.button.darkgray.button-3d.button-large:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 1px 0px #434c50, 1px 6px 6px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-xlarge,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-xlarge,
+.button.darkgray.button-3d.oxo-button-xlarge,
+.oxo-button.button-darkgray.button-3d.button-xlarge,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-xlarge,
+.button.darkgray.button-3d.button-xlarge {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 5px 0px #434c50, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-button.button-darkgray.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.oxo-button-xlarge:active,
+.button.darkgray.button-3d.oxo-button-xlarge:active,
+.oxo-button.button-darkgray.button-3d.button-xlarge:active,
+.oxo-button.button-darkgray.wpcf7-submit.button-3d.button-xlarge:active,
+.button.darkgray.button-3d.button-xlarge:active {
+  box-shadow: inset 0px 1px 0px #ffffff, 0px 2px 0px #434c50, 1px 7px 7px 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-checklist {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+.oxo-checklist .oxo-li-item {
+  margin-bottom: 11px;
+}
+.oxo-checklist .icon-wrapper {
+  display: table;
+  float: left;
+}
+.oxo-checklist .oxo-li-icon {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.oxo-checklist .circle-yes {
+  border-radius: 50%;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  background-color: #333333;
+  color: #fff;
+  text-align: center;
+}
+.oxo-clients-slider {
+  margin-bottom: 55px;
+  height: auto;
+}
+.oxo-content-boxes {
+  margin-bottom: 60px;
+}
+.oxo-content-boxes .oxo-column {
+  margin-bottom: 20px;
+}
+.oxo-content-boxes.oxo-columns-1 .oxo-column {
+  margin-bottom: 40px;
+}
+.oxo-content-boxes .link-area-box {
+  cursor: pointer;
+}
+.oxo-content-boxes .heading {
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+.oxo-content-boxes .heading .heading-link:hover .content-box-heading {
+  color: #a0ce4e;
+}
+.oxo-content-boxes .heading .heading-link:hover .fontawesome-icon {
+  background-color: #a0ce4e;
+  border-color: #a0ce4e;
+}
+.oxo-content-boxes .heading .heading-link a,
+.oxo-content-boxes .heading .heading-link .fontawesome-icon,
+.oxo-content-boxes .heading .heading-link .content-box-heading {
+  transition: all .3s;
+}
+.oxo-content-boxes .heading .content-box-heading {
+  margin: 0;
+}
+.oxo-content-boxes .heading img {
+  float: none;
+}
+.oxo-content-boxes .fontawesome-icon.circle-yes {
+  margin-top: 0;
+}
+.oxo-content-boxes .icon > span {
+  display: inline-block;
+}
+.oxo-content-boxes .oxo-read-more,
+.oxo-content-boxes .oxo-read-more:after,
+.oxo-content-boxes .oxo-read-more:before {
+  transition: all .3s;
+}
+.oxo-content-boxes .oxo-read-more-button {
+  margin-top: 18px;
+}
+.oxo-content-boxes .link-type-button-bar .content-container {
+  padding-bottom: 50px;
+}
+.oxo-content-boxes .link-type-button-bar .oxo-read-more {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5px 0px;
+  text-align: center;
+}
+.oxo-content-boxes .content-container .oxo-read-more {
+  display: block;
+  margin-top: 18px;
+  /* General styles in base.less */
+}
+.oxo-content-boxes .content-wrapper-background {
+  padding: 35px;
+}
+.oxo-content-boxes .content-box-shortcode-timeline {
+  display: block;
+  height: 1px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  z-index: 1;
+  margin-right: 10px;
+}
+.oxo-content-boxes .content-box-shortcode-timeline-vertical {
+  display: block;
+  width: 1px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.oxo-content-boxes.content-boxes .content-box-column-last-in-row .content-box-shortcode-timeline,
+.oxo-content-boxes.content-boxes .content-box-column-last .content-box-shortcode-timeline {
+  display: none;
+}
+.oxo-content-boxes.content-boxes-clean-vertical.content-boxes .content-box-column-last-in-row,
+.oxo-content-boxes.content-boxes-clean-horizontal.content-boxes .content-box-column-last-in-row,
+.oxo-content-boxes.content-boxes-clean-vertical.content-boxes .content-box-column-last,
+.oxo-content-boxes.content-boxes-clean-horizontal.content-boxes .content-box-column-last {
+  border-right-width: 1px;
+}
+.oxo-content-boxes.content-boxes-timeline-horizontal .content-box-column .icon,
+.oxo-content-boxes.content-boxes-timeline-vertical .content-box-column .icon {
+  opacity: 0;
+}
+.oxo-content-boxes.content-boxes-timeline-horizontal .content-box-column.oxo-appear .icon {
+  -webkit-animation: aioneExpandAndShow 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  animation: aioneExpandAndShow 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.oxo-content-boxes.content-boxes-timeline-horizontal .content-box-column.oxo-appear .content-box-shortcode-timeline {
+  -webkit-animation: aioneExpandWidth 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  animation: aioneExpandWidth 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  width: 100%;
+}
+.oxo-content-boxes.content-boxes-timeline-vertical .content-box-column.oxo-appear .icon {
+  -webkit-animation: aioneExpandAndShow 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  animation: aioneExpandAndShow 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.oxo-content-boxes.content-boxes-timeline-vertical .content-box-column.oxo-appear .content-box-shortcode-timeline-vertical {
+  -webkit-animation: aioneExpandHeight 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  animation: aioneExpandHeight 1s 1 cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  height: 100%;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon .icon,
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon .image {
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon .content-box-heading {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: normal;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right .content-box-heading {
+  float: none !important;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right img,
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right i {
+  margin-left: 20px;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .heading {
+  margin-bottom: 15px;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon {
+  position: relative;
+  overflow: visible;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon .content-box-heading {
+  vertical-align: top;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .content-box-heading {
+  float: right;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .icon,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .image {
+  right: 0;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .icon img,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .image img,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .icon i,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .image i {
+  margin-left: 20px;
+  margin-right: 0;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .icon,
+.oxo-content-boxes.content-boxes-icon-on-side .image {
+  position: absolute;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .content-container.icon-small {
+  padding-left: 55px;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .content-container.icon-medium {
+  padding-left: 70px;
+}
+.oxo-content-boxes.content-boxes-icon-on-side .content-container.icon-large {
+  padding-left: 85px;
+}
+.oxo-content-boxes.content-boxes-icon-on-side.content-right .content-container {
+  padding-left: 0px !important;
+}
+.oxo-content-boxes.content-boxes-icon-on-side.content-right .content-container.icon-small {
+  padding-right: 45px;
+}
+.oxo-content-boxes.content-boxes-icon-on-side.content-right .content-container.icon-medium {
+  padding-right: 60px;
+}
+.oxo-content-boxes.content-boxes-icon-on-side.content-right .content-container.icon-large {
+  padding-right: 75px;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon {
+  display: table;
+  width: auto;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon .heading-link,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon .heading-link {
+  display: block;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon img,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon img {
+  margin-right: 20px;
+  max-width: none;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon .fontawesome-icon,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon .fontawesome-icon {
+  display: block;
+  float: none;
+  margin-right: 20px;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon i.small,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon i.small {
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  font-size: 18px;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon i.medium,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon i.medium {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 21px;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon i.large,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon i.large {
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  font-size: 24px;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right {
+  float: right !important;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right .icon,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .icon,
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right .image,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .image {
+  float: none;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right .icon i,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .icon i {
+  margin-right: 0px !important;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .heading-with-icon.icon-right .content-box-heading,
+.oxo-content-boxes.content-boxes-icon-on-side .heading-with-icon.icon-right .content-box-heading {
+  line-height: 27px !important;
+  text-align: right;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .content-icon-wrapper-yes .heading-with-icon .icon span,
+.oxo-content-boxes.content-boxes-icon-on-side .content-icon-wrapper-yes .heading-with-icon .icon span {
+  margin-right: 20px;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .content-icon-wrapper-yes .heading-with-icon.icon-right .icon span,
+.oxo-content-boxes.content-boxes-icon-on-side .content-icon-wrapper-yes .heading-with-icon.icon-right .icon span {
+  margin-left: 20px;
+  margin-right: 0;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .content-icon-wrapper-yes .heading-with-icon .fontawesome-icon,
+.oxo-content-boxes.content-boxes-icon-on-side .content-icon-wrapper-yes .heading-with-icon .fontawesome-icon {
+  margin-right: 0;
+}
+.oxo-content-boxes.content-boxes-icon-with-title .content-container .oxo-read-more,
+.oxo-content-boxes.content-boxes-icon-on-side .content-container .oxo-read-more {
+  /* General styles in base.less */
+}
+.oxo-content-boxes.content-boxes-icon-on-top .heading {
+  text-align: center;
+}
+.oxo-content-boxes.content-boxes-icon-on-top .heading .icon {
+  margin-bottom: 15px;
+}
+.oxo-content-boxes.content-boxes-icon-on-top .heading .fontawesome-icon {
+  display: block;
+  float: none;
+  margin: 0 auto;
+  height: 64px;
+  width: 64px;
+  line-height: 64px;
+  font-size: 24px;
+}
+.oxo-content-boxes.content-boxes-icon-on-top .heading i.small {
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  font-size: 18px;
+}
+.oxo-content-boxes.content-boxes-icon-on-top .heading i.medium {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 21px;
+}
+.oxo-content-boxes.content-boxes-icon-on-top .heading i.large {
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  font-size: 24px;
+}
+.oxo-content-boxes.content-boxes-icon-on-top .heading img {
+  margin-bottom: 20px;
+}
+.oxo-content-boxes.content-boxes-icon-on-top .content-container,
+.oxo-content-boxes.content-boxes-icon-on-top .oxo-read-more {
+  text-align: center;
+}
+.oxo-content-boxes.content-boxes-icon-boxed {
+  overflow: visible;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .content-wrapper-boxed {
+  overflow: visible;
+  padding: 50px 35px 35px 35px;
+  text-align: center;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .link-type-button-bar .content-container {
+  padding-bottom: 50px;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .heading {
+  overflow: visible;
+  position: relative;
+  text-align: center;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .heading .fontawesome-icon {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -80px;
+  float: none;
+  height: 64px;
+  width: 64px;
+  line-height: 64px;
+  font-size: 24px;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .heading i.small {
+  height: 35px;
+  width: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  top: -67px;
+  margin-left: -17px;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .heading i.medium {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 21px;
+  top: -76px;
+  margin-left: -25px;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .heading i.large {
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  font-size: 24px;
+  top: -85px;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .heading .image {
+  display: block;
+  position: absolute;
+  left: 50%;
+}
+.oxo-content-boxes.content-boxes-icon-boxed .content-container,
+.oxo-content-boxes.content-boxes-icon-boxed .oxo-read-more {
+  text-align: center;
+}
+.oxo-content-boxes.content-boxes-timeline-horizontal .icon {
+  position: relative;
+  z-index: 2;
+}
+.oxo-content-boxes.content-boxes-timeline-vertical .content-box-column > .col {
+  position: static;
+}
+.oxo-content-boxes.content-boxes-timeline-vertical .icon {
+  position: relative;
+  z-index: 2;
+}
+.oxo-content-boxes.content-boxes-timeline-vertical .content-box-column-last .content-box-shortcode-timeline-vertical {
+  display: none;
+}
+.oxo-content-boxes.content-boxes-timeline-vertical .icon-right .icon,
+.oxo-content-boxes.content-boxes-timeline-vertical .icon-right .image {
+  padding-left: 10px;
+}
+.do-animate .oxo-content-boxes .oxo-animated {
+  -webkit-animation-fill-mode: none;
+  animation-fill-mode: none;
+  position: static;
+}
+.oxo-content-boxes.content-boxes-clean-vertical {
+  margin-left: 0;
+  margin-right: 0;
+}
+.oxo-content-boxes.content-boxes-clean-vertical .content-box-column {
+  border-style: solid;
+  border-width: 1px;
+  border-right-width: 0;
+  padding: 0;
+}
+.oxo-content-boxes.content-boxes-clean-vertical .col {
+  padding: 30px;
+}
+.oxo-content-boxes.content-boxes-clean-vertical .link-type-button {
+  padding-bottom: 0;
+}
+.oxo-content-boxes.content-boxes-clean-vertical .link-type-button-bar .content-container {
+  padding-bottom: 60px;
+}
+.oxo-content-boxes.content-boxes-clean-horizontal {
+  margin-left: 0;
+  margin-right: 0;
+}
+.oxo-content-boxes.content-boxes-clean-horizontal .content-box-column {
+  border-style: solid;
+  border-width: 1px;
+  border-right-width: 0;
+  padding: 0;
+}
+.oxo-content-boxes.content-boxes-clean-horizontal .col {
+  padding: 30px;
+}
+.oxo-content-boxes.content-boxes-clean-horizontal .link-type-button-bar .content-container {
+  padding-bottom: 60px;
+}
+.oxo-content-boxes .link-type-button-bar .content-container {
+  position: relative;
+}
+.oxo-countdown {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
+  padding: 30px;
+}
+.oxo-countdown.oxo-no-bg {
+  padding: 0;
+}
+.oxo-countdown .oxo-countdown-heading-wrapper {
+  line-height: 25px;
+}
+.oxo-countdown .oxo-countdown-heading {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.oxo-countdown .oxo-countdown-subheading {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.oxo-countdown .oxo-countdown-counter-wrapper {
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  overflow: hidden;
+  margin: 0 10px;
+  font-size: 20px;
+  text-align: center;
+}
+.oxo-countdown .oxo-dash-wrapper {
+  display: inline-block;
+  padding: 5px;
+}
+.oxo-countdown .oxo-dash-wrapper.oxo-no-bg {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.oxo-countdown .oxo-dash-wrapper.oxo-no-bg .oxo-dash {
+  padding: 0;
+}
+.oxo-countdown .oxo-dash {
+  padding: 12px 22px;
+  text-align: center;
+}
+.oxo-countdown .oxo-digit {
+  display: inline-block;
+}
+.oxo-countdown .oxo-digit > div {
+  width: 11px;
+}
+.oxo-countdown .oxo-first-digit {
+  display: none;
+}
+.oxo-countdown .oxo-dash-title {
+  display: inline-block;
+  padding-left: 5px;
+  min-width: 46px;
+}
+.oxo-countdown .oxo-countdown-link {
+  letter-spacing: 2px;
+}
+.oxo-countdown .oxo-countdown-link:hover {
+  opacity: 0.7;
+}
+.oxo-counters-circle {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.oxo-counters-circle .counter-circle-wrapper {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20px;
+  margin-right: 15px;
+  vertical-align: middle;
+  height: 220px;
+  width: 220px;
+  text-align: center;
+}
+.oxo-counters-circle .counter-circle {
+  position: relative;
+  height: 220px;
+  width: 220px;
+  text-align: center;
+  line-height: 220px;
+  font-size: 50px;
+}
+.oxo-counters-circle .counter-circle .fontawesome-icon {
+  float: none;
+  margin: 0;
+  font-size: 50px;
+}
+.oxo-counters-circle .counter-circle canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.oxo-counters-circle :last-child {
+  margin-right: 0;
+}
+.oxo-counters-box.row {
+  margin-left: -7px;
+  margin-right: -7px;
+}
+.oxo-counters-box .oxo-counter-box {
+  padding: 0 7px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.oxo-counters-box .oxo-counter-box .counter-box-container {
+  padding: 20px 20px;
+}
+.oxo-counters-box .oxo-counter-box .counter-box-border {
+  border: 1px solid #e5e4e3;
+}
+.oxo-counters-box .content-box-counter {
+  color: #a0ce4e;
+  font-size: 50px;
+  line-height: 50px;
+}
+.oxo-counters-box .counter-box-icon {
+  float: none;
+  margin-top: -8px;
+  vertical-align: middle;
+  color: inherit;
+}
+.oxo-dropcap {
+  position: relative;
+  top: 4px;
+  float: left;
+  margin-right: 10px;
+  padding: 0;
+  line-height: 52px;
+  color: #a0ce4e;
+  font-size: 60px;
+  text-transform: uppercase;
+}
+.oxo-dropcap.dropcap-boxed {
+  height: 51px;
+  width: 51px;
+  border-radius: 8px;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 45px;
+  text-align: center;
+}
+.oxo-flexslider {
+  position: relative;
+  margin-bottom: 0px;
+  padding: 0;
+  background-color: transparent;
+  overflow: hidden;
+}
+.oxo-flexslider .slides,
+.oxo-flexslider .flex-control-nav,
+.oxo-flexslider .flex-direction-nav {
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.oxo-flexslider .slides {
+  overflow: hidden;
+}
+.oxo-flexslider .slides li {
+  display: none;
+}
+.oxo-flexslider .slides img {
+  display: block;
+  width: 100%;
+}
+.oxo-flexslider.oxo-flexslider-loading .slides > li:first-child {
+  display: block;
+  opacity: 1 !important;
+}
+.woocommerce-container .images .oxo-flexslider.oxo-flexslider-loading .slides > li:first-child {
+  float: left;
+}
+.oxo-flexslider .flex-control-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.oxo-flexslider .flex-direction-nav a {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  overflow: hidden;
+  margin: -20px 0 0;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'icomoon';
+  -webkit-font-smoothing: none;
+  color: #fff;
+  transition: opacity all .3s ease;
+}
+.oxo-flexslider .flex-direction-nav .flex-next {
+  right: 0px;
+}
+.oxo-flexslider .flex-direction-nav .flex-prev {
+  left: 0px;
+}
+.oxo-flexslider:hover .flex-direction-nav .flex-next,
+.oxo-flexslider:hover .flex-direction-nav .flex-prev {
+  opacity: 0.8;
+}
+.oxo-flexslider:hover .flex-direction-nav .flex-next:hover,
+.oxo-flexslider:hover .flex-direction-nav .flex-prev:hover {
+  opacity: 1;
+}
+.oxo-flexslider:hover .flex-direction-nav .flex-disabled {
+  display: none;
+  opacity: 0;
+  cursor: default;
+}
+.oxo-flexslider.flexslider-attachments {
+  overflow: visible;
+}
+.oxo-flexslider.flexslider-attachments .flex-direction-nav a {
+  width: 30px;
+  height: 30px;
+  margin-top: -55px;
+  text-align: center;
+  line-height: 30px;
+}
+.oxo-flexslider.flexslider-attachments .flex-direction-nav a:before {
+  color: #fff;
+}
+.oxo-flexslider.flexslider-attachments .flex-control-thumbs li {
+  width: 60px;
+  margin: 5px;
+  float: none;
+}
+.oxo-flexslider.flexslider-default .flex-direction-nav a {
+  width: 60px;
+  height: 60px;
+  margin-top: -30px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 30px;
+}
+.oxo-flexslider.flexslider-posts .flex-direction-nav a {
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  text-align: center;
+  line-height: 30px;
+}
+.oxo-flexslider.flexslider-posts .slide-excerpt {
+  position: absolute;
+  bottom: 20%;
+}
+.oxo-flexslider.flexslider-posts .slide-excerpt h2 {
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 15px;
+  margin: 0;
+}
+.oxo-flexslider.flexslider-posts .slide-excerpt h2 a {
+  color: #fff;
+}
+.oxo-flexslider.flexslider-posts .slide-excerpt p {
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 15px 15px;
+}
+.oxo-flexslider.flexslider-posts-with-excerpt .flex-direction-nav a {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  text-align: center;
+  line-height: 30px;
+}
+.oxo-flexslider.flexslider-posts-with-excerpt .slide-excerpt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding: 5%;
+  width: 30%;
+  box-sizing: content-box;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+.oxo-flexslider.flexslider-posts-with-excerpt .slide-excerpt .excerpt-container {
+  overflow: hidden;
+  height: 100%;
+}
+.oxo-flexslider.flexslider-posts-with-excerpt .slide-excerpt h2 {
+  color: #fff;
+  padding: 10px 15px;
+  margin: 0;
+}
+.oxo-flexslider.flexslider-posts-with-excerpt .slide-excerpt h2 a {
+  color: #fff;
+}
+.oxo-flexslider.flexslider-posts-with-excerpt .slide-excerpt p {
+  color: #fff;
+  padding: 15px 15px;
+}
+.flexslider-attachments .flex-control-nav {
+  position: relative;
+  margin-top: 10px;
+}
+.page .post-slideshow {
+  margin-bottom: 30px;
+}
+.oxo-flip-boxes {
+  margin-bottom: 25px;
+}
+.oxo-flip-box {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.oxo-flip-box .flip-box-inner-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+  -webkit-transform: translateZ(0);
+}
+.oxo-flip-box .flip-box-front,
+.oxo-flip-box .flip-box-back {
+  -webkit-perspective: 600px;
+  -ms-perspective: 600px;
+  perspective: 600px;
+  padding: 27px 20px 27px 20px;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background-clip: padding-box;
+  transition: all 0.4s cubic-bezier(0.2, 0.85, 0.4, 1.275) !important;
+}
+.oxo-flip-box .flip-box-front {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  z-index: 10;
+}
+.oxo-flip-box .flip-box-back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: auto;
+  width: 100%;
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  z-index: -1;
+}
+.oxo-flip-box .flip-box-back .oxo-button {
+  display: block;
+  margin: 20px auto 0 auto;
+}
+.oxo-flip-box.hover .flip-box-back {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  z-index: 1;
+}
+.oxo-flip-box.hover .flip-box-front {
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  z-index: -1;
+}
+.oxo-flip-box.hover .flip-box-front .flip-box-grafix i:before {
+  display: none;
+}
+.oxo-flip-box .flip-box-grafix {
+  display: table;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.oxo-flip-box .flip-box-image {
+  table-layout: fixed;
+  width: 100%;
+}
+.oxo-flip-box .flip-box-circle {
+  height: 64px;
+  width: 64px;
+  border: 1px solid;
+  border-radius: 50%;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+}
+.oxo-flip-box .flip-box-circle i {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 24px;
+}
+.oxo-flip-box .flip-box-no-circle i {
+  font-size: 60px;
+}
+.oxo-flip-box .flip-box-heading {
+  margin-top: 0;
+  margin-bottom: 9px;
+}
+.oxo-flip-box .flip-box-heading.without-text {
+  margin-bottom: 0;
+}
+.oxo-flip-box .flip-box-heading-back {
+  margin-bottom: 9px;
+  margin-top: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.oxo-flip-box .finished-animating {
+  transition: none !important;
+  -webkit-animation: none !important;
+  animation: none !important;
+}
+.fontawesome-icon {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+.fontawesome-icon.circle-yes {
+  border-radius: 50%;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  background-clip: inherit;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #333333;
+  color: #fff;
+  text-align: center;
+  margin-top: 2px;
+}
+.fontawesome-icon.circle-no.size-large {
+  margin-top: 2px;
+}
+.fontawesome-icon.circle-no.size-medium {
+  margin-top: 3px;
+}
+.fontawesome-icon.circle-no.size-small {
+  margin-top: 5px;
+}
+.oxo-login-box .oxo-login-caption {
+  margin-bottom: 20px;
+}
+.oxo-login-box .oxo-login-form {
+  padding: 25px;
+  background-color: #f6f6f6;
+}
+.oxo-login-box .oxo-login-input-wrapper {
+  margin-bottom: 20px;
+}
+.oxo-login-box .oxo-login-button-fullwidth {
+  width: 100%;
+}
+.oxo-login-box .oxo-login-links {
+  margin: 0 -10px;
+}
+.oxo-login-box .oxo-login-links > a {
+  padding: 0 10px;
+}
+.oxo-login-box .oxo-login-loggedin-links {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+  text-align: initial;
+}
+.oxo-login-box .oxo-login-avatar {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+.oxo-login-box .oxo-login-box-error {
+  margin-bottom: 20px;
+  color: #d04544;
+}
+.oxo-login-box.oxo-login-box-login .oxo-login-submit-wrapperr {
+  margin-bottom: 20px;
+}
+.oxo-login-box.oxo-login-align-center {
+  text-align: center;
+}
+.fullwidth-box.video-background {
+  position: relative;
+}
+.fullwidth-box.video-background .fullwidth-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+}
+.fullwidth-box.video-background .fullwidth-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  min-height: 100%;
+  min-width: 100%;
+  -webkit-transform-style: preserve-3d;
+}
+.fullwidth-box.video-background .fullwidth-video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  min-height: 100%;
+  min-width: 100%;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.fullwidth-box.video-background .oxo-row {
+  position: relative;
+  z-index: 10;
+}
+.fullwidth-box.video-background .fullwidth-video-image {
+  display: none;
+}
+.ua-mobile .fullwidth-box.video-background .fullwidth-video-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-position: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.fullwidth-box.faded-background {
+  position: relative;
+  overflow: hidden;
+}
+.fullwidth-box.faded-background .fullwidth-faded {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  min-height: 100%;
+  min-width: 100%;
+}
+.fullwidth-box.faded-background .oxo-row {
+  position: relative;
+  z-index: 10;
+}
+.hundred-percent-fullwidth {
+  overflow: hidden;
+}
+.hundred-percent-fullwidth .oxo-row {
+  max-width: none !important;
+}
+#main .fullwidth-box .oxo-row {
+  padding-left: 0;
+  padding-right: 0;
+}
+.ua-safari .fullwidth-box.faded-background .fullwidth-faded {
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.ua-safari.ua-mobile .fullwidth-box.faded-background .fullwidth-faded {
+  -webkit-transform: none;
+}
+.oxo-google-map img {
+  max-width: none;
+}
+.oxo-google-map .oxo-info-box {
+  padding: 5px;
+  border-radius: 5px;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  background-color: #a0ce4e;
+  color: #fff;
+  font-size: 13px;
+}
+.oxo-highlight {
+  padding: 0.1em 0.3em;
+  line-height: 1.7em;
+}
+.oxo-highlight.rounded {
+  border-radius: 4px;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+}
+.oxo-highlight.dark {
+  color: #ccc;
+}
+.oxo-imageframe {
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+  max-width: 100%;
+}
+.oxo-imageframe.element-bottomshadow:before,
+.oxo-imageframe.element-bottomshadow:after {
+  opacity: 0.4;
+}
+.oxo-imageframe.element-bottomshadow img {
+  margin: 0;
+}
+/* bottom shadow classes in taglinebox.less */
+.imageframe-align-center {
+  text-align: center;
+}
+.oxo-image-carousel {
+  margin-bottom: 40px;
+}
+/* All standard carousel styles */
+.oxo-carousel {
+  overflow: hidden;
+  padding: 0;
+}
+.oxo-carousel .oxo-carousel-positioner {
+  position: relative;
+}
+.oxo-carousel .oxo-carousel-wrapper {
+  box-sizing: content-box;
+  padding: 8px 0;
+}
+.oxo-carousel .oxo-carousel-swipe {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.oxo-carousel .oxo-carousel-holder {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.oxo-carousel .oxo-carousel-item {
+  display: block;
+  float: left;
+  padding: 0;
+}
+.oxo-carousel .oxo-carousel-item .oxo-carousel-item-wrapper {
+  display: inline-block;
+  visibility: hidden;
+  vertical-align: middle;
+  width: 100%;
+  line-height: normal;
+}
+.oxo-carousel .oxo-carousel-item .oxo-image-wrapper {
+  margin-bottom: 0;
+  text-align: center;
+}
+.oxo-carousel .oxo-carousel-item > a {
+  display: block;
+}
+.oxo-carousel .oxo-carousel-item img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+.oxo-carousel .oxo-carousel-title {
+  margin: 15px 0 3px;
+}
+.oxo-carousel .oxo-carousel-price {
+  margin-top: 8px;
+}
+.oxo-carousel .oxo-carousel-price .price {
+  margin-bottom: 0;
+}
+.oxo-carousel .oxo-carousel-nav {
+  visibility: hidden;
+}
+.oxo-carousel .oxo-carousel-nav .oxo-nav-prev,
+.oxo-carousel .oxo-carousel-nav .oxo-nav-next {
+  display: block;
+  z-index: 1000;
+  opacity: 0.8;
+  position: absolute;
+  top: 50%;
+  margin-top: -14px;
+  height: 29px;
+  width: 29px;
+  text-align: center;
+  cursor: pointer;
+  color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
+}
+.no-rgba .oxo-carousel .oxo-carousel-nav .oxo-nav-prev,
+.no-rgba .oxo-carousel .oxo-carousel-nav .oxo-nav-next {
+  background-color: #3e3e3e;
+}
+.oxo-carousel .oxo-carousel-nav .oxo-nav-prev:before,
+.oxo-carousel .oxo-carousel-nav .oxo-nav-next:before {
+  display: block;
+  position: relative;
+  line-height: 29px;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'icomoon';
+}
+.oxo-carousel .oxo-carousel-nav .oxo-nav-prev:hover,
+.oxo-carousel .oxo-carousel-nav .oxo-nav-next:hover {
+  opacity: 1;
+}
+.oxo-carousel .oxo-carousel-nav .oxo-nav-prev {
+  left: 0;
+}
+.oxo-carousel .oxo-carousel-nav .oxo-nav-prev:before {
+  content: '\f104';
+}
+.oxo-carousel .oxo-carousel-nav .oxo-nav-next {
+  right: 0;
+}
+.oxo-carousel .oxo-carousel-nav .oxo-nav-next:before {
+  content: '\f105';
+}
+.oxo-carousel-border .oxo-image-wrapper {
+  border: 1px solid #e9eaee;
+}
+.oxo-image-carousel-fixed .oxo-carousel .oxo-carousel-wrapper {
+  height: 115px !important;
+}
+.oxo-image-carousel-fixed .oxo-carousel .oxo-carousel-holder {
+  line-height: 115px !important;
+}
+.oxo-image-carousel-fixed .oxo-carousel .oxo-carousel-item-wrapper {
+  text-align: center;
+}
+.oxo-image-carousel-fixed .oxo-carousel .oxo-image-wrapper {
+  display: inline;
+  vertical-align: middle;
+}
+.oxo-image-carousel-fixed .oxo-carousel .oxo-image-wrapper a {
+  display: block;
+}
+.oxo-image-carousel-fixed .oxo-carousel .oxo-image-wrapper img {
+  max-height: 115px;
+  width: auto;
+}
+.oxo-layout-column {
+  position: relative;
+  float: left;
+  margin-right: 4%;
+  margin-bottom: 20px;
+}
+.oxo-one-full {
+  float: none;
+}
+.oxo-one-sixth {
+  width: 13.3333%;
+}
+.oxo-five-sixth {
+  width: 82.6666%;
+}
+.oxo-one-fifth {
+  width: 16.8%;
+}
+.oxo-two-fifth {
+  width: 37.6%;
+}
+.oxo-three-fifth {
+  width: 58.4%;
+}
+.oxo-four-fifth {
+  width: 79.2%;
+}
+.oxo-one-fourth {
+  width: 22%;
+}
+.oxo-three-fourth {
+  width: 74%;
+}
+.oxo-one-third {
+  width: 30.6666%;
+}
+.oxo-two-third {
+  width: 65.3333%;
+}
+.oxo-one-half {
+  width: 48%;
+}
+.oxo-column-last {
+  margin-left: 0;
+  margin-right: 0;
+}
+.oxo-spacing-no {
+  margin: 0;
+}
+.oxo-spacing-no.oxo-one-sixth {
+  width: 16.6666%;
+}
+.oxo-spacing-no.oxo-five-sixth {
+  width: 83.3333%;
+}
+.oxo-spacing-no.oxo-one-fifth {
+  width: 20%;
+}
+.oxo-spacing-no.oxo-two-fifth {
+  width: 40%;
+}
+.oxo-spacing-no.oxo-three-fifth {
+  width: 60%;
+}
+.oxo-spacing-no.oxo-four-fifth {
+  width: 80%;
+}
+.oxo-spacing-no.oxo-one-fourth {
+  width: 25%;
+}
+.oxo-spacing-no.oxo-three-fourth {
+  width: 75%;
+}
+.oxo-spacing-no.oxo-one-third {
+  width: 33.3333%;
+}
+.oxo-spacing-no.oxo-two-third {
+  width: 66.6666%;
+}
+.oxo-spacing-no.oxo-one-half {
+  width: 50%;
+}
+.oxo-spacing-no.oxo-column-last {
+  margin-left: 0;
+  margin-right: 0;
+}
+.oxo-spacing-no .oxo-column-wrapper {
+  min-height: 1px;
+}
+.oxo-equal-height-columns .oxo-column-table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.oxo-equal-height-columns .oxo-column-tablecell {
+  display: table-cell;
+  vertical-align: middle;
+}
+.oxo-column-inner-bg-wrapper .oxo-column-wrapper {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+.oxo-column-inner-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.oxo-column-inner-bg a {
+  width: 100%;
+  height: 100%;
+}
+.oxo-column-inner-bg a span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.modal-dialog {
+  margin-top: 60px;
+}
+.oxo-modal {
+  -webkit-overflow-scrolling: auto !important;
+}
+.oxo-modal .modal-header {
+  min-height: 54px;
+}
+.oxo-modal .modal-title {
+  font-family: 'MuseoSlab500Regular', arial, helvetica, sans-serif;
+}
+.oxo-modal .close {
+  font-size: 30px;
+  margin-top: -5px;
+  text-shadow: none;
+}
+.oxo-modal .oxo-separator {
+  width: 100% !important;
+}
+.oxo-person .person-shortcode-image-wrapper {
+  text-align: center;
+}
+.oxo-person .person-image-container {
+  display: inline-block;
+  z-index: 1;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+.oxo-person .person-image-container.glow {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+.oxo-person .person-image-container.dropshadow {
+  box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.3);
+}
+.oxo-person .person-desc {
+  margin-top: 25px;
+}
+.oxo-person .person-desc .person-author {
+  display: table;
+  width: 100%;
+}
+.oxo-person .person-desc .person-author .person-author-wrapper,
+.oxo-person .person-desc .person-author .oxo-social-networks {
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
+}
+.oxo-person .person-desc .person-author .person-author-wrapper {
+  min-width: 50%;
+  font-family: 'MuseoSlab500Regular', arial, helvetica, sans-serif;
+}
+.oxo-person .person-desc .person-author .oxo-social-networks {
+  max-width: 50%;
+  text-align: right;
+}
+.oxo-person .person-desc .person-author .person-name,
+.oxo-person .person-desc .person-author .person-title {
+  display: block;
+}
+.oxo-person .person-content {
+  margin-top: 25px;
+}
+.oxo-person-left {
+  text-align: left;
+}
+.oxo-person-center {
+  text-align: center;
+}
+.oxo-person-center .person-desc .person-author {
+  display: block;
+  width: 100%;
+}
+.oxo-person-center .person-desc .person-author .person-author-wrapper {
+  display: block;
+  width: 100%;
+}
+.oxo-person-center .person-desc .person-author .oxo-social-networks {
+  display: block;
+  width: 100%;
+  max-width: none;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.oxo-person-center .person-content {
+  margin-top: 25px;
+}
+.oxo-person-right {
+  text-align: right;
+}
+.oxo-person-right .person-desc .person-author .oxo-social-networks {
+  text-align: left;
+}
+.oxo-person-icon-bottom .oxo-social-networks {
+  margin-top: 35px;
+}
+.oxo-popover {
+  display: inline-block;
+  max-width: 100%;
+  cursor: pointer;
+  color: #a0ce4e;
+}
+.popover {
+  padding: 0;
+}
+.oxo-pricing-table {
+  margin: 0 0 20px 0;
+  box-sizing: border-box;
+}
+.oxo-pricing-table * {
+  box-sizing: border-box;
+}
+.oxo-pricing-table .oxo-panel {
+  overflow: hidden;
+  margin: 0;
+  background-color: #ffffff;
+  box-shadow: none;
+  border-radius: 0;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  border: 1px solid #e5e4e3;
+}
+.oxo-pricing-table .panel-heading {
+  padding: 15px 15px;
+  border-radius: 0;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  border-bottom: 1px solid #e5e4e3;
+  text-align: center;
+}
+.oxo-pricing-table .panel-heading h3 {
+  margin: 0;
+}
+.oxo-pricing-table .panel-body {
+  padding: 15px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+.oxo-pricing-table .panel-body .price {
+  position: relative;
+}
+.oxo-pricing-table .panel-body .price .currency {
+  position: relative;
+  color: #505050;
+}
+.oxo-pricing-table .panel-body .price .currency.pos-right {
+  top: 0;
+  margin-left: -12px;
+  font-size: 32px;
+}
+.oxo-pricing-table .panel-body .price .currency.pos-right.price-without-decimal {
+  margin-left: 0;
+}
+.oxo-pricing-table .panel-body .price .integer-part {
+  display: inline;
+  font-weight: bold;
+  color: #a0ce4e;
+  line-height: normal;
+}
+.oxo-pricing-table .panel-body .price .decimal-part {
+  position: relative;
+  top: -30px;
+  font-weight: bold;
+  color: #a0ce4e;
+}
+.oxo-pricing-table .panel-body .price .time {
+  position: relative;
+  font-style: italic;
+  color: #888888;
+  margin-left: -14px;
+}
+.oxo-pricing-table .panel-body .price .time.price-without-decimal {
+  margin-left: 0;
+}
+.oxo-pricing-table .panel-body .price .time.pos-right {
+  margin-left: 12px;
+}
+.oxo-pricing-table .list-group {
+  margin: 0;
+  padding: 0;
+}
+.oxo-pricing-table .list-group-item {
+  display: block;
+  position: relative;
+  padding: 15px;
+  background: none;
+  border-radius: 0;
+  border-top: 1px solid #e5e4e3;
+  text-align: center;
+}
+.oxo-pricing-table .list-group-item:last-child {
+  border-bottom: 1px solid #e5e4e3;
+}
+.oxo-pricing-table .panel-footer {
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 0;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  border-color: 1px solid #e5e4e3;
+  text-align: center;
+}
+.oxo-pricing-table .panel-wrapper:hover {
+  cursor: pointer;
+}
+.oxo-pricing-table .panel-wrapper:hover .oxo-panel {
+  background-color: #f8f8f8;
+}
+#wrapper .full-boxed-pricing .panel-wrapper {
+  padding: 0;
+}
+.full-boxed-pricing .panel-container {
+  padding: 9px;
+  background-color: #f8f8f8;
+}
+.full-boxed-pricing .panel-wrapper:last-child .oxo-panel {
+  border-right: 1px solid #e5e4e3;
+}
+.full-boxed-pricing .panel-body .price .currency {
+  top: -20px;
+  font-size: 21px;
+}
+.full-boxed-pricing .panel-body .price .integer-part {
+  font-size: 55px;
+}
+.full-boxed-pricing .panel-body .price .decimal-part {
+  top: -20px;
+  font-size: 17px;
+}
+.full-boxed-pricing .panel-body .price .time {
+  font-size: 11px;
+}
+.full-boxed-pricing .panel-wrapper:hover .panel-heading {
+  background-color: #f8f8f8;
+}
+.sep-boxed-pricing .panel-wrapper {
+  margin-bottom: 10px;
+  padding: 0;
+}
+.sep-boxed-pricing .panel-container {
+  padding: 9px;
+  background-color: #f8f8f8;
+}
+.sep-boxed-pricing .panel-heading {
+  background-color: #a0ce4e;
+  border-radius: 0;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  border-bottom: 1px solid #e5e4e3;
+  text-align: center;
+}
+.sep-boxed-pricing .panel-heading h3 {
+  margin: 0;
+}
+.sep-boxed-pricing .panel-body .price .currency {
+  top: -30px;
+  font-size: 28px;
+}
+.sep-boxed-pricing .panel-body .price .integer-part {
+  font-size: 75px;
+}
+.sep-boxed-pricing .panel-body .price .decimal-part {
+  font-size: 23px;
+}
+.sep-boxed-pricing .panel-body .price .time {
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  .oxo-pricing-table .standout .panel-container {
+    z-index: 1000;
+  }
+  .oxo-pricing-table .standout .panel-heading,
+  .oxo-pricing-table .standout .panel-footer {
+    padding: 20px;
+  }
+  .full-boxed-pricing {
+    padding: 0 9px;
+    background-color: #f8f8f8;
+  }
+  .full-boxed-pricing .panel-container {
+    padding: 9px 0;
+  }
+  .full-boxed-pricing .panel-wrapper:last-child .oxo-panel {
+    border-right: 1px solid #e5e4e3;
+  }
+  .full-boxed-pricing .oxo-panel {
+    border-right: none;
+  }
+  .full-boxed-pricing .standout .panel-container {
+    position: relative;
+    box-sizing: content-box;
+    margin: -10px -9px;
+    padding: 9px;
+    box-shadow: 0 0 6px 6px rgba(0, 0, 0, 0.08);
+    background-color: #f8f8f8;
+  }
+  .full-boxed-pricing .standout .oxo-panel {
+    border-right: 1px solid #e5e4e3;
+  }
+  .full-boxed-pricing .standout .panel-heading h3 {
+    color: #a0ce4e;
+  }
+  .sep-boxed-pricing {
+    margin: 0 -15px;
+    margin-bottom: 20px;
+  }
+  .sep-boxed-pricing .panel-wrapper {
+    margin: 0;
+    padding: 0 12px;
+  }
+  .sep-boxed-pricing .standout .panel-container {
+    margin: -10px;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.16);
+  }
+}
+.oxo-progressbar {
+  position: relative;
+  margin-bottom: 10px;
+  height: 37px;
+  width: 100%;
+  background-color: #E6E7E8;
+  border-radius: 0;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  box-shadow: none;
+}
+.oxo-progressbar .progress {
+  background-color: #A0CE4E;
+  box-shadow: none;
+}
+.oxo-progressbar .progress-title {
+  left: 15px;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  clip: auto;
+  margin: 0;
+  height: auto;
+  width: auto;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: normal;
+}
+.oxo-recent-posts {
+  margin-bottom: 50px;
+}
+.oxo-recent-posts .columns {
+  overflow: hidden;
+}
+.oxo-recent-posts .columns .column {
+  overflow: hidden;
+}
+.oxo-recent-posts .columns .column .oxo-flexslider {
+  margin-bottom: 0;
+}
+.oxo-recent-posts .columns .column h4 {
+  margin: 15px 0 3px 0;
+}
+.oxo-recent-posts .columns .column .meta {
+  overflow: hidden;
+  margin-bottom: 13px;
+  padding: 0;
+  color: #333333;
+  font-size: 12px;
+  line-height: 14px;
+}
+.oxo-recent-posts .columns .column .meta .date {
+  font-style: normal;
+}
+.oxo-recent-posts .columns .column .meta .meta-separator {
+  padding: 0 5px;
+}
+.oxo-recent-posts .columns .password {
+  width: auto;
+}
+.oxo-recent-posts .columns-2 .column:nth-child(3n) {
+  clear: left;
+}
+.oxo-recent-posts .columns-3 .column:nth-child(4n) {
+  clear: left;
+}
+.oxo-recent-posts.layout-thumbnails-on-side .columns .column {
+  margin-bottom: 20px;
+}
+.oxo-recent-posts.layout-thumbnails-on-side .columns .column .floated-slideshow {
+  overflow: hidden;
+  float: left;
+  margin: 0 20px 5px 0;
+  width: 144px;
+}
+.oxo-recent-posts.layout-thumbnails-on-side .columns .column h4 {
+  margin-top: 0;
+}
+.oxo-recent-posts.layout-date-on-side .date-and-formats {
+  overflow: hidden;
+  float: left;
+  margin: 0 20px 5px 0;
+  width: 82px;
+}
+.oxo-recent-posts.layout-date-on-side .date-and-formats .date-box {
+  padding: 8px 0 5px;
+  color: #FFFFFF;
+}
+.oxo-recent-posts.layout-date-on-side .date-and-formats .date-box .date {
+  display: block;
+  font-size: 29px;
+  font-weight: bold;
+  line-height: 29px;
+}
+.oxo-recent-posts.layout-date-on-side .date-and-formats .format-box {
+  margin-top: 3px;
+  background-color: #EEF0F2;
+}
+.oxo-recent-posts.layout-date-on-side .columns .column {
+  margin-bottom: 20px;
+}
+.oxo-recent-posts.layout-date-on-side .columns .column h4 {
+  margin-top: 0;
+}
+.oxo-recent-works {
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+.oxo-recent-works-carousel {
+  overflow: hidden;
+  height: auto;
+}
+.oxo-recent-works-grid-with-excerpts {
+  margin-bottom: 0;
+}
+.oxo-recent-works-carousel-fixed.oxo-carousel .oxo-image-wrapper,
+.oxo-recent-works-carousel-fixed.oxo-carousel .oxo-image-wrapper img {
+  max-height: 115px;
+  width: auto;
+}
+.oxo-section-separator {
+  position: relative;
+}
+.oxo-section-separator .divider-candy {
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  height: 40px;
+  width: 40px;
+  border-bottom: 1px solid #E6E5E6;
+  border-left: 1px solid #E6E5E6;
+  background-color: transparent;
+  content: "";
+}
+.oxo-section-separator .divider-candy.bottom {
+  bottom: -21px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.oxo-section-separator .divider-candy.top {
+  top: -21px;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.oxo-section-separator .divider-candy.both {
+  top: -21px;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.oxo-section-separator .divider-candy-arrow {
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  margin-left: -29px;
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.oxo-section-separator .divider-candy-arrow.bottom {
+  border-width: 29px 29px 0 29px;
+}
+.oxo-section-separator .divider-candy-arrow.top {
+  bottom: 0;
+  border-width: 0 29px 29px;
+}
+.oxo-section-separator .section-separator-icon {
+  z-index: 200;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  margin-left: -20px;
+  width: 40px;
+  font-size: 20px;
+  font-family: FontAwesome;
+  text-align: center;
+}
+.oxo-section-separator .section-separator-icon:after {
+  display: block;
+  text-align: center;
+}
+.oxo-sep-clear {
+  clear: both;
+  display: block;
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  width: 100%;
+  overflow: hidden;
+}
+.oxo-separator {
+  border: 0 solid #e7e6e6;
+  clear: both;
+  position: relative;
+  z-index: 11;
+}
+.oxo-separator.sep-none {
+  height: 1px;
+}
+.oxo-separator.sep-double {
+  height: 8px;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+}
+.oxo-separator.sep-single {
+  border-top-width: 1px;
+}
+.oxo-separator.sep-dashed {
+  border-bottom-style: dashed;
+  border-top-style: dashed;
+}
+.oxo-separator.sep-dotted {
+  border-bottom-style: dotted;
+  border-top-style: dotted;
+}
+.oxo-separator.sep-shadow {
+  height: 1px;
+  overflow: visible;
+  border: none;
+  background: none;
+  background: linear-gradient(left, rgba(150, 150, 150, 0) 0%, rgba(150, 150, 150, 0) 15%, rgba(150, 150, 150, 0.65) 50%, rgba(150, 150, 150, 0) 85%, rgba(150, 150, 150, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#00000000', GradientType=1);
+}
+.oxo-separator.sep-shadow:after {
+  display: block;
+  margin-top: 10px;
+  height: 6px;
+  width: 100%;
+  content: '';
+  background: radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 65%);
+}
+.oxo-separator .icon-wrapper {
+  position: absolute;
+  display: table;
+  left: 50%;
+  top: 50%;
+  margin: -13px 0 0 -13px;
+  height: 26px;
+  width: 26px;
+  background-color: #FFFFFF;
+  border: 1px solid #AAAAAA;
+  border-radius: 50%;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  text-align: center;
+}
+.oxo-separator .icon-wrapper i {
+  display: block;
+  display: table-cell;
+  vertical-align: middle;
+}
+body:not(:-moz-handler-blocked) .oxo-separator.sep-shadow:after {
+  background: radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 80%);
+}
+.oxo-sharing-box {
+  display: table;
+  margin-bottom: 55px;
+  padding: 20px;
+  height: 70px;
+  width: 100%;
+  background-color: #f6f6f6;
+}
+.oxo-sharing-box.boxed-icons {
+  padding: 15px 20px;
+}
+.oxo-sharing-box h4,
+.oxo-sharing-box .oxo-social-networks {
+  display: table-cell;
+  vertical-align: middle;
+}
+.oxo-sharing-box .oxo-social-networks {
+  text-align: right;
+}
+.oxo-sharing-box .oxo-social-networks .oxo-social-network-icon {
+  margin-bottom: 0;
+}
+.oxo-slider-sc .slides > li:first-child {
+  display: block;
+}
+.oxo-slider-sc .flex-direction-nav a {
+  position: absolute;
+  top: 50%;
+  z-index: 100;
+  margin: -20px 0 0;
+  height: 30px;
+  width: 30px;
+  opacity: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: 'icomoon';
+  -webkit-font-smoothing: none;
+}
+.oxo-slider-sc:hover .flex-next:hover,
+.oxo-slider-sc:hover .flex-prev:hover {
+  opacity: 1;
+}
+.oxo-social-networks {
+  overflow: hidden;
+}
+.oxo-social-networks .oxo-social-networks-wrapper {
+  margin: 0 -10px;
+}
+.oxo-social-networks .oxo-social-network-icon {
+  display: inline-block;
+  margin: 0 10px 10px 10px;
+  font-size: 16px;
+  color: #46494a;
+}
+.oxo-social-networks .oxo-social-network-icon:hover {
+  opacity: 0.8;
+}
+.oxo-social-networks .oxo-social-network-icon:before {
+  color: inherit;
+}
+.oxo-social-networks.boxed-icons .oxo-social-networks-wrapper {
+  margin: 0 -5px;
+}
+.oxo-social-networks.boxed-icons .oxo-social-network-icon {
+  margin: 0 5px 10px 5px;
+  padding: 8px;
+  background-color: #46494a;
+  border: none;
+  border-radius: 3px;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background-clip: inherit;
+  border: 1px solid #46494a;
+  color: #ffffff;
+}
+.oxo-social-links-footer {
+  display: table-cell;
+  vertical-align: middle;
+  width: 40%;
+  text-align: right;
+}
+.oxo-social-links-footer .oxo-social-networks {
+  margin-top: 10px;
+}
+.widget .oxo-social-networks .oxo-social-networks-wrapper {
+  margin: 0 -5.5px;
+}
+.widget .oxo-social-networks .oxo-social-network-icon {
+  margin: 0 5.5px 14px 5.5px;
+}
+.widget .oxo-social-networks.boxed-icons .oxo-social-networks-wrapper {
+  margin: 0 -3.5px;
+}
+.widget .oxo-social-networks.boxed-icons .oxo-social-network-icon {
+  margin: 0 3.5px 10px 3.5px;
+}
+.oxo-tabs {
+  margin-bottom: 50px;
+}
+.oxo-tabs .nav {
+  display: none;
+}
+.oxo-tabs .oxo-mobile-tab-nav {
+  display: block;
+}
+.oxo-tabs.clean .tab-pane {
+  margin: 20px 0;
+}
+.oxo-tabs .nav-tabs {
+  display: block;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #f1f2f2;
+  border-bottom: none;
+  background-color: #fff;
+}
+.oxo-tabs .nav-tabs:before,
+.oxo-tabs .nav-tabs:after {
+  content: " ";
+  display: table;
+}
+.oxo-tabs .nav-tabs:after {
+  clear: both;
+}
+.oxo-tabs .nav-tabs.nav-justified {
+  width: 100%;
+  border-bottom: 0 none;
+}
+.oxo-tabs .nav-tabs li {
+  display: block;
+  position: relative;
+  float: none;
+  text-align: center;
+}
+.oxo-tabs .nav-tabs li .oxo-tab-heading {
+  margin: 0;
+}
+.oxo-tabs .nav-tabs li .tab-link {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 8px 0;
+  outline: 0;
+  line-height: normal;
+  border: none;
+  border-top: 3px solid #f1f2f2;
+  background-color: #f1f2f2;
+  color: #747474;
+  cursor: pointer;
+  transition: all .2s;
+}
+.oxo-tabs .nav-tabs li .tab-link:hover,
+.oxo-tabs .nav-tabs li .tab-link:focus {
+  border-top-color: #fff;
+  background-color: #fff;
+}
+.oxo-tabs .nav-tabs li .tab-link .fa {
+  float: none;
+  color: inherit;
+}
+.oxo-tabs .nav-tabs > .active > .tab-link {
+  border: none;
+  border-top: 3px solid #a0ce4e;
+  background-color: #fff;
+  cursor: pointer;
+}
+.oxo-tabs .nav-tabs > .active > .tab-link:hover,
+.oxo-tabs .nav-tabs > .active > .tab-link:focus {
+  border-top: 3px solid #a0ce4e;
+}
+.oxo-tabs .tab-content > .active {
+  display: block;
+}
+.oxo-tabs .tab-pane {
+  display: none;
+  padding: 15px;
+  max-width: 100%;
+  border: 1px solid #f1f2f2;
+  border-top: none;
+}
+.oxo-tabs.nav-not-justified .nav-tabs .tab-link {
+  padding: 8px 15px;
+}
+.oxo-tabs.clean .nav-tabs {
+  background: none;
+  border: none;
+}
+.oxo-tabs.clean .nav-tabs li {
+  margin-bottom: 10px;
+}
+.oxo-tabs.clean .nav-tabs li .tab-link {
+  padding: 10px 15px;
+  border: 1px solid;
+}
+.oxo-tabs.clean .nav-tabs li .tab-link:hover,
+.oxo-tabs.clean .nav-tabs li .tab-link:focus {
+  border: 1px solid;
+}
+.oxo-tabs.clean .tab-content {
+  margin-top: 20px;
+}
+.oxo-tabs.clean .tab-content .tab-pane {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+@media (min-width: 768px) {
+  .oxo-tabs .nav {
+    display: block;
+  }
+  .oxo-tabs .oxo-mobile-tab-nav {
+    display: none;
+  }
+  .oxo-tabs.clean .tab-pane {
+    margin: 0;
+  }
+  .oxo-tabs .nav-tabs {
+    display: inline-block;
+  }
+  .oxo-tabs .nav-tabs.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
+  .oxo-tabs .nav-tabs li .tab-link {
+    margin-right: 1px;
+  }
+  .oxo-tabs .nav-tabs li:last-child .tab-link {
+    margin-right: 0;
+  }
+  .oxo-tabs.horizontal-tabs .nav-tabs {
+    margin: 0 0 -8px 0;
+  }
+  .oxo-tabs.horizontal-tabs .nav {
+    border-bottom: 1px solid #f1f2f2;
+  }
+  .oxo-tabs.horizontal-tabs.clean .nav {
+    border: none;
+    text-align: center;
+  }
+  .oxo-tabs.horizontal-tabs.clean .nav-tabs {
+    border: none;
+  }
+  .oxo-tabs.horizontal-tabs.clean .nav-tabs li {
+    margin-bottom: 0;
+  }
+  .oxo-tabs.horizontal-tabs.clean .nav-tabs li .tab-link {
+    margin-right: -1px;
+  }
+  .oxo-tabs.horizontal-tabs.clean .tab-content {
+    margin-top: 40px;
+  }
+  .oxo-tabs.nav-not-justified {
+    border: none;
+  }
+  .oxo-tabs.nav-not-justified .nav-tabs {
+    margin: 0 0 -1px 0;
+  }
+  .oxo-tabs.nav-not-justified .nav-tabs li {
+    display: inline-block;
+  }
+  .oxo-tabs.nav-not-justified.clean .nav-tabs li .tab-link {
+    padding: 10px 55px;
+  }
+  .oxo-tabs.vertical-tabs {
+    border: none;
+    clear: both;
+    zoom: 1;
+  }
+  .oxo-tabs.vertical-tabs:before,
+  .oxo-tabs.vertical-tabs:after {
+    content: " ";
+    display: table;
+  }
+  .oxo-tabs.vertical-tabs:after {
+    clear: both;
+  }
+  .oxo-tabs.vertical-tabs .nav-tabs {
+    position: relative;
+    left: 1px;
+    float: left;
+    width: 15.5%;
+    border: 1px solid #f1f2f2;
+    border-right: none;
+  }
+  .oxo-tabs.vertical-tabs .nav-tabs > li .tab-link {
+    margin-right: 0;
+    margin-bottom: 1px;
+    padding: 8px 10px;
+    border-top: none;
+    text-align: left;
+  }
+  .oxo-tabs.vertical-tabs .nav-tabs > li:last-child .tab-link {
+    margin-bottom: 0;
+  }
+  .oxo-tabs.vertical-tabs .nav-tabs > li.active > .tab-link {
+    border-bottom: none;
+    border-left: 3px solid #a0ce4e;
+    border-top: none;
+    cursor: pointer;
+  }
+  .oxo-tabs.vertical-tabs .tab-content {
+    float: left;
+    width: 84.5%;
+  }
+  .oxo-tabs.vertical-tabs .tab-pane {
+    float: left;
+    padding: 30px;
+    border: 1px solid #f1f2f2;
+  }
+  .oxo-tabs.vertical-tabs.clean .nav-tabs {
+    width: 25%;
+    background-color: transparent;
+    border: none;
+  }
+  .oxo-tabs.vertical-tabs.clean .nav-tabs li .tab-link {
+    margin: 0;
+    padding: 10px 15px;
+    border: 1px solid;
+  }
+  .oxo-tabs.vertical-tabs.clean .tab-content {
+    margin: 0;
+    padding-left: 40px;
+    width: 75%;
+  }
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table {
+  border-color: #e5e4e3;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th {
+  padding: 20px;
+  font-weight: bold;
+}
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 10px 20px;
+}
+.table > tfoot > tr > td {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table-1 table,
+.tkt-slctr-tbl-wrap-dv table {
+  border: 1px solid#dcdcdc;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.table-1 table th,
+.tkt-slctr-tbl-wrap-dv table th {
+  border: 1px solid #dcdcdc;
+  background: #f6f6f6;
+  padding: 20px;
+  font-family: 'MuseoSlab500Regular', arial, helvetica, sans-serif;
+  text-align: left;
+}
+.table-1 tr:nth-child(even),
+.tkt-slctr-tbl-wrap-dv tr:nth-child(even) {
+  background: #f6f6f6;
+}
+.table-1 tr td,
+.tkt-slctr-tbl-wrap-dv tr td {
+  border: 1px solid #dcdcdc;
+  padding: 10px 20px;
+}
+.table-2 table thead {
+  border: 1px solid #d3d3d3;
+  font-family: 'MuseoSlab500Regular', arial, helvetica, sans-serif;
+  text-align: left;
+}
+.table-2 table th {
+  padding: 20px;
+  color: #fff;
+}
+.table-2 tr td {
+  border-bottom: 1px solid #dcdcdc;
+  padding: 10px 20px;
+}
+.oxo-reading-box-container {
+  z-index: 1;
+  position: relative;
+  margin-bottom: 84px;
+}
+.oxo-reading-box-container .reading-box {
+  padding: 28px 28px 27px 31px;
+  background-color: #F2EFEF;
+  border-left: 3px solid #a0ce4e;
+}
+.oxo-reading-box-container .reading-box.reading-box-center {
+  text-align: center;
+}
+.oxo-reading-box-container .reading-box.reading-box-right {
+  text-align: right;
+}
+.oxo-reading-box-container .reading-box h2 {
+  margin: 0 0 7px;
+  line-height: 20px;
+  font-size: 18px;
+}
+.oxo-reading-box-container .oxo-desktop-button {
+  display: block;
+}
+.oxo-reading-box-container .continue-center {
+  display: inline-block;
+  float: none;
+  margin: 15px auto 0 auto;
+}
+.oxo-reading-box-container .continue-left {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.oxo-reading-box-container .continue-right {
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.oxo-reading-box-container .oxo-mobile-button {
+  display: none;
+  float: none;
+  margin: 20px 0 0;
+}
+.oxo-reading-box-container .oxo-mobile-button.continue-center {
+  display: inline-block;
+}
+.element-bottomshadow {
+  position: relative;
+}
+.element-bottomshadow:before,
+.element-bottomshadow:after {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  z-index: -1;
+  height: 20%;
+  max-height: 100px;
+  max-width: 460px;
+  width: 60%;
+  content: "";
+  opacity: 0.7;
+  box-shadow: 0 17px 10px rgba(0, 0, 0, 0.7);
+  -webkit-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.element-bottomshadow:after {
+  left: auto;
+  right: 10px;
+  -webkit-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+.oxo-testimonials .review {
+  display: none;
+}
+.oxo-testimonials blockquote {
+  margin: 0;
+  padding: 0;
+}
+.oxo-testimonials blockquote q {
+  font-style: italic;
+}
+.oxo-testimonials blockquote q:before,
+.oxo-testimonials blockquote q:after {
+  content: "";
+}
+.oxo-testimonials .doe {
+  position: relative;
+  text-align: center;
+}
+.oxo-testimonials .doe:before {
+  line-height: 40px;
+  font-family: 'icomoon';
+  font-size: 28px;
+}
+.oxo-testimonials .female .doe:before {
+  content: "\e61b";
+}
+.oxo-testimonials .male .doe:before {
+  content: "\e61a";
+}
+.oxo-testimonials .testimonial-pagination {
+  margin-top: 25px;
+  text-align: center;
+}
+.oxo-testimonials .testimonial-pagination a {
+  display: inline-block;
+  margin-right: 10px;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+.oxo-testimonials .testimonial-pagination a:hover,
+.oxo-testimonials .testimonial-pagination a.activeSlide {
+  background-color: #000;
+}
+.oxo-testimonials.classic blockquote {
+  margin-bottom: 0;
+  border: none;
+  background-color: #f6f6f6;
+}
+.oxo-testimonials.classic blockquote q {
+  display: block;
+  padding: 25px;
+  line-height: normal;
+}
+.oxo-testimonials.classic .author {
+  position: relative;
+  padding: 12px 0 0 2px;
+}
+.oxo-testimonials.classic .author:after {
+  position: absolute;
+  left: 35px;
+  top: 0;
+  content: " ";
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  border: medium solid transparent;
+  border-top-color: #f6f6f6;
+  border-width: 10px;
+}
+.oxo-testimonials.classic .author a:hover {
+  text-decoration: none;
+}
+.oxo-testimonials.classic .no-avatar .author {
+  padding-left: 0;
+}
+.oxo-testimonials.classic .doe:before {
+  line-height: 40px;
+  font-size: 28px;
+}
+.oxo-testimonials.classic .company-name {
+  display: table-cell;
+  vertical-align: middle;
+}
+.oxo-testimonials.classic .testimonial-thumbnail {
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 30px;
+  height: 40px;
+}
+.oxo-testimonials.classic .testimonial-image {
+  max-width: 40px;
+}
+.oxo-testimonials.clean .testimonial-thumbnail {
+  margin: 0 auto 25px auto;
+  width: 150px;
+  text-align: center;
+}
+.oxo-testimonials.clean .doe:before {
+  line-height: 100px;
+  font-size: 90px;
+}
+.oxo-testimonials.clean blockquote {
+  border: none;
+  background-color: none;
+}
+.oxo-testimonials.clean blockquote q {
+  display: block;
+  padding: 25px;
+  background-color: none;
+  line-height: 30px;
+  font-size: 18px;
+  text-align: center;
+}
+.oxo-testimonials.clean .author {
+  margin-top: 25px;
+  font-size: 18px;
+  text-align: center;
+}
+.oxo-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 0 0 31px;
+  overflow: hidden;
+}
+.oxo-title h1,
+.oxo-title h2,
+.oxo-title h3,
+.oxo-title h4,
+.oxo-title h5,
+.oxo-title h6,
+.comment-respond .oxo-title .comment-reply-title {
+  -webkit-flex-grow: 0;
+  -ms-flex-grow: 0;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+  margin: 0;
+  padding: 0 8px 0 0;
+  line-height: normal;
+}
+.oxo-title h1.title-heading-left,
+.oxo-title h2.title-heading-left,
+.oxo-title h3.title-heading-left,
+.oxo-title h4.title-heading-left,
+.oxo-title h5.title-heading-left,
+.oxo-title h6.title-heading-left,
+.comment-respond .oxo-title .comment-reply-title.title-heading-left {
+  padding-right: 8px;
+  text-align: left;
+}
+.oxo-title h1.title-heading-left .fontawesome-icon,
+.oxo-title h2.title-heading-left .fontawesome-icon,
+.oxo-title h3.title-heading-left .fontawesome-icon,
+.oxo-title h4.title-heading-left .fontawesome-icon,
+.oxo-title h5.title-heading-left .fontawesome-icon,
+.oxo-title h6.title-heading-left .fontawesome-icon,
+.comment-respond .oxo-title .comment-reply-title.title-heading-left .fontawesome-icon {
+  margin-left: 10px;
+}
+.oxo-title h1.title-heading-right,
+.oxo-title h2.title-heading-right,
+.oxo-title h3.title-heading-right,
+.oxo-title h4.title-heading-right,
+.oxo-title h5.title-heading-right,
+.oxo-title h6.title-heading-right,
+.comment-respond .oxo-title .comment-reply-title.title-heading-right {
+  padding: 0 0 0 8px;
+  text-align: right;
+}
+.oxo-title h1.title-heading-right .fontawesome-icon,
+.oxo-title h2.title-heading-right .fontawesome-icon,
+.oxo-title h3.title-heading-right .fontawesome-icon,
+.oxo-title h4.title-heading-right .fontawesome-icon,
+.oxo-title h5.title-heading-right .fontawesome-icon,
+.oxo-title h6.title-heading-right .fontawesome-icon,
+.comment-respond .oxo-title .comment-reply-title.title-heading-right .fontawesome-icon,
+.oxo-title h1.title-heading-right img,
+.oxo-title h2.title-heading-right img,
+.oxo-title h3.title-heading-right img,
+.oxo-title h4.title-heading-right img,
+.oxo-title h5.title-heading-right img,
+.oxo-title h6.title-heading-right img,
+.comment-respond .oxo-title .comment-reply-title.title-heading-right img {
+  margin-left: 10px;
+  margin-right: 0;
+}
+.oxo-title h1 img,
+.oxo-title h2 img,
+.oxo-title h3 img,
+.oxo-title h4 img,
+.oxo-title h5 img,
+.oxo-title h6 img,
+.comment-respond .oxo-title .comment-reply-title img {
+  margin-right: 10px;
+}
+.oxo-title h1 .fontawesome-icon,
+.oxo-title h2 .fontawesome-icon,
+.oxo-title h3 .fontawesome-icon,
+.oxo-title h4 .fontawesome-icon,
+.oxo-title h5 .fontawesome-icon,
+.oxo-title h6 .fontawesome-icon,
+.comment-respond .oxo-title .comment-reply-title .fontawesome-icon {
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+.oxo-title h1 .fontawesome-icon.size-small,
+.oxo-title h2 .fontawesome-icon.size-small,
+.oxo-title h3 .fontawesome-icon.size-small,
+.oxo-title h4 .fontawesome-icon.size-small,
+.oxo-title h5 .fontawesome-icon.size-small,
+.oxo-title h6 .fontawesome-icon.size-small,
+.comment-respond .oxo-title .comment-reply-title .fontawesome-icon.size-small,
+.oxo-title h1 .fontawesome-icon.size-medium,
+.oxo-title h2 .fontawesome-icon.size-medium,
+.oxo-title h3 .fontawesome-icon.size-medium,
+.oxo-title h4 .fontawesome-icon.size-medium,
+.oxo-title h5 .fontawesome-icon.size-medium,
+.oxo-title h6 .fontawesome-icon.size-medium,
+.comment-respond .oxo-title .comment-reply-title .fontawesome-icon.size-medium,
+.oxo-title h1 .fontawesome-icon.size-large,
+.oxo-title h2 .fontawesome-icon.size-large,
+.oxo-title h3 .fontawesome-icon.size-large,
+.oxo-title h4 .fontawesome-icon.size-large,
+.oxo-title h5 .fontawesome-icon.size-large,
+.oxo-title h6 .fontawesome-icon.size-large,
+.comment-respond .oxo-title .comment-reply-title .fontawesome-icon.size-large {
+  margin-top: 0;
+}
+.oxo-title.oxo-title-center {
+  text-align: center;
+}
+.oxo-title.oxo-title-center .title-heading-center {
+  padding: 0 45px;
+}
+.oxo-title.oxo-title-center.oxo-sep-none .title-heading-center,
+.oxo-title.oxo-title-center.sep-underline .title-heading-center {
+  padding: 0;
+  text-align: center;
+}
+.oxo-title.oxo-sep-none {
+  display: block;
+}
+.oxo-title.oxo-sep-none .title-heading-left {
+  padding: 0;
+  text-align: left;
+}
+.oxo-title.oxo-sep-none .title-heading-right {
+  padding: 0;
+  text-align: right;
+}
+.oxo-title .title-sep-container {
+  position: relative;
+  height: 6px;
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
+.oxo-title.sep-underline {
+  display: block;
+  padding-bottom: 10px;
+  width: 100%;
+  border-bottom: 1px solid #e7e6e6;
+}
+.oxo-title.sep-underline.sep-dashed {
+  border-bottom-style: dashed;
+}
+.oxo-title.sep-underline.sep-dotted {
+  border-bottom-style: dotted;
+}
+.oxo-title.sep-underline .title-heading-right {
+  float: right;
+  margin: 0;
+}
+.oxo-title.sep-underline .title-heading-left,
+.oxo-title.sep-underline .title-heading-right {
+  padding: 0;
+}
+.oxo-title .title-sep {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-style: solid;
+  border: 0 solid #e7e6e6;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -o-box-sizing: content-box;
+}
+.oxo-title .title-sep.sep-double {
+  height: 6px;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+}
+.oxo-title .title-sep.sep-single {
+  border-bottom-width: 1px;
+}
+.oxo-title .title-sep.sep-dashed {
+  border-bottom-style: dashed;
+  border-top-style: dashed;
+}
+.oxo-title .title-sep.sep-dotted {
+  border-bottom-style: dotted;
+  border-top-style: dotted;
+}
+.oxo-border-below-title {
+  display: block;
+}
+#main .post-content .oxo-border-below-title h1,
+#main .post-content .oxo-border-below-title h2,
+#main .post-content .oxo-border-below-title h3,
+#main .post-content .oxo-border-below-title h4,
+#main .post-content .oxo-border-below-title h5,
+#main .post-content .oxo-border-below-title h6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.oxo-border-below-title .title-sep-container {
+  display: none;
+  height: 8px;
+}
+.oxo-accordian {
+  width: 100%;
+}
+.oxo-accordian .oxo-panel {
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #e5e4e3;
+  border-radius: 0;
+  /* Fix to make border-radius work for transparent colors */
+  background-clip: padding-box;
+}
+.oxo-accordian .panel-heading {
+  padding: 0;
+  background: none;
+}
+.oxo-accordian .panel-heading .panel-title {
+  margin: 0;
+}
+.oxo-accordian .panel-title {
+  position: relative;
+  line-height: 22px;
+  font-size: 16px;
+  font-weight: normal;
+  color: inherit;
+}
+.oxo-accordian .panel-title a {
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+}
+.oxo-accordian .panel-title a:hover {
+  color: #a0ce4e;
+}
+.oxo-accordian .panel-title a:hover .fa-oxo-box {
+  background-color: #a0ce4e;
+}
+.oxo-accordian .panel-title a .fa.pull-left {
+  margin-left: 1px;
+}
+.oxo-accordian .panel-title a .fa-oxo-box {
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px;
+  height: 22px;
+  background-color: #333;
+  font-size: 13px;
+  color: #fff;
+  text-align: center;
+  line-height: 22px;
+  font-family: 'IcoMoon';
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+.oxo-accordian .panel-title a .fa-oxo-box:before {
+  font-family: 'IcoMoon';
+  content: "\e61d";
+  font-style: normal;
+  line-height: 22px;
+  font-size: 13px;
+}
+.oxo-accordian .panel-title .active .fa-oxo-box {
+  background-color: #a0ce4e;
+}
+.oxo-accordian .panel-title .active .fa-oxo-box:before {
+  content: "\e61c";
+}
+.oxo-accordian .panel-title .oxo-toggle-icon-wrapper {
+  float: left;
+}
+.oxo-accordian .panel-title .oxo-toggle-heading {
+  margin-left: 40px;
+}
+.oxo-accordian .panel-body {
+  padding: 10px 0 15px 0px;
+  border: none;
+  line-height: normal;
+}
+.oxo-single-accordian {
+  margin-bottom: 0px;
+}
+.oxo-tooltip {
+  cursor: pointer;
+  color: #a0ce4e;
+}
+.oxo-woo-featured-products-slider {
+  position: relative;
+  margin-bottom: 25px;
+}
+.oxo-woo-featured-products-slider .oxo-carousel-wrapper {
+  overflow: hidden;
+}
+.oxo-woo-featured-products-slider .oxo-rollover-content .price {
+  margin-top: 3px;
+}
+.oxo-woo-featured-products-slider .oxo-rollover-content .price .amount {
+  font-size: 25px;
+}
+.oxo-woo-featured-products-slider .oxo-carousel-nav .oxo-nav-prev,
+.oxo-woo-featured-products-slider .oxo-carousel-nav .oxo-nav-next {
+  margin-top: -31px;
+  height: 63px;
+  width: 63px;
+}
+.oxo-woo-featured-products-slider .oxo-carousel-nav .oxo-nav-prev:before,
+.oxo-woo-featured-products-slider .oxo-carousel-nav .oxo-nav-next:before {
+  content: '\e61e';
+  line-height: 63px;
+  font-size: 25px;
+}
+.oxo-woo-featured-products-slider .oxo-carousel-nav .oxo-nav-next:before {
+  content: '\e620';
+}
+/* Used for both woo carousels */
+.oxo-woo-slider .oxo-rollover-content .oxo-rollover-title {
+  margin: 0;
+  line-height: normal;
+}
+.oxo-woo-slider .oxo-carousel-title-below-image .oxo-product-buttons {
+  position: static;
+}
+.oxo-woo-slider .oxo-carousel-title-below-image .oxo-product-buttons a:first-child,
+.oxo-woo-slider .oxo-carousel-title-below-image .oxo-product-buttons a:last-child {
+  display: inline-block;
+  float: none;
+  margin: 0;
+}
+.oxo-woo-slider .oxo-carousel-title-below-image .oxo-rollover-linebreak {
+  display: block;
+  margin-bottom: 8px;
+}
+.oxo-woo-slider .oxo-classic-product-image-wrapper .cart-loading > a {
+  color: #fff !important;
+}
+.oxo-woo-slider .cart-loading .view-cart {
+  display: none;
+}
+.oxo-woo-product-slider {
+  overflow: hidden;
+  margin-bottom: 55px;
+}
+.oxo-woo-product-slider .oxo-rollover .price {
+  margin-top: 5px;
+}
+.oxo-woo-product-slider .oxo-rollover .price .amount {
+  font-size: 18px;
+}
+.oxo-youtube.center-video .video-shortcode,
+.oxo-vimeo.center-video .video-shortcode {
+  margin: 0 auto;
+}
+.oxo-events-shortcode .oxo-layout-column {
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+}
+.oxo-events-shortcode .oxo-events-thumbnail {
+  display: block;
+  border-bottom: 1px solid transparent;
+}
+.oxo-events-shortcode .tribe-events-event-image {
+  display: block;
+  width: 100%;
+}
+.oxo-events-shortcode .oxo-full-one {
+  width: 100%;
+}
+.oxo-events-shortcode .oxo-full-one .tribe-events-event-image {
+  height: 416px;
+}
+.oxo-events-shortcode .oxo-one-half .tribe-events-event-image {
+  height: 416px;
+}
+.oxo-events-shortcode .oxo-one-third .oxo-events-placeholder {
+  width: 337px;
+  height: 216px;
+}
+.oxo-events-shortcode .oxo-one-third .tribe-events-event-image {
+  height: 216px;
+}
+.oxo-events-shortcode .oxo-one-fourth .oxo-events-placeholder {
+  width: 242px;
+  height: 173px;
+}
+.oxo-events-shortcode .oxo-one-fourth .tribe-events-event-image {
+  height: 173px;
+}
+.oxo-events-shortcode .oxo-one-fifth .oxo-events-placeholder {
+  width: 177px;
+  height: 142px;
+}
+.oxo-events-shortcode .oxo-one-fifth .tribe-events-event-image {
+  height: 142px;
+}
+.oxo-events-shortcode .oxo-one-sixth .oxo-events-placeholder {
+  width: 147px;
+  height: 118px;
+}
+.oxo-events-shortcode .oxo-one-sixth .tribe-events-event-image {
+  height: 118px;
+}
+.oxo-events-shortcode .oxo-events-meta {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+.oxo-events-shortcode .oxo-events-meta .recurringinfo,
+.oxo-events-shortcode .oxo-events-meta .event-is-recurring {
+  display: inline;
+}
+.oxo-events-shortcode .tribe-events-tooltip {
+  display: none;
+}
+.oxo-events-shortcode .tribe-events-divider {
+  padding: 0px 5px;
+}
+.oxo-events-shortcode .tribe-events-event-image {
+  margin-bottom: 0;
+}
+.oxo-events-shortcode h2 {
+  margin-bottom: 0;
+}
+.oxo-events-shortcode h4 {
+  margin: 0;
+}

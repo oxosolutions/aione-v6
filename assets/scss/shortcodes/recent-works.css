@@ -1,0 +1,15 @@
+.oxo-recent-works {
+  overflow: hidden;
+  margin-bottom: 80px; }
+
+.oxo-recent-works-carousel {
+  overflow: hidden;
+  height: auto; }
+
+.oxo-recent-works-grid-with-excerpts {
+  margin-bottom: 0; }
+
+.oxo-recent-works-carousel-fixed.oxo-carousel .oxo-image-wrapper,
+.oxo-recent-works-carousel-fixed.oxo-carousel .oxo-image-wrapper img {
+  max-height: 115px;
+  width: auto; }

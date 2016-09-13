@@ -1,0 +1,55 @@
+.oxo-countdown {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 30px; }
+  .oxo-countdown.oxo-no-bg {
+    padding: 0; }
+  .oxo-countdown .oxo-countdown-heading-wrapper {
+    line-height: 25px; }
+  .oxo-countdown .oxo-countdown-heading {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px; }
+  .oxo-countdown .oxo-countdown-subheading {
+    font-size: 13px;
+    letter-spacing: 1px; }
+  .oxo-countdown .oxo-countdown-counter-wrapper {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    overflow: hidden;
+    margin: 0 10px;
+    font-size: 20px;
+    text-align: center; }
+  .oxo-countdown .oxo-dash-wrapper {
+    display: inline-block;
+    padding: 5px; }
+    .oxo-countdown .oxo-dash-wrapper.oxo-no-bg {
+      padding-left: 10px;
+      padding-right: 10px; }
+      .oxo-countdown .oxo-dash-wrapper.oxo-no-bg .oxo-dash {
+        padding: 0; }
+  .oxo-countdown .oxo-dash {
+    padding: 12px 22px;
+    text-align: center; }
+  .oxo-countdown .oxo-digit {
+    display: inline-block; }
+    .oxo-countdown .oxo-digit > div {
+      width: 11px; }
+  .oxo-countdown .oxo-first-digit {
+    display: none; }
+  .oxo-countdown .oxo-dash-title {
+    display: inline-block;
+    padding-left: 5px;
+    min-width: 46px; }
+  .oxo-countdown .oxo-countdown-link {
+    letter-spacing: 2px; }
+    .oxo-countdown .oxo-countdown-link:hover {
+      opacity: 0.7; }

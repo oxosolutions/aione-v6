@@ -1,0 +1,50 @@
+.oxo-mega-menu-options {
+	margin-top: 10px;
+}
+
+.oxo-menu-style,
+.field-megamenu-status,
+.field-megamenu-width,
+.field-megamenu-columns,
+.field-megamenu-columnwidth,
+.field-megamenu-title,
+.field-megamenu-widgetarea,
+.oxo-megamenu-upload-thumbnail.button-primary,
+.field-megamenu-thumbnail,
+.oxo-megamenu-thumbnail-image {
+	display: none;
+}
+
+.menu-item-depth-0 .oxo-menu-style,
+.menu-item-depth-0 .field-megamenu-status,
+.menu-item-depth-0.oxo-megamenu .field-megamenu-width,
+.menu-item-depth-0.oxo-megamenu .field-megamenu-columns,
+.menu-item-depth-1.oxo-megamenu .field-megamenu-columnwidth,
+.menu-item-depth-1.oxo-megamenu .field-megamenu-title,
+.menu-item-depth-1.oxo-megamenu .field-megamenu-widgetarea,
+.menu-item-depth-2.oxo-megamenu .field-megamenu-widgetarea,
+.oxo-megamenu .field-megamenu-thumbnail {
+	display: block;
+}
+
+.menu-item-depth-1.oxo-megamenu.oxo-megamenu-fullwidth .field-megamenu-columnwidth {
+	display: none;
+}
+
+.oxo-megamenu .oxo-megamenu-upload-thumbnail {
+	display: inline-block;
+}
+
+.oxo-megamenu-thumbnail-image {
+	max-width: 300px;
+}
+
+.menu-item-depth-0 .oxo-megamenu-upload-thumbnail,
+.menu-item-depth-1 .oxo-megamenu-upload-thumbnail,
+.menu-item-depth-2 .oxo-megamenu-upload-thumbnail {
+	margin-top: 0 !important;
+}
+
+.oxo-megamenu-upload-thumbnail {
+	margin-top: 0.6em !important;
+}

@@ -1,0 +1,184 @@
+.nav-holder .oxo-navbar-nav > li > ul,
+.nav-holder .oxo-navbar-nav > li > div,
+.nav-holder .oxo-navbar-nav .oxo-dropdown-menu ul,
+.top-menu li > div,
+.top-menu li > .sub-menu {
+	display: none;
+}
+
+.nav-holder .oxo-navbar-nav li:hover > .sub-menu,
+.nav-holder .oxo-navbar-nav li:hover > div,
+.top-menu li:hover > .sub-menu,
+.top-menu li:hover > div,
+.top-menu .cart:hover .cart-contents {
+	display: block;
+}
+
+.oxo-animated, .animated { visibility:visible;}
+
+.search input{padding-left:5px;}
+#header .tagline{margin-top:3px !important;}
+.has-sidebar .summary.entry-summary{width:318px;}
+.has-sidebar .woocommerce-tabs .panel { width: 394px; }
+.woocommerce .social-share li.email{border-right:0;}
+
+.star-rating { width: 5.2em !important;}
+
+.aione-select-parent .select-arrow, .gravity-select-parent .select-arrow, .wpcf7-select-parent .select-arrow, .select-arrow  { background: #fff; }
+
+.search input,.searchform input {padding-left:10px;}
+
+.oxo-body .oxo-header-shadow:after,
+.oxo-body.side-header #side-header.header-shadow:after ,
+.oxo-body.side-header #side-header.header-shadow:before 
+{ display: none }
+.oxo-button.button-pill, .oxo-button.button-pill:hover { filter: none; }
+
+.oxo-imageframe, .imageframe-align-center {font-size: 0px; line-height: normal; }
+
+.layout-boxed-mode .oxo-footer-parallax { left: auto; right: auto; }
+
+
+/* Flexbox fallback */
+.oxo-header-v4 .oxo-header > .oxo-row .oxo-logo {
+	display: table;
+	width: 100%;
+}
+
+.oxo-header-v4 .oxo-header > .oxo-row .oxo-logo-link,
+.oxo-header-v4 .oxo-header > .oxo-row .oxo-header-content-3-wrapper {
+	display: table-cell;
+	vertical: align: middle;
+}
+
+.oxo-header-v4 .oxo-header > .oxo-row .oxo-secondary-menu-search {
+	float: right;
+}
+
+.oxo-header-v4.oxo-logo-right .oxo-header > .oxo-row .oxo-logo {
+	direction: rtl;
+}
+
+.rtl .oxo-header-v4.oxo-logo-left .oxo-header > .oxo-row .oxo-logo {
+	direction: ltr;
+}
+
+.oxo-header-v4.oxo-logo-right .oxo-header > .oxo-row .oxo-secondary-menu-search {
+	float: none;
+	direction: ltr;
+}
+
+.rtl .oxo-header-v4 .oxo-header > .oxo-row .oxo-secondary-menu-search {
+	direction: rtl;
+}
+
+.oxo-countdown {
+	display: table;
+	width: 100%;
+}
+
+.oxo-countdown .oxo-countdown-heading-wrapper,
+.oxo-countdown .oxo-countdown-counter-wrapper,
+.oxo-countdown .oxo-countdown-link-wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.tribe-events-countdown-widget .tribe-countdown-timer .tribe-countdown-number {
+	display: inline-block;
+	margin-right: 0;
+}
+
+.woocommerce .checkout_coupon {
+  display: block !important;
+}
+
+.oxo-title {
+  display: table;
+}
+.oxo-title h1,
+.oxo-title h2,
+.oxo-title h3,
+.oxo-title h4,
+.oxo-title h5,
+.oxo-title h6,
+.comment-respond .oxo-title .comment-reply-title {
+  float: left;
+  display: table-cell;
+  white-space: pre;
+}
+.oxo-title.oxo-title-center {
+  display: table;
+}
+.oxo-title.oxo-title-center .title-sep-container-left,
+.oxo-title.oxo-title-center .title-sep-container-right {
+  width: 50%;
+}
+.oxo-title.oxo-title-center .title-heading-center {
+  display: table-cell;
+  display: block;
+}
+.oxo-title.oxo-title-center.oxo-sep-none .title-heading-center,
+.oxo-title.oxo-title-center.sep-underline .title-heading-center {
+  display: block;
+  float: none;
+}
+.oxo-title.oxo-sep-none .title-heading-left,
+.oxo-title.oxo-sep-none .title-heading-right,
+.oxo-title.oxo-title-center.oxo-sep-none,
+.oxo-title.oxo-title-center.oxo-sep-none .title-heading-center {
+  display: block;
+  float: none;
+}
+.oxo-title .title-sep-container {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}
+.oxo-title.sep-underline .title-heading-right {
+  float: right;
+}
+.oxo-border-below-title h1,
+.oxo-border-below-title h2,
+.oxo-border-below-title h3,
+.oxo-border-below-title h4,
+.oxo-border-below-title h5,
+.oxo-border-below-title h6 {
+  white-space: normal;
+}
+#main .post-content .oxo-border-below-title h1,
+#main .post-content .oxo-border-below-title h2,
+#main .post-content .oxo-border-below-title h3,
+#main .post-content .oxo-border-below-title h4,
+#main .post-content .oxo-border-below-title h5,
+#main .post-content .oxo-border-below-title h6 {
+  float: none;
+}
+
+@media only screen and (max-width: 800px ) {
+
+	.woocommerce .checkout_coupon .promo-code-heading {
+		display: block;
+		float: none;
+		text-align: center;
+	}
+
+	.woocommerce .checkout_coupon .coupon-contents {
+		display: block;
+		float: none;
+	}
+
+	.woocommerce .checkout_coupon .coupon-input {
+		display: block;
+		float: none;
+		text-align: center;
+		margin: 0 auto !important;
+	}
+
+	.woocommerce .checkout_coupon .coupon-button {
+		display: block;
+		float: none;
+		text-align: center;
+		margin: 0 auto !important;
+	}
+}

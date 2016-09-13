@@ -1,0 +1,17 @@
+.oxo-imageframe {
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+  max-width: 100%;
+}
+.oxo-imageframe.element-bottomshadow:before,
+.oxo-imageframe.element-bottomshadow:after {
+  opacity: 0.4;
+}
+.oxo-imageframe.element-bottomshadow img {
+  margin: 0;
+}
+/* bottom shadow classes in taglinebox.less */
+.imageframe-align-center {
+  text-align: center;
+}

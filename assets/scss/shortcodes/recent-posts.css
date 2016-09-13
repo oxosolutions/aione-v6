@@ -1,0 +1,56 @@
+.oxo-recent-posts {
+  margin-bottom: 50px; }
+  .oxo-recent-posts .columns {
+    overflow: hidden; }
+    .oxo-recent-posts .columns .column {
+      overflow: hidden; }
+      .oxo-recent-posts .columns .column .oxo-flexslider {
+        margin-bottom: 0; }
+      .oxo-recent-posts .columns .column h4 {
+        margin: 15px 0 3px 0; }
+      .oxo-recent-posts .columns .column .meta {
+        overflow: hidden;
+        margin-bottom: 13px;
+        padding: 0;
+        color: #333333;
+        font-size: 12px;
+        line-height: 14px; }
+        .oxo-recent-posts .columns .column .meta .date {
+          font-style: normal; }
+        .oxo-recent-posts .columns .column .meta .meta-separator {
+          padding: 0 5px; }
+    .oxo-recent-posts .columns .password {
+      width: auto; }
+  .oxo-recent-posts .columns-2 .column:nth-child(3n) {
+    clear: left; }
+  .oxo-recent-posts .columns-3 .column:nth-child(4n) {
+    clear: left; }
+  .oxo-recent-posts.layout-thumbnails-on-side .columns .column {
+    margin-bottom: 20px; }
+    .oxo-recent-posts.layout-thumbnails-on-side .columns .column .floated-slideshow {
+      overflow: hidden;
+      float: left;
+      margin: 0 20px 5px 0;
+      width: 144px; }
+    .oxo-recent-posts.layout-thumbnails-on-side .columns .column h4 {
+      margin-top: 0; }
+  .oxo-recent-posts.layout-date-on-side .date-and-formats {
+    overflow: hidden;
+    float: left;
+    margin: 0 20px 5px 0;
+    width: 82px; }
+    .oxo-recent-posts.layout-date-on-side .date-and-formats .date-box {
+      padding: 8px 0 5px;
+      color: #FFFFFF; }
+      .oxo-recent-posts.layout-date-on-side .date-and-formats .date-box .date {
+        display: block;
+        font-size: 29px;
+        font-weight: bold;
+        line-height: 29px; }
+    .oxo-recent-posts.layout-date-on-side .date-and-formats .format-box {
+      margin-top: 3px;
+      background-color: #EEF0F2; }
+  .oxo-recent-posts.layout-date-on-side .columns .column {
+    margin-bottom: 20px; }
+    .oxo-recent-posts.layout-date-on-side .columns .column h4 {
+      margin-top: 0; }

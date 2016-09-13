@@ -1,0 +1,4 @@
+.oxo-youtube.center-video .video-shortcode,
+.oxo-vimeo.center-video .video-shortcode {
+  margin: 0 auto;
+}

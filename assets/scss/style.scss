@@ -1,0 +1,48 @@
+/*
+Theme Name: Aione
+Description: The #1 selling theme of all time that allows you to build virtually any design style.
+Author: OXOSolutions
+Theme URI: http://oxosolutions.com/products/wordpress-themes/aione
+Author URI: http://oxosolutions.com/
+Version: 3.9.3
+License: Themeforest Split Licence
+License URI: -
+Text Domain: Aione
+-----------------------------------------------------------------------------*/
+
+// Core variables and mixins
+@import "variables.scss";
+
+// Needed Bootstrap Stylings
+@import "bootstrap/bootstrap-sc.scss";
+
+// Theme CSS
+@import "theme/base.scss";
+@import "theme/elastic-slider.scss";
+@import "theme/flexslider.scss";
+@import "theme/isotope.scss";
+@import "theme/layerslider.scss";
+@import "theme/slidingbar.scss";
+@import "theme/wooslider.scss";
+@import "theme/theme.scss";
+@import "theme/header.scss";
+@import "theme/page-title-bar.scss";
+@import "theme/blog.scss";
+@import "theme/portfolio.scss";
+@import "theme/footer.scss";
+@import "theme/third-party.scss";
+@import "theme/state.scss";
+@import "theme/oxo-slider.scss";
+@import "theme/parallax.scss";
+@import "theme/gravityforms.scss";
+@import "theme/contactform7.scss";
+@import "theme/icon_animations.scss";
+@import "theme/image-hovers.scss";
+@import "theme/events-calendar.scss";
+@import "theme/wpml.scss";
+
+// Icons
+@import "icomoon.scss";
+
+// Theme Shortcodes
+@import "shortcodes/shortcodes.scss";

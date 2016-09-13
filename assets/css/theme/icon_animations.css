@@ -1,0 +1,242 @@
+@-webkit-keyframes aioneToRightFromLeft {
+  49% {
+    -webkit-transform: translate(100%);
+  }
+  50% {
+    opacity: 0;
+    -webkit-transform: translate(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes aioneToRightFromLeft {
+  49% {
+    -moz-transform: translate(100%);
+  }
+  50% {
+    opacity: 0;
+    -moz-transform: translate(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes aioneToRightFromLeft {
+  49% {
+    transform: translate(100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translate(-100%);
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes aioneExpandAndShow {
+  0% {
+    -webkit-transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+@-moz-keyframes aioneExpandAndShow {
+  0% {
+    -moz-transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes aioneExpandAndShow {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes aioneExpandWidth {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 99%;
+  }
+}
+@-moz-keyframes aioneExpandWidth {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 99%;
+  }
+}
+@keyframes aioneExpandWidth {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 99%;
+  }
+}
+@keyframes aioneExpandHeight {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+@-webkit-keyframes aioneExpandHeight {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+@-moz-keyframes aioneExpandHeight {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.icon-hover-animation-slide .fontawesome-icon:before {
+  display: block;
+  opacity: 1;
+}
+.icon-hover-animation-fade .fontawesome-icon {
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s;
+}
+.link-area-link-icon-hover.icon-hover-animation-fade .fontawesome-icon,
+.link-area-box-hover.icon-hover-animation-fade .fontawesome-icon {
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s;
+}
+.link-area-link-icon-hover.icon-hover-animation-slide .fontawesome-icon:before,
+.link-area-box-hover.icon-hover-animation-slide .fontawesome-icon:before {
+  display: block;
+  -webkit-animation: aioneToRightFromLeft 0.3s forwards;
+  -moz-animation: aioneToRightFromLeft 0.3s forwards;
+  animation: aioneToRightFromLeft 0.3s forwards;
+}
+.oxo-content-boxes .link-area-link-icon-hover.icon-hover-animation-pulsate .heading,
+.oxo-content-boxes .link-area-box-hover.icon-hover-animation-pulsate .heading {
+  overflow: visible;
+}
+.link-area-link-icon-hover.icon-hover-animation-pulsate .fontawesome-icon,
+.link-area-box-hover.icon-hover-animation-pulsate .fontawesome-icon {
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s;
+}
+.link-area-link-icon-hover.icon-hover-animation-pulsate .fontawesome-icon:after,
+.link-area-box-hover.icon-hover-animation-pulsate .fontawesome-icon:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  content: '';
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  top: 0;
+  left: 0;
+  padding: 0;
+  z-index: -1;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+}
+.link-area-link-icon-hover.icon-hover-animation-pulsate .fontawesome-icon,
+.link-area-box-hover.icon-hover-animation-pulsate .fontawesome-icon {
+  -webkit-transform: scale(0.93);
+  -moz-transform: scale(0.93);
+  -ms-transform: scale(0.93);
+  transform: scale(0.93);
+}
+.link-area-link-icon-hover.icon-hover-animation-pulsate .fontawesome-icon:after,
+.link-area-box-hover.icon-hover-animation-pulsate .fontawesome-icon:after {
+  display: inline-block;
+  -webkit-animation: aioneSonarEffect 1.3s ease-out 75ms;
+  -moz-animation: aioneSonarEffect 1.3s ease-out 75ms;
+  animation: aioneSonarEffect 1.3s ease-out 75ms;
+}
+.oxo-content-boxes .link-area-link-icon-hover.icon-wrapper-hover-animation-pulsate .heading,
+.oxo-content-boxes .link-area-box-hover.icon-wrapper-hover-animation-pulsate .heading {
+  overflow: visible;
+}
+.link-area-link-icon-hover.icon-wrapper-hover-animation-pulsate .fontawesome-icon,
+.link-area-box-hover.icon-wrapper-hover-animation-pulsate .fontawesome-icon {
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s;
+}
+.link-area-link-icon-hover.icon-wrapper-hover-animation-pulsate .icon span,
+.link-area-box-hover.icon-wrapper-hover-animation-pulsate .icon span {
+  -webkit-transform: scale(0.93);
+  -moz-transform: scale(0.93);
+  -ms-transform: scale(0.93);
+  transform: scale(0.93);
+}
+.link-area-link-icon-hover.icon-wrapper-hover-animation-pulsate .icon span:after,
+.link-area-box-hover.icon-wrapper-hover-animation-pulsate .icon span:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  content: '';
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  top: 0;
+  left: 0;
+  padding: 0;
+  z-index: -1;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+  display: inline-block;
+  -webkit-animation: aioneSonarEffect 1.3s ease-out 75ms;
+  -moz-animation: aioneSonarEffect 1.3s ease-out 75ms;
+  animation: aioneSonarEffect 1.3s ease-out 75ms;
+}
