@@ -28,3 +28,11 @@ require( 'oxo-functions.php' );
 require_once ( 'ajax-functions.php' );
 
 // Omit closing PHP tag to avoid "Headers already sent" issues.
+
+/**
+ * github-updater
+ *
+ */
+require_once ( 'libs/github-updater/github-updater.php' );
+
+// Omit closing PHP tag to avoid "Headers already sent" issues.
