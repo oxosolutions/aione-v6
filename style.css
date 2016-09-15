@@ -4,7 +4,7 @@ Description: All-in-one wordpress theme.
 Author: OXO Solutions
 Theme URI: http://oxosolutions.com/products/wordpress-themes/aione/
 Author URI: http://oxosolutions.com/
-Version: 6.0.1.8
+Version: 6.0.1.9
 Text Domain: Aione
 GitHub Theme URI: https://github.com/oxosolutions/aione
 GitHub Branch: master
@@ -4964,8 +4964,8 @@ Table of Contents
   line-height: 43px;
 }
 .oxo-header-v4 .oxo-header {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .oxo-header-v4 .oxo-logo {
   width: 100%;
