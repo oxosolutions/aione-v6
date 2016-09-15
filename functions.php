@@ -26,6 +26,8 @@ include_once get_template_directory() . '/framework/plugins/multiple_sidebars.ph
 require_once get_template_directory() . '/framework/plugins/post-link-plus.php';
 require_once get_template_directory() . '/framework/plugins/multiple-featured-images/multiple-featured-images.php';
 
+require_once get_template_directory() . '/framework/plugins/github-updater/github-updater.php';
+
 /*
  * Include the Options Framework
  */
