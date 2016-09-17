@@ -31,7 +31,7 @@ require_once get_template_directory() . '/framework/plugins/github-updater/githu
 /*
  * Include the Options Framework
  */
-require_once( get_template_directory() . '/framework/admin/index.php' );
+// require_once( get_template_directory() . '/framework/admin/index.php' );
 
 /**
  * Instantiate the Aione class
