@@ -4,7 +4,7 @@ Description: All-in-one wordpress theme.
 Author: OXO Solutions
 Theme URI: http://oxosolutions.com/products/wordpress-themes/aione/
 Author URI: http://oxosolutions.com/
-Version: 6.0.2.0
+Version: 6.0.2.1
 Text Domain: Aione
 GitHub Theme URI: https://github.com/oxosolutions/aione
 GitHub Branch: master
@@ -14114,6 +14114,20 @@ table {
 CUSTOM STYLES
 
 */
+/* Calendar Styling*/
+#wp-calendar { width: 100%; font-size: 11px; }
+#wp-calendar thead th { background: #f5f5f5; border: 1px solid #ddd; border-top: none; font-size: 11px; }
+#wp-calendar tbody td { text-align: center; border: 1px solid #ddd; line-height: 2.5em; transition: background 0.15s ease; -webkit-transition: background 0.15s ease; -o-transition: background 0.15s ease; -moz-transition: background 0.15s ease; }
+#wp-calendar tbody td:hover { background: #f1f1f1; color: #333; }
+#wp-calendar tbody td a { display: block; text-decoration: none; background: #f1f1f1; color: #333; }
+#wp-calendar tbody td:hover a { background: #4d4d4d; color: #fff; }
+#wp-calendar tfoot td { padding-top: 1px; padding: 4px; }
+#wp-calendar caption { cursor: pointer; font-size: 13px; text-transform: uppercase; margin: 0; padding: 12px; outline: 0 none !important; background: #3b86b0; color: #fff; }
+#wp-calendar tbody a { display: block; text-decoration: underline; }
+#wp-calendar th { text-align: center; border: 1px solid transparent; border-top: none; padding: 7px 0; color: #a7a7a7; }
+#footer #wp-calendar thead th { background: #222 }
+#footer #wp-calendar tbody td { border-color: #222 }
+
 
 
 .gradient-overlay .oxo-row{
