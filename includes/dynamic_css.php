@@ -9315,7 +9315,7 @@ function get_background( $selector ) {
 	if(in_array("color", Aione()->theme_options['background_'.$selector.'_options']) && Aione()->theme_options['background_'.$selector.'_color']):
 		$background_color = Aione()->theme_options['background_'.$selector.'_color'];
 		if(Aione()->theme_options['background_'.$selector.'_color_alpha'] < 100){
-			$background_color = hex2rgba( $background_color, Aione()->theme_options['background_'.$selector.'_color_alpha'] );
+			$background_color = oxo_hex2rgba( $background_color, Aione()->theme_options['background_'.$selector.'_color_alpha'] );
 		}
 	endif;
 
