@@ -437,6 +437,43 @@ if( ! function_exists( 'oxo_hex2rgb' ) ) {
 }
 
 /**
+ * Convert Hex Code to RGBA
+ * @param  string $hex Color Hex Code
+ * @return array       RGB values
+ */
+if( ! function_exists( 'oxo_hex2rgba' ) ) {
+	function oxo_hex2rgba( $hex, $opacity ) {
+		if ( strpos( $hex,'rgb' ) !== FALSE ) {
+
+			$rgb_part = strstr( $hex, '(' );
+			$rgb_part = trim($rgb_part, '(' );
+			$rgb_part = rtrim($rgb_part, ')' );
+			$rgb_part = explode( ',', $rgb_part );
+
+			$rgba = array($rgb_part[0], $rgb_part[1], $rgb_part[2], $rgb_part[3], $opacity);
+
+		} elseif( $hex == 'transparent' ) {
+			$rgba = array( '255', '255', '255', '0' );
+		} else {
+
+			$hex = str_replace( '#', '', $hex );
+
+			if( strlen( $hex ) == 3 ) {
+				$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+				$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+				$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
+			} else {
+				$r = hexdec( substr( $hex, 0, 2 ) );
+				$g = hexdec( substr( $hex, 2, 2 ) );
+				$b = hexdec( substr( $hex, 4, 2 ) );
+			}
+			$rgba = array( $r, $g, $b , $opacity);
+		}
+
+		return $rgba; // returns an array with the rgb values
+	}
+}
+/**
  * Convert RGB to HSL color model
  * @param  string $hex Color Hex Code of RGB color
  * @return array       HSL values
