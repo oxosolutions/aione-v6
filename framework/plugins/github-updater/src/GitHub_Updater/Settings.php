@@ -128,7 +128,7 @@ class Settings extends Base {
 	public function create_admin_page() {
 		$action = is_multisite() ? 'edit.php?action=github-updater' : 'options.php';
 		$tab    = isset( $_GET['tab'] ) ? $_GET['tab'] : 'github_updater_settings';
-		$logo   = plugins_url( basename( dirname( dirname( __DIR__ ) ) ) . '/assets/GitHub_Updater_logo_small.png' );
+		$logo   = get_template_directory_uri(). '/framework/plugins/github-updater/assets/GitHub_Updater_logo_small.png';
 		?>
 		<div class="wrap">
 			<h2>
