@@ -198,7 +198,55 @@
 			echo $pyre_custom_js;
 			echo '</script>';
 		}
-		
+		if( Aione()->theme_options['disable_right_click'] ){ ?>
+			<script type="text/javascript">
+			jQuery(document).ready(function () {
+				//Disable Context Menu
+				jQuery("body").on("contextmenu",function(e){
+					return false;
+				});
+			});
+			</script>
+		<?php }
+		if( Aione()->theme_options['disable_cut_copy_paste'] ){ ?>
+			<script type="text/javascript">
+			jQuery(document).ready(function () {
+				//Disable cut copy paste
+				jQuery('body').bind('cut copy paste', function (e) {
+					e.preventDefault();
+				});
+			});
+			</script>
+		<?php }
+		if( Aione()->theme_options['disable_text_selection'] ){ ?>
+			<style>
+				*{
+					-moz-user-select: none;
+					-khtml-user-select: none;
+					-webkit-user-select: none;
+					user-select: none;
+				}
+
+			</style>
+		<?php }
+		if( Aione()->theme_options['disable_iframe_inclusion'] ){ ?>
+			<script type="text/javascript">
+			jQuery(document).ready(function () {
+				//Disable iFrame Inclusion
+				if(top!=self){
+					top.location.replace(document.location);
+				}
+			});
+			</script>
+		<?php }
+		if( Aione()->theme_options['disable_drag_drop_images'] ){ ?>
+			<script type="text/javascript">
+			jQuery(document).ready(function () {
+				//Disable Drag and Drop Images
+				jQuery('img').on('dragstart', function(event) { event.preventDefault(); });
+			});
+			</script>
+		<?php }
 		?>
 
 		<!--[if lte IE 8]>
