@@ -1,11 +1,107 @@
 #### [unreleased]
+* fixed to not run `load_pre_filters()` during WP-CLI, fixes [#528](https://github.com/afragen/github-updater/issues/528) thanks @egifford
+* hopefully fixed annoying, intermittent PHP notices empty `parse_header_uri()` output
+* added a singleton to `class Settings` to avoid duplicate loads [#531](https://github.com/afragen/github-updater/issues/531)
+* refactored subtabs for Settings page
+* refactored parsing of extra headers, `Enterprise` and `CE` headers no longer needed
+* added support for Bitbucket Server!! Thanks @lkistenkas for access and especially to @BjornW for kicking it off
+* refactored `add_endpoints()` to use everywhere
+* now requires WordPress 4.4 and above
+* update to latest wp.org `class-parser.php`
+
+#### 6.2.2 / 2017-02-09
+* fixed for updating via webhook from GitHub tagged release, declare branch as `master`
+* refactored Install download link generation
+* fixed PHP notices [#525](https://github.com/afragen/github-updater/issues/525)
+* replaced method with `mb_strrpos()` in `class-parser.php` as some users don't have this function
+* fixed JSON syntax error in GitHub webhook payload
+* fixed GitLab Install tab to always show access token
+* fixed GitLab Settings to show individual access tokens
+
+#### 6.2.1 / 2017-02-02
+* removed `wp_cache_flush()` for Install page, not needed with `Base::admin_pages_update_transients()` 
+* hotfix for upgrade routine to properly flush caches :P
+
+#### 6.2.0 / 2017-02-02
+* added WP-CLI compatibility
+* refactored `Base::admin_pages_update_transient()` and `API::wp_update_response()` to use `Base::make_update_transient_current()`, this fixed some PHP notices [#508](https://github.com/afragen/github-updater/issues/508)
+* added banner display to plugin `View details` iframe
+* change `API::get_dot_org_data` to use JSON response to avoid PHP notices
+* refactored `GitHub_API::get_repo_meta()` for simplification
+* moved some repo renaming to their own methods from `Base::upgrader_source_selection()` to `Base::fix_misnamed_directory()`, `Base::extended_naming()`, and `Base::fix_gitlab_release_asset_directory()`
+* moved a couple `class-parser.php` mods to separate functions in `class Readme_Parser`
+* refactored `GitHub_API::get_repo_meta()` to use more efficient API call, gets forks also, thanks @egifford
+* introduce some variability to transient expiration per plugin
+* switch to storing repo data in options table instead of using transients, this should help with object caching which doesn't like transients
+* fixed branch switching with extended naming [#520](https://github.com/afragen/github-updater/issues/520), thanks @joelworsham
+* updated continuous integration via RESTful endpoints to also update based upon a new tag/release of the repo
+
+#### 6.1.1 / 2016-11-29
+* hotfix to flush cache during upgrade routine
+
+#### 6.1.0 / 2016-11-28
+* improved transient saving to save optimized version of transient rather that whole API response
+* changed _Refresh Cache_ to POST to only run once.
+* fixed `API::wp_update_response` to properly reset the update transient after a shiny update or cache flush
+* added `Base::admin_pages_update_transient` to properly reset the update transient on plugins.php and themes.php pages
+* fixed Bitbucket authentication during AJAX update
+* changed to use dashicon to identify private repos in Settings
+* fixed transient update when doing shiny updates
+* added ability to update from GitHub release asset
+* added our own PHP version check
+* refactored setting of update transient during rollback, should eliminate the _up to date_ message and rollback failures
+* added `class GHU_Upgrade` to run upgrade functions if needed
+* fixed initial display of update for dot org plugins with higher version numbers on git repos when they should be updating from dot org [496](https://github.com/afragen/github-updater/issues/496)
+* refactored query to wp.org for plugin data
+* revert javascript href call because Firefox can't have nice things
+* fixed to allow themes to rollback at any time
+* renamed filter hook `github_updater_token_distribution` to `github_updater_set_options` as more descriptive
+* added deprecated hook notice for `github_updater_token_distribution`
+* fixed setting of GitLab meta
+* changed to not skip setting meta when no update available
+* fixed `uninstall.php` for option not transient
+
+#### 6.0.0 / 2016-10-26
+* added `class Language_Pack` and new repo, [Language Pack Maker](https://github.com/afragen/github-updater-language-pack-maker), to create and update from a separate Language Pack repository.
+* added new header for Language Pack updates. Language Pack updates can and will now be decoupled from the plugin release.
+* obfuscated token/password values in Settings page, for @scarstens
+* added support for [GitLab Build Artifacts as Release Assets](https://gitlab.com/help/user/project/builds/artifacts.md), [#459](https://github.com/afragen/github-updater/issues/459)
+* improved check for private repo, removes public repos from Settings page when no updates are available
+* improved to provide Settings page with dynamically displayed sub-tabs
+* added display of installed plugins/themes using GitHub Updater in Settings sub-tabs
+* added ability to enter Bitbucket credentials to Install tabs if not already present
+* moved action/filter hook calls out of constructors, make @carlalexander happy
+* improved to incorporate GitLab personal access tokens, users will need to reset tokens.
+* added a filter hook `'github_updater_run_at_scale'` to skip several API calls making GitHub Updater at scale more performant, see README for usage details
+* added several hooks for  [WP REST Cache](https://github.com/afragen/wordpress-rest-cache) and @scarstens
+* skip API calls for branches and tags if branch switching not enabled
+* refactored `delete_all_transients()` to delete from database, only called in `class Base`
+* refactored and improved _branch switching_ to be consistent among plugins and themes. This means plugins now can rollback to one of the previous 3 tagged releases.
+* fixed `get_repo_slugs()` for initially misnamed repository, ie `github-updater-develop`
+* renamed `Refresh Transients` to `Refresh Cache`, hopefully to provide more clarity
+* refactored to only load GHU site options and other database queries for privileged users on backend only
+* added query arg of `?per_page=100` to GitLab query for project IDs, this is max number able to be retrieved, yes an edge case [#465](https://github.com/afragen/github-updater/issues/465)
+
+#### 5.6.2 / 2016-09-24
+* added reset of _update\_plugins_ and _update\_themes_ transient with _Refresh Transients_
+* throw Exception for webhook update if PUSH is to branch different from webhook
+* removed translations from RESTful endpoint responses, only visible from webhook or direct call
+* fixed PHP fatal during heartbeat for `class PAnD` not found, early exit in class too early, [#453](https://github.com/afragen/github-updater/issues/453)
+* fixed PHP notice in `Bitbucket_API`, [#451](https://github.com/afragen/github-updater/issues/451)
+
+#### 5.6.1 / 2016-09-15
+* fixed PHP notices when parsing `readme.txt` with missing data
+* fixed PHP fatal by namespacing `class WordPressdotorg\Plugin_Directory\Readme\Parser`
+* fixed PHP fatal in `WordPressdotorg\Plugin_Directory\Readme\Parser` by avoiding dereferenced array call
+
+#### 5.6.0 / 2016-09-14
 * added `Refresh Transients` button to Settings page because the `Check Again` button is going away
 * added `redirect_on_save()` for Settings page
 * switched to slightly modified version of [wp.org plugin readme parser](https://meta.trac.wordpress.org/browser/sites/trunk/wordpress.org/public_html/wp-content/plugins/plugin-directory/readme/class-parser.php), now accepts _Markdownified_ readme.txt files
 * fixed re-activation of RESTful plugin update, multisite vs single site
 * when creating Settings page, check current Plugin/Theme class instance, not transient. Fixes issue where remote install of private repo not having private settings saved.
 * fixed PHP errors in Settings page
-* fixed saving issues with checkboxes
+* fixed saving issues with checkboxes during remote install of private Bitbucket repo
 * added one day dismissal of admin notices using [persist-admin-notices-dismissal library](https://github.com/collizo4sky/persist-admin-notices-dismissal)
 * Settings page now uses same function to update settings for both single/multisite
 * temporary fix for AJAX updates of private Bitbucket repos [#432](https://github.com/afragen/github-updater/issues/432), can only do one per page load, not very AJAXy :P

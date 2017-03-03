@@ -37,23 +37,55 @@ class Install extends Base {
 	 * Constructor.
 	 * Need class-wp-upgrader.php for upgrade classes.
 	 *
-	 * @param $type
+	 * @param string $type
+	 * @param array  $wp_cli_config
 	 */
-	public function __construct( $type ) {
+	public function __construct( $type, $wp_cli_config = array() ) {
 		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-		$this->install( $type );
+		$this->install( $type, $wp_cli_config );
 
-		wp_enqueue_script( 'ghu-install', get_template_directory_uri(). '/framework/plugins/github-updater/js/ghu_install.js', array(), false, true );
+		wp_enqueue_script( 'ghu-install', plugins_url( basename( dirname( dirname( __DIR__ ) ) ) . '/js/ghu_install.js' ), array(), false, true );
 	}
 
 	/**
 	 * Install remote plugin or theme.
 	 *
 	 * @param string $type
+	 * @param array  $wp_cli_config
 	 *
 	 * @return bool
 	 */
-	public function install( $type ) {
+	public function install( $type, $wp_cli_config ) {
+		$wp_cli = false;
+
+		if ( ! empty( $wp_cli_config['uri'] ) ) {
+			$wp_cli  = true;
+			$headers = Base::parse_header_uri( $wp_cli_config['uri'] );
+			$api     = false !== strstr( $headers['host'], '.com' )
+				? rtrim( $headers['host'], '.com' )
+				: rtrim( $headers['host'], '.org' );
+
+			$api = isset( $wp_cli_config['git'] ) ? $wp_cli_config['git'] : $api;
+
+			$_POST['github_updater_repo']   = $wp_cli_config['uri'];
+			$_POST['github_updater_branch'] = $wp_cli_config['branch'];
+			$_POST['github_updater_api']    = $api;
+			$_POST['option_page']           = 'github_updater_install';
+
+			switch ( $api ) {
+				case 'github':
+					$_POST['github_access_token'] = $wp_cli_config['private'] ? $wp_cli_config['private'] : null;
+					break;
+				case 'bitbucket':
+					$_POST['is_private'] = $wp_cli_config['private'] ? '1' : null;
+					break;
+				case 'gitlab':
+					$_POST['gitlab_access_token'] = $wp_cli_config['private'] ? $wp_cli_config['private'] : null;
+					break;
+			}
+
+			$this->load_options();
+		}
 
 		if ( isset( $_POST['option_page'] ) && 'github_updater_install' == $_POST['option_page'] ) {
 			if ( empty( $_POST['github_updater_branch'] ) ) {
@@ -88,14 +120,19 @@ class Install extends Base {
 			if ( 'github' === self::$install['github_updater_api'] ) {
 
 				if ( 'github.com' === $headers['host'] || empty( $headers['host'] ) ) {
-					$github_base     = 'https://api.github.com';
+					$base            = 'https://api.github.com';
 					$headers['host'] = 'github.com';
 				} else {
-					$github_base = $headers['base_uri'] . '/api/v3';
+					$base = $headers['base_uri'] . '/api/v3';
 				}
 
-				self::$install['download_link'] = $github_base . '/repos/' . self::$install['github_updater_repo'] . '/zipball/' . self::$install['github_updater_branch'];
-
+				self::$install['download_link'] = implode( '/', array(
+					$base,
+					'repos',
+					self::$install['github_updater_repo'],
+					'zipball',
+					self::$install['github_updater_branch'],
+				) );
 				/*
 				 * If asset is entered install it.
 				 */
@@ -124,13 +161,63 @@ class Install extends Base {
 			 * Ensures `maybe_authenticate_http()` is available.
 			 */
 			if ( 'bitbucket' === self::$install['github_updater_api'] ) {
+				$bitbucket_org = true;
 
-				self::$install['download_link'] = 'https://bitbucket.org/' . self::$install['github_updater_repo'] . '/get/' . self::$install['github_updater_branch'] . '.zip';
-				if ( isset( self::$install['is_private'] ) ) {
-					parent::$options[ self::$install['repo'] ] = 1;
+				if ( 'bitbucket.org' === $headers['host'] || empty( $headers['host'] ) ) {
+					$base            = 'https://bitbucket.org';
+					$headers['host'] = 'bitbucket.org';
+				} else {
+					$base          = $headers['base_uri'];
+					$bitbucket_org = false;
 				}
 
-				new Bitbucket_API( (object) $type );
+				if ( $bitbucket_org ) {
+					self::$install['download_link'] = implode( '/', array(
+						$base,
+						self::$install['github_updater_repo'],
+						'get',
+						self::$install['github_updater_branch'] . '.zip',
+					) );
+					if ( isset( self::$install['is_private'] ) ) {
+						parent::$options[ self::$install['repo'] ] = 1;
+					}
+					if ( isset( self::$install['bitbucket_username'] ) ) {
+						parent::$options['bitbucket_username'] = self::$install['bitbucket_username'];
+					}
+					if ( isset( self::$install['bitbucket_password'] ) ) {
+						parent::$options['bitbucket_password'] = self::$install['bitbucket_password'];
+					}
+
+					new Bitbucket_API( (object) $type );
+				}
+
+				if ( ! $bitbucket_org ) {
+					self::$install['download_link'] = implode( '/', array(
+						$base,
+						'rest/archive/1.0/projects',
+						$headers['owner'],
+						'repos',
+						$headers['repo'],
+						'archive',
+					) );
+
+					self::$install['download_link'] = add_query_arg( array(
+						'prefix' => $headers['repo'] . '/',
+						'at'     => self::$install['github_updater_branch'],
+					), self::$install['download_link'] );
+
+					if ( isset( self::$install['is_private'] ) ) {
+						parent::$options[ self::$install['repo'] ] = 1;
+					}
+					if ( ! empty( self::$install['bitbucket_username'] ) ) {
+						parent::$options['bitbucket_server_username'] = self::$install['bitbucket_username'];
+					}
+					if ( ! empty( self::$install['bitbucket_password'] ) ) {
+						parent::$options['bitbucket_server_password'] = self::$install['bitbucket_password'];
+					}
+
+					new Bitbucket_Server_API( (object) $type );
+				}
 			}
 
 			/*
@@ -140,32 +227,33 @@ class Install extends Base {
 			if ( 'gitlab' === self::$install['github_updater_api'] ) {
 
 				if ( 'gitlab.com' === $headers['host'] || empty( $headers['host'] ) ) {
-					$gitlab_base     = 'https://gitlab.com';
+					$base            = 'https://gitlab.com';
 					$headers['host'] = 'gitlab.com';
 				} else {
-					$gitlab_base = $headers['base_uri'];
+					$base = $headers['base_uri'];
 				}
 
 				self::$install['download_link'] = implode( '/', array(
-					$gitlab_base,
+					$base,
 					self::$install['github_updater_repo'],
 					'repository/archive.zip',
 				) );
 				self::$install['download_link'] = add_query_arg( 'ref', self::$install['github_updater_branch'], self::$install['download_link'] );
 
 				/*
-				 * Add private token.
+				 * Add access token if present.
 				 */
-				if ( ! empty( self::$install['gitlab_private_token'] ) ) {
-					self::$install['download_link'] = add_query_arg( 'private_token', self::$install['gitlab_private_token'], self::$install['download_link'] );
+				if ( ! empty( self::$install['gitlab_access_token'] ) ) {
+					self::$install['download_link']            = add_query_arg( 'private_token', self::$install['gitlab_access_token'], self::$install['download_link'] );
+					parent::$options[ self::$install['repo'] ] = self::$install['gitlab_access_token'];
 					if ( 'gitlab.com' === $headers['host'] ) {
-						parent::$options['gitlab_private_token'] = self::$install['gitlab_private_token'];
+						parent::$options['gitlab_access_token'] = empty( parent::$options['gitlab_access_token'] ) ? self::$install['gitlab_access_token'] : parent::$options['gitlab_access_token'];
 					} else {
-						parent::$options['gitlab_enterprise_token'] = self::$install['gitlab_private_token'];
+						parent::$options['gitlab_enterprise_token'] = empty( parent::$options['gitlab_enterprise_token'] ) ? self::$install['gitlab_access_token'] : parent::$options['gitlab_enterprise_token'];
 					}
 				} else {
 					if ( 'gitlab.com' === $headers['host'] ) {
-						self::$install['download_link'] = add_query_arg( 'private_token', parent::$options['gitlab_private_token'], self::$install['download_link'] );
+						self::$install['download_link'] = add_query_arg( 'private_token', parent::$options['gitlab_access_token'], self::$install['download_link'] );
 					} else {
 						self::$install['download_link'] = add_query_arg( 'private_token', parent::$options['gitlab_enterprise_token'], self::$install['download_link'] );
 					}
@@ -184,7 +272,7 @@ class Install extends Base {
 				) );
 			}
 
-			update_site_option( 'github_updater', parent::$options );
+			update_site_option( 'github_updater', Settings::sanitize( parent::$options ) );
 			$url   = self::$install['download_link'];
 			$nonce = wp_nonce_url( $url );
 
@@ -194,7 +282,10 @@ class Install extends Base {
 				/*
 				 * Create a new instance of Plugin_Upgrader.
 				 */
-				$upgrader = new \Plugin_Upgrader( $skin = new \Plugin_Installer_Skin( compact( 'type', 'title', 'url', 'nonce', 'plugin', 'api' ) ) );
+				$skin     = $wp_cli
+					? new CLI_Plugin_Installer_Skin()
+					: new \Plugin_Installer_Skin( compact( 'type', 'title', 'url', 'nonce', 'plugin', 'api' ) );
+				$upgrader = new \Plugin_Upgrader( $skin );
 				add_filter( 'install_plugin_complete_actions', array(
 					&$this,
 					'install_plugin_complete_actions',
@@ -207,7 +298,10 @@ class Install extends Base {
 				/*
 				 * Create a new instance of Theme_Upgrader.
 				 */
-				$upgrader = new \Theme_Upgrader( $skin = new \Theme_Installer_Skin( compact( 'type', 'title', 'url', 'nonce', 'theme', 'api' ) ) );
+				$skin     = $wp_cli
+					? new CLI_Theme_Installer_Skin()
+					: new \Theme_Installer_Skin( compact( 'type', 'title', 'url', 'nonce', 'theme', 'api' ) );
+				$upgrader = new \Theme_Upgrader( $skin );
 				add_filter( 'install_theme_complete_actions', array(
 					&$this,
 					'install_theme_complete_actions',
@@ -215,11 +309,13 @@ class Install extends Base {
 			}
 
 			/*
-			 * Perform the action and install the plugin from the $source urldecode().
-			 * Flush cache so we can make sure that the installed plugins/themes list is always up to date.
+			 * Perform the action and install the repo from the $source urldecode().
 			 */
 			$upgrader->install( $url );
-			wp_cache_flush();
+		}
+
+		if ( $wp_cli ) {
+			return true;
 		}
 
 		if ( ! isset( $_POST['option_page'] ) || ! ( 'github_updater_install' === $_POST['option_page'] ) ) {
@@ -307,32 +403,52 @@ class Install extends Base {
 		);
 
 		add_settings_field(
+			'github_access_token',
+			esc_html__( 'GitHub Access Token', 'github-updater' ),
+			array( &$this, 'github_access_token' ),
+			'github_updater_install_' . $type,
+			$type
+		);
+
+		if ( ( empty( parent::$options['bitbucket_username'] ) ||
+		       empty( parent::$options['bitbucket_password'] ) ) ||
+		     (
+		     ( empty( parent::$options['bitbucket_server_username'] ) ||
+		       empty( parent::$options['bitbucket_server_password'] ) )
+		     )
+		) {
+			add_settings_field(
+				'bitbucket_username',
+				esc_html__( 'Bitbucket Username', 'github-updater' ),
+				array( &$this, 'bitbucket_username' ),
+				'github_updater_install_' . $type,
+				$type
+			);
+
+			add_settings_field(
+				'bitbucket_password',
+				esc_html__( 'Bitbucket Password', 'github-updater' ),
+				array( &$this, 'bitbucket_password' ),
+				'github_updater_install_' . $type,
+				$type
+			);
+		}
+
+		add_settings_field(
 			'is_private',
 			esc_html__( 'Private Bitbucket Repository', 'github-updater' ),
-			array( &$this, 'is_private' ),
+			array( &$this, 'is_private_repo' ),
 			'github_updater_install_' . $type,
 			$type
 		);
 
 		add_settings_field(
-			'github_access_token',
-			esc_html__( 'GitHub Access Token', 'github-updater' ),
-			array( &$this, 'access_token' ),
+			'gitlab_access_token',
+			esc_html__( 'GitLab Access Token', 'github-updater' ),
+			array( &$this, 'gitlab_access_token' ),
 			'github_updater_install_' . $type,
 			$type
 		);
-
-		if ( empty( parent::$options['gitlab_private_token'] ) ||
-		     empty( parent::$options['gitlab_enterprise_token'] )
-		) {
-			add_settings_field(
-				'gitlab_private_token',
-				esc_html__( 'GitLab Private Token', 'github-updater' ),
-				array( &$this, 'private_token' ),
-				'github_updater_install_' . $type,
-				$type
-			);
-		}
 
 	}
 
@@ -384,7 +500,7 @@ class Install extends Base {
 	/**
 	 * Setting for private repo.
 	 */
-	public function is_private() {
+	public function is_private_repo() {
 		?>
 		<label for="is_private">
 			<input class="bitbucket_setting" type="checkbox" name="is_private" <?php checked( '1', false, true ) ?> >
@@ -398,7 +514,7 @@ class Install extends Base {
 	/**
 	 * GitHub Access Token for remote install.
 	 */
-	public function access_token() {
+	public function github_access_token() {
 		?>
 		<label for="github_access_token">
 			<input class="github_setting" type="text" style="width:50%;" name="github_access_token" value="">
@@ -410,14 +526,42 @@ class Install extends Base {
 	}
 
 	/**
-	 * GitLab Private Token for remote install.
+	 * Bitbucket username for remote install.
 	 */
-	public function private_token() {
+	public function bitbucket_username() {
 		?>
-		<label for="gitlab_private_token">
-			<input class="gitlab_setting" type="text" style="width:50%;" name="gitlab_private_token" value="">
+		<label for="bitbucket_username">
+			<input class="bitbucket_setting" type="text" style="width:50%;" name="bitbucket_username" value="">
 			<p class="description">
-				<?php esc_html_e( 'Enter GitLab Private Token for private GitLab repositories.', 'github-updater' ) ?>
+				<?php esc_html_e( 'Enter Bitbucket username.', 'github-updater' ) ?>
+			</p>
+		</label>
+		<?php
+	}
+
+	/**
+	 * Bitbucket password for remote install.
+	 */
+	public function bitbucket_password() {
+		?>
+		<label for="bitbucket_password">
+			<input class="bitbucket_setting" type="text" style="width:50%;" name="bitbucket_password" value="">
+			<p class="description">
+				<?php esc_html_e( 'Enter Bitbucket password.', 'github-updater' ) ?>
+			</p>
+		</label>
+		<?php
+	}
+
+	/**
+	 * GitLab Access Token for remote install.
+	 */
+	public function gitlab_access_token() {
+		?>
+		<label for="gitlab_access_token">
+			<input class="gitlab_setting" type="text" style="width:50%;" name="gitlab_access_token" value="">
+			<p class="description">
+				<?php esc_html_e( 'Enter GitLab Access Token for private GitLab repositories.', 'github-updater' ) ?>
 			</p>
 		</label>
 		<?php

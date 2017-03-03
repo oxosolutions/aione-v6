@@ -41,15 +41,12 @@ class Plugin extends Base {
 	 *
 	 * @var string branch
 	 */
-	protected $tag = false;
+	public $tag = false;
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
-		if ( isset( $_GET['refresh_transients'] ) ) {
-			$this->delete_all_transients( 'plugins' );
-		}
 
 		/*
 		 * Get details of installed git sourced plugins.
@@ -96,18 +93,8 @@ class Plugin extends Base {
 		 */
 		include_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
-		$plugins        = get_plugins();
-		$git_plugins    = array();
-		$all_plugins    = array();
-		$update_plugins = get_site_transient( 'update_plugins' );
-
-		if ( empty( $update_plugins ) ) {
-			wp_update_plugins();
-			$update_plugins = get_site_transient( 'update_plugins' );
-		}
-		if ( isset( $update_plugins->response, $update_plugins->no_update ) ) {
-			$all_plugins = array_merge( (array) $update_plugins->response, (array) $update_plugins->no_update );
-		}
+		$plugins     = get_plugins();
+		$git_plugins = array();
 
 		/**
 		 * Filter to add plugins not containing appropriate header line.
@@ -134,12 +121,13 @@ class Plugin extends Base {
 			}
 
 			foreach ( (array) self::$extra_headers as $value ) {
-				$repo_enterprise_uri = null;
-				$repo_enterprise_api = null;
+				$header = null;
 
-				if ( empty( $headers[ $value ] ) ||
-				     false === stristr( $value, 'Plugin' )
-				) {
+				if ( in_array( $value, array( 'Requires PHP', 'Requires WP', 'Languages' ) ) ) {
+					continue;
+				}
+
+				if ( empty( $headers[ $value ] ) || false === stristr( $value, 'Plugin' ) ) {
 					continue;
 				}
 
@@ -148,33 +136,17 @@ class Plugin extends Base {
 
 				if ( $repo_parts['bool'] ) {
 					$header = $this->parse_header_uri( $headers[ $value ] );
-				}
-
-				$self_hosted_parts = array_diff( array_keys( self::$extra_repo_headers ), array( 'branch' ) );
-				foreach ( $self_hosted_parts as $part ) {
-					if ( array_key_exists( $repo_parts[ $part ], $headers ) &&
-					     ! empty( $headers[ $repo_parts[ $part ] ] )
-					) {
-						$repo_enterprise_uri = $headers[ $repo_parts[ $part ] ];
+					if ( empty( $header ) ) {
+						continue;
 					}
 				}
 
-				if ( ! empty( $repo_enterprise_uri ) ) {
-					$repo_enterprise_uri = trim( $repo_enterprise_uri, '/' );
-					switch ( $header_parts[0] ) {
-						case 'GitHub':
-							$repo_enterprise_api = $repo_enterprise_uri . '/api/v3';
-							break;
-						case 'GitLab':
-							$repo_enterprise_api = $repo_enterprise_uri . '/api/v3';
-							break;
-					}
-				}
+				$header = $this->parse_extra_headers( $header, $headers, $header_parts, $repo_parts );
 
 				$git_plugin['type']                = $repo_parts['type'];
-				$git_plugin['uri']                 = $repo_parts['base_uri'] . $header['owner_repo'];
-				$git_plugin['enterprise']          = $repo_enterprise_uri;
-				$git_plugin['enterprise_api']      = $repo_enterprise_api;
+				$git_plugin['uri']                 = $header['base_uri'] . '/' . $header['owner_repo'];
+				$git_plugin['enterprise']          = $header['enterprise_uri'];
+				$git_plugin['enterprise_api']      = $header['enterprise_api'];
 				$git_plugin['owner']               = $header['owner'];
 				$git_plugin['repo']                = $header['repo'];
 				$git_plugin['extended_repo']       = implode( '-', array(
@@ -192,10 +164,20 @@ class Plugin extends Base {
 				$git_plugin['name']                    = $plugin_data['Name'];
 				$git_plugin['local_version']           = strtolower( $plugin_data['Version'] );
 				$git_plugin['sections']['description'] = $plugin_data['Description'];
-				$git_plugin['dot_org']                 = false;
-			}
-			if ( isset( $all_plugins[ $plugin ]->id ) ) {
-				$git_plugin['dot_org'] = true;
+				$git_plugin['languages']               = ! empty( $header['languages'] ) ? $header['languages'] : null;
+				$git_plugin['ci_job']                  = ! empty( $header['ci_job'] ) ? $header['ci_job'] : null;
+				$git_plugin['release_asset']           = true == $plugin_data['Release Asset'] ? true : false;
+
+				$git_plugin['banners']['high'] =
+					file_exists( trailingslashit( WP_PLUGIN_DIR ) . $header['repo'] . '/assets/banner-1544x500.png' )
+						? trailingslashit( WP_PLUGIN_URL ) . $header['repo'] . '/assets/banner-1544x500.png'
+						: null;
+
+				$git_plugin['banners']['low'] =
+					file_exists( trailingslashit( WP_PLUGIN_DIR ) . $header['repo'] . '/assets/banner-772x250.png' )
+						? trailingslashit( WP_PLUGIN_URL ) . $header['repo'] . '/assets/banner-772x250.png'
+						: null;
+
 			}
 
 			$git_plugins[ $git_plugin['repo'] ] = (object) $git_plugin;
@@ -215,34 +197,19 @@ class Plugin extends Base {
 				continue;
 			}
 
-			/*
-			 * Update plugin transient with rollback (branch switching) data.
-			 */
-			if ( ! empty( $_GET['rollback'] ) &&
-			     ( isset( $_GET['plugin'] ) && $_GET['plugin'] === $plugin->slug )
-			) {
-				$this->tag         = $_GET['rollback'];
-				$updates_transient = get_site_transient( 'update_plugins' );
-				$rollback          = array(
-					'slug'        => $plugin->repo,
-					'plugin'      => $plugin->slug,
-					'new_version' => $this->tag,
-					'url'         => $plugin->uri,
-					'package'     => $this->repo_api->construct_download_link( false, $this->tag ),
-				);
-				if ( array_key_exists( $this->tag, $plugin->branches ) ) {
-					$rollback['new_version'] = '0.0.0';
-				}
-				$updates_transient->response[ $plugin->slug ] = (object) $rollback;
-				set_site_transient( 'update_plugins', $updates_transient );
-			}
+			// Update plugin transient with rollback (branch switching) data.
+			add_filter( 'wp_get_update_data', array( &$this, 'set_rollback' ) );
 
-			if ( ! is_multisite() || is_network_admin() ) {
+			if ( ( ! is_multisite() || is_network_admin() ) && ! $plugin->release_asset &&
+			     'init' === current_filter() //added due to calling hook for shiny updates, don't show row twice
+			) {
 				add_action( "after_plugin_row_$plugin->slug", array( &$this, 'plugin_branch_switcher' ), 15, 3 );
 			}
 		}
-		$this->make_transient_list( 'plugins' );
-		$this->load_pre_filters();
+
+		if ( ! $this->is_wp_cli() ) {
+			$this->load_pre_filters();
+		}
 	}
 
 	/**
@@ -293,25 +260,18 @@ class Plugin extends Base {
 			}
 		}
 
+		$branch_switch_data                      = array();
+		$branch_switch_data['slug']              = $plugin['repo'];
+		$branch_switch_data['nonced_update_url'] = $nonced_update_url;
+		$branch_switch_data['id']                = $id;
+		$branch_switch_data['branch']            = $branch;
+		$branch_switch_data['branches']          = $branches;
+
 		/*
 		 * Create after_plugin_row_
 		 */
 		echo $enclosure['open'];
-		printf( esc_html__( 'Current branch is `%1$s`, try %2$sanother branch%3$s.', 'github-updater' ),
-			$branch,
-			'<a href="#" onclick="jQuery(\'#' . $id . '\').toggle();return false;">',
-			'</a>'
-		);
-
-		print( '<ul id="' . $id . '" style="display:none; width: 100%;">' );
-		foreach ( $branches as $branch => $uri ) {
-			printf( '<li><a href="%s%s" aria-label="' . esc_html__( 'Switch to branch ', 'github-updater' ) . $branch . '">%s</a></li>',
-				$nonced_update_url,
-				'&rollback=' . urlencode( $branch ),
-				esc_attr( $branch )
-			);
-		}
-		print( '</ul>' );
+		$this->make_branch_switch_row( $branch_switch_data );
 		echo $enclosure['close'];
 
 		return true;
@@ -377,70 +337,44 @@ class Plugin extends Base {
 	 * @return mixed
 	 */
 	public function plugins_api( $false, $action, $response ) {
-		$match = false;
+		$contributors = array();
 		if ( ! ( 'plugin_information' === $action ) ) {
 			return $false;
 		}
 
-		$transient    = 'ghu-' . md5( $response->slug . 'wporg' );
-		$wp_repo_data = get_site_transient( $transient );
-		if ( ! $wp_repo_data ) {
-			$wp_repo_data = wp_remote_get( 'https://api.wordpress.org/plugins/info/1.0/' . $response->slug );
-			if ( is_wp_error( $wp_repo_data ) ) {
-				return false;
-			}
-			set_site_transient( $transient, $wp_repo_data, ( 12 * HOUR_IN_SECONDS ) );
-		}
+		$plugin = isset( $this->config[ $response->slug ] ) ? $this->config[ $response->slug ] : false;
 
-		$wp_repo_body = unserialize( $wp_repo_data['body'] );
-		if ( is_object( $wp_repo_body ) ) {
-			$response = $wp_repo_body;
-		}
-
-		foreach ( (array) $this->config as $plugin ) {
-			/*
-			 * Fix for extended naming.
-			 */
-			$repos = $this->get_repo_slugs( $plugin->repo );
-			if ( $response->slug === $repos['repo'] || $response->slug === $repos['extended_repo'] ) {
-				$response->slug = $repos['repo'];
-				$match          = true;
-			} else {
-				continue;
-			}
-			$contributors = array();
-			if ( strtolower( $response->slug ) === strtolower( $plugin->repo ) ) {
-				if ( is_object( $wp_repo_body ) && 'master' === $plugin->branch ) {
-					return $response;
-				}
-
-				$response->slug          = $plugin->repo;
-				$response->plugin_name   = $plugin->name;
-				$response->name          = $plugin->name;
-				$response->author        = $plugin->author;
-				$response->homepage      = $plugin->uri;
-				$response->donate_link   = $plugin->donate_link;
-				$response->version       = $plugin->remote_version;
-				$response->sections      = $plugin->sections;
-				$response->requires      = $plugin->requires;
-				$response->tested        = $plugin->tested;
-				$response->downloaded    = $plugin->downloaded;
-				$response->last_updated  = $plugin->last_updated;
-				$response->download_link = $plugin->download_link;
-				foreach ( $plugin->contributors as $contributor ) {
-					$contributors[ $contributor ] = '//profiles.wordpress.org/' . $contributor;
-				}
-				$response->contributors = $contributors;
-				if ( ! $plugin->private ) {
-					$response->num_ratings = $plugin->num_ratings;
-					$response->rating      = $plugin->rating;
-				}
-			}
-			break;
-		}
-
-		if ( ! $match ) {
+		// wp.org plugin.
+		if ( ! $plugin || ( $plugin->dot_org && 'master' === $plugin->branch ) ) {
 			return $false;
+		}
+
+		/*
+		 * Fix for extended naming.
+		 */
+		$repos          = $this->get_repo_slugs( $plugin->repo );
+		$response->slug = ( $response->slug === $repos['extended_repo'] ) ? $repos['repo'] : $plugin->repo;
+
+		$response->plugin_name   = $plugin->name;
+		$response->name          = $plugin->name;
+		$response->author        = $plugin->author;
+		$response->homepage      = $plugin->uri;
+		$response->donate_link   = $plugin->donate_link;
+		$response->version       = $plugin->remote_version;
+		$response->sections      = $plugin->sections;
+		$response->requires      = $plugin->requires;
+		$response->tested        = $plugin->tested;
+		$response->downloaded    = $plugin->downloaded;
+		$response->last_updated  = $plugin->last_updated;
+		$response->download_link = $plugin->download_link;
+		$response->banners       = $plugin->banners;
+		foreach ( $plugin->contributors as $contributor ) {
+			$contributors[ $contributor ] = '//profiles.wordpress.org/' . $contributor;
+		}
+		$response->contributors = $contributors;
+		if ( ! $this->is_private( $plugin ) ) {
+			$response->num_ratings = $plugin->num_ratings;
+			$response->rating      = $plugin->rating;
 		}
 
 		return $response;
@@ -456,7 +390,6 @@ class Plugin extends Base {
 	public function pre_set_site_transient_update_plugins( $transient ) {
 
 		foreach ( (array) $this->config as $plugin ) {
-			$response = null;
 
 			if ( $this->can_update( $plugin ) ) {
 				$response = array(
@@ -473,11 +406,17 @@ class Plugin extends Base {
 				 * If branch is 'master' and plugin is in wp.org repo then pull update from wp.org
 				 */
 				if ( $plugin->dot_org && 'master' === $plugin->branch ) {
+					$transient = empty( $transient ) ? get_site_transient( 'update_plugins' ) : $transient;
+					if ( isset( $transient->response[ $plugin->slug ] ) &&
+					     ! isset( $transient->response[ $plugin->slug ]->id )
+					) {
+						unset( $transient->response[ $plugin->slug ] );
+					}
 					continue;
 				}
 
 				/*
-				 * Don't overwrite if branch switching.
+				 * Skip on branch switching or rollback.
 				 */
 				if ( $this->tag &&
 				     ( isset( $_GET['plugin'] ) && $plugin->slug === $_GET['plugin'] )
@@ -491,4 +430,5 @@ class Plugin extends Base {
 
 		return $transient;
 	}
+
 }

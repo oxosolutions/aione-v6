@@ -22,7 +22,7 @@
  * @author  Agbonghama Collins
  * @author  Andy Fragen
  * @license http://www.gnu.org/licenses GNU General Public License
- * @version 1.1.0
+ * @version 1.3
  */
 
 /**
@@ -30,13 +30,6 @@
  */
 if ( ! defined( 'WPINC' ) ) {
 	die;
-}
-
-/**
- * Don't run during heartbeat.
- */
-if ( isset( $_REQUEST['action'] ) && 'heartbeat' === $_REQUEST['action'] ) {
-	return;
 }
 
 if ( ! class_exists( 'PAnD' ) ) {
@@ -60,7 +53,7 @@ if ( ! class_exists( 'PAnD' ) ) {
 		public static function load_script() {
 			wp_enqueue_script(
 				'dismissible-notices',
-				get_template_directory_uri() . '/framework/plugins/github-updater/vendor/persist-admin-notices-dismissal/dismiss-notice.js',
+				plugins_url( 'dismiss-notice.js', __FILE__ ),
 				array( 'jquery', 'common' ),
 				false,
 				true

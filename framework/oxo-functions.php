@@ -405,6 +405,9 @@ if( ! function_exists( 'oxo_calc_color_brightness' ) ) {
  */
 if( ! function_exists( 'oxo_hex2rgb' ) ) {
 	function oxo_hex2rgb( $hex ) {
+		if(is_array($hex)){
+			$hex = $hex['color'];
+		}
 		if ( strpos( $hex,'rgb' ) !== FALSE ) {
 
 			$rgb_part = strstr( $hex, '(' );

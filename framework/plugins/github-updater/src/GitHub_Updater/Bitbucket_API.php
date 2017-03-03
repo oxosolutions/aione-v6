@@ -34,11 +34,9 @@ class Bitbucket_API extends API {
 	 */
 	public function __construct( $type ) {
 		$this->type     = $type;
-		parent::$hours  = 12;
-		$this->response = $this->get_transient();
+		$this->response = $this->get_repo_cache();
 
-		add_filter( 'http_request_args', array( &$this, 'maybe_authenticate_http' ), 10, 2 );
-		add_filter( 'http_request_args', array( &$this, 'http_release_asset_auth' ), 15, 2 );
+		$this->load_hooks();
 
 		if ( ! isset( self::$options['bitbucket_username'] ) ) {
 			self::$options['bitbucket_username'] = null;
@@ -47,6 +45,23 @@ class Bitbucket_API extends API {
 			self::$options['bitbucket_password'] = null;
 		}
 		add_site_option( 'github_updater', self::$options );
+	}
+
+	/**
+	 * Load hooks for Bitbucket authentication headers.
+	 */
+	public function load_hooks() {
+		add_filter( 'http_request_args', array( &$this, 'maybe_authenticate_http' ), 5, 2 );
+		add_filter( 'http_request_args', array( &$this, 'http_release_asset_auth' ), 15, 2 );
+	}
+
+	/**
+	 * Remove hooks for Bitbucket authentication headers.
+	 */
+	public function remove_hooks() {
+		remove_filter( 'http_request_args', array( &$this, 'maybe_authenticate_http' ) );
+		remove_filter( 'http_request_args', array( &$this, 'http_release_asset_auth' ) );
+		remove_filter( 'http_request_args', array( &$this, 'ajax_maybe_authenticate_http' ) );
 	}
 
 	/**
@@ -60,15 +75,12 @@ class Bitbucket_API extends API {
 		$response = isset( $this->response[ $file ] ) ? $this->response[ $file ] : false;
 
 		if ( ! $response ) {
-			if ( empty( $this->type->branch ) ) {
-				$this->type->branch = 'master';
-			}
-			$response = $this->api( '/1.0/repositories/:owner/:repo/src/' . trailingslashit( $this->type->branch ) . $file );
+			$response = $this->api( '/1.0/repositories/:owner/:repo/src/:branch/' . $file );
 
-			if ( $response ) {
+			if ( $response && isset( $response->data ) ) {
 				$contents = $response->data;
 				$response = $this->get_file_headers( $contents, $this->type->type );
-				$this->set_transient( $file, $response );
+				$this->set_repo_cache( $file, $response );
 			}
 		}
 
@@ -76,23 +88,20 @@ class Bitbucket_API extends API {
 			return false;
 		}
 
+		$response['dot_org'] = $this->get_dot_org_data();
 		$this->set_file_info( $response );
 
 		return true;
 	}
 
 	/**
-	 * Get the remote info to for tags.
+	 * Get the remote info for tags.
 	 *
 	 * @return bool
 	 */
 	public function get_remote_tag() {
 		$repo_type = $this->return_repo_type();
 		$response  = isset( $this->response['tags'] ) ? $this->response['tags'] : false;
-
-		if ( $this->exit_no_update( $response ) && 'theme' !== $repo_type['type'] ) {
-			return false;
-		}
 
 		if ( ! $response ) {
 			$response = $this->api( '/1.0/repositories/:owner/:repo/tags' );
@@ -104,7 +113,8 @@ class Bitbucket_API extends API {
 			}
 
 			if ( $response ) {
-				$this->set_transient( 'tags', $response );
+				$response = $this->parse_tag_response( $response );
+				$this->set_repo_cache( 'tags', $response );
 			}
 		}
 
@@ -131,21 +141,18 @@ class Bitbucket_API extends API {
 		 * Set $response from local file if no update available.
 		 */
 		if ( ! $response && ! $this->can_update( $this->type ) ) {
-			$response = new \stdClass();
+			$response = array();
 			$content  = $this->get_local_info( $this->type, $changes );
 			if ( $content ) {
-				$response->data = $content;
-				$this->set_transient( 'changes', $response );
+				$response['changes'] = $content;
+				$this->set_repo_cache( 'changes', $response );
 			} else {
 				$response = false;
 			}
 		}
 
 		if ( ! $response ) {
-			if ( ! isset( $this->type->branch ) ) {
-				$this->type->branch = 'master';
-			}
-			$response = $this->api( '/1.0/repositories/:owner/:repo/src/' . trailingslashit( $this->type->branch ) . $changes );
+			$response = $this->api( '/1.0/repositories/:owner/:repo/src/:branch/' . $changes );
 
 			if ( ! $response ) {
 				$response          = new \stdClass();
@@ -153,7 +160,8 @@ class Bitbucket_API extends API {
 			}
 
 			if ( $response ) {
-				$this->set_transient( 'changes', $response );
+				$response = $this->parse_changelog_response( $response );
+				$this->set_repo_cache( 'changes', $response );
 			}
 		}
 
@@ -161,13 +169,8 @@ class Bitbucket_API extends API {
 			return false;
 		}
 
-		$changelog = isset( $this->response['changelog'] ) ? $this->response['changelog'] : false;
-
-		if ( ! $changelog ) {
-			$parser    = new \Parsedown;
-			$changelog = $parser->text( $response->data );
-			$this->set_transient( 'changelog', $changelog );
-		}
+		$parser    = new \Parsedown;
+		$changelog = $parser->text( $response['changes'] );
 
 		$this->type->sections['changelog'] = $changelog;
 
@@ -180,9 +183,7 @@ class Bitbucket_API extends API {
 	 * @return bool
 	 */
 	public function get_remote_readme() {
-		if ( ! file_exists( $this->type->local_path . 'readme.txt' ) &&
-		     ! file_exists( $this->type->local_path_extended . 'readme.txt' )
-		) {
+		if ( ! $this->exists_local_file( 'readme.txt' ) ) {
 			return false;
 		}
 
@@ -202,23 +203,19 @@ class Bitbucket_API extends API {
 		}
 
 		if ( ! $response ) {
-			if ( ! isset( $this->type->branch ) ) {
-				$this->type->branch = 'master';
-			}
-			$response = $this->api( '/1.0/repositories/:owner/:repo/src/' . trailingslashit( $this->type->branch ) . 'readme.txt' );
+			$response = $this->api( '/1.0/repositories/:owner/:repo/src/:branch/' . 'readme.txt' );
 
 			if ( ! $response ) {
 				$response          = new \stdClass();
 				$response->message = 'No readme found';
 			}
-
 		}
 
 		if ( $response && isset( $response->data ) ) {
 			$file     = $response->data;
 			$parser   = new Readme_Parser( $file );
 			$response = $parser->parse_data();
-			$this->set_transient( 'readme', $response );
+			$this->set_repo_cache( 'readme', $response );
 		}
 
 		if ( $this->validate_response( $response ) ) {
@@ -238,15 +235,12 @@ class Bitbucket_API extends API {
 	public function get_repo_meta() {
 		$response = isset( $this->response['meta'] ) ? $this->response['meta'] : false;
 
-		if ( $this->exit_no_update( $response ) ) {
-			return false;
-		}
-
 		if ( ! $response ) {
 			$response = $this->api( '/2.0/repositories/:owner/:repo' );
 
 			if ( $response ) {
-				$this->set_transient( 'meta', $response );
+				$response = $this->parse_meta_response( $response );
+				$this->set_repo_cache( 'meta', $response );
 			}
 		}
 
@@ -255,7 +249,7 @@ class Bitbucket_API extends API {
 		}
 
 		$this->type->repo_meta = $response;
-		$this->_add_meta_repo_object();
+		$this->add_meta_repo_object();
 
 		return true;
 	}
@@ -281,7 +275,7 @@ class Bitbucket_API extends API {
 					$branches[ $branch ] = $this->construct_download_link( false, $branch );
 				}
 				$this->type->branches = $branches;
-				$this->set_transient( 'branches', $branches );
+				$this->set_repo_cache( 'branches', $branches );
 
 				return true;
 			}
@@ -305,13 +299,9 @@ class Bitbucket_API extends API {
 	 * @return string $endpoint
 	 */
 	public function construct_download_link( $rollback = false, $branch_switch = false ) {
-		$download_link_base = implode( '/', array(
-			'https://bitbucket.org',
-			$this->type->owner,
-			$this->type->repo,
-			'get/',
-		) );
-		$endpoint           = '';
+		$download_link_base = $this->get_api_url( '/:owner/:repo/get/', true );
+
+		$endpoint = '';
 
 		if ( $this->type->release_asset && '0.0.0' !== $this->type->newest_tag ) {
 			return $this->make_release_asset_download_link();
@@ -328,31 +318,68 @@ class Bitbucket_API extends API {
 
 			// for users wanting to update against branch other than master or not using tags, else use newest_tag
 		} elseif ( 'master' != $this->type->branch || empty( $this->type->tags ) ) {
-			$endpoint .= $this->type->branch . '.zip';
+			if ( ! empty( $this->type->enterprise_api ) ) {
+				$endpoint = add_query_arg( 'at', $this->type->branch, $endpoint );
+			} else {
+				$endpoint .= $this->type->branch . '.zip';
+			}
 		} else {
-			$endpoint .= $this->type->newest_tag . '.zip';
+			if ( ! empty( $this->type->enterprise_api ) ) {
+				$endpoint = add_query_arg( 'at', $this->type->newest_tag, $endpoint );
+			} else {
+				$endpoint .= $this->type->newest_tag . '.zip';
+			}
 		}
 
 		/*
 		 * Create endpoint for branch switching.
 		 */
 		if ( $branch_switch ) {
-			$endpoint = $branch_switch . '.zip';
+			if ( ! empty( $this->type->enterprise_api ) ) {
+				$endpoint = add_query_arg( 'at', $branch_switch, $endpoint );
+			} else {
+				$endpoint = $branch_switch . '.zip';
+			}
 		}
 
 		return $download_link_base . $endpoint;
 	}
 
 	/**
-	 * Add remote data to type object.
+	 * Get/process Language Packs.
+	 * Language Packs cannot reside on Bitbucket Server.
 	 *
-	 * @access private
+	 * @param array $headers Array of headers of Language Pack.
+	 *
+	 * @return bool When invalid response.
 	 */
-	private function _add_meta_repo_object() {
-		$this->type->rating       = $this->make_rating( $this->type->repo_meta );
-		$this->type->last_updated = $this->type->repo_meta->updated_on;
-		$this->type->num_ratings  = $this->type->watchers;
-		$this->type->private      = $this->type->repo_meta->is_private;
+	public function get_language_pack( $headers ) {
+		$response = ! empty( $this->response['languages'] ) ? $this->response['languages'] : false;
+		$type     = explode( '_', $this->type->type );
+
+		if ( ! $response ) {
+			$response = $this->api( '/1.0/repositories/' . $headers['owner'] . '/' . $headers['repo'] . '/src/master/language-pack.json' );
+
+			if ( $this->validate_response( $response ) ) {
+				return false;
+			}
+
+			if ( $response ) {
+				$response = json_decode( $response->data );
+
+				foreach ( $response as $locale ) {
+					$package = array( 'https://bitbucket.org', $headers['owner'], $headers['repo'], 'raw/master' );
+					$package = implode( '/', $package ) . $locale->package;
+
+					$response->{$locale->language}->package = $package;
+					$response->{$locale->language}->type    = $type[1];
+					$response->{$locale->language}->version = $this->type->remote_version;
+				}
+
+				$this->set_repo_cache( 'languages', $response );
+			}
+		}
+		$this->type->language_packs = $response;
 	}
 
 	/**
@@ -365,9 +392,8 @@ class Bitbucket_API extends API {
 	 * @return mixed $args
 	 */
 	public function maybe_authenticate_http( $args, $url ) {
-		if ( ! isset( $this->type ) || false === stristr( $url, 'bitbucket' ) ) {
-			return $args;
-		}
+		$headers       = parse_url( $url );
+		$bitbucket_org = 'bitbucket.org' === $headers['host'] ? true : false;
 
 		$bitbucket_private         = false;
 		$bitbucket_private_install = false;
@@ -389,14 +415,18 @@ class Bitbucket_API extends API {
 		if ( isset( $_POST['option_page'], $_POST['is_private'] ) &&
 		     'github_updater_install' === $_POST['option_page'] &&
 		     'bitbucket' === $_POST['github_updater_api'] &&
-		     ( ! empty( parent::$options['bitbucket_username'] ) || ! empty( parent::$options['bitbucket_password'] ) )
+		     ( ( ! empty( parent::$options['bitbucket_username'] ) &&
+		         ! empty( parent::$options['bitbucket_password'] ) ) ||
+		       ( ! empty( parent::$options['bitbucket_server_username'] ) &&
+		         ! empty( parent::$options['bitbucket_server_password'] ) ) )
 		) {
 			$bitbucket_private_install = true;
 		}
 
 		if ( $bitbucket_private || $bitbucket_private_install ) {
-			$username                         = parent::$options['bitbucket_username'];
-			$password                         = parent::$options['bitbucket_password'];
+			$username = $bitbucket_org ? parent::$options['bitbucket_username'] : parent::$options['bitbucket_server_username'];
+			$password = $bitbucket_org ? parent::$options['bitbucket_password'] : parent::$options['bitbucket_server_password'];
+
 			$args['headers']['Authorization'] = 'Basic ' . base64_encode( "$username:$password" );
 		}
 
@@ -416,7 +446,7 @@ class Bitbucket_API extends API {
 	 */
 	public function http_release_asset_auth( $args, $url ) {
 		$arrURL = parse_url( $url );
-		if ( 'bbuseruploads.s3.amazonaws.com' === $arrURL['host'] ) {
+		if ( isset( $arrURL['host'] ) && 'bbuseruploads.s3.amazonaws.com' === $arrURL['host'] ) {
 			unset( $args['headers']['Authorization'] );
 		}
 
@@ -429,7 +459,8 @@ class Bitbucket_API extends API {
 	 * @param $git
 	 * @param $endpoint
 	 */
-	protected function add_endpoints( $git, $endpoint ) {}
+	protected function add_endpoints( $git, $endpoint ) {
+	}
 
 	/**
 	 * Add Basic Authentication $args to http_request_args filter hook
@@ -440,19 +471,90 @@ class Bitbucket_API extends API {
 	 *
 	 * @return mixed
 	 */
-	public static function ajax_maybe_authenticate_http( $args, $url ) {
+	public function ajax_maybe_authenticate_http( $args, $url ) {
+		global $wp_current_filter;
+
+		$headers       = parse_url( $url );
+		$bitbucket_org = 'bitbucket.org' === $headers['host'] ? true : false;
+
+		$ajax_update    = array( 'wp_ajax_update-plugin', 'wp_ajax_update-theme' );
+		$is_ajax_update = array_intersect( $ajax_update, $wp_current_filter );
+
+		if ( ! empty( $is_ajax_update ) ) {
+			$this->load_options();
+		}
+
 		if ( parent::is_doing_ajax() && ! parent::is_heartbeat() &&
-		     ( isset( $_POST['slug'] ) && 1 == parent::$options[ $_POST['slug'] ] &&
+		     ( isset( $_POST['slug'] ) && array_key_exists( $_POST['slug'], parent::$options ) &&
+		       1 == parent::$options[ $_POST['slug'] ] &&
 		       false !== stristr( $url, $_POST['slug'] ) )
 		) {
-			$username                         = parent::$options['bitbucket_username'];
-			$password                         = parent::$options['bitbucket_password'];
-			$args['headers']['Authorization'] = 'Basic ' . base64_encode( "$username:$password" );
+			$username = $bitbucket_org ? parent::$options['bitbucket_username'] : parent::$options['bitbucket_server_username'];
+			$password = $bitbucket_org ? parent::$options['bitbucket_password'] : parent::$options['bitbucket_server_password'];
 
-			return $args;
+			$args['headers']['Authorization'] = 'Basic ' . base64_encode( "$username:$password" );
 		}
 
 		return $args;
+	}
+
+	/**
+	 * Parse API response call and return only array of tag numbers.
+	 *
+	 * @param object $response Response from API call.
+	 *
+	 * @return array|object Array of tag numbers, object is error.
+	 */
+	protected function parse_tag_response( $response ) {
+		if ( isset( $response->message ) ) {
+			return $response;
+		}
+
+		return array_keys( (array) $response );
+	}
+
+	/**
+	 * Parse API response and return array of meta variables.
+	 *
+	 * @param object $response Response from API call.
+	 *
+	 * @return array $arr Array of meta variables.
+	 */
+	protected function parse_meta_response( $response ) {
+		$arr      = array();
+		$response = array( $response );
+
+		array_filter( $response, function( $e ) use ( &$arr ) {
+			$arr['private']      = $e->is_private;
+			$arr['last_updated'] = $e->updated_on;
+			$arr['watchers']     = 0;
+			$arr['forks']        = 0;
+			$arr['open_issues']  = 0;
+		} );
+
+		return $arr;
+	}
+
+	/**
+	 * Parse API response and return array with changelog in base64.
+	 *
+	 * @param object $response Response from API call.
+	 *
+	 * @return array|object $arr Array of changes in base64, object if error.
+	 */
+	protected function parse_changelog_response( $response ) {
+		if ( isset( $response->message ) ) {
+			return $response;
+		}
+
+		$arr      = array();
+		$response = array( $response );
+
+		array_filter( $response, function( $e ) use ( &$arr ) {
+			$arr['changes'] = $e->data;
+		} );
+
+		return $arr;
 	}
 
 }

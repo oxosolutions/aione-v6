@@ -303,6 +303,10 @@ class Aione_Sanitize {
 		}
 
 		// Is this an rgba color or a hex?
+
+		if(is_array($value)){
+			$value = $value['color'];
+		}
 		$mode = ( false === strpos( $value, 'rgba' ) ) ? 'rgba' : 'hex';
 
 		if ( 'rgba' == $mode ) {

@@ -34,10 +34,9 @@ delete_option( 'github_updater' );
 delete_site_option( 'github_updater_api_key' );
 delete_option( 'github_updater_api_key' );
 
-delete_site_transient( 'github_updater_remote_management' );
-delete_transient( 'github_updater_remote_management' );
+delete_site_option( 'github_updater_remote_management' );
+delete_option( 'github_updater_remote_management' );
 
 include_once( 'github-updater.php' );
 $base = new Fragen\GitHub_Updater\Base();
-$base->delete_all_transients( 'plugins' );
-$base->delete_all_transients( 'themes' );
+$base->delete_all_cached_data();
