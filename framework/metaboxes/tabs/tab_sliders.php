@@ -122,7 +122,7 @@ $this->select(
 		'yes'     => __( 'Yes', 'Aione' ),
 		'no'      => __( 'No', 'Aione' )
 	),
-	__( 'Choose to enable or disable disable Aione styles for Revolution Slider.', 'Aione' )
+	__( 'Choose to enable or disable Aione styles for Revolution Slider.', 'Aione' )
 );
 
 // Omit closing PHP tag to avoid "Headers already sent" issues.

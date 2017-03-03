@@ -4032,7 +4032,7 @@ $image_rollover_opacity               = ( Aione()->theme_options[ 'image_gradien
 	}
 
 	$css['global']['.oxo-main-menu .sub-menu']['background-color'] = Aione_Sanitize::color( Aione()->theme_options[ 'menu_sub_bg_color' ], Aione()->settings->get_default( 'menu_sub_bg_color' ) );
-	$css['global']['.oxo-main-menu .sub-menu, .oxo-main-menu .oxo-menu-cart-items, .oxo-main-menu .oxo-menu-login-box .oxo-custom-menu-item-contents']['width']            = Aione_Sanitize::size( Aione()->theme_options[ 'dropdown_menu_width' ] );
+	$css['global']['.oxo-main-menu .sub-menu, .oxo-main-menu .oxo-menu-cart-items, .oxo-main-menu .oxo-menu-login-box .oxo-custom-menu-item-contents']['width']            = Aione_Sanitize::size( Aione()->theme_options[ 'dropdown_menu_width' ] ).'px';
 	$css['global']['.oxo-main-menu .sub-menu']['border-top']       = '3px solid ' . Aione_Sanitize::color( Aione()->theme_options[ 'menu_hover_first_color' ], Aione()->settings->get_default( 'menu_hover_first_color' ) );
 	$css['global']['.oxo-main-menu .sub-menu']['font-family']      = $font;
 	$css['global']['.oxo-main-menu .sub-menu']['font-weight']      = esc_attr( Aione()->theme_options[ 'font_weight_body' ] );

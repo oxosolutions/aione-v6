@@ -6,7 +6,7 @@
 
 $this->select(
 	'enable_authenication',
-	__( 'Enable Authenication', 'Aione' ),
+	__( 'Enable Authentication', 'Aione' ),
 	array(
 		'default' => __( 'Default', 'Aione' ),
 		'yes'     => __( 'Yes', 'Aione' ),
