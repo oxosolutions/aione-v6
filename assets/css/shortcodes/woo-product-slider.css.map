@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,uBAAwB;EACvB,QAAQ,EAAE,MAAM;EAChB,aAAa,EAAE,IAAI;EAGlB,4CAAO;IACN,UAAU,EAAE,GAAG;IAEf,oDAAQ;MACN,SAAS,EAAE,IAAI",
-"sources": ["../../sass/shortcodes/woo-product-slider.scss"],
-"names": [],
-"file": "woo-product-slider.css"
-}

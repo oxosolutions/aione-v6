@@ -1,0 +1,675 @@
+.header-v4 #header {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.header-social {
+    background-color: #f2f2f2;
+    -moz-box-shadow: 0px 0px 3px #969696;
+    -webkit-box-shadow: 0px 0px 3px #969696;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=90, Color=#969696)";
+    box-shadow: 0px 0px 3px #969696;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=90, Color=#969696);
+}
+
+
+.topbar-item {
+    display: inline-block;
+    float: left;
+    line-height: 42px;
+    padding: 0 0 0 10px;
+
+}
+
+.topbar-item:first-child {
+    padding-left: 0;
+
+}
+
+.topbar-item::after {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin: 0 0 0 10px;
+    content: '';
+
+    background-color: RGBA(0, 0, 0, 0.2);
+
+    -moz-box-shadow: inset 1px 1px 2px #666;
+    -webkit-box-shadow: inset 1px 1px 2px #666;
+    box-shadow: inset 1px 1px 2px #666;
+
+    -moz-border-radius: 999px; /*Firefox*/
+    -webkit-border-radius: 999px; /*Safari, Chrome*/
+    border-radius: 999px;
+}
+
+.topbar-item:last-child::after {
+    display: none;
+    margin: 0;
+    content: '';
+}
+
+#top-menu-separator,#social-links-separator,#top-menu-separator:after,#social-links-separator:after{ margin: 0; padding: 0;}
+.header-social .alignright .aione-social-links-header .aione-social-network-icon {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.top-menu{
+    display: inline-block;
+    float: left;
+}
+#topbar-custom{
+    float:right;
+}
+
+#logo {
+    display: inline-block;
+    float: left;
+    position: relative;
+}
+
+#logo_text {
+    display: inline-block;
+    float: left;
+    margin: 0 0 0 20px;
+    padding: 0;
+    position: relative;
+}
+
+#site_name {
+    font-size: 48px;
+    line-height: 35px;
+}
+
+#site_description {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.underline-left > li > a span.menu-item-text::after,
+.underline-right > li > a span.menu-item-text::after,
+.underline-up > li > a span.menu-item-text::after,
+.underline-down > li > a span.menu-item-text::after{
+    position: relative;
+    display: block;
+    margin-top: -4px;
+    width: 0px;
+    content: '';
+    transition: 0.5s ease;
+    height: 4px;
+}
+
+.underline-right > li > a span.menu-item-text::after{
+    float: right;
+}
+
+.underline-up > li > a span.menu-item-text::after {
+    width: 100%;
+    height: 4px;
+    opacity: 0;
+    margin-top: -15px;
+}
+
+.underline-down > li > a span.menu-item-text::after {
+    height: 4px;
+    margin-top: 0px;
+    width: 100%;
+}
+
+.underline-left > li > a:hover span.menu-item-text::after,
+.underline-left > li.current_page_item > a span.menu-item-text::after,
+.underline-left > li.current_menu_item > a span.menu-item-text::after,
+.underline-left > li.current-menu-parent > a span.menu-item-text::after,
+.underline-left > li.current-menu-ancestor > a span.menu-item-text::after,
+.underline-right > li > a:hover span.menu-item-text::after,
+.underline-right > li.current_page_item > a span.menu-item-text::after,
+.underline-right > li.current_menu_item > a span.menu-item-text::after,
+.underline-right > li.current-menu-parent > a span.menu-item-text::after,
+.underline-right > li.current-menu-ancestor > a span.menu-item-text::after{
+    width: 100%;
+}
+
+.underline-up > li > a:hover span.menu-item-text::after,
+.underline-up > li.current_page_item > a span.menu-item-text::after,
+.underline-up > li.current_menu_item > a span.menu-item-text::after,
+.underline-up > li.current-menu-parent > a span.menu-item-text::after,
+.underline-up > li.current-menu-ancestor > a span.menu-item-text::after,
+.underline-down > li > a:hover span.menu-item-text::after,
+.underline-down > li.current_page_item > a span.menu-item-text::after,
+.underline-down > li.current_menu_item > a span.menu-item-text::after,
+.underline-down > li.current-menu-parent > a span.menu-item-text::after,
+.underline-down > li.current-menu-ancestor > a span.menu-item-text::after {
+    margin-top: -4px;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+.topline-left > li > a span.menu-item-text::after,
+.topline-right > li > a span.menu-item-text::after,
+.topline-up > li > a span.menu-item-text::after,
+.topline-down > li > a span.menu-item-text::after{
+    position: absolute;
+    display: block;
+    top: 0px;
+    width: 0px;
+    content: '';
+    transition: 0.5s ease;
+    height: 4px;
+}
+
+.topline-right > li > a span.menu-item-text::after{
+    right: 0;
+}
+
+.topline-up > li > a span.menu-item-text::after {
+    width: 100%;
+    height: 4px;
+    opacity: 0;
+    top: 15px;
+}
+
+.topline-down > li > a span.menu-item-text::after {
+    height: 4px;
+    margin-top: -15px;
+    width: 100%;
+    opacity: 0;
+}
+
+.topline-left > li > a:hover span.menu-item-text::after,
+.topline-left > li.current_page_item > a span.menu-item-text::after,
+.topline-left > li.current_menu_item > a span.menu-item-text::after,
+.topline-left > li.current-menu-parent > a span.menu-item-text::after,
+.topline-left > li.current-menu-ancestor > a span.menu-item-text::after,
+.topline-right > li > a:hover span.menu-item-text::after,
+.topline-right > li.current_page_item > a span.menu-item-text::after,
+.topline-right > li.current_menu_item > a span.menu-item-text::after,
+.topline-right > li.current-menu-parent > a span.menu-item-text::after,
+.topline-right > li.current-menu-ancestor > a span.menu-item-text::after{
+    width: 100%;
+}
+
+.topline-up > li > a:hover span.menu-item-text::after,
+.topline-up > li.current_page_item > a span.menu-item-text::after,
+.topline-up > li.current_menu_item > a span.menu-item-text::after,
+.topline-up > li.current-menu-parent > a span.menu-item-text::after,
+.topline-up > li.current-menu-ancestor > a span.menu-item-text::after,
+.topline-down > li > a:hover span.menu-item-text::after,
+.topline-down > li.current_page_item > a span.menu-item-text::after,
+.topline-down > li.current_menu_item > a span.menu-item-text::after,
+.topline-down > li.current-menu-parent > a span.menu-item-text::after,
+.topline-down > li.current-menu-ancestor > a span.menu-item-text::after {
+    top: 0px;
+    margin-top: 0px;
+    opacity: 1;
+}
+/* ======================================================= */
+/*               Slide Up Down Code                */
+/* ======================================================= */
+nav#nav > ul.navigation > li#nav_home_icon > a, nav#nav > ul.navigation > li#nav_home_icon > a:visited {
+    font-size: 30px;
+}
+
+nav#nav > ul.navigation > li > a {
+    overflow: hidden;
+}
+
+.slide-up > li > a > span {
+    position: relative;
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.slide-up > li > a span::after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    content: attr(data-hover);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slide-up > li > a:hover span,
+.slide-up > li > a:focus span {
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+.slide-down > li > a span {
+    position: relative;
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.slide-down > li > a span::after {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    content: attr(data-hover);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slide-down > li > a:hover span,
+.slide-down > li > a:focus span {
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+/* ======================================================= */
+/*               Slide Right Code                */
+/* ======================================================= */
+
+.slide-right > li > a span {
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.slide-right > li > a span::after {
+    position: absolute;
+    text-align: center;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+
+    content: attr(data-hover);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    transform: translateX(100%);
+
+}
+
+.slide-right > li > a:hover span,
+.slide-right > li > a:focus span {
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+/* ======================================================= */
+/*                   Slide Left Code                       */
+/* ======================================================= */
+.jqueryslidemenu ul.slide-left li a {
+    padding: 0;
+}
+
+.slide-left > li > a span {
+    display: inline-block;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    transform: translateX(0%);
+}
+
+.slide-left > li > a span::after {
+    position: absolute;
+    text-align: center;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+
+    content: attr(data-hover);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    transform: translateX(100%);
+
+}
+
+.slide-left > li > a:hover span,
+.slide-left > li > a:focus span {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+
+
+
+
+/* ======================================================= */
+/*                   3D Rotate Left Code                       */
+/* ======================================================= */
+nav#nav > ul.rotate-left li a{
+
+}
+nav#nav > ul.rotate-left > li > a {
+    margin: 10px 8px;
+    overflow: visible;
+}
+
+nav#nav ul.rotate-left > li{
+    padding: 0;
+}
+nav#nav > ul.rotate-left > li > a{
+    padding:0 8px;
+
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    perspective: 800px;
+    width: 200px;
+
+}
+
+.rotate-left > li > a span.menu-item-text {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: #e35041;
+    -webkit-transition: -webkit-transform 0.4s, background 0.4s;
+    -moz-transition: -moz-transform 0.4s, background 0.4s;
+    transition: transform 0.4s, background 0.4s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50% -100px;
+    -moz-transform-origin: 50% 50% -100px;
+    transform-origin: 50% 50% -100px;
+
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.rotate-left > li > a span.menu-item-text::before {
+    position: absolute;
+    background: #b53a2d;
+    content: attr(data-hover);
+    -webkit-transition: background 0.4s;
+    -moz-transition: background 0.4s;
+    transition: background 0.4s;
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+    -webkit-transform-origin: 0 50%;
+    -moz-transform-origin: 0 50%;
+    transform-origin: 0 50%;
+    pointer-events: none;
+
+    text-align: center;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+
+}
+
+.rotate-left > li > a:hover span,
+.rotate-left > li > a:focus span {
+    background: #b53a2d;
+    -webkit-transform: rotateY(-90deg);
+    -moz-transform: rotateY(-90deg);
+    transform: rotateY(-90deg);
+}
+
+/* ======================================================= */
+/*                   3D Rotate UP Code                       */
+/* ======================================================= */
+
+nav#nav ul.rotate-up > li{
+    padding: 0;
+}
+nav#nav > ul.rotate-up > li > a{
+
+
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+
+}
+
+.rotate-up > li > a span.menu-item-text {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding:0 8px;
+    background: #e35041;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+
+    -webkit-transform-origin: 50% 0;
+    -moz-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.rotate-up > li > a span.menu-item-text::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0965a0;
+
+    text-align: center;
+    content: attr(data-hover);
+
+    -webkit-transition: background 0.3s;
+    -moz-transition: background 0.3s;
+    transition: background 0.3s;
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+    -webkit-transform-origin: 50% 0;
+    -moz-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+
+
+
+}
+
+.rotate-up > li > a:hover span,
+.rotate-up > li > a:focus span {
+    background: #b53a2d;
+    -webkit-transform: rotateX(90deg) translateY(-22px);
+    -moz-transform: rotateX(90deg) translateY(-22px);
+    transform: rotateX(90deg) translateY(-22px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#nav ul a, #sticky-nav ul a, .side-nav li a, #header-sticky .cart-content a, #header-sticky .cart-content a:hover, #header .cart-content a, #header .cart-content a:hover, #small-nav .cart-content a, #small-nav .cart-content a:hover, #wrapper .header-social .top-menu .cart > a, #wrapper .header-social .top-menu .cart > a > .amount, #wrapper .header-social .top-menu .cart-checkout a{ padding:0 15px;}
+.header-v2 .header-social, .header-v3 .header-social, .header-v4 .header-social, .header-v5 .header-social, .header-v2 {
+    border-top-color: #1570a6 ;
+}
+
+.aione-social-links-header{
+    display: inline-block;
+    padding: 0;
+    float: left;
+    margin-right: 10px;
+
+}
+
+#wrapper .header-social{
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=180, Color=#999999)';
+    -moz-box-shadow: inset 0px 2px 3px RGBA(0,0,0,0.08);
+    -webkit-box-shadow:  inset 0px 2px 3px RGBA(0,0,0,0.08);
+    box-shadow: inset 0px 2px 3px RGBA(0,0,0,0.08);
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=180, Color=#999999);
+}
+.header-social .menu li{padding:0;margin-right: -3px; border-color: RGBA(0,0,0,0.06) !important;}
+#wrapper .header-social ul.menu li > a {
+
+    padding: 0px 10px;
+    line-height: 42px;
+    display: block;
+    -webkit-transition: all 0.3s ease-out;/* Safari 3.2+, Chrome */
+    -moz-transition: all 0.3s ease-out;/* Firefox 4-15 */
+    -o-transition: all 0.3s ease-out;/* Opera 10.5-12.00 */
+    transition: all 0.3s ease-out;/* Firefox 16+, Opera 12.50+ */
+}
+#wrapper .header-social ul.menu li > a:hover {
+
+}
+
+
+#nav ul .current_page_item a, #nav ul .current-menu-item a, #nav ul > .current-menu-parent a, #nav ul ul, .navigation li.current-menu-ancestor a, #sticky-nav ul .current_page_item a, #sticky-nav ul .current-menu-item a, #sticky-nav ul > .current-menu-parent a, #sticky-nav ul ul, .navigation li.current-menu-ancestor a, #nav ul li a:hover, #sticky-nav ul li a:hover{background-color: RGBA(0,0,0,0.02);}
+
+
+.page-title-container{border-top:none;}
+.ls-bar-timer {height: 1px !important; top:-1px; border-bottom: 1px solid #1a80b6;}
+
+.anchor_scroll {
+    position: fixed;
+    left: 0px;
+    top: 30%;
+    z-index: 999;
+    padding: 0px;
+    border: 0px;
+}
+ul.menu_scroll{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+ul.menu_scroll > li{
+    display: block;
+    vertical-align: middle;
+    text-align: left;
+    position: relative;
+    margin-top: 1px;
+}
+ul.menu_scroll > li > a:before{
+    content:attr(title);
+    height: 40px;
+    width: 40px;
+    display:block;
+    background: #6c6f79;
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height:40px;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    -webkit-transition: all 0.6s ease-out;/* Safari 3.2+, Chrome */
+    -moz-transition: all 0.6s ease-out;/* Firefox 4-15 */
+    -o-transition: all 0.6s ease-out;/* Opera 10.5-12.00 */
+    transition: all 0.6s ease-out;/* Firefox 16+, Opera 12.50+ */
+}
+ul.menu_scroll > li:hover > a:before{
+    background: #FFFFFF;
+    color: #1a80b6;
+}
+ul.menu_scroll > li > a{
+    z-index:998;
+    overflow: hidden;
+    height: 40px;
+    width: 60px;
+    display:block;
+    background: #1a80b6;
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height:40px;
+    margin-left: -60px;
+    padding: 0 10px 0 10px;
+    -webkit-transition: all 0.6s ease-out;/* Safari 3.2+, Chrome */
+    -moz-transition: all 0.6s ease-out;/* Firefox 4-15 */
+    -o-transition: all 0.6s ease-out;/* Opera 10.5-12.00 */
+    transition: all 0.6s ease-out;/* Firefox 16+, Opera 12.50+ */
+}
+
+ul.menu_scroll > li:hover > a{
+    margin-left:40px;
+    width:auto;
+}
+
+/******************************/
+.mymail-form label{ display:none;}
+.mymail-wrapper input[type=submit], .mymail-wrapper input[type=text], .mymail-wrapper input[type=password], .mymail-wrapper input[type=file], textarea{float:none;width:100%  !important; }
+.mymail-wrapper input[type=submit].submit-button {
+    -moz-box-shadow: 0px 0px 0px #333333;/*FF 3.5+*/
+    -webkit-box-shadow: 0px 0px 0px #333333;/*Saf3-4, Chrome, iOS 4.0.2-4.2, Android 2.3+*/
+    box-shadow: 0px 0px 0px #333333 !important;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=0, Direction=90, Color=#333333); /*IE 5.5-7*/
+    border: 2px solid #000;
+    -moz-border-radius: 0px;/*Firefox*/
+    -webkit-border-radius: 0px;/*Safari, Chrome*/
+    border-radius: 0px;
+
+    color:#FFFFFF;
+    padding: 10px 2% !important;
+}
+.mymail-wrapper .mymail-loader{ position:absolute;left: 44%;margin: 16px 4px 0 0;}
+.mymail-submit-wrapper{float:right;clear:both;width:49%;}
+.mymail-firstname-wrapper{ float:left; width:49%;}
+.mymail-lastname-wrapper{ float:right; width:49%;}
+.mymail-email-wrapper{float:none;clear:both;width:100%;}
+
+.mymail-form .mymail-form-info.error {
+    border: 1px solid #cc0000;
+    background: #f6f6f6;
+    padding: 10px 0 0 10px;
+}
+.mymail-form .mymail-form-info ul {
+    list-style-type: circle;
+    margin-top: 4px;
+    padding: 0;
+
+}
+.mymail-form .mymail-form-info ul li {
+    margin-left: 3px;
+    color: #cc0000;
+}
+
+p:empty { display: none; }

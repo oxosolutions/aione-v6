@@ -9257,7 +9257,7 @@ function get_background( $selector ) {
 	$background_attachment = Array();
 	$background_position = Array();
 
-	if(in_array("pattern2", Aione()->theme_options['background_'.$selector.'_options']) && Aione()->theme_options['background_'.$selector.'_pattern2']):
+	if(in_array("pattern2", Aione()->theme_options['background_'.$selector.'_options']) && !empty(Aione()->theme_options['background_'.$selector.'_pattern2'])):
 		$background_image[] = 'url('.Aione()->theme_options['background_'.$selector.'_pattern2'].')';
 		$background_repeat[] = "repeat";
 		$background_clip[] = "border-box";
@@ -9267,7 +9267,7 @@ function get_background( $selector ) {
 		$background_position[] = "center top";
 	endif;
 
-	if(in_array("pattern1", Aione()->theme_options['background_'.$selector.'_options']) && Aione()->theme_options['background_'.$selector.'_pattern1']):
+	if(in_array("pattern1", Aione()->theme_options['background_'.$selector.'_options']) && !empty(Aione()->theme_options['background_'.$selector.'_pattern1'])):
 		$background_image[] = 'url('.Aione()->theme_options['background_'.$selector.'_pattern1'].')';
 		$background_repeat[] = "repeat";
 		$background_clip[] = "border-box";
@@ -9277,7 +9277,7 @@ function get_background( $selector ) {
 		$background_position[] = "center top";
 	endif;
 
-	if(in_array("custom", Aione()->theme_options['background_'.$selector.'_options']) && Aione()->theme_options['background_'.$selector]['background-image']):
+	if(in_array("custom", Aione()->theme_options['background_'.$selector.'_options']) && !empty(Aione()->theme_options['background_'.$selector]['background-image'])):
 		$background_image[] = 'url('.Aione()->theme_options['background_'.$selector]['background-image'].')';
 		$background_repeat[] = Aione()->theme_options['background_'.$selector]['background-repeat'];
 		$background_clip[] = Aione()->theme_options['background_'.$selector]['background-clip'];
@@ -9288,7 +9288,7 @@ function get_background( $selector ) {
 	endif;
 
 
-	if(in_array("image", Aione()->theme_options['background_'.$selector.'_options']) && Aione()->theme_options['background_'.$selector.'_image']):
+	if(in_array("image", Aione()->theme_options['background_'.$selector.'_options']) && !empty(Aione()->theme_options['background_'.$selector.'_image'])):
 		$background_image[] = 'url('.Aione()->theme_options['background_'.$selector.'_image'].')';
 		$background_repeat[] = Aione()->theme_options['background_'.$selector]['background-repeat'];
 		$background_clip[] = Aione()->theme_options['background_'.$selector]['background-clip'];
@@ -9298,7 +9298,7 @@ function get_background( $selector ) {
 		$background_position[] = Aione()->theme_options['background_'.$selector]['background-position'];
 	endif;
 
-	if(in_array("gradient", Aione()->theme_options['background_'.$selector.'_options']) && Aione()->theme_options['background_'.$selector.'_gradient']):
+	if(in_array("gradient", Aione()->theme_options['background_'.$selector.'_options']) && !empty(Aione()->theme_options['background_'.$selector.'_gradient'])):
 		$background_image[] = 'linear-gradient('.Aione()->theme_options['background_'.$selector.'_gradient']['from'].', '.Aione()->theme_options['background_'.$selector.'_gradient']['to'].');';
 		//$output .= "\r\n".'background: -webkit-linear-gradient('.Aione()->theme_options['background_'.$selector.'_gradient']['from'].', '.Aione()->theme_options['background_'.$selector.'_gradient']['to'].');';
 		//$output .= "\r\n".'background: -o-linear-gradient('.Aione()->theme_options['background_'.$selector.'_gradient']['from'].', '.Aione()->theme_options['background_'.$selector.'_gradient']['to'].');';
@@ -9312,7 +9312,7 @@ function get_background( $selector ) {
 		$background_position[] = "center top";
 	endif;
 
-	if(in_array("color", Aione()->theme_options['background_'.$selector.'_options']) && Aione()->theme_options['background_'.$selector.'_color']):
+	if(in_array("color", Aione()->theme_options['background_'.$selector.'_options']) && !empty(Aione()->theme_options['background_'.$selector.'_color'])):
 		$background_color = Aione()->theme_options['background_'.$selector.'_color'];
 		if(Aione()->theme_options['background_'.$selector.'_color_alpha'] < 100){
 			$background_color = oxo_hex2rgba( $background_color, Aione()->theme_options['background_'.$selector.'_color_alpha'] );
