@@ -398,12 +398,17 @@ if( ! class_exists( 'OxoCoreFrontendWalker' ) ) {
 					$heading = do_shortcode($title);
 					$link = '';
 					$link_closing = '';
+					$link_target = '';
+
+					if($item->target == "_blank"){
+						$link_target = 'target="'.$item->target.'"';
+					} 
 
 					if( ! empty( $item->url ) &&
 						$item->url != "#" &&
 						$item->url != 'http://'
 					) {
-						$link = '<a href="' . $item->url . '">';
+						$link = '<a href="' . $item->url . '" '.$link_target.'>';
 						$link_closing = '</a>';
 					}
 
