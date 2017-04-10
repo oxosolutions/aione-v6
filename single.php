@@ -10,7 +10,7 @@
 		<?php while( have_posts() ): the_post(); 
 		// Authenication Required
 		//$authenication_required = get_post_meta( $post->ID, 'pyre_enable_authenication', true );
-		
+				
 		?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
 			<?php

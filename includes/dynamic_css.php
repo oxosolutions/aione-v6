@@ -240,7 +240,8 @@ function aione_dynamic_css_array() {
 		if ( get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) || get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) == '0' ) {
 			$css['global'][aione_implode( $elements )]['margin-left']  = '-' . Aione_Sanitize::size( get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) ) . '!important';
 			$css['global'][aione_implode( $elements )]['margin-right'] = '-' . Aione_Sanitize::size( get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) ) . '!important';
-		} elseif ( Aione()->theme_options[ 'hundredp_padding' ] || Aione()->theme_options( 'hundredp_padding' ) == '0' ) {
+		//} elseif ( Aione()->theme_options[ 'hundredp_padding' ] || Aione()->theme_options( 'hundredp_padding' ) == '0' ) {
+		} elseif ( Aione()->theme_options[ 'hundredp_padding' ] ) {
 			$css['global'][aione_implode( $elements )]['margin-left']  = '-' . Aione_Sanitize::size( Aione()->theme_options[ 'hundredp_padding' ] ) . '!important';
 			$css['global'][aione_implode( $elements )]['margin-right'] = '-' . Aione_Sanitize::size( Aione()->theme_options[ 'hundredp_padding' ] ) . '!important';
 		}

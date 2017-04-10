@@ -6,7 +6,8 @@
 				<?php echo category_description(); ?>
 			</div>
 		</div>
-		<?php endif; ?>
+		<?php endif; 
+		?>
 
 		<?php get_template_part( 'templates/blog', 'layout' ); ?>
 	</div>

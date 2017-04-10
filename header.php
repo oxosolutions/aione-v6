@@ -42,27 +42,27 @@
 	?>
 
 	<?php if ( Aione()->theme_options[ 'favicon' ] ) : ?>
-		<link rel="shortcut icon" href="<?php echo Aione()->theme_options[ 'favicon' ]; ?>" type="image/x-icon" />
+		<link rel="shortcut icon" href="<?php echo Aione()->theme_options[ 'favicon' ]['url']; ?>" type="image/x-icon" />
 	<?php endif; ?>
 
 	<?php if ( Aione()->theme_options[ 'iphone_icon' ] ) : ?>
 		<!-- For iPhone -->
-		<link rel="apple-touch-icon-precomposed" href="<?php echo Aione()->theme_options[ 'iphone_icon' ]; ?>">
+		<link rel="apple-touch-icon-precomposed" href="<?php echo Aione()->theme_options[ 'iphone_icon' ]['url']; ?>">
 	<?php endif; ?>
 
 	<?php if ( Aione()->theme_options[ 'iphone_icon_retina' ] ) : ?>
 		<!-- For iPhone 4 Retina display -->
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo Aione()->theme_options[ 'iphone_icon_retina' ]; ?>">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo Aione()->theme_options[ 'iphone_icon_retina' ]['url']; ?>">
 	<?php endif; ?>
 
-	<?php if ( Aione()->theme_options[ 'ipad_icon' ] ) : ?>
+	<?php if ( Aione()->theme_options[ 'ipad_icon' ]['url'] ) : ?>
 		<!-- For iPad -->
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo Aione()->theme_options[ 'ipad_icon' ]; ?>">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo Aione()->theme_options[ 'ipad_icon' ]['url']; ?>">
 	<?php endif; ?>
 
 	<?php if ( Aione()->theme_options[ 'ipad_icon_retina' ] ) : ?>
 		<!-- For iPad Retina display -->
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo Aione()->theme_options[ 'ipad_icon_retina' ]; ?>">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo Aione()->theme_options[ 'ipad_icon_retina' ]['url']; ?>">
 	<?php endif; ?>
 
 	<?php wp_head(); ?>
