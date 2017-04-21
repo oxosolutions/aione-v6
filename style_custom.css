@@ -1,3 +1,48 @@
+/****************************************************
+RESPONSIVE
+*****************************************************/
+
+/* Tablet Landscape */
+@media screen and (max-width: 1060px) {
+
+ 
+}
+/* Tabled Portrait */
+@media screen and (max-width: 768px) {
+    .oxo-layout-column.oxo-one-fourth,
+    .oxo-layout-column.three-fourth,
+    .oxo-layout-column.oxo-one-fifth,
+    .oxo-layout-column.oxo-two-fifth,
+    .oxo-layout-column.oxo-three-fifth,
+    .oxo-layout-column.oxo-four-fifth,
+    .oxo-layout-column.oxo-one-sixth,
+    .oxo-layout-column.oxo-five-sixth{
+        float:none !important;
+        display: block !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+}
+
+/* Tabled Portrait */
+@media screen and (max-width: 640px) {
+    .oxo-layout-column{
+        float:none !important;
+        display: block !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+oxo-one-fourth
+oxo-one-fourth
+oxo-three-fourth
+/****************************************************
+RESPONSIVE
+*****************************************************/
+
 .header-v4 #header {
     padding-bottom: 0px;
     padding-top: 0px;

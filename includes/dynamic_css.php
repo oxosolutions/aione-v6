@@ -1479,6 +1479,3337 @@ $image_rollover_opacity               = ( Aione()->theme_options[ 'image_gradien
 		$css[$media_query]['html #wpadminbar']['z-index']  = '99999 !important';
 		$css[$media_query]['html #wpadminbar']['position'] = 'fixed !important';
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if ( Aione()->theme_options['responsive'] ) {
+		/*
+		Media Queries
+			00 Side Width / Layout Responsive Styles
+				# General Styles
+				# Grid System
+			01 Side Header Responsive Styles
+			02 Top Header Responsive Styles
+			03 Mobile Menu Responsive Styles
+			04 @media only screen and ( max-width: $content_break_point )
+				# Layout
+				# General Styles
+				# Page Title Bar
+				# Blog Layouts
+				# Author Page - Info
+				# Shortcodes
+				# Events Calendar
+				# Woocommerce
+				# Not restructured mobile.css styles
+			05 @media only screen and ( min-width: $content_break_point )
+				# Shortcodes
+			06 @media only screen and ( max-width: 640px )
+				# Layout
+				# General Styles
+				# Page Title Bar
+				# Blog Layouts
+				# Footer Styles
+				# Filters
+				# Not restructured mobile.css styles
+			07 @media only screen and ( min-device-width: 320px ) and ( max-device-width: 640px )
+			08 @media only screen and ( max-width: 480px )
+			09 media.css CSS
+			10 iPad Landscape Responsive Styles
+				# Footer Styles
+			11 iPad Portrait Responsive Styles
+				# Layout
+				# Footer Styles
+		*/
+
+		$side_header_width = ( 'Top' == Aione()->theme_options['header_position']) ? 0 : intval( Aione()->theme_options['side_header_width'] );
+
+		// # Grid System.
+		$main_break_point = (int) Aione()->theme_options['grid_main_break_point'];
+		if ( 640 < $main_break_point ) {
+			$breakpoint_range = $main_break_point - 640;
+		} else {
+			$breakpoint_range = 360;
+		}
+
+		$breakpoint_interval = $breakpoint_range / 5;
+
+		$six_columns_breakpoint   = $main_break_point + $side_header_width;
+		$five_columns_breakpoint  = $six_columns_breakpoint - $breakpoint_interval;
+		$four_columns_breakpoint  = $five_columns_breakpoint - $breakpoint_interval;
+		$three_columns_breakpoint = $four_columns_breakpoint - $breakpoint_interval;
+		$two_columns_breakpoint   = $three_columns_breakpoint - $breakpoint_interval;
+		$one_column_breakpoint    = $two_columns_breakpoint - $breakpoint_interval;
+
+		$six_columns_media_query   = '@media only screen and (min-width: ' . $five_columns_breakpoint . 'px) and (max-width: ' . $six_columns_breakpoint . 'px)';
+		$five_columns_media_query  = '@media only screen and (min-width: ' . $four_columns_breakpoint . 'px) and (max-width: ' . $five_columns_breakpoint . 'px)';
+		$four_columns_media_query  = '@media only screen and (min-width: ' . $three_columns_breakpoint . 'px) and (max-width: ' . $four_columns_breakpoint . 'px)';
+		$three_columns_media_query = '@media only screen and (min-width: ' . $two_columns_breakpoint . 'px) and (max-width: ' . $three_columns_breakpoint . 'px)';
+		$two_columns_media_query   = '@media only screen and (max-width: ' . $two_columns_breakpoint . 'px)';
+		$one_column_media_query    = '@media only screen and (max-width: ' . $one_column_breakpoint . 'px)';
+
+		$ipad_portrait_media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)';
+
+		// Six Column Breakpoint.
+		$elements = array(
+			'.grid-layout-6 .oxo-post-grid',
+			'.oxo-portfolio-six .oxo-portfolio-post',
+		);
+		$css[ $six_columns_media_query ][ aione_implode( $elements ) ]['width']  = '20% !important';
+
+		$elements = array(
+			'.oxo-blog-layout-grid-5 .oxo-post-grid',
+			'.oxo-portfolio-five .oxo-portfolio-post',
+		);
+		$css[ $six_columns_media_query ][ aione_implode( $elements ) ]['width'] = '25% !important';
+
+		// Five Column Breakpoint.
+		$elements = array(
+			'.oxo-blog-layout-grid-6 .oxo-post-grid',
+			'.oxo-portfolio-six .oxo-portfolio-post',
+		);
+		$css[ $five_columns_media_query ][ aione_implode( $elements ) ]['width']  = '20% !important';
+
+		$elements = array(
+			'.oxo-blog-layout-grid-5 .oxo-post-grid',
+			'.oxo-portfolio-five .oxo-portfolio-post',
+		);
+		$css[ $five_columns_media_query ][ aione_implode( $elements ) ]['width'] = '33.3333333333% !important';
+
+		$elements = array(
+			'.oxo-blog-layout-grid-4 .oxo-post-grid',
+			'.oxo-portfolio-four .oxo-portfolio-post',
+		);
+		$css[ $five_columns_media_query ][ aione_implode( $elements ) ]['width'] = '33.3333333333% !important';
+
+		// Four Column Breakpoint.
+		$elements = array(
+			'.oxo-blog-layout-grid-6 .oxo-post-grid',
+			'.oxo-portfolio-six .oxo-portfolio-post',
+		);
+		$css[ $four_columns_media_query ][ aione_implode( $elements ) ]['width'] = '25% !important';
+
+		$elements = array(
+			'.oxo-blog-layout-grid-5 .oxo-post-grid',
+			'.oxo-blog-layout-grid-4 .oxo-post-grid',
+			'.oxo-blog-layout-grid-3 .oxo-post-grid',
+			'.oxo-portfolio-five .oxo-portfolio-post',
+			'.oxo-portfolio-four .oxo-portfolio-post',
+			'.oxo-portfolio-three .oxo-portfolio-post',
+			'.oxo-portfolio-masonry .oxo-portfolio-post',
+		);
+		$css[ $four_columns_media_query ][ aione_implode( $elements ) ]['width'] = '50% !important';
+
+		// Three Column Breakpoint.
+		$elements = array(
+			'.oxo-blog-layout-grid-6 .oxo-post-grid',
+			'.oxo-portfolio-six .oxo-portfolio-post',
+		);
+		$css[ $three_columns_media_query ][ aione_implode( $elements ) ]['width'] = '33.33% !important';
+
+		$elements = array(
+			'.oxo-blog-layout-grid-5 .oxo-post-grid',
+			'.oxo-blog-layout-grid-4 .oxo-post-grid',
+			'.oxo-blog-layout-grid-3 .oxo-post-grid',
+			'.oxo-portfolio-five .oxo-portfolio-post',
+			'.oxo-portfolio-four .oxo-portfolio-post',
+			'.oxo-portfolio-three .oxo-portfolio-post',
+			'.oxo-portfolio-masonry .oxo-portfolio-post',
+		);
+		$css[ $three_columns_media_query ][ aione_implode( $elements ) ]['width'] = '50% !important';
+
+		// Two Column Breakpoint.
+		$elements = array(
+			'.oxo-blog-layout-grid .oxo-post-grid',
+			'.oxo-portfolio-post',
+		);
+		$css[ $two_columns_media_query ][ aione_implode( $elements ) ]['width'] = '100% !important';
+
+		$elements = array(
+			'.oxo-blog-layout-grid-6 .oxo-post-grid',
+			'.oxo-portfolio-six .oxo-portfolio-post',
+		);
+		$css[ $two_columns_media_query ][ aione_implode( $elements ) ]['width'] = '50% !important';
+
+		// One Column Breakpoint.
+		$elements = array(
+			'.oxo-blog-layout-grid-6 .oxo-post-grid',
+			'.oxo-portfolio-six .oxo-portfolio-post',
+		);
+		$css[ $one_column_media_query ][ aione_implode( $elements ) ]['width'] = '100% !important';
+
+		// Portrait Column Breakpoint for iPad.
+		$elements = array(
+			'.oxo-blog-layout-grid-6 .oxo-post-grid',
+			'.oxo-portfolio-six .oxo-portfolio-post',
+		);
+		$css[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width'] = '33.3333333333% !important';
+
+		$elements = array(
+			'.oxo-blog-layout-grid-5 .oxo-post-grid',
+			'.oxo-blog-layout-grid-4 .oxo-post-grid',
+			'.oxo-blog-layout-grid-3 .oxo-post-grid',
+			'.oxo-portfolio-five .oxo-portfolio-post',
+			'.oxo-portfolio-four .oxo-portfolio-post',
+			'.oxo-portfolio-three .oxo-portfolio-post',
+			'.oxo-portfolio-masonry .oxo-portfolio-post',
+		);
+		$css[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width'] = '50% !important';
+
+		/**
+		 * Side Header Only Responsive Styles.
+		 */
+		$side_header_media_query = '@media only screen and (max-width: ' . intval( Aione()->theme_options['side_header_break_point'] ) . 'px)';
+		$side_header_min_media_query = '@media only screen and (min-width: ' . intval( Aione()->theme_options['side_header_break_point'] ) . 'px)';
+
+		if ( 'Boxed' == Aione()->theme_options['layout'] ) {
+			$css[ $side_header_media_query ]['body.side-header #wrapper']['margin-left']  = 'auto !important';
+			$css[ $side_header_media_query ]['body.side-header #wrapper']['margin-right'] = 'auto !important';
+		} else {
+			$css[ $side_header_media_query ]['body.side-header #wrapper']['margin-left']  = '0 !important';
+			$css[ $side_header_media_query ]['body.side-header #wrapper']['margin-right'] = '0 !important';
+		}
+
+		$elements = array(
+			'#side-header',
+			'.side-header-background',
+		);
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['background-color'] = Aione_Sanitize::color( Aione()->theme_options['mobile_header_bg_color'] );
+		$css[ $side_header_media_query ]['.layout-boxed-mode .side-header-wrapper']['background-color'] = 'transparent';
+		$css[ $side_header_media_query ]['#side-header']['transition'] = 'background-color 0.25s ease-in-out';
+		$css[ $side_header_media_query ]['#side-header.oxo-is-sticky']['background-color'] = Aione_Sanitize::color( Aione()->theme_options['header_sticky_bg_color'] );
+
+		$css[ $side_header_media_query ]['#side-header']['position'] = 'static';
+		$css[ $side_header_media_query ]['#side-header']['height']   = 'auto';
+		$css[ $side_header_media_query ]['#side-header']['width']    = '100% !important';
+		$css[ $side_header_media_query ]['#side-header']['padding']  = '20px 30px !important';
+		$css[ $side_header_media_query ]['#side-header']['margin']   = '0 !important';
+
+		$css[ $side_header_media_query ]['#side-header .side-header-background']['display']   = 'none';
+		$css[ $side_header_media_query ]['#side-header .side-header-border']['display']   = 'none';
+
+		$css[ $side_header_media_query ]['#side-header .side-header-wrapper']['padding-top'] = '0';
+		$css[ $side_header_media_query ]['#side-header .side-header-wrapper']['padding-bottom'] = '0';
+		$css[ $side_header_media_query ]['#side-header .side-header-wrapper']['position'] = 'relative';
+
+		if ( is_rtl() ) {
+			$css[ $side_header_media_query ]['body.rtl #side-header']['position'] = 'static !important';
+		}
+
+		$elements = array(
+			'#side-header .header-social',
+			'#side-header .header-v4-content',
+		);
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$css[ $side_header_media_query ]['#side-header .oxo-logo']['margin'] = '0 !important';
+		$css[ $side_header_media_query ]['#side-header .oxo-logo']['float']  = 'left';
+
+		$css[ $side_header_media_query ]['#side-header .side-header-content']['padding'] = '0 !important';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-classic .oxo-logo']['float']      = 'none';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-classic .oxo-logo']['text-align'] = 'center';
+
+		$elements = array(
+			'body.side-header #wrapper #side-header.header-shadow .side-header-border:before',
+			'body #wrapper .header-shadow:after',
+		);
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['position']   = 'static';
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['height']     = 'auto';
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['box-shadow'] = 'none';
+
+		$elements = array(
+			'#side-header .oxo-main-menu',
+			'#side-header .side-header-content-1-2',
+			'#side-header .side-header-content-3',
+		);
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$css[ $side_header_media_query ]['#side-header .oxo-logo']['margin'] = '0';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-classic .oxo-main-menu-container .oxo-mobile-nav-holder']['display']    = 'block';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-classic .oxo-main-menu-container .oxo-mobile-nav-holder']['margin-top'] = '20px';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-classic .oxo-main-menu-container .oxo-mobile-sticky-nav-holder']['display'] = 'none';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo']['float']  = 'left';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo']['margin'] = '0';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-left']['float'] = 'left';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-right']['float'] = 'right';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-center']['float'] = 'left';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-mobile-menu-icons']['display'] = 'block';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons']['float'] = 'left';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons']['position'] = 'static';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons a']['float'] = 'left';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons :first-child']['margin-left'] = '0';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-left .oxo-mobile-menu-icons']['float'] = 'right';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-left .oxo-mobile-menu-icons a:last-child']['margin-left'] = '0';
+
+		$elements = array(
+			'#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder',
+			'#side-header.oxo-mobile-menu-design-modern .side-header-wrapper > .oxo-secondary-menu-search',
+		);
+
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['padding-top']    = '20px';
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['margin-left']    = '-30px';
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['margin-right']   = '-30px';
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['margin-bottom']  = '-20px';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['display']       = 'block';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['border-right']  = '0';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['border-left']   = '0';
+		$css[ $side_header_media_query ]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['border-bottom'] = '0';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-is-sticky.oxo-sticky-menu-1 .oxo-mobile-nav-holder']['display'] = 'none';
+
+		$css[ $side_header_media_query ]['#side-header.oxo-is-sticky.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder']['display'] = 'none';
+
+		if ( ( ( 'Boxed' == Aione()->theme_options['layout'] && 'wide' != get_post_meta( $c_page_id, 'pyre_page_bg_layout', true ) ) || 'boxed' == get_post_meta( $c_page_id, 'pyre_page_bg_layout', true ) ) && 'Top' != Aione()->theme_options['header_position'] ) {
+
+			if ( 'Right' == Aione()->theme_options['header_position'] ) {
+
+				$css[ $side_header_min_media_query ]['body.side-header-right #side-header']['position'] = 'absolute';
+				$css[ $side_header_min_media_query ]['body.side-header-right #side-header']['top']      = '0';
+
+				// $css[ $side_header_min_media_query ]['body.side-header-right #side-header .side-header-wrapper']['position'] = 'fixed';
+				$css[ $side_header_min_media_query ]['body.side-header-right #side-header .side-header-wrapper']['width']    = intval( Aione()->theme_options['side_header_width'] ) . 'px';
+
+			}
+		}
+
+		$elements = array(
+					'.width-100 .oxo-section-separator-with-offset',
+				);
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['margin-left']   = 'calc( (100vw - 100% ) / -2 ) !important';
+		$css[ $side_header_media_query ][ aione_implode( $elements ) ]['margin-right']  = 'calc( (100vw - 100% ) / -2 ) !important';
+
+		/*
+		Top Header Only Responsive Styles.
+		*/
+		$mobile_header_media_query = '@media only screen and (max-width: ' . intval( Aione()->theme_options['side_header_break_point'] ) . 'px)';
+		$mobile_header_min_media_query = '@media only screen and (min-width: ' . intval( Aione()->theme_options['side_header_break_point'] ) . 'px)';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-header']['padding'] = '0px';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-row']['padding-left']  = '0px';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-row']['padding-right'] = '0px';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['max-width']  = '100%';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['text-align'] = 'center';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['margin-top'] = '10px';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['margin-bottom'] = '8px';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-social-links-header a']['margin-right']  = '20px';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-social-links-header a']['margin-bottom'] = '5px';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-alignleft']['border-bottom'] = '1px solid transparent';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern .oxo-alignleft',
+			'.oxo-mobile-menu-design-modern .oxo-alignright',
+		);
+		$css[ $mobile_header_media_query ][ aione_implode( $elements ) ]['width']      = '100%';
+		$css[ $mobile_header_media_query ][ aione_implode( $elements ) ]['float']      = 'none';
+		$css[ $mobile_header_media_query ][ aione_implode( $elements ) ]['display']    = 'block';
+
+		$elements = array(
+			'.oxo-body .oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-alignleft',
+			'.oxo-body .oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-alignright',
+		);
+		$css[ $mobile_header_media_query ][ aione_implode( $elements ) ]['text-align'] = 'center';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu > ul > li']['display'] = 'inline-block';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu > ul > li']['vertical-align'] = 'middle';
+		$css[ $mobile_header_media_query ]['.oxo-body .oxo-mobile-menu-design-modern .oxo-secondary-menu > ul > li']['float'] = 'none';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu > ul > li']['text-align'] = 'left';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-cart']['border-right'] = '0';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['background-color'] = 'transparent';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['padding-left']     = '10px';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['padding-right']    = '7px';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['min-width']        = '100%';
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon:after']['display'] = 'none';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern .oxo-secondary-menu .oxo-secondary-menu-icon',
+			'.oxo-mobile-menu-design-modern .oxo-secondary-menu .oxo-secondary-menu-icon:hover',
+			'.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon:before',
+		);
+		$css[ $mobile_header_media_query ][ aione_implode( $elements ) ]['color'] = Aione_Sanitize::color( Aione()->theme_options['snav_color'] );
+
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-header-tagline']['margin-top']  = '10px';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-header-tagline']['float']       = 'none';
+		$css[ $mobile_header_media_query ]['.oxo-mobile-menu-design-modern .oxo-header-tagline']['line-height'] = '24px';
+
+		/*
+
+		if ( ( ( 1 > Aione_Color::new_color( Aione()->theme_options['header_bg_color'] )->alpha && ! get_post_meta( $c_page_id, 'pyre_header_bg_opacity', true ) ) || ( '' != get_post_meta( $c_page_id, 'pyre_header_bg_opacity', true ) && 1 > get_post_meta( $c_page_id, 'pyre_header_bg_opacity', true ) ) ) && ! is_search() && ! is_404() && ! is_author() && ( ! is_archive() || ( class_exists( 'WooCommerce' ) && is_shop() ) ) ) {
+
+			$elements = array(
+				'.oxo-header',
+				'.oxo-secondary-header',
+			);
+			$css[ $mobile_header_min_media_query ][ aione_implode( $elements ) ]['border-top'] = 'none';
+
+			$elements = array(
+				'.oxo-header-v1 .oxo-header',
+				'.oxo-secondary-main-menu',
+			);
+			$css[ $mobile_header_min_media_query ][ aione_implode( $elements ) ]['border'] = 'none';
+
+			if ( 'boxed' == oxo_get_option( 'layout', 'page_bg_layout', $c_page_id ) ) {
+				$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['position'] = 'absolute';
+				$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['z-index']  = '10000';
+
+				if ( $site_width_percent ) {
+					$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['width'] = Aione_Sanitize::size( Aione()->theme_options['site_width'] );
+				} else {
+					$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['width']		= '100%';
+					$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['max-width'] = 'calc(' . Aione_Sanitize::size( Aione()->theme_options['site_width'] ) . ' + 60px)';
+				}
+			} else {
+
+				$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['position'] = 'absolute';
+				$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['left']     = '0';
+				$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['right']    = '0';
+				$css[ $mobile_header_min_media_query ]['.oxo-header-wrapper']['z-index']  = '10000';
+
+			}
+		}
+
+		*/
+
+		/*
+		Mobile Menu Responsive Styles
+		*/
+		$mobile_menu_media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options['side_header_break_point'] ) ) . 'px)';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-header']['padding-left'] = '0 !important';
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-secondary-header']['padding-right'] = '0 !important';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header .oxo-row']['padding-left']  = '0';
+		$css[ $mobile_menu_media_query ]['.oxo-header .oxo-row']['padding-right'] = '0';
+
+		$elements = array(
+			'.oxo-header-wrapper .oxo-header',
+			'.oxo-header-wrapper .oxo-secondary-main-menu',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['background-color'] = Aione_Sanitize::color( Aione()->theme_options['mobile_header_bg_color'] );
+
+		/*
+
+		$secondary_header_bg_color_obj = Aione_Color::new_color( Aione()->theme_options['header_top_bg_color'] );
+		$secondary_header_bg_color_rgb = array(
+			$secondary_header_bg_color_obj->red,
+			$secondary_header_bg_color_obj->green,
+			$secondary_header_bg_color_obj->blue,
+		);
+		*/
+		$css[ $mobile_menu_media_query ]['.oxo-secondary-header']['background-color'] = 'rgb(' . $secondary_header_bg_color_obj->red . ',' . $secondary_header_bg_color_obj->green . ',' . $secondary_header_bg_color_obj->blue . ')';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-row']['padding-left']  = '0';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-row']['padding-right'] = '0';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-row']['max-width']     = '100%';
+
+		$elements = array(
+			'.oxo-footer-widget-area > .oxo-row',
+			'.oxo-footer-copyright-area > .oxo-row',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-left']  = '0';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-right'] = '0';
+
+		$css[ $mobile_menu_media_query ]['.oxo-secondary-header .oxo-row']['display'] = 'block';
+		$css[ $mobile_menu_media_query ]['.oxo-secondary-header .oxo-alignleft']['margin-right'] = '0';
+		$css[ $mobile_menu_media_query ]['.oxo-secondary-header .oxo-alignright']['margin-left'] = '0';
+		$css[ $mobile_menu_media_query ]['body.oxo-body .oxo-secondary-header .oxo-alignright > *']['float'] = 'none';
+		$css[ $mobile_menu_media_query ]['body.oxo-body .oxo-secondary-header .oxo-alignright .oxo-social-links-header .boxed-icons']['margin-bottom'] = '5px';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-header',
+			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-header',
+			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-header',
+			'.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-header',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-top']    = '20px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-bottom'] = '20px';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-v4 .oxo-logo']['display']  = 'block';
+		$css[ $mobile_menu_media_query ]['.oxo-header-v4.oxo-mobile-menu-design-modern .oxo-logo .oxo-logo-link']['max-width'] = '75%';
+		$css[ $mobile_menu_media_query ]['.oxo-header-v4.oxo-mobile-menu-design-modern .oxo-mobile-menu-icons']['position'] = 'absolute';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-logo',
+			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-logo',
+			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-logo',
+			'.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-logo',
+			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-logo a',
+			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-logo a',
+			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-logo a',
+			'.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-logo a',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['float']      = 'none';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['text-align'] = 'center';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin']     = '0 !important';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-main-menu',
+			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-main-menu',
+			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-main-menu',
+			'.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-main-menu > ul > li',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-main-menu > ul .oxo-middle-logo-menu-logo']['display'] = 'block';
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-main-menu']['display'] = 'block';
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-main-menu']['max-width'] = 'auto';
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-logo']['padding'] = '0';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-mobile-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display']    = 'block';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-top'] = '20px';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic .oxo-secondary-header']['padding'] = '10px';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic .oxo-secondary-header .oxo-mobile-nav-holder']['margin-top'] = '0';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-header',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-header',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-top']    = '20px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-bottom'] = '20px';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-secondary-main-menu',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-secondary-main-menu',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-top']    = '6px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-bottom'] = '6px';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-main-menu',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-main-menu',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-mobile-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-logo',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-logo',
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-logo a',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-logo a',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['float']      = 'none';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['text-align'] = 'center';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin']     = '0 !important';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .searchform',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .searchform',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display']    = 'block';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['float']      = 'none';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['width']      = '100%';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin']     = '0';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-top'] = '13px';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .search-table',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .search-table',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['width'] = '100%';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-logo a']['float'] = 'none';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-header-banner']['margin-top'] = '10px';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-secondary-main-menu .searchform']['display'] = 'none';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic .oxo-alignleft']['margin-bottom'] = '10px';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic .oxo-alignleft',
+			'.oxo-mobile-menu-design-classic .oxo-alignright',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['float']       = 'none';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['width']       = '100%';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['line-height'] = 'normal';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display']     = 'block';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-contact-info']['text-align']  = 'center';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-contact-info']['line-height'] = 'normal';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-secondary-menu']['display'] = 'none';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header']['max-width']     = '100%';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header']['margin-top']    = '5px';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header']['text-align']    = 'center';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header a']['margin-bottom'] = '5px';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['float']        = 'none';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['text-align']   = 'center';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['margin-top']   = '10px';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['line-height']  = '24px';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['margin-left']  = 'auto';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['margin-right'] = 'auto';
+
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['float']      = 'none';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['text-align'] = 'center';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['margin']     = '0 auto';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['width']      = '100%';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['margin-top'] = '20px';
+		$css[ $mobile_menu_media_query ]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['clear']      = 'both';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern .ubermenu-responsive-toggle',
+			'.oxo-mobile-menu-design-modern .ubermenu-sticky-toggle-wrapper',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['clear'] = 'both';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-main-menu',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-main-menu',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-main-menu',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-main-menu',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-main-menu',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-main-menu > ul > li',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-main-menu > ul .oxo-middle-logo-menu-logo']['display'] = 'block';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-main-menu']['display'] = 'block';
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-sticky-menu']['display'] = 'none';
+		$css[ $mobile_menu_media_query ]['.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-main-menu']['display'] = 'none';
+		$css[ $mobile_menu_media_query ]['.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-sticky-menu']['display'] = 'block';
+
+		if ( 'Right' === Aione()->theme_options['logo_alignment'] ) {
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-main-menu']['float'] = 'right';
+		} else {
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-main-menu']['float'] = 'left';
+		}
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-main-menu']['width'] = 'auto';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-header',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-header',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-header',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-header',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-header',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-header',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-top']    = '20px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-bottom'] = '20px';
+
+		$elements = aione_map_selector( $elements, ' .oxo-row' );
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['width'] = '100%';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-logo',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin'] = '0 !important';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-logo']['padding'] = '0';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .modern-mobile-menu-expanded .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .modern-mobile-menu-expanded .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .modern-mobile-menu-expanded .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .modern-mobile-menu-expanded .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .modern-mobile-menu-expanded .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .modern-mobile-menu-expanded .oxo-logo',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '20px !important';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-mobile-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-top']   = '20px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-left']   = '-30px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-right']  = '-30px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = 'calc(-20px - ' . Aione_Sanitize::get_value_with_unit( Aione()->theme_options['header_padding'] ) . ')';
+
+		$elements = aione_map_selector( $elements, ' > ul' );
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-mobile-sticky-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-menu-icons',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-menu-icons',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-menu-icons',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-menu-icons',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-menu-icons',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-mobile-menu-icons',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo a']['float'] = 'none';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo .searchform']['float']   = 'none';
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo .searchform']['display'] = 'none';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-header-banner']['margin-top'] = '10px';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-logo']['float'] = 'left';
+
+		if ( is_rtl() ) {
+			$css[ $mobile_menu_media_query ]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-logo']['float'] = 'right';
+
+			$css[ $mobile_menu_media_query ]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons']['float'] = 'left';
+
+			$css[ $mobile_menu_media_query ]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons a']['float']        = 'left';
+			$css[ $mobile_menu_media_query ]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons a']['margin-left']  = '0';
+			$css[ $mobile_menu_media_query ]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons a']['margin-right'] = '15px';
+		}
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-top']   = '0';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-left']   = '-30px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-right']  = '-30px';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '0';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-secondary-main-menu',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-secondary-main-menu',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['position'] = 'static';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['border']   = '0';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-secondary-main-menu .oxo-mobile-nav-holder > ul',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-secondary-main-menu .oxo-mobile-nav-holder > ul',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['border'] = '0';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-secondary-main-menu .searchform',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-secondary-main-menu .searchform',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['float'] = 'none';
+
+		$elements = array(
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-sticky-header-wrapper',
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-sticky-header-wrapper',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['position'] = 'fixed';
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['width']    = '100%';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-logo-right.oxo-header-v4 .oxo-logo',
+			'.oxo-mobile-menu-design-modern.oxo-logo-right.oxo-header-v5 .oxo-logo',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['float'] = 'right';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-modern.oxo-sticky-menu-only.oxo-header-v4 .oxo-secondary-main-menu',
+			'.oxo-mobile-menu-design-modern.oxo-sticky-menu-only.oxo-header-v5 .oxo-secondary-main-menu',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['position'] = 'static';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-classic.oxo-header-v7 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-sticky-nav-holder',
+			'.oxo-mobile-menu-design-modern.oxo-header-v7 .oxo-mobile-sticky-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$elements = array(
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v1.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v2.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v3.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v4.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v5.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v7.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v1.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v2.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v3.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v4.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v7.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic .oxo-mobile-nav-item',
+			'.oxo-mobile-menu-design-modern .oxo-mobile-nav-item',
+			'.oxo-mobile-menu-design-classic .oxo-mobile-selector',
+			'.oxo-mobile-menu-design-modern .oxo-mobile-selector',
+		);
+
+		/*
+
+		if ( in_array( Aione()->theme_options['mobile_menu_text_align'], array( 'left', 'right', 'center' ) ) ) {
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['text-align'] = esc_attr( Aione()->theme_options['mobile_menu_text_align' ) );
+		}
+		*/
+
+		if ( 'right' == Aione()->theme_options['mobile_menu_text_align'] ) {
+
+			$elements = array(
+				'.oxo-mobile-menu-design-classic .oxo-selector-down',
+				'.oxo-mobile-menu-design-modern .oxo-selector-down',
+			);
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['left']               = '7px';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['right']              = '0px';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['border-left']        = '0px';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['border-right-width'] = '1px';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['border-right-style'] = 'solid';
+
+			$elements = aione_map_selector( $elements, ':before' );
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-left']  = '0';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-right'] = '12px';
+
+			$elements = array(
+				'.oxo-mobile-menu-design-classic .oxo-open-submenu',
+				'.oxo-mobile-menu-design-modern .oxo-open-submenu',
+			);
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['right'] = 'auto';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['left']  = '0';
+
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item .oxo-open-submenu']['padding-left']  = '30px';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item .oxo-open-submenu']['padding-right'] = '0';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item a']['padding-left']  = '30px';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item a']['padding-right'] = '30px';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li a']['padding-left']  = '0';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li a']['padding-right'] = '39px';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li a']['padding-left']  = '0';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li a']['padding-right'] = '48px';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li a']['padding-left']  = '0';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li a']['padding-right'] = '57px';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li li a']['padding-left']  = '0';
+			$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li li a']['padding-right'] = '66px';
+		}
+
+		if ( ( 'right' == Aione()->theme_options['mobile_menu_text_align'] && ! is_rtl() ) || ( 'right' != Aione()->theme_options['mobile_menu_text_align'] && is_rtl() ) ) {
+
+			$elements = array(
+				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item a:before',
+				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item a:before',
+			);
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+			$elements = array(
+				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li a',
+				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li a',
+			);
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-right'] = '39px';
+
+			$elements = aione_map_selector( $elements, ':after' );
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['content']      = '"-"';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-right'] = '0';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-left']  = '2px';
+
+			$elements = array(
+				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li a',
+				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li a',
+			);
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-right'] = '48px';
+
+			$elements = aione_map_selector( $elements, ':after' );
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['content']      = '"--"';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-right'] = '0';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-left']  = '2px';
+
+			$elements = array(
+				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li a',
+				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li a',
+			);
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-right'] = '57px';
+
+			$elements = aione_map_selector( $elements, ':after' );
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['content']      = '"---"';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-right'] = '0';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-left']  = '2px';
+
+			$elements = array(
+				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li li a',
+				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li li a',
+			);
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['padding-right'] = '66px';
+
+			$elements = aione_map_selector( $elements, ':after' );
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['content']      = '"----"';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-right'] = '0';
+			$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['margin-left']  = '2px';
+		}
+
+		$elements = array(
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v1.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v2.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v3.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v4.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
+			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v5.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+
+		$css[ $mobile_menu_media_query ]['.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder .oxo-secondary-menu-icon']['text-align'] = 'inherit';
+
+		$elements = array(
+			'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder .oxo-secondary-menu-icon:before',
+			'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder .oxo-secondary-menu-icon:after',
+		);
+		$css[ $mobile_menu_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		/*
+		@media only screen and ( max-width: $content_break_point )
+		*/
+		$content_break_point_media_query = '@media only screen and (max-width: ' . intval( Aione()->theme_options['content_break_point'] ) . 'px)';
+		$content_media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options['content_break_point'] ) ) . 'px)';
+		$content_min_media_query = '@media only screen and (min-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options['content_break_point'] ) ) . 'px)';
+
+		// # Layout
+		if ( Aione()->theme_options['smooth_scrolling'] ) {
+			if ( Aione()->theme_options['responsive'] ) {
+				$css[ $content_min_media_query ]['.no-overflow-y body']['padding-right'] = '9px';
+				$css[ $content_min_media_query ]['.no-overflow-y #slidingbar-area']['right'] = '9px';
+			}
+		}
+
+		if ( ! Aione()->theme_options['breadcrumb_mobile'] ) {
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar .oxo-breadcrumbs']['display'] = 'none';
+		}
+
+		$css[ $content_media_query ]['.no-overflow-y']['overflow-y'] = 'visible !important';
+
+		// Column breakpoints, content/sidebar moved to new sidebar breakpoint.
+		$css[ $content_media_query ]['.oxo-layout-column']['margin-left']  = '0 !important';
+		$css[ $content_media_query ]['.oxo-layout-column']['margin-right'] = '0 !important';
+
+		$elements = array(
+			'.oxo-layout-column:nth-child(5n)',
+			'.oxo-layout-column:nth-child(4n)',
+			'.oxo-layout-column:nth-child(3n)',
+			'.oxo-layout-column:nth-child(2n)',
+		);
+
+		$css[ $content_media_query ]['.oxo-layout-column.oxo-spacing-no']['margin-bottom'] = '0';
+		$css[ $content_media_query ]['.oxo-body .oxo-layout-column']['width'] = '100% !important';
+
+		$elements = array(
+			'.oxo-columns-5 .oxo-column:first-child',
+			'.oxo-columns-4 .oxo-column:first-child',
+			'.oxo-columns-3 .oxo-column:first-child',
+			'.oxo-columns-2 .oxo-column:first-child',
+			'.oxo-columns-1 .oxo-column:first-child',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-left'] = '0';
+
+		$css[ $content_media_query ]['.oxo-columns .oxo-column']['width'] 	   = '100% !important';
+		$css[ $content_media_query ]['.oxo-columns .oxo-column']['float']      = 'none';
+		$css[ $content_media_query ]['.oxo-columns .oxo-column:not(.oxo-column-last)']['margin']     = '0 0 50px';
+		$css[ $content_media_query ]['.oxo-columns .oxo-column']['box-sizing'] = 'border-box';
+
+		if ( is_rtl() ) {
+			$css[ $content_media_query ]['.rtl .oxo-column']['float'] = 'none';
+		}
+
+		$elements = array(
+			'.col-sm-12',
+			'.col-sm-6',
+			'.col-sm-4',
+			'.col-sm-3',
+			'.col-sm-2',
+			'.oxo-columns-5 .col-lg-2',
+			'.oxo-columns-5 .col-md-2',
+			'.oxo-columns-5 .col-sm-2',
+			'.avada-container .columns .col',
+			'.footer-area .oxo-columns .oxo-column',
+			'#slidingbar-area .columns .col',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['float'] = 'none';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['width'] = '100%';
+
+		if ( get_post_meta( $c_page_id, 'pyre_fallback', true ) ) {
+			$css[ $content_media_query ]['#sliders-container']['display'] = 'none';
+			$css[ $content_media_query ]['#fallback-slide']['display'] = 'block';
+		}
+
+		// # General Styles
+		$css[ $content_media_query ]['.oxo-filters']['border-bottom'] = '0';
+
+		$css[ $content_media_query ]['.oxo-body .oxo-filter']['float']         = 'none';
+		$css[ $content_media_query ]['.oxo-body .oxo-filter']['margin']        = '0';
+		$css[ $content_media_query ]['.oxo-body .oxo-filter']['border-bottom'] = '1px solid #E7E6E6';
+
+		$css[ $content_media_query ]['.oxo-portfolio-text-floated .oxo-portfolio-content-wrapper']['display'] = 'block';
+		$css[ $content_media_query ]['.oxo-portfolio-text-floated .oxo-image-wrapper']['max-width'] = 'none';
+
+		// Mobile Logo.
+		if ( Aione()->theme_options['mobile_logo']['url'] ) {
+			$elements = array(
+				'.oxo-mobile-logo-1 .oxo-standard-logo',
+				'#side-header .oxo-mobile-logo-1 .oxo-standard-logo',
+			);
+			$css[ $mobile_header_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+			$elements = array(
+				'.oxo-mobile-logo-1 .oxo-mobile-logo-1x',
+				'#side-header .oxo-mobile-logo-1 .oxo-mobile-logo-1x',
+			);
+			$css[ $mobile_header_media_query ][ aione_implode( $elements ) ]['display'] = 'inline-block';
+		}
+
+		$css[ $content_media_query ]['.oxo-secondary-menu-icon']['min-width'] = '100%';
+
+		// # Page Title Bar
+		if ( 'auto' != Aione()->theme_options['page_title_mobile_height'] ) {
+
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['padding-top']    = '5px';
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['padding-bottom'] = '5px';
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['min-height']     = 'calc(' . Aione_Sanitize::size( Aione()->theme_options['page_title_mobile_height'] ) . ' - 10px)';
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['height']         = 'auto';
+
+		} else {
+
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['padding-top']    = '10px';
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['padding-bottom'] = '10px';
+			$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['height']         = 'auto';
+			$css[ $content_media_query ]['.oxo-page-title-row']['height'] = 'auto';
+
+		}
+
+		$elements = array(
+			'.oxo-page-title-bar-left .oxo-page-title-captions',
+			'.oxo-page-title-bar-right .oxo-page-title-captions',
+			'.oxo-page-title-bar-left .oxo-page-title-secondary',
+			'.oxo-page-title-bar-right .oxo-page-title-secondary',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display']     = 'block';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['float']       = 'none';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['width']       = '100%';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['line-height'] = 'normal';
+
+		$css[ $content_media_query ]['.oxo-page-title-bar-left .oxo-page-title-secondary']['text-align'] = 'left';
+
+		$css[ $content_media_query ]['.oxo-page-title-bar-left .searchform']['display']   = 'block';
+		$css[ $content_media_query ]['.oxo-page-title-bar-left .searchform']['max-width'] = '100%';
+
+		$css[ $content_media_query ]['.oxo-page-title-bar-right .oxo-page-title-secondary']['text-align'] = 'right';
+
+		$css[ $content_media_query ]['.oxo-page-title-bar-right .searchform']['max-width'] = '100%';
+
+		if ( 'auto' != Aione()->theme_options['page_title_mobile_height'] ) {
+
+			$css[ $content_media_query ]['.oxo-page-title-row']['display']    = 'table';
+			$css[ $content_media_query ]['.oxo-page-title-row']['width']      = '100%';
+			$css[ $content_media_query ]['.oxo-page-title-row']['min-height'] = 'calc(' . Aione_Sanitize::size( Aione()->theme_options['page_title_mobile_height'] ) . ' - 20px)';
+
+			$css[ $content_media_query ]['.oxo-page-title-bar-center .oxo-page-title-row']['width'] = 'auto';
+
+			$css[ $content_media_query ]['.oxo-page-title-wrapper']['display']        = 'table-cell';
+			$css[ $content_media_query ]['.oxo-page-title-wrapper']['vertical-align'] = 'middle';
+		}
+
+		$css[ $content_media_query ]['.oxo-contact-info']['padding']     = '1em 30px 0px 30px';
+		$css[ $content_media_query ]['.oxo-contact-info']['line-height'] = '1.5em';
+
+		if ( get_post_meta( $c_page_id, 'pyre_page_title_mobile_height', true ) ) {
+
+			if ( 'auto' != get_post_meta( $c_page_id, 'pyre_page_title_mobile_height', true ) ) {
+
+				$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['height'] = Aione_Sanitize::size( get_post_meta( $c_page_id, 'pyre_page_title_mobile_height', true ) );
+
+				$css[ $content_media_query ]['.oxo-page-title-row']['display'] = 'table';
+
+				$css[ $content_media_query ]['.oxo-page-title-wrapper']['display']        = 'table-cell';
+				$css[ $content_media_query ]['.oxo-page-title-wrapper']['vertical-align'] = 'middle';
+
+			} else {
+
+				$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['padding-top']    = '10px';
+				$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['padding-bottom'] = '10px';
+				$css[ $content_media_query ]['.oxo-body .oxo-page-title-bar']['height']         = 'auto';
+
+			}
+		}
+
+		// # Blog Layouts.
+		// Blog medium alternate layout.
+		$elements = array(
+			'.oxo-body .oxo-blog-layout-medium-alternate .oxo-post-content',
+			'.oxo-body .oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-content',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['float']       = 'none';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['clear']       = 'both';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['margin']      = '0';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-top'] = '20px';
+
+		// # Author Page - Info.
+		$css[ $content_media_query ]['.oxo-author .oxo-social-networks']['display'] = 'block';
+		$css[ $content_media_query ]['.oxo-body .oxo-author .oxo-social-networks']['text-align'] = 'center';
+		$css[ $content_media_query ]['.oxo-author .oxo-social-networks']['margin-top'] = '10px';
+
+		$css[ $content_media_query ]['.oxo-author-tagline']['display']      = 'block';
+		$css[ $content_media_query ]['.oxo-author-tagline']['float']      = 'none';
+		$css[ $content_media_query ]['.oxo-author-tagline']['text-align'] = 'center';
+		$css[ $content_media_query ]['.oxo-author-tagline']['max-width']  = '100%';
+
+		// # Shortcodes.
+		$elements = array(
+			'.oxo-content-boxes.content-boxes-clean-vertical .content-box-column',
+			'.oxo-content-boxes.content-boxes-clean-horizontal .content-box-column',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['border-right-width'] = '1px';
+
+		$elements = array(
+			'.oxo-content-boxes .content-box-shortcode-timeline'
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$elements = array(
+			'.oxo-countdown',
+			'.oxo-countdown .oxo-countdown-heading-wrapper',
+			'.oxo-countdown .oxo-countdown-counter-wrapper',
+			'.oxo-countdown .oxo-countdown-link-wrapper',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+		$css[ $content_media_query ]['.oxo-countdown .oxo-countdown-heading-wrapper']['text-align'] = 'center';
+		$css[ $content_media_query ]['.oxo-countdown .oxo-countdown-counter-wrapper']['margin-top'] = '20px';
+		$css[ $content_media_query ]['.oxo-countdown .oxo-countdown-counter-wrapper']['margin-bottom'] = '10px';
+		$css[ $content_media_query ]['.oxo-countdown .oxo-dash-title']['display'] = 'block';
+		$css[ $content_media_query ]['.oxo-body .oxo-countdown .oxo-dash-title']['padding'] = '0';
+		$css[ $content_media_query ]['.oxo-countdown .oxo-dash-title']['font-size'] = '16px';
+		$css[ $content_media_query ]['.oxo-countdown .oxo-countdown-link-wrapper']['text-align'] = 'center';
+
+		// Tagline Box.
+		$css[ $content_media_query ]['.oxo-reading-box-container .oxo-desktop-button']['display'] = 'none';
+		$css[ $content_media_query ]['.oxo-reading-box-container .oxo-mobile-button']['display'] = 'block';
+		$css[ $content_media_query ]['.oxo-reading-box-container .oxo-mobile-button.continue-center']['display'] = 'block';
+
+		// # Events Calendar
+		if ( class_exists( 'Tribe__Events__Main' ) ) {
+			$css[ $content_media_query ]['.tribe-events-single ul.tribe-related-events li']['margin-right'] = '0';
+			$css[ $content_media_query ]['.tribe-events-single ul.tribe-related-events li']['width'] = '100%';
+			$css[ $content_break_point_media_query ]['.tribe-bar-collapse #tribe-bar-collapse-toggle']['width'] = '59% !important';
+		}
+
+		$sidebar_media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options['sidebar_break_point'] ) ) . 'px)';
+
+		$css[ $sidebar_media_query ]['#content']['width']       = '100% !important';
+		$css[ $sidebar_media_query ]['#content']['margin-left'] = '0px !important';
+		$css[ $sidebar_media_query ]['.sidebar']['width']       = '100% !important';
+		$css[ $sidebar_media_query ]['.sidebar']['float']       = 'none !important';
+		$css[ $sidebar_media_query ]['.sidebar']['margin-left'] = '0 !important';
+		$css[ $sidebar_media_query ]['.sidebar']['clear']       = 'both';
+
+		$retina_media_query = '@media only screen and (max-width: ' . ( intval( Aione()->theme_options['side_header_break_point'] ) ) . 'px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: ' . ( intval( Aione()->theme_options['side_header_break_point'] ) ) . 'px) and (min-resolution: 144dpi), only screen and (max-width: ' . ( intval( Aione()->theme_options['side_header_break_point'] ) ) . 'px) and (min-resolution: 1.5dppx)';
+
+		$elements = array(
+			'.oxo-mobile-logo-1 .oxo-mobile-logo-1x',
+			'#side-header .oxo-mobile-logo-1 .oxo-mobile-logo-1x',
+		);
+		$css[ $retina_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$elements = array(
+			'.oxo-mobile-logo-1 .oxo-mobile-logo-2x',
+			'#side-header .oxo-mobile-logo-1 .oxo-mobile-logo-2x',
+		);
+		$css[ $retina_media_query ][ aione_implode( $elements ) ]['display'] = 'inline-block';
+
+		// # WooCommerce
+		if ( class_exists( 'WooCommerce' ) ) {
+			if ( 'horizontal' == Aione()->theme_options['woocommerce_product_tab_design'] ) {
+
+				$elements = array(
+					'#wrapper .woocommerce-tabs .tabs',
+					'#wrapper .woocommerce-tabs .panel',
+				);
+
+				$css[ $content_media_query ][ aione_implode( $elements ) ]['float']        = 'none';
+				$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-left']  = 'auto';
+				$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-right'] = 'auto';
+				$css[ $content_media_query ][ aione_implode( $elements ) ]['width']        = '100% !important';
+
+				$elements = array(
+					'.woocommerce-tabs .tabs',
+					'.woocommerce-side-nav',
+					'.woocommerce-MyAccount-navigation',
+				);
+				$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '25px';
+
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs']['border'] = 'none';
+				$css[ $content_media_query ]['.woocommerce-tabs > .wc-tab']['border-top'] = '1px solid';
+
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs .active']['border-top'] = 'none';
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs .active']['border-left'] = 'none';
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs .active']['border-right'] = 'none';
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs .active a']['background-color'] = 'transparent';
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs li']['float'] = 'none';
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs li']['border-bottom'] = '1px solid';
+				$css[ $content_media_query ]['.woocommerce-tabs > .tabs li a']['padding'] = '10px 0';
+			}
+		}
+
+		// # Not restructured mobile.css styles
+		$css[ $content_media_query ]['#wrapper']['width'] = 'auto !important';
+
+		$css[ $content_media_query ]['.create-block-format-context']['display'] = 'none';
+
+		$css[ $content_media_query ]['.review']['float'] = 'none';
+		$css[ $content_media_query ]['.review']['width'] = '100%';
+
+		$elements = array(
+			'.oxo-copyright-notice',
+			'.oxo-body .oxo-social-links-footer',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display']    = 'block';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['text-align'] = 'center';
+
+		$css[ $content_media_query ]['.oxo-social-links-footer']['width'] = 'auto';
+
+		$css[ $content_media_query ]['.oxo-social-links-footer .oxo-social-networks']['display']    = 'inline-block';
+		$css[ $content_media_query ]['.oxo-social-links-footer .oxo-social-networks']['float']      = 'none';
+		$css[ $content_media_query ]['.oxo-social-links-footer .oxo-social-networks']['margin-top'] = '0';
+
+		$css[ $content_media_query ]['.oxo-copyright-notice']['padding'] = '0 0 15px';
+
+		$elements = array(
+			'.oxo-copyright-notice:after',
+			'.oxo-social-networks:after',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['content'] = '""';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['clear']   = 'both';
+
+		$elements = array(
+			'.oxo-social-networks li',
+			'.oxo-copyright-notice li',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['float']   = 'none';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'inline-block';
+
+		$css[ $content_media_query ]['.oxo-title']['margin-top']    = '0px !important';
+		$css[ $content_media_query ]['.oxo-title']['margin-bottom'] = '20px !important';
+		$css[ $content_media_query ]['.tfs-slider .oxo-title']['margin-bottom'] = '0 !important';
+
+		$css[ $content_media_query ]['#main .cart-empty']['float']         = 'none';
+		$css[ $content_media_query ]['#main .cart-empty']['text-align']    = 'center';
+		$css[ $content_media_query ]['#main .cart-empty']['border-top']    = '1px solid';
+		$css[ $content_media_query ]['#main .cart-empty']['border-bottom'] = 'none';
+		$css[ $content_media_query ]['#main .cart-empty']['width']         = '100%';
+		$css[ $content_media_query ]['#main .cart-empty']['line-height']   = 'normal !important';
+		$css[ $content_media_query ]['#main .cart-empty']['height']        = 'auto !important';
+		$css[ $content_media_query ]['#main .cart-empty']['margin-bottom'] = '10px';
+		$css[ $content_media_query ]['#main .cart-empty']['padding-top']   = '10px';
+
+		$css[ $content_media_query ]['#main .return-to-shop']['float']          = 'none';
+		$css[ $content_media_query ]['#main .return-to-shop']['border-top']     = 'none';
+		$css[ $content_media_query ]['#main .return-to-shop']['border-bottom']  = '1px solid';
+		$css[ $content_media_query ]['#main .return-to-shop']['width']          = '100%';
+		$css[ $content_media_query ]['#main .return-to-shop']['text-align']     = 'center';
+		$css[ $content_media_query ]['#main .return-to-shop']['line-height']    = 'normal !important';
+		$css[ $content_media_query ]['#main .return-to-shop']['height']         = 'auto !important';
+		$css[ $content_media_query ]['#main .return-to-shop']['padding-bottom'] = '10px';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon']['-webkit-justify-content'] = 'center';
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon']['-ms-justify-content'] = 'center';
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon']['justify-content'] = 'center';
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon']['-webkit-flex-wrap'] = 'wrap';
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon']['-ms-flex-wrap'] = 'wrap';
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon']['flex-wrap'] = 'wrap';
+
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon .promo-code-heading']['margin-bottom'] = '5px';
+
+			$css[ $content_media_query ]['.woocommerce .checkout_coupon .coupon-contents']['margin']  = '0';
+		}
+
+		$css[ $content_media_query ]['#content.full-width']['margin-bottom'] = '0';
+
+		$css[ $content_media_query ]['.sidebar .social_links .social li']['width']        = 'auto';
+		$css[ $content_media_query ]['.sidebar .social_links .social li']['margin-right'] = '5px';
+
+		$css[ $content_media_query ]['#comment-input']['margin-bottom'] = '0';
+
+		$css[ $content_media_query ]['#comment-input input']['width']         = '100%';
+		$css[ $content_media_query ]['#comment-input input']['float']         = 'none !important';
+		$css[ $content_media_query ]['#comment-input input']['margin-bottom'] = '10px';
+
+		$css[ $content_media_query ]['#comment-textarea textarea']['width'] = '100%';
+
+		$css[ $content_media_query ]['.widget.facebook_like iframe']['width']     = '100% !important';
+		$css[ $content_media_query ]['.widget.facebook_like iframe']['max-width'] = 'none !important';
+
+		$css[ $content_media_query ]['.pagination']['margin-top'] = '40px';
+
+		$css[ $content_media_query ]['.portfolio-one .portfolio-item .image']['float']         = 'none';
+		$css[ $content_media_query ]['.portfolio-one .portfolio-item .image']['width']         = 'auto';
+		$css[ $content_media_query ]['.portfolio-one .portfolio-item .image']['height']        = 'auto';
+		$css[ $content_media_query ]['.portfolio-one .portfolio-item .image']['margin-bottom'] = '20px';
+
+		$css[ $content_media_query ]['h5.toggle span.toggle-title']['width'] = '80%';
+
+		$css[ $content_media_query ]['#wrapper .sep-boxed-pricing .panel-wrapper']['padding'] = '0';
+
+		$elements = array(
+			'#wrapper .full-boxed-pricing .column',
+			'#wrapper .sep-boxed-pricing .column',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['float']         = 'none';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '10px';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-left']   = '0';
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['width']         = '100%';
+
+		$css[ $content_media_query ]['.share-box']['height'] = 'auto';
+
+		$css[ $content_media_query ]['#wrapper .share-box h4']['float']       = 'none';
+		$css[ $content_media_query ]['#wrapper .share-box h4']['line-height'] = '20px !important';
+		$css[ $content_media_query ]['#wrapper .share-box h4']['margin-top']  = '0';
+		$css[ $content_media_query ]['#wrapper .share-box h4']['padding']     = '0';
+
+		$css[ $content_media_query ]['.share-box ul']['float']          = 'none';
+		$css[ $content_media_query ]['.share-box ul']['overflow']       = 'hidden';
+		$css[ $content_media_query ]['.share-box ul']['padding']        = '0 25px';
+		$css[ $content_media_query ]['.share-box ul']['padding-bottom'] = '15px';
+		$css[ $content_media_query ]['.share-box ul']['margin-top']     = '0px';
+
+		$css[ $content_media_query ]['.project-content .project-description']['float'] = 'none !important';
+
+		$css[ $content_media_query ]['.single-avada_portfolio .portfolio-half .project-content .project-description h3']['margin-top'] = '24px';
+
+		$css[ $content_media_query ]['.project-content .oxo-project-description-details']['margin-bottom'] = '50px';
+
+		$elements = array(
+			'.project-content .project-description',
+			'.project-content .project-info',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['width'] = '100% !important';
+
+		$css[ $content_media_query ]['.portfolio-half .flexslider']['width'] = '100% !important';
+
+		$css[ $content_media_query ]['.portfolio-half .project-content']['width'] = '100% !important';
+
+		$css[ $content_media_query ]['#style_selector']['display'] = 'none';
+
+		$elements = array(
+			'.ls-avada .ls-nav-prev',
+			'.ls-avada .ls-nav-next',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'none !important';
+
+		$css[ $content_media_query ]['#footer .social-networks']['width']    = '100%';
+		$css[ $content_media_query ]['#footer .social-networks']['margin']   = '0 auto';
+		$css[ $content_media_query ]['#footer .social-networks']['position'] = 'relative';
+		$css[ $content_media_query ]['#footer .social-networks']['left']     = '-11px';
+
+		$css[ $content_media_query ]['.tab-holder .tabs']['height'] = 'auto !important';
+		$css[ $content_media_query ]['.tab-holder .tabs']['width']  = '100% !important';
+
+		$css[ $content_media_query ]['.shortcode-tabs .tab-hold .tabs li']['width'] = '100% !important';
+
+		$elements = array(
+			'body .shortcode-tabs .tab-hold .tabs li',
+			'body.dark .sidebar .tab-hold .tabs li',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['border-right'] = 'none !important';
+
+		$css[ $content_media_query ]['.error-message']['line-height'] = '170px';
+		$css[ $content_media_query ]['.error-message']['margin-top']  = '20px';
+
+		$css[ $content_media_query ]['.error_page .useful_links']['width']        = '100%';
+		$css[ $content_media_query ]['.error-page .useful_links']['padding-left'] = '0';
+
+		$css[ $content_media_query ]['.oxo-google-map']['width']         = '100% !important';
+
+		$css[ $content_media_query ]['.social_links_shortcode .social li']['width'] = '10% !important';
+
+		$css[ $content_media_query ]['#wrapper .ei-slider']['width'] = '100% !important';
+
+		$css[ $content_media_query ]['#wrapper .ei-slider']['height'] = '200px !important';
+
+		$css[ $content_media_query ]['.oxo-progressbar']['margin-bottom'] = '10px !important';
+
+		$css[ $content_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
+		$css[ $content_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
+		$css[ $content_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3%';
+		$css[ $content_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3%';
+
+		$elements = array(
+			'#wrapper .content-boxes-icon-on-top .content-box-column',
+			'#wrapper .content-boxes-icon-boxed .content-box-column',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '55px';
+
+		$css[ $content_media_query ]['.oxo-counters-box .oxo-counter-box']['margin-bottom'] = '20px';
+		$css[ $content_media_query ]['.oxo-counters-box .oxo-counter-box']['padding']       = '0 15px';
+
+		$css[ $content_media_query ]['.oxo-counters-box .oxo-counter-box:last-child']['margin-bottom'] = '0';
+
+		$css[ $content_media_query ]['.popup']['display'] = 'none !important';
+
+		$css[ $content_media_query ]['.share-box .social-networks']['text-align'] = 'left';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			$css[ $content_media_query ]['.oxo-body .products li']['width'] = '225px';
+
+			$elements = array(
+				'.products li',
+				'#wrapper .catalog-ordering > ul',
+				'#main .products li:nth-child(3n)',
+				'#main .products li:nth-child(4n)',
+				'#main .has-sidebar .products li',
+				'.avada-myaccount-data .addresses .col-1',
+				'.avada-myaccount-data .addresses .col-2',
+				'.woocommerce-MyAccount-content .addresses .col-1',
+				'.woocommerce-MyAccount-content .addresses .col-2',
+				'.avada-customer-details .addresses .col-1',
+				'.avada-customer-details .addresses .col-2',
+			);
+
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['float']        = 'none !important';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-left']  = 'auto !important';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-right'] = 'auto !important';
+
+			$elements = array(
+				'.avada-myaccount-data .addresses .col-1',
+				'.avada-myaccount-data .addresses .col-2',
+				'.woocommerce-MyAccount-content .addresses .col-1',
+				'.woocommerce-MyAccount-content .addresses .col-2',
+				'.avada-customer-details .addresses .col-1',
+				'.avada-customer-details .addresses .col-2',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin'] = '0 !important';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['width']  = '100%';
+
+			$css[ $content_media_query ]['#wrapper .catalog-ordering']['margin-bottom'] = '50px';
+
+			$css[ $content_media_query ]['#wrapper .orderby-order-container']['display'] = 'block';
+
+			$css[ $content_media_query ]['#wrapper .order-dropdown > li:hover > ul']['display']  = 'block';
+			$css[ $content_media_query ]['#wrapper .order-dropdown > li:hover > ul']['position'] = 'relative';
+			$css[ $content_media_query ]['#wrapper .order-dropdown > li:hover > ul']['top']      = '0';
+
+			$css[ $content_media_query ]['#wrapper .orderby-order-container']['margin']        = '0 auto';
+			$css[ $content_media_query ]['#wrapper .orderby-order-container']['width']         = '225px';
+			$css[ $content_media_query ]['#wrapper .orderby-order-container']['float']         = 'none';
+
+			$css[ $content_media_query ]['#wrapper .orderby.order-dropdown']['width']       	 = '176px';
+			$css[ $content_media_query ]['#wrapper .orderby.order-dropdown li a']['max-width'] = '100%';
+			$css[ $content_media_query ]['#wrapper .orderby.order-dropdown']['z-index']        = '101';
+
+			$css[ $content_media_query ]['#wrapper .sort-count.order-dropdown']['display'] = 'block';
+			$css[ $content_media_query ]['#wrapper .sort-count.order-dropdown']['width'] = '225px';
+
+			$css[ $content_media_query ]['#wrapper .sort-count.order-dropdown ul a']['width'] = '225px';
+
+			$css[ $content_media_query ]['#wrapper .catalog-ordering .order']['margin'] = '0';
+
+			$css[ $content_media_query ]['.catalog-ordering .oxo-grid-list-view']['display'] = 'block';
+			$css[ $content_media_query ]['.catalog-ordering .oxo-grid-list-view']['width'] = '78px';
+
+			$elements = array(
+				'.woocommerce #customer_login .login .form-row',
+				'.woocommerce #customer_login .login .lost_password',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['float'] = 'none';
+
+			$elements = array(
+				'.woocommerce #customer_login .login .inline',
+				'.woocommerce #customer_login .login .lost_password',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['display']     = 'block';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-left'] = '0';
+
+			$css[ $content_media_query ]['.avada-myaccount-data .my_account_orders .order-number']['padding-right'] = '8px';
+			$css[ $content_media_query ]['.avada-myaccount-data .my_account_orders .order-actions']['padding-left'] = '8px';
+
+			$css[ $content_media_query ]['.woocommerce-MyAccount-content .my_account_orders .order-number']['padding-right'] = '8px';
+			$css[ $content_media_query ]['.woocommerce-MyAccount-content .my_account_orders .order-actions']['padding-left'] = '8px';
+
+			$css[ $content_media_query ]['.shop_table .product-name']['width'] = '35%';
+
+			$css[ $content_media_query ]['form.checkout .shop_table tfoot th']['padding-right'] = '20px';
+
+			$css[ $content_media_query ]['.cart-collaterals']['-webkit-flex-direction'] = 'column';
+			$css[ $content_media_query ]['.cart-collaterals']['flex-direction'] = 'column';
+
+			$elements = array(
+				'#wrapper .product .images',
+				'#wrapper .product .summary.entry-summary',
+				'#wrapper .woocommerce-tabs .tabs',
+				'#wrapper .woocommerce-tabs .panel',
+				'#wrapper .woocommerce-side-nav',
+				'#wrapper .woocommerce-content-box',
+				'.oxo-body .cart-collaterals .cart_totals',
+				'.oxo-body .woocommerce-MyAccount-navigation',
+				'.oxo-body .woocommerce-MyAccount-content',
+				'#wrapper .shipping-coupon',
+				'#wrapper .cart-totals-buttons',
+				'#wrapper #customer_login .col-1',
+				'#wrapper #customer_login .col-2',
+				'#wrapper .woocommerce form.checkout #customer_details .col-1',
+				'#wrapper .woocommerce form.checkout #customer_details .col-2',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['float']        = 'none';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-left']  = 'auto';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-right'] = 'auto';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['width']        = '100% !important';
+
+			$elements = array(
+				'#customer_login .col-1',
+				'.coupon',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '30px';
+
+			$css[ $content_media_query ]['.shop_table .product-thumbnail']['float'] = 'none';
+
+			$css[ $content_media_query ]['.product-info']['margin-left'] = '0';
+			$css[ $content_media_query ]['.product-info']['margin-top']  = '10px';
+
+			$css[ $content_media_query ]['.product .entry-summary div .price']['float'] = 'none';
+
+			$css[ $content_media_query ]['.product .entry-summary .woocommerce-product-rating']['float']       = 'none';
+			$css[ $content_media_query ]['.product .entry-summary .woocommerce-product-rating']['margin-left'] = '0';
+
+			$elements = array(
+				'.woocommerce-tabs .tabs',
+				'.woocommerce-side-nav',
+				'.woocommerce-MyAccount-navigation',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '25px';
+
+			$css[ $content_media_query ]['.woocommerce-tabs .panel']['width']   = '91% !important';
+			$css[ $content_media_query ]['.woocommerce-tabs .panel']['padding'] = '4% !important';
+
+			$css[ $content_media_query ]['#reviews li .avatar']['display'] = 'none';
+
+			$css[ $content_media_query ]['#reviews li .comment-text']['width']       = '90% !important';
+			$css[ $content_media_query ]['#reviews li .comment-text']['margin-left'] = '0 !important';
+			$css[ $content_media_query ]['#reviews li .comment-text']['padding']     = '5% !important';
+
+			$css[ $content_media_query ]['html .woocommerce .woocommerce-container .social-share']['display'] = 'block';
+			$css[ $content_media_query ]['.woocommerce-container .social-share']['overflow'] = 'hidden';
+
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['display']       = 'block';
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['float']         = 'left';
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['margin']        = '0 auto';
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['border-right']  = '0 !important';
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['border-left']   = '0 !important';
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['padding-left']  = '0 !important';
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['padding-right'] = '0 !important';
+			$css[ $content_media_query ]['.woocommerce-container .social-share li']['width']         = '50%';
+
+			$css[ $content_media_query ]['.has-sidebar .woocommerce-container .social-share li']['width'] = '50%';
+
+			$css[ $content_media_query ]['.avada-myaccount-user']['display'] = 'block';
+			$css[ $content_media_query ]['.avada-myaccount-user > span']['width']   = '100%';
+			$css[ $content_media_query ]['.avada-myaccount-user > span']['display'] = 'block';
+			$css[ $content_media_query ]['.avada-myaccount-user .username']['display'] = 'block';
+			$css[ $content_media_query ]['.avada-myaccount-user .username .not-user']['display'] = 'inline';
+			$css[ $content_media_query ]['.oxo-body .avada-myaccount-user .username .not-user']['padding'] = '0 5px;';
+			$css[ $content_media_query ]['.avada-myaccount-user > span']['padding'] = '5px 0px';
+
+			$css[ $content_media_query ]['.avada-myaccount-user span']['border-right'] = 0;
+
+			$css[ $content_media_query ]['.avada-myaccount-user']['padding-top']       = '10px';
+			$css[ $content_media_query ]['.avada-myaccount-user']['padding-bottom']    = '10px';
+
+			if ( is_rtl() ) {
+				$css[ $content_media_query ]['.rtl .avada-myaccount-user span']['border-left'] = '0';
+			}
+
+			$elements = array(
+				'.shop_table .product-thumbnail img',
+				'.shop_table .product-thumbnail .product-info',
+				'.shop_table .product-thumbnail .product-info p',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['float']   = 'none';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['width']   = '100%';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin']  = '0 !important';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding'] = '0';
+
+			$css[ $content_media_query ]['.shop_table .product-thumbnail']['padding'] = '10px 0px';
+
+			$css[ $content_media_query ]['.product .images']['margin-bottom'] = '30px';
+
+			$css[ $content_media_query ]['#customer_login_box .button']['float']         = 'left';
+			$css[ $content_media_query ]['#customer_login_box .button']['margin-bottom'] = '15px';
+
+			$css[ $content_media_query ]['#customer_login_box .remember-box']['clear']   = 'both';
+			$css[ $content_media_query ]['#customer_login_box .remember-box']['display'] = 'block';
+			$css[ $content_media_query ]['#customer_login_box .remember-box']['padding'] = '0';
+			$css[ $content_media_query ]['#customer_login_box .remember-box']['width']   = '125px';
+			$css[ $content_media_query ]['#customer_login_box .remember-box']['float']   = 'left';
+
+			$css[ $content_media_query ]['#customer_login_box .lost_password']['float'] = 'left';
+
+		}
+
+		if ( defined( 'WPCF7_PLUGIN' ) ) {
+
+			$elements = array(
+				'.wpcf7-form .wpcf7-text',
+				'.wpcf7-form .wpcf7-quiz',
+				'.wpcf7-form .wpcf7-number',
+				'.wpcf7-form textarea',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['float']      = 'none !important';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['width']      = '100% !important';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['box-sizing'] = 'border-box';
+
+		}
+
+		if ( class_exists( 'GFForms' ) ) {
+			$elements = array(
+				'.gform_wrapper .right_label input.medium',
+				'.gform_wrapper .right_label select.medium',
+				'.gform_wrapper .left_label input.medium',
+				'.gform_wrapper .left_label select.medium',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['width'] = '35% !important';
+		}
+
+		$elements = array(
+			'.product .images #slider .flex-direction-nav',
+			'.product .images #carousel .flex-direction-nav',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'none !important';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			$elements = array(
+				'.avada-myaccount-user span.msg',
+				'.avada-myaccount-user > span:last-child',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-left']  = '0 !important';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-right'] = '0 !important';
+		}
+
+		$css[ $content_media_query ]['.fullwidth-box']['background-attachment'] = 'scroll !important';
+
+		$css[ $content_media_query ]['#toTop']['bottom']        = '30px';
+		$css[ $content_media_query ]['#toTop']['border-radius'] = '4px';
+		$css[ $content_media_query ]['#toTop']['height']        = '40px';
+		$css[ $content_media_query ]['#toTop']['z-index']       = '10000';
+
+		$css[ $content_media_query ]['#toTop:before']['line-height'] = '38px';
+
+		$css[ $content_media_query ]['#toTop:hover']['background-color'] = '#333333';
+
+		$css[ $content_media_query ]['.no-mobile-totop .to-top-container']['display'] = 'none';
+
+		$css[ $content_media_query ]['.no-mobile-slidingbar #slidingbar-area']['display'] = 'none';
+
+		$css[ $content_media_query ]['.no-mobile-slidingbar.mobile-logo-pos-left .mobile-menu-icons']['margin-right'] = '0';
+
+		if ( is_rtl() ) {
+			$css[ $content_media_query ]['.rtl.no-mobile-slidingbar.mobile-logo-pos-right .mobile-menu-icons']['margin-left'] = '0';
+		}
+
+		$css[ $content_media_query ]['.tfs-slider .slide-content-container .btn']['min-height']    = '0 !important';
+		$css[ $content_media_query ]['.tfs-slider .slide-content-container .btn']['padding-left']  = '30px';
+		$css[ $content_media_query ]['.tfs-slider .slide-content-container .btn']['padding-right'] = '30px !important';
+		$css[ $content_media_query ]['.tfs-slider .slide-content-container .btn']['height']        = '26px !important';
+		$css[ $content_media_query ]['.tfs-slider .slide-content-container .btn']['line-height']   = '26px !important';
+
+		$css[ $content_media_query ]['.oxo-soundcloud iframe']['width'] = '100%';
+
+		$elements = array(
+			'.ua-mobile .oxo-page-title-bar',
+			'.ua-mobile .footer-area',
+			'.ua-mobile body',
+			'.ua-mobile #main',
+		);
+		$css[ $content_media_query ][ aione_implode( $elements ) ]['background-attachment'] = 'scroll !important';
+
+		if ( class_exists( 'RevSliderFront' ) ) {
+			$css[ $content_media_query ]['.oxo-revslider-mobile-padding']['padding-left']  = '30px !important';
+			$css[ $content_media_query ]['.oxo-revslider-mobile-padding']['padding-right'] = '30px !important';
+		}
+
+		// # Events Calendar
+		if ( class_exists( 'Tribe__Events__Main' ) ) {
+			if ( ! is_rtl() ) {
+				$css[ $content_media_query ]['.tribe-events-single ul.tribe-related-events .tribe-related-events-thumbnail']['float'] = 'left';
+				$css[ $content_media_query ]['.tribe-events-single ul.tribe-related-events li .tribe-related-event-info']['padding-left'] = '10px';
+				$css[ $content_media_query ]['.tribe-events-single ul.tribe-related-events li .tribe-related-event-info']['padding-right'] = '0';
+			}
+
+			if ( ( Aione()->theme_options['main_padding']['top'] || Aione()->theme_options['main_padding']['top'] == '0' ) && ! get_post_meta( $c_page_id, 'pyre_main_top_padding', true ) && get_post_meta( $c_page_id, 'pyre_main_top_padding', true ) != '0' ) {
+				$css['global']['.tribe-mobile #main']['padding-top'] = Aione_Sanitize::size( Aione()->theme_options['main_padding'][ 'top'] );
+			} elseif ( get_post_meta( $c_page_id, 'pyre_main_top_padding', true ) ) {
+				$css['global']['.tribe-mobile #main']['padding-top'] = get_post_meta( $c_page_id, 'pyre_main_top_padding', true );
+			} else {
+				$css['global']['.tribe-mobile #main']['padding-top'] = '55px !important';
+			}
+
+			// Filter.
+			$elements = array(
+				'#tribe-events-bar #tribe-bar-views .tribe-bar-views-inner label',
+				'#tribe-events-bar #tribe-bar-views .tribe-bar-views-inner .tribe-bar-views-option a',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-left'] = '15px';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-right'] = '15px';
+
+			$elements = array(
+				'#tribe-events-bar .tribe-bar-filters .tribe-bar-date-filter',
+				'#tribe-events-bar .tribe-bar-filters .tribe-bar-search-filter',
+				'#tribe-events-bar .tribe-bar-filters .tribe-bar-geoloc-filter',
+				'#tribe-events-bar .tribe-bar-filters .tribe-bar-submit',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-left'] = '0';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-right'] = '0';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-top'] = '15px';
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['padding-bottom'] = '15px';
+
+			// Title and Navigation.
+			$css[ $content_media_query ]['#tribe-events-content #tribe-events-header']['margin-bottom'] = '30px';
+
+			$elements = array(
+				'.tribe-events-list .oxo-events-before-title',
+				'.tribe-events-month .oxo-events-before-title',
+				'.tribe-events-week .oxo-events-before-title',
+				'.tribe-events-day .oxo-events-before-title',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['height'] = '100px';
+			$css[ $content_media_query ]['.tribe-events-list.tribe-events-map .oxo-events-before-title']['height'] = 'auto';
+
+			$css[ $content_media_query ]['#tribe-events-content #tribe-events-header .tribe-events-sub-nav li']['margin-top'] = '-40px';
+
+			// Events Archive.
+			// List View.
+			$css[ $content_media_query ]['.tribe-events-loop .tribe-events-event-meta']['padding'] = '0';
+			$css[ $content_media_query ]['#tribe-events .tribe-events-list .tribe-events-event-meta .author > div']['display'] = 'block';
+			$css[ $content_media_query ]['#tribe-events .tribe-events-list .tribe-events-event-meta .author > div']['border-right'] = 'none';
+			$css[ $content_media_query ]['#tribe-events .tribe-events-list .tribe-events-event-meta .author > div']['width'] = '100%';
+
+			$elements = array(
+				'#tribe-events .tribe-events-list .oxo-tribe-primary-info',
+				'#tribe-events .tribe-events-list .oxo-tribe-secondary-info',
+				'#tribe-events .tribe-events-list .oxo-tribe-no-featured-image .oxo-tribe-events-headline',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['width'] = '100%';
+
+			$elements = array(
+				'.tribe-events-list .tribe-events-venue-details',
+				'.tribe-events-list .time-details',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['margin'] = '0';
+
+			// Month View.
+			$css[ $content_media_query ]['.tribe-events-calendar td.tribe-events-past div[id*="tribe-events-daynum-"] > a']['background'] = 'none';
+
+			// Photo View.
+			$css[ $content_media_query ]['.tribe-events-list .time-details']['padding'] = '0';
+
+			// Single Event Page.
+			$elements = array(
+				'.oxo-events-featured-image .oxo-events-single-title-content h2',
+				'.oxo-events-featured-image .oxo-events-single-title-content .tribe-events-schedule',
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['float'] = 'none';
+
+			$elements = array(
+				'#tribe-events .tribe-events-list .type-tribe_events .tribe-events-event-image'
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+			$elements = array(
+				'#tribe-events .tribe-events-list .type-tribe_events .oxo-tribe-events-event-image-responsive'
+			);
+			$css[ $content_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+
+		}
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			// $css[ $content_media_query ]['.oxo-woo-slider .oxo-carousel-title-on-rollover .oxo-rollover-title']['display'] = 'none';
+			$css[ $content_media_query ]['.oxo-woo-slider .oxo-carousel-title-on-rollover .oxo-rollover-categories']['display'] = 'none';
+			$css[ $content_media_query ]['.oxo-woo-slider .oxo-carousel-title-on-rollover .price']['display'] = 'none';
+		}
+
+		/*
+		@media only screen and ( min-width: $content_break_point )
+		*/
+		$content_min_media_query = '@media only screen and (min-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options['content_break_point'] ) ) . 'px)';
+
+		// # WooCommerce
+		if ( class_exists( 'WooCommerce' ) ) {
+			if ( 'horizontal' == Aione()->theme_options['woocommerce_product_tab_design'] ) {
+
+				$elements = array(
+					'.woocommerce-MyAccount-navigation > ul',
+					'.woocommerce-checkout-nav',
+				);
+				foreach ( $elements as $selector ) {
+					$css[ $content_min_media_query ][ $selector ]['width'] = '100%';
+					if ( is_rtl() ) {
+						$css[ $content_min_media_query ][ $selector . ' li' ]['float'] = 'right';
+					} else {
+						$css[ $content_min_media_query ][ $selector . ' li' ]['float'] = 'left';
+					}
+					$css[ $content_min_media_query ][ $selector . ' li a' ]['border']      = '1px solid transparent !important';
+					$css[ $content_min_media_query ][ $selector . ' li a' ]['padding']     = '10px 20px';
+					$css[ $content_min_media_query ][ $selector . ' li a' ]['height']      = 'auto';
+					$css[ $content_min_media_query ][ $selector . ' li a' ]['line-height'] = 'normal';
+					$css[ $content_min_media_query ][ $selector . ' li a:after' ]['display'] = 'none';
+					$css[ $content_min_media_query ][ $selector . ' .is-active' ]['border']        = '1px solid #dddddd';
+					$css[ $content_min_media_query ][ $selector . ' .is-active' ]['border-bottom'] = 'none';
+					$css[ $content_min_media_query ][ $selector . ' .is-active' ]['min-height']    = '40px';
+					$css[ $content_min_media_query ][ $selector . ' .is-active' ]['margin-bottom'] = '-1px';
+					$css[ $content_min_media_query ][ $selector . ' .is-active:hover a' ]['cursor'] = 'default';
+				}
+
+				$css['global']['.woocommerce-content-box.avada-checkout']['margin'] = '0';
+				$css['global']['.woocommerce-content-box.avada-checkout']['clear'] = 'both';
+				$css['global']['.woocommerce-MyAccount-navigation']['width'] = '100%';
+				$css['global']['.oxo-body .woocommerce-MyAccount-content']['margin'] = '0';
+			}
+		}
+
+		// # Shortcodes
+		// Tagline Box
+		$css[ $content_min_media_query ]['.oxo-reading-box-container .reading-box.reading-box-center']['text-align'] = 'center';
+		$css[ $content_min_media_query ]['.oxo-reading-box-container .reading-box.reading-box-right']['text-align'] = 'right';
+
+		$css[ $content_min_media_query ]['.oxo-reading-box-container .oxo-desktop-button']['display'] = 'block';
+		$css[ $content_min_media_query ]['.oxo-reading-box-container .oxo-mobile-button']['display'] = 'none';
+		$css[ $content_min_media_query ]['.oxo-reading-box-container .continue-center']['display'] = 'inline-block';
+
+		/*
+		@media only screen and and (max-device-width : 740px) and (orientation : landscape)
+		*/
+		$seven_fourty_media_query = '@media only screen and (max-device-width : 740px) and (orientation : landscape)';
+
+		// # Footer Styles.
+		if ( Aione()->theme_options['footer_sticky_height'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
+			$css[ $seven_fourty_media_query ][ aione_implode( $elements ) ]['height']     = 'auto';
+			$css[ $seven_fourty_media_query ]['.above-footer-wrapper']['min-height']    = 'none';
+			$css[ $seven_fourty_media_query ]['.above-footer-wrapper']['margin-bottom'] = '0';
+			$css[ $seven_fourty_media_query ]['.above-footer-wrapper:after']['height']  = 'auto';
+			$css[ $seven_fourty_media_query ]['.oxo-footer']['height']               = 'auto';
+		}
+
+		/*
+		@media only screen and ( max-width: 640px )
+		*/
+		$six_fourty_media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 640 ) . 'px)';
+
+		// # Page Title Bar
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-page-title-bar']['max-height'] = 'none';
+
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-page-title-bar h1']['margin'] = '0';
+
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-page-title-secondary']['margin-top'] = '2px';
+
+		// # Blog Layouts.
+		// Blog general styles.
+		$elements = array(
+			'.oxo-blog-layout-large .oxo-meta-info .oxo-alignleft',
+			'.oxo-blog-layout-medium .oxo-meta-info .oxo-alignleft',
+			'.oxo-blog-layout-large .oxo-meta-info .oxo-alignright',
+			'.oxo-blog-layout-medium .oxo-meta-info .oxo-alignright',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['float']   = 'none';
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['margin']  = '0';
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['width']   = '100%';
+
+		// Blog medium layout.
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['float']  = 'none';
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['margin'] = '0 0 20px 0';
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['height'] = 'auto';
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['width']  = 'auto';
+
+		// Blog large alternate layout.
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-large-alternate .oxo-date-and-formats']['margin-bottom'] = '55px';
+
+		$css[ $six_fourty_media_query ]['.oxo-body .oxo-blog-layout-large-alternate .oxo-post-content']['margin'] = '0';
+
+		// Blog medium alternate layout.
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['display']      = 'inline-block';
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['float']        = 'none';
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['margin-right'] = '0';
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['max-width']    = '197px';
+
+		// Blog grid layout.
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-grid .oxo-post-grid']['position'] = 'static';
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-grid .oxo-post-grid']['width']    = '100%';
+
+		// # Footer Styles
+		if ( Aione()->theme_options['footer_sticky_height'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
+			$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['height']     = 'auto';
+			$css[ $six_fourty_media_query ]['.above-footer-wrapper']['min-height']    = 'none';
+			$css[ $six_fourty_media_query ]['.above-footer-wrapper']['margin-bottom'] = '0';
+			$css[ $six_fourty_media_query ]['.above-footer-wrapper:after']['height']  = 'auto';
+			$css[ $six_fourty_media_query ]['.oxo-footer']['height']               = 'auto';
+		}
+
+		// # Not restructured mobile.css styles
+		$elements = array(
+			'.wooslider-direction-nav',
+			'.wooslider-pauseplay',
+			'.flex-direction-nav',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		$css[ $six_fourty_media_query ]['.share-box ul li']['margin-bottom'] = '10px';
+		$css[ $six_fourty_media_query ]['.share-box ul li']['margin-right']  = '15px';
+
+		$css[ $six_fourty_media_query ]['.buttons a']['margin-right'] = '5px';
+
+		$elements = array(
+			'.ls-avada .ls-nav-prev',
+			'.ls-avada .ls-nav-next',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['display'] = 'none !important';
+
+		$css[ $six_fourty_media_query ]['#wrapper .ei-slider']['width']  = '100% !important';
+		$css[ $six_fourty_media_query ]['#wrapper .ei-slider']['height'] = '200px !important';
+
+		$css[ $six_fourty_media_query ]['.oxo-progressbar']['margin-bottom'] = '10px !important';
+
+		$css[ $six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
+		$css[ $six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
+		$css[ $six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3% !important';
+		$css[ $six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3% !important';
+
+		$elements = array(
+			'#wrapper .content-boxes-icon-on-top .content-box-column',
+			'#wrapper .content-boxes-icon-boxed .content-box-column',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '55px';
+
+		$css[ $six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-box-column .heading h2']['margin-top'] = '-5px';
+
+		$css[ $six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-box-column .more']['margin-top'] = '12px';
+
+		$css[ $six_fourty_media_query ]['.page-template-contact-php .oxo-google-map']['height'] = '270px !important';
+
+		$css[ $six_fourty_media_query ]['.share-box .social-networks li']['margin-right'] = '20px !important';
+
+		$css[ $six_fourty_media_query ]['.timeline-icon']['display'] = 'none !important';
+
+		$css[ $six_fourty_media_query ]['.timeline-layout']['padding-top'] = '0 !important';
+
+		$css[ $six_fourty_media_query ]['.oxo-counters-circle .counter-circle-wrapper']['display']      = 'block';
+		$css[ $six_fourty_media_query ]['.oxo-counters-circle .counter-circle-wrapper']['margin-right'] = 'auto';
+		$css[ $six_fourty_media_query ]['.oxo-counters-circle .counter-circle-wrapper']['margin-left']  = 'auto';
+
+		$css[ $six_fourty_media_query ]['.post-content .wooslider .wooslider-control-thumbs']['margin-top'] = '-10px';
+
+		$css[ $six_fourty_media_query ]['body .wooslider .overlay-full.layout-text-left .slide-excerpt']['padding'] = '20px !important';
+
+		$css[ $six_fourty_media_query ]['.content-boxes-icon-boxed .col']['box-sizing'] = 'border-box';
+
+		$css[ $six_fourty_media_query ]['.social_links_shortcode li']['height'] = '40px !important';
+
+		$css[ $six_fourty_media_query ]['.products-slider .es-nav span']['transform'] = 'scale(0.5) !important';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			$css[ $six_fourty_media_query ]['.shop_table .product-quantity']['display'] = 'none';
+
+			$css[ $six_fourty_media_query ]['.shop_table .filler-td']['display'] = 'none';
+
+			$css[ $six_fourty_media_query ]['.my_account_orders .order-status']['display'] = 'none';
+			$css[ $six_fourty_media_query ]['.my_account_orders .order-date']['display'] = 'none';
+
+			$css[ $six_fourty_media_query ]['.woocommerce-MyAccount-downloads .download-remaining']['display'] = 'none';
+			$css[ $six_fourty_media_query ]['.woocommerce-MyAccount-downloads .download-expires']['display'] = 'none';
+
+			$css[ $six_fourty_media_query ]['.my_account_orders .order-number time']['display']     = 'block !important';
+			$css[ $six_fourty_media_query ]['.my_account_orders .order-number time']['font-size']   = '10px';
+			$css[ $six_fourty_media_query ]['.my_account_orders .order-number time']['line-height'] = 'normal';
+		}
+
+		$media_query = '@media only screen and (min-width: ' . intval( Aione()->theme_options['side_header_break_point'] ) . 'px)';
+
+		if ( class_exists( 'bbPress' ) ) {
+
+			$css[ $six_fourty_media_query ]['#bbpress-forums #bbp-single-user-details #bbp-user-avatar img.avatar']['width']  = '80px !important';
+			$css[ $six_fourty_media_query ]['#bbpress-forums #bbp-single-user-details #bbp-user-avatar img.avatar']['height'] = '80px !important';
+
+			$css[ $six_fourty_media_query ]['#bbpress-forums #bbp-single-user-details #bbp-user-avatar']['width'] = '80px !important';
+
+			$css[ $six_fourty_media_query ]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation']['margin-left'] = '110px !important';
+
+			$css[ $six_fourty_media_query ]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation .first-col']['width'] = '47% !important';
+
+			$css[ $six_fourty_media_query ]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation .second-col']['margin-left'] = '53% !important';
+			$css[ $six_fourty_media_query ]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation .second-col']['width']       = '47% !important';
+
+		}
+		$css[ $six_fourty_media_query ]['.portfolio-masonry .portfolio-item']['width'] = '100% !important';
+		$elements = array(
+			'.table-1 table',
+			'.tkt-slctr-tbl-wrap-dv table',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['border-collapse'] = 'collapse';
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['border-spacing']  = '0';
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['width']           = '100%';
+
+		$elements = array(
+			'.table-1 td',
+			'.table-1 th',
+			'.tkt-slctr-tbl-wrap-dv td',
+			'.tkt-slctr-tbl-wrap-dv th',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['white-space'] = 'nowrap';
+
+		$css[ $six_fourty_media_query ]['.table-2 table']['border-collapse'] = 'collapse';
+		$css[ $six_fourty_media_query ]['.table-2 table']['border-spacing']  = '0';
+		$css[ $six_fourty_media_query ]['.table-2 table']['width']           = '100%';
+
+		$elements = array(
+			'.table-2 td',
+			'.table-2 th',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['white-space'] = 'nowrap';
+
+		$elements = array(
+			'.page-title-bar',
+			'.footer-area',
+			'body',
+			'#main',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['background-attachment'] = 'scroll !important';
+
+		$css[ $six_fourty_media_query ]['.tfs-slider[data-animation="slide"]']['height'] = 'auto !important';
+
+		$css[ $six_fourty_media_query ]['#wrapper .share-box h4']['display']       = 'block';
+		$css[ $six_fourty_media_query ]['#wrapper .share-box h4']['float']         = 'none';
+		$css[ $six_fourty_media_query ]['#wrapper .share-box h4']['line-height']   = '20px !important';
+		$css[ $six_fourty_media_query ]['#wrapper .share-box h4']['margin-top']    = '0';
+		$css[ $six_fourty_media_query ]['#wrapper .share-box h4']['padding']       = '0';
+		$css[ $six_fourty_media_query ]['#wrapper .share-box h4']['margin-bottom'] = '10px';
+
+		$css[ $six_fourty_media_query ]['.oxo-sharing-box .oxo-social-networks']['float']      = 'none';
+		$css[ $six_fourty_media_query ]['.oxo-sharing-box .oxo-social-networks']['display']    = 'block';
+		$css[ $six_fourty_media_query ]['.oxo-sharing-box .oxo-social-networks']['width']      = '100%';
+		$css[ $six_fourty_media_query ]['.oxo-sharing-box .oxo-social-networks']['text-align'] = 'left';
+
+		$css[ $six_fourty_media_query ]['#content']['width']        = '100% !important';
+		$css[ $six_fourty_media_query ]['#content']['margin-left'] = '0px !important';
+
+		$css[ $six_fourty_media_query ]['.sidebar']['width']       = '100% !important';
+		$css[ $six_fourty_media_query ]['.sidebar']['float']       = 'none !important';
+		$css[ $six_fourty_media_query ]['.sidebar']['margin-left'] = '0 !important';
+		$css[ $six_fourty_media_query ]['.sidebar']['clear']       = 'both';
+
+		$css[ $six_fourty_media_query ]['.oxo-hide-on-mobile']['display'] = 'none';
+
+		// Blog timeline layout.
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-timeline']['padding-top'] = '0';
+
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-timeline .oxo-post-timeline']['float'] = 'none';
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-timeline .oxo-post-timeline']['width'] = '100%';
+
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-timeline .oxo-timeline-date']['margin-bottom'] = '0';
+		$css[ $six_fourty_media_query ]['.oxo-blog-layout-timeline .oxo-timeline-date']['margin-top']    = '2px';
+
+		$elements = array(
+			'.oxo-timeline-icon',
+			'.oxo-timeline-line',
+			'.oxo-timeline-circle',
+			'.oxo-timeline-arrow',
+		);
+		$css[ $six_fourty_media_query ][ aione_implode( $elements ) ]['display'] = 'none';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			if ( 'clean' == Aione()->theme_options['woocommerce_product_box_design'] ) {
+				$css[ $six_fourty_media_query ]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons']['height'] = 'auto';
+				$css[ $six_fourty_media_query ]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons']['margin-top'] = '0';
+				$css[ $six_fourty_media_query ]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['display'] = 'block';
+				$css[ $six_fourty_media_query ]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['text-align'] = 'center';
+				$css[ $six_fourty_media_query ]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['float'] = 'none !important';
+				$css[ $six_fourty_media_query ]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['max-width'] = '100%';
+				$css[ $six_fourty_media_query ]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['margin-top'] = '0';
+			}
+		}
+
+		/*
+		@media only screen and ( max-width: 480px )
+		*/
+		if ( class_exists( 'bbPress' ) ) {
+			$four_eigthy_media_query = '@media only screen and (max-width: 480px)';
+
+			$css[ $four_eigthy_media_query ]['#bbpress-forums .bbp-body div.bbp-reply-author']['width'] = '71% !important';
+			$css[ $four_eigthy_media_query ]['.bbp-arrow']['display'] = 'none';
+			$css[ $four_eigthy_media_query ]['div.bbp-submit-wrapper']['float'] = 'right !important';
+		}
+
+		if ( class_exists( 'GFForms' ) ) {
+			$four_eigthy_media_query = '@media all and (max-width: 480px), all and (max-device-width: 480px)';
+
+			$elements = array(
+				'body.oxo-body .gform_wrapper .ginput_container',
+				'body.oxo-body .gform_wrapper div.ginput_complex',
+				'body.oxo-body .gform_wrapper div.gf_page_steps',
+				'body.oxo-body .gform_wrapper div.gf_page_steps div',
+				'body.oxo-body .gform_wrapper .ginput_container input.small',
+				'body.oxo-body .gform_wrapper .ginput_container input.medium',
+				'body.oxo-body .gform_wrapper .ginput_container input.large',
+				'body.oxo-body .gform_wrapper .ginput_container select.small',
+				'body.oxo-body .gform_wrapper .ginput_container select.medium',
+				'body.oxo-body .gform_wrapper .ginput_container select.large',
+				'body.oxo-body .gform_wrapper .ginput_container textarea.small',
+				'body.oxo-body .gform_wrapper .ginput_container textarea.medium',
+				'body.oxo-body .gform_wrapper .ginput_container textarea.large',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="text"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="url"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="email"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="tel"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="number"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="password"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="text"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="url"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="email"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="tel"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="number"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="password"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="text"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="url"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="email"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="tel"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="number"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="password"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full select',
+				'body.oxo-body .gform_wrapper input.gform_button.button',
+				'body.oxo-body .gform_wrapper input[type="submit"]',
+				'body.oxo-body .gform_wrapper .gfield_time_hour input',
+				'body.oxo-body .gform_wrapper .gfield_time_minute input',
+				'body.oxo-body .gform_wrapper .gfield_date_month input',
+				'body.oxo-body .gform_wrapper .gfield_date_day input',
+				'body.oxo-body .gform_wrapper .gfield_date_year input',
+				'.gfield_time_ampm .gravity-select-parent',
+				'body.oxo-body .gform_wrapper .ginput_complex input[type="text"]',
+				'body.oxo-body .gform_wrapper .ginput_complex input[type="url"]',
+				'body.oxo-body .gform_wrapper .ginput_complex input[type="email"]',
+				'body.oxo-body .gform_wrapper .ginput_complex input[type="tel"]',
+				'body.oxo-body .gform_wrapper .ginput_complex input[type="number"]',
+				'body.oxo-body .gform_wrapper .ginput_complex input[type="password"]',
+				'body.oxo-body .gform_wrapper .ginput_complex .gravity-select-parent',
+				'body.oxo-body .gravity-select-parent',
+			);
+			$css[ $four_eigthy_media_query ][ aione_implode( $elements ) ]['width'] = '100% !important';
+			$elements = array(
+				'.gform_wrapper .gform_page_footer input[type="button"]',
+				'.gform_wrapper .gform_button',
+				'.gform_wrapper .button',
+			);
+			$css[ $four_eigthy_media_query ][ aione_implode( $elements ) ]['-webkit-box-sizing'] = 'border-box';
+			$css[ $four_eigthy_media_query ][ aione_implode( $elements ) ]['box-sizing']         = 'border-box';
+
+		}
+
+		/*
+		@media only screen and (min-device-width: 320px) and (max-device-width: 640px)
+		*/
+		$three_twenty_six_fourty_media_query = '@media only screen and (min-device-width: 320px) and (max-device-width: 640px)';
+
+		// # Layout
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper']['width']      = 'auto !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper']['overflow-x'] = 'hidden !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.oxo-columns .oxo-column']['float']      = 'none';
+		$css[ $three_twenty_six_fourty_media_query ]['.oxo-columns .oxo-column']['width']      = '100% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.oxo-columns .oxo-column']['margin']     = '0 0 50px';
+		$css[ $three_twenty_six_fourty_media_query ]['.oxo-columns .oxo-column']['box-sizing'] = 'border-box';
+
+		$elements = array(
+			'.footer-area .oxo-columns .oxo-column',
+			'#slidingbar-area .oxo-columns .oxo-column',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['float'] = 'left';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['width'] = '98% !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.fullwidth-box']['background-attachment'] = 'scroll !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.no-mobile-totop .to-top-container']['display'] = 'none';
+		$css[ $three_twenty_six_fourty_media_query ]['.no-mobile-slidingbar #slidingbar-area']['display'] = 'none';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.review']['float'] = 'none';
+		$css[ $three_twenty_six_fourty_media_query ]['.review']['width'] = '100%';
+
+		$elements = array(
+			'.social-networks',
+			'.copyright',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['float']      = 'none';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['padding']    = '0 0 15px';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['text-align'] = 'center';
+
+		$elements = array(
+			'.copyright:after',
+			'.social-networks:after',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['content'] = '""';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['display'] = 'block';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['clear']   = 'both';
+
+		$elements = array(
+			'.social-networks li',
+			'.copyright li',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['float']   = 'none';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['display'] = 'inline-block';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.continue']['display'] = 'none';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.mobile-button']['display'] = 'block !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.mobile-button']['float']   = 'none';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.title']['margin-top']    = '0px !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.title']['margin-bottom'] = '20px !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#content']['width']         = '100% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#content']['float']         = 'none !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#content']['margin-left']   = '0 !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#content']['margin-bottom'] = '50px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#content.full-width']['margin-bottom'] = '0';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar']['width'] = '100% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar']['float'] = 'none !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar .social_links .social li']['width']        = 'auto';
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar .social_links .social li']['margin-right'] = '5px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#comment-input']['margin-bottom'] = '0';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#comment-input input']['width']         = '90%';
+		$css[ $three_twenty_six_fourty_media_query ]['#comment-input input']['float']         = 'none !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#comment-input input']['margin-bottom'] = '10px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#comment-textarea textarea']['width'] = '90%';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.widget.facebook_like iframe']['width']     = '100% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.widget.facebook_like iframe']['max-width'] = 'none !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.pagination']['margin-top'] = '40px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.portfolio-one .portfolio-item .image']['float']         = 'none';
+		$css[ $three_twenty_six_fourty_media_query ]['.portfolio-one .portfolio-item .image']['width']         = 'auto';
+		$css[ $three_twenty_six_fourty_media_query ]['.portfolio-one .portfolio-item .image']['height']        = 'auto';
+		$css[ $three_twenty_six_fourty_media_query ]['.portfolio-one .portfolio-item .image']['margin-bottom'] = '20px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['h5.toggle span.toggle-title']['width'] = '80%';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .sep-boxed-pricing .panel-wrapper']['padding'] = '0';
+
+		$elements = array(
+			'#wrapper .full-boxed-pricing .column',
+			'#wrapper .sep-boxed-pricing .column',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['float']         = 'none';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '10px';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['margin-left']   = '0';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['width']         = '100%';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.share-box']['height'] = 'auto';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .share-box h4']['float']       = 'none';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .share-box h4']['line-height'] = '20px !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .share-box h4']['margin-top']  = '0';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .share-box h4']['padding']     = '0';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.share-box ul']['float']          = 'none';
+		$css[ $three_twenty_six_fourty_media_query ]['.share-box ul']['overflow']       = 'hidden';
+		$css[ $three_twenty_six_fourty_media_query ]['.share-box ul']['padding']        = '0 25px';
+		$css[ $three_twenty_six_fourty_media_query ]['.share-box ul']['padding-bottom'] = '25px';
+		$css[ $three_twenty_six_fourty_media_query ]['.share-box ul']['margin-top']     = '0px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.project-content .project-description']['float'] = 'none !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.project-content .oxo-project-description-details']['margin-bottom'] = '50px';
+
+		$elements = array(
+			'.project-content .project-description',
+			'.project-content .project-info',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['width'] = '100% !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.portfolio-half .flexslider']['width'] = '100% !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.portfolio-half .project-content']['width'] = '100% !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#style_selector']['display'] = 'none';
+
+		$elements = array(
+			'.ls-avada .ls-nav-prev',
+			'.ls-avada .ls-nav-next',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['display'] = 'none !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#footer .social-networks']['width']    = '100%';
+		$css[ $three_twenty_six_fourty_media_query ]['#footer .social-networks']['margin']   = '0 auto';
+		$css[ $three_twenty_six_fourty_media_query ]['#footer .social-networks']['position'] = 'relative';
+		$css[ $three_twenty_six_fourty_media_query ]['#footer .social-networks']['left']     = '-11px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.recent-works-items a']['max-width'] = '64px';
+
+		$elements = array(
+			'.footer-area .flickr_badge_image img',
+			'#slidingbar-area .flickr_badge_image img',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['max-width'] = '64px';
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['padding']   = '3px !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.tab-holder .tabs']['height'] = 'auto !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.tab-holder .tabs']['width']  = '100% !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.shortcode-tabs .tab-hold .tabs li']['width'] = '100% !important';
+
+		$elements = array(
+			'body .shortcode-tabs .tab-hold .tabs li',
+			'body.dark .sidebar .tab-hold .tabs li',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['border-right'] = 'none !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.error_page .useful_links']['width']        = '100%';
+		$css[ $three_twenty_six_fourty_media_query ]['.error_page .useful_links']['padding-left'] = '0';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.oxo-google-map']['width']         = '100% !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.social_links_shortcode .social li']['width'] = '10% !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .ei-slider']['width']  = '100% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .ei-slider']['height'] = '200px !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.oxo-progressbar']['margin-bottom'] = '10px !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3% !important';
+
+		$elements = array(
+			'#wrapper .content-boxes-icon-on-top .content-box-column',
+			'#wrapper .content-boxes-icon-boxed .content-box-column',
+		);
+		$css[ $three_twenty_six_fourty_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '55px';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.share-box .social-networks']['text-align'] = 'left';
+
+		$css[ $three_twenty_six_fourty_media_query ]['#content']['width']       = '100% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['#content']['margin-left'] = '0px !important';
+
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar']['width']       = '100% !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar']['float']       = 'none !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar']['margin-left'] = '0 !important';
+		$css[ $three_twenty_six_fourty_media_query ]['.sidebar']['clear']       = 'both';
+
+		/*
+		Media queries - media.css CSS - to be split to the corresponding sections above
+		*/
+		$media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 1000 ) . 'px)';
+		$css[ $media_query ]['.no-csstransforms .sep-boxed-pricing .column']['margin-left'] = '1.5% !important';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			$media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 965 ) . 'px)';
+
+			$css[ $media_query ]['.coupon .input-text']['width'] = '100% !important';
+
+			$css[ $media_query ]['.coupon .button']['margin-top'] = '20px';
+
+			$media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 900 ) . 'px)';
+
+			$elements = array(
+				'.woocommerce #customer_login .login .form-row',
+				'.woocommerce #customer_login .login .lost_password',
+			);
+			$css[ $media_query ][ aione_implode( $elements ) ]['float'] = 'none';
+
+			$elements = array(
+				'.woocommerce #customer_login .login .inline',
+				'.woocommerce #customer_login .login .lost_password',
+			);
+			$css[ $media_query ][ aione_implode( $elements ) ]['display']      = 'block';
+			$css[ $media_query ][ aione_implode( $elements ) ]['margin-left']  = '0';
+			$css[ $media_query ][ aione_implode( $elements ) ]['margin-right'] = '0';
+
+			$css[ $media_query ]['.woocommerce #customer_login .login .button']['margin-bottom'] = '10px';
+
+		}
+
+		$media_query = '@media only screen and (min-width: ' . intval( Aione()->theme_options['side_header_break_point'] ) . 'px)';
+
+		$css[ $media_query ]['body.side-header-right.layout-boxed-mode #side-header']['position'] = 'absolute';
+		$css[ $media_query ]['body.side-header-right.layout-boxed-mode #side-header']['top']      = '0';
+
+		$css[ $media_query ]['body.side-header-right.layout-boxed-mode #side-header .side-header-wrapper']['position'] = 'absolute';
+
+		$media_query = '@media screen and (max-width: ' . intval( Aione()->theme_options['side_header_break_point' ] - 18 ) . 'px)';
+
+		$elements = array(
+			'body.admin-bar #wrapper #slidingbar-area',
+			'body.layout-boxed-mode.side-header-right #slidingbar-area',
+			'.admin-bar p.demo_store',
+		);
+		$css[ $media_query ][ aione_implode( $elements ) ]['top'] = '46px';
+		$css[ $media_query ]['body.body_blank.admin-bar']['top'] = '45px';
+		$css[ $media_query ]['html #wpadminbar']['z-index']  = '99999 !important';
+		$css[ $media_query ]['html #wpadminbar']['position'] = 'fixed !important';
+
+		$media_query = '@media screen and (max-width: ' . ( intval( Aione()->theme_options['side_header_break_point'] ) - 32 ) . 'px)';
+		$css[ $media_query ]['.oxo-tabs.vertical-tabs .tab-pane']['max-width'] = 'none !important';
+
+		$media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)';
+		$css[ $media_query ]['#wrapper .ei-slider']['width'] = '100%';
+
+		$media_query = '@media only screen and (min-device-width: 320px) and (max-device-width: 480px)';
+		$css[ $media_query ]['#wrapper .ei-slider']['width'] = '100%';
+
+		/*
+		Landscape Responsive Styles - iPad
+		*/
+		$ipad_landscape_media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)';
+
+		// #Layout
+		$css[ $ipad_landscape_media_query ]['.fullwidth-box']['background-attachment'] = 'scroll !important';
+
+		$css[ $ipad_landscape_media_query ]['.oxo-main-menu > ul > li']['padding-right'] = intval( Aione()->theme_options['mobile_nav_padding'] ) . 'px';
+
+		$css[ $ipad_landscape_media_query ]['#wrapper .oxo-page-title-bar']['height'] = Aione_Sanitize::size( Aione()->theme_options['page_title_height'] ) . ' !important';
+
+		// # Footer Styles
+		if ( Aione()->theme_options['footer_sticky_height'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
+			$css[ $ipad_landscape_media_query ][ aione_implode( $elements ) ]['height']     = 'auto';
+			$css[ $ipad_landscape_media_query ]['.above-footer-wrapper']['min-height']    = 'none';
+			$css[ $ipad_landscape_media_query ]['.above-footer-wrapper']['margin-bottom'] = '0';
+			$css[ $ipad_landscape_media_query ]['.above-footer-wrapper:after']['height']  = 'auto';
+			$css[ $ipad_landscape_media_query ]['.oxo-footer']['height']               = 'auto';
+		}
+
+		if ( 'footer_area_bg_parallax' == Aione()->theme_options['footer_special_effects'] ) {
+
+			$css[ $ipad_landscape_media_query ]['.oxo-footer-widget-area']['background-attachment'] = 'static';
+			$css[ $ipad_landscape_media_query ]['.oxo-footer-widget-area']['margin']   = '0';
+
+			$css[ $ipad_landscape_media_query ]['#main']['margin-bottom']   = '0';
+		}
+
+		$css[ $ipad_landscape_media_query ]['#wrapper .ei-slider']['width'] = '100%';
+		$elements = array(
+			'.fullwidth-box',
+			'.page-title-bar',
+			'.oxo-footer-widget-area',
+			'body',
+			'#main',
+		);
+		$css[ $ipad_landscape_media_query ][ aione_implode( $elements ) ]['background-attachment'] = 'scroll !important';
+		if ( Aione()->theme_options['footerw_bg_image'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_parallax_effect', 'footer_area_bg_parallax', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$css[ $ipad_landscape_media_query ]['.oxo-body #wrapper']['background-color'] = 'transparent';
+		}
+
+		if ( Aione()->theme_options['footer_sticky_height'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
+			$css[ $ipad_landscape_media_query ][ aione_implode( $elements ) ]['height']     = 'auto';
+			$css[ $ipad_landscape_media_query ]['.above-footer-wrapper']['min-height']    = 'none';
+			$css[ $ipad_landscape_media_query ]['.above-footer-wrapper']['margin-bottom'] = '0';
+			$css[ $ipad_landscape_media_query ]['.above-footer-wrapper:after']['height']  = 'auto';
+			$css[ $ipad_landscape_media_query ]['.oxo-footer']['height']               = 'auto';
+		}
+
+		if ( Aione()->theme_options['footer_special_effects'] == 'footer_area_bg_parallax' ) {
+			$css[ $ipad_landscape_media_query ]['.oxo-footer-widget-area']['background-attachment'] = 'static';
+			$css[ $ipad_landscape_media_query ]['.oxo-footer-widget-area']['margin']   = '0';
+
+			$css[ $ipad_landscape_media_query ]['#main']['margin-bottom']   = '0';
+		}
+
+		/*
+		Portrait Responsive Styles - iPad
+		*/
+		$ipad_portrait_media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)';
+
+		if ( Aione()->theme_options['footerw_bg_image'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_parallax_effect', 'footer_area_bg_parallax', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$css[ $ipad_portrait_media_query ]['.oxo-body #wrapper']['background-color'] = 'transparent';
+		}
+
+		if ( Aione()->theme_options['footer_sticky_height'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
+			$css[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['height']     = 'auto';
+			$css[ $ipad_portrait_media_query ]['.above-footer-wrapper']['min-height']    = 'none';
+			$css[ $ipad_portrait_media_query ]['.above-footer-wrapper']['margin-bottom'] = '0';
+			$css[ $ipad_portrait_media_query ]['.above-footer-wrapper:after']['height']  = 'auto';
+			$css[ $ipad_portrait_media_query ]['.oxo-footer']['height']               = 'auto';
+		}
+
+		if ( 'footer_area_bg_parallax' == Aione()->theme_options['footer_special_effects'] ) {
+			$css[ $ipad_portrait_media_query ]['.oxo-footer-widget-area']['background-attachment'] = 'static';
+			$css[ $ipad_portrait_media_query ]['.oxo-footer-widget-area']['margin']   = '0';
+
+			$css[ $ipad_portrait_media_query ]['#main']['margin-bottom']   = '0';
+		}
+
+		// # Layout
+		$elements = array(
+			'.oxo-columns-5 .oxo-column:first-child',
+			'.oxo-columns-4 .oxo-column:first-child',
+			'.oxo-columns-3 .oxo-column:first-child',
+			'.oxo-columns-2 .oxo-column:first-child',
+			'.oxo-columns-1 .oxo-column:first-child',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-left'] = '0';
+
+		$elements = array(
+			'.oxo-column:nth-child(5n)',
+			'.oxo-column:nth-child(4n)',
+			'.oxo-column:nth-child(3n)',
+			'.oxo-column:nth-child(2n)',
+			'.oxo-column',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper']['width']      = 'auto !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.create-block-format-context']['display'] = 'none';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.columns .col']['float']      = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.columns .col']['width']      = '100% !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.columns .col']['margin']     = '0 0 20px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.columns .col']['box-sizing'] = 'border-box';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.fullwidth-box']['background-attachment'] = 'scroll !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-main-menu > ul > li']['padding-right'] = intval( Aione()->theme_options['mobile_nav_padding'] ) . 'px';
+
+		if ( ! Aione()->theme_options['breadcrumb_mobile'] ) {
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-body .oxo-page-title-bar .oxo-breadcrumbs']['display'] = 'none';
+		}
+
+		// # Footer Styles
+		if ( Aione()->theme_options['footer_sticky_height'] && ( in_array( Aione()->theme_options['footer_special_effects'], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
+			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['height']     = 'auto';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.above-footer-wrapper']['min-height']    = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.above-footer-wrapper']['margin-bottom'] = '0';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.above-footer-wrapper:after']['height']  = 'auto';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-footer']['height']               = 'auto';
+		}
+
+		if ( 'footer_area_bg_parallax' == Aione()->theme_options['footer_special_effects'] ) {
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-footer-widget-area']['background-attachment'] = 'static';
+			$css[ $ipad_portrait_media_query ]['.oxo-footer-widget-area']['margin']   = '0';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main']['margin-bottom']   = '0';
+		}
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.review']['float'] = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.review']['width'] = '100%';
+
+		$elements = array(
+			'.oxo-social-networks',
+			'.oxo-social-links-footer',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['display']    = 'block';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['text-align'] = 'center';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-links-footer']['width'] = 'auto';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-links-footer .oxo-social-networks']['display'] = 'inline-block';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-links-footer .oxo-social-networks']['float']   = 'none';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-networks']['padding'] = '0 0 15px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-author .oxo-author-ssocial .oxo-author-tagline']['float']      = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-author .oxo-author-ssocial .oxo-author-tagline']['text-align'] = 'center';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-author .oxo-author-ssocial .oxo-author-tagline']['max-width']  = '100%';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-author .oxo-author-ssocial .oxo-social-networks']['text-align'] = 'center';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-author .oxo-author-ssocial .oxo-social-networks .oxo-social-network-icon:first-child']['margin-left'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-networks:after']['content'] = '""';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-networks:after']['display'] = 'block';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-networks:after']['clear']   = 'both';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-networks li']['float']   = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-social-networks li']['display'] = 'inline-block';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-reading-box-container .continue']['display'] = 'block';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-reading-box-container .mobile-button']['display'] = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-reading-box-container .mobile-button']['float']   = 'none';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-title']['margin-top']    = '0px !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-title']['margin-bottom'] = '20px !important';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['float']         = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['text-align']    = 'center';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['border-top']    = '1px solid';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['border-bottom'] = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['width']         = '100%';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['line-height']   = 'normal !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['height']        = 'auto !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['margin-bottom'] = '10px';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .cart-empty']['padding-top']   = '10px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['float']          = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['border-top']     = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['border-bottom']  = '1px solid';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['width']          = '100%';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['text-align']     = 'center';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['line-height']    = 'normal !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['height']         = 'auto !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .return-to-shop']['padding-bottom'] = '10px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .promo-code-heading']['display']       = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .promo-code-heading']['margin-bottom'] = '10px !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .promo-code-heading']['float']         = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .promo-code-heading']['text-align']    = 'center';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-contents']['display'] = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-contents']['float']   = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-contents']['margin']  = '0';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-input']['display']       = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-input']['width']         = 'auto !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-input']['float']         = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-input']['text-align']    = 'center';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-input']['margin-right']  = '0';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-input']['margin-bottom'] = '10px !important';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-button']['display']      = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-button']['margin-right'] = '0';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-button']['float']        = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce .checkout_coupon .coupon-button']['text-align']   = 'center';
+
+		}
+
+		// Page Title Bar.
+		if ( 'auto' != Aione()->theme_options['page_title_mobile_height'] ) {
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-body .oxo-page-title-bar']['height'] = Aione_Sanitize::size( Aione()->theme_options['page_title_mobile_height'] );
+
+		} else {
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-body .oxo-page-title-bar']['padding-top']    = '10px';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-body .oxo-page-title-bar']['padding-bottom'] = '10px';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-body .oxo-page-title-bar']['height']         = 'auto';
+
+		}
+
+		$elements = array(
+			'.oxo-page-title-bar-left .oxo-page-title-captions',
+			'.oxo-page-title-bar-right .oxo-page-title-captions',
+			'.oxo-page-title-bar-left .oxo-page-title-secondary',
+			'.oxo-page-title-bar-right .oxo-page-title-secondary',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['display']     = 'block';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']       = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width']       = '100%';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['line-height'] = 'normal';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-bar-left .oxo-page-title-secondary']['text-align'] = 'left';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-bar-left .searchform']['display']   = 'block';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-bar-left .searchform']['max-width'] = '100%';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-bar-right .oxo-page-title-secondary']['text-align'] = 'right';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-bar-right .searchform']['max-width'] = '100%';
+
+		if ( 'auto' != Aione()->theme_options['page_title_mobile_height'] ) {
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-row']['display']    = 'table';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-row']['width']      = '100%';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-row']['height']     = '100%';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-row']['min-height'] = 'calc(' . Aione_Sanitize::size( Aione()->theme_options['page_title_mobile_height'] ) . ' -20px)';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-wrapper']['display']        = 'table-cell';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-page-title-wrapper']['vertical-align'] = 'middle';
+
+		}
+
+		if ( get_post_meta( $c_page_id, 'pyre_page_title_height', true ) ) {
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .oxo-page-title-bar']['height'] = Aione_Sanitize::size( get_post_meta( $c_page_id, 'pyre_page_title_height', true ) ) . ' !important';
+		}
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.products .product-list-view']['width']     = '100% !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.products .product-list-view']['min-width'] = '100% !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.sidebar .social_links .social li']['width']        = 'auto';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.sidebar .social_links .social li']['margin-right'] = '5px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#comment-input']['margin-bottom'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#comment-input input']['width']         = '90%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#comment-input input']['float']         = 'none !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#comment-input input']['margin-bottom'] = '10px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#comment-textarea textarea']['width'] = '90%';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.pagination']['margin-top'] = '40px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.portfolio-one .portfolio-item .image']['float']         = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.portfolio-one .portfolio-item .image']['width']         = 'auto';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.portfolio-one .portfolio-item .image']['height']        = 'auto';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.portfolio-one .portfolio-item .image']['margin-bottom'] = '20px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['h5.toggle span.toggle-title']['width'] = '80%';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .sep-boxed-pricing .panel-wrapper']['padding'] = '0';
+
+		$elements = array(
+			'#wrapper .full-boxed-pricing .column',
+			'#wrapper .sep-boxed-pricing .column',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']         = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '10px';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-left']   = '0';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width']         = '100%';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.share-box']['height'] = 'auto';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .share-box h4']['float']       = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .share-box h4']['line-height'] = '20px !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .share-box h4']['padding']     = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.share-box ul']['float']          = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.share-box ul']['overflow']       = 'hidden';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.share-box ul']['padding']        = '0 25px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.share-box ul']['padding-bottom'] = '15px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.share-box ul']['margin-top']     = '0px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.project-content .project-description']['float'] = 'none !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.project-content .oxo-project-description-details']['margin-bottom'] = '50px';
+
+		$elements = array(
+			'.project-content .project-description',
+			'.project-content .project-info',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width'] = '100% !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.portfolio-half .flexslider']['width'] = '100%';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.portfolio-half .project-content']['width'] = '100% !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#style_selector']['display'] = 'none';
+
+		$elements = array(
+			'.portfolio-tabs',
+			'.faq-tabs',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['height']              = 'auto';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['border-bottom-width'] = '1px';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['border-bottom-style'] = 'solid';
+
+		$elements = array(
+			'.portfolio-tabs li',
+			'.faq-tabs li',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']         = 'left';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right']  = '30px';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['border-bottom'] = '0';
+
+		$elements = array(
+			'.ls-avada .ls-nav-prev',
+			'.ls-avada .ls-nav-next',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['display'] = 'none !important';
+
+		$elements = array(
+			'nav#nav',
+			'nav#sticky-nav',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#footer .social-networks']['width']    = '100%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#footer .social-networks']['margin']   = '0 auto';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#footer .social-networks']['position'] = 'relative';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#footer .social-networks']['left']     = '-11px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.tab-holder .tabs']['height'] = 'auto !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.tab-holder .tabs']['width']  = '100% !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.shortcode-tabs .tab-hold .tabs li']['width'] = '100% !important';
+
+		$elements = array(
+			'body .shortcode-tabs .tab-hold .tabs li',
+			'body.dark .sidebar .tab-hold .tabs li',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['border-right'] = 'none !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.error-message']['line-height'] = '170px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.error-message']['margin-top']  = '20px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.error_page .useful_links']['width']        = '100%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.error_page .useful_links']['padding-left'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-google-map']['width']         = '100% !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.social_links_shortcode .social li']['width'] = '10% !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .ei-slider']['width']  = '100% !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .ei-slider']['height'] = '200px !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-progressbar']['margin-bottom'] = '10px !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-blog-layout-medium-alternate .oxo-post-content']['float']      = 'none';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-blog-layout-medium-alternate .oxo-post-content']['width']      = '100% !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-blog-layout-medium-alternate .oxo-post-content']['margin-top'] = '20px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3%';
+
+		$elements = array(
+			'#wrapper .content-boxes-icon-on-top .content-box-column',
+			'#wrapper .content-boxes-icon-boxed .content-box-column',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '55px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-counters-box .oxo-counter-box']['margin-bottom'] = '20px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-counters-box .oxo-counter-box']['padding']       = '0 15px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-counters-box .oxo-counter-box:last-child']['margin-bottom'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.popup']['display'] = 'none !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.share-box .social-networks']['text-align'] = 'left';
+
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			$elements = array(
+				'.catalog-ordering .order',
+				'.avada-myaccount-data .addresses .col-1',
+				'.avada-myaccount-data .addresses .col-2',
+				'.avada-customer-details .addresses .col-1',
+				'.avada-customer-details .addresses .col-2',
+				'#wrapper .catalog-ordering > .oxo-grid-list-view',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']        = 'none !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-left']  = 'auto !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right'] = 'auto !important';
+
+			$elements = array(
+				'.avada-myaccount-data .addresses .col-1',
+				'.avada-myaccount-data .addresses .col-2',
+				'.avada-customer-details .addresses .col-1',
+				'.avada-customer-details .addresses .col-2',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin'] = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width']  = '100%';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .catalog-ordering']['margin-bottom'] = '50px';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .orderby-order-container']['display'] = 'block';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .order-dropdown > li:hover > ul']['display']  = 'block';
+			$css[ $ipad_portrait_media_query ]['#wrapper .order-dropdown > li:hover > ul']['position'] = 'relative';
+			$css[ $ipad_portrait_media_query ]['#wrapper .order-dropdown > li:hover > ul']['top']      = '0';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .orderby-order-container']['margin']        = '0 auto';
+			$css[ $ipad_portrait_media_query ]['#wrapper .orderby-order-container']['width']         = '225px';
+			$css[ $ipad_portrait_media_query ]['#wrapper .orderby-order-container']['float']         = 'none';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .orderby.order-dropdown']['width']        = '176px';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .sort-count.order-dropdown']['display'] = 'block';
+			$css[ $ipad_portrait_media_query ]['#wrapper .sort-count.order-dropdown']['width'] = '225px';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .sort-count.order-dropdown ul a']['width'] = '225px';
+
+			$css[ $ipad_portrait_media_query ]['#wrapper .catalog-ordering .order']['margin'] = '0';
+
+			$css[ $ipad_portrait_media_query ]['.catalog-ordering .oxo-grid-list-view']['display'] = 'block';
+			$css[ $ipad_portrait_media_query ]['.catalog-ordering .oxo-grid-list-view']['width'] = '78px';
+
+			$elements = array(
+				'.products-2 li:nth-child(2n+1)',
+				'.products-3 li:nth-child(3n+1)',
+				'.products-4 li:nth-child(4n+1)',
+				'.products-5 li:nth-child(5n+1)',
+				'.products-6 li:nth-child(6n+1)',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['clear'] = 'none !important';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#main .products li:nth-child(3n+1)']['clear'] = 'both !important';
+
+			$elements = array(
+				'.products li',
+				'#main .products li:nth-child(3n)',
+				'#main .products li:nth-child(4n)',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width']        = '32.3% !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']        = 'left !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right'] = '1% !important';
+
+			$elements = array(
+				'.woocommerce #customer_login .login .form-row',
+				'.woocommerce #customer_login .login .lost_password',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float'] = 'none';
+
+			$elements = array(
+				'.woocommerce #customer_login .login .inline',
+				'.woocommerce #customer_login .login .lost_password',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['display']     = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-left'] = '0';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-data .my_account_orders .order-number']['padding-right'] = '8px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-data .my_account_orders .order-actions']['padding-left'] = '8px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.shop_table .product-name']['width'] = '35%';
+
+			$elements = array(
+				'#wrapper .woocommerce-side-nav',
+				'#wrapper .woocommerce-content-box',
+				'.oxo-body .woocommerce-MyAccount-navigation',
+				'.oxo-body .woocommerce-MyAccount-content',
+				'#wrapper .shipping-coupon',
+				'#wrapper .cart_totals',
+				'#wrapper #customer_login .col-1',
+				'#wrapper #customer_login .col-2',
+				'#wrapper .woocommerce form.checkout #customer_details .col-1',
+				'#wrapper .woocommerce form.checkout #customer_details .col-2',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']        = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-left']  = 'auto';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right'] = 'auto';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width']        = '100% !important';
+
+			$elements = array(
+				'#customer_login .col-1',
+				'.coupon',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '20px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.shop_table .product-thumbnail']['float'] = 'none';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.product-info']['margin-left'] = '0';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.product-info']['margin-top']  = '10px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.product .entry-summary div .price']['float'] = 'none';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.product .entry-summary .woocommerce-product-rating']['float']       = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.product .entry-summary .woocommerce-product-rating']['margin-left'] = '0';
+
+			$elements = array(
+				'.woocommerce-tabs .tabs',
+				'.woocommerce-side-nav',
+				'.woocommerce-MyAccount-navigation',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '25px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-tabs .panel']['width']   = '91% !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-tabs .panel']['padding'] = '4% !important';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#reviews li .avatar']['display'] = 'none';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#reviews li .comment-text']['width']       = '90% !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#reviews li .comment-text']['margin-left'] = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#reviews li .comment-text']['padding']     = '5% !important';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share']['overflow'] = 'hidden';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['display']       = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['float']         = 'left';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['margin']        = '0 auto';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['border-right']  = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['border-left']   = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['padding-left']  = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['padding-right'] = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.woocommerce-container .social-share li']['width']         = '25%';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.has-sidebar .woocommerce-container .social-share li']['width'] = '50%';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user']['display']           = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user > span']['width']      = '100%';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user > span']['display']    = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user .username']['display'] = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user .username .not-user']['display'] = 'inline';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-body .avada-myaccount-user .username .not-user']['padding'] = '0 5px;';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user > span']['padding']    = '5px 0px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user span']['border-right'] = 0;
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user']['padding-top']       = '10px';
+			$ipad_portrait[ $ipad_portrait_media_query ]['.avada-myaccount-user']['padding-bottom']    = '10px';
+
+			if ( is_rtl() ) {
+				$ipad_portrait[ $ipad_portrait_media_query ]['.rtl .avada-myaccount-user span']['border-left'] = '0';
+			}
+
+			$elements = array(
+				'.shop_table .product-thumbnail img',
+				'.shop_table .product-thumbnail .product-info',
+				'.shop_table .product-thumbnail .product-info p',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']   = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width']   = '100%';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin']  = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['padding'] = '0';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.shop_table .product-thumbnail']['padding'] = '10px 0px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['.product .images']['margin-bottom'] = '30px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .button']['float']         = 'left';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .button']['margin-bottom'] = '15px';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .remember-box']['clear']   = 'both';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .remember-box']['display'] = 'block';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .remember-box']['padding'] = '0';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .remember-box']['width']   = '125px';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .remember-box']['float']   = 'left';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#customer_login_box .lost_password']['float'] = 'left';
+
+			$elements = array(
+				'#wrapper .product .images',
+				'#wrapper .product .summary.entry-summary',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width'] = '50% !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float'] = 'left !important';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .product .summary.entry-summary']['width']       = '48% !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .product .summary.entry-summary']['margin-left'] = '2% !important';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .woocommerce-tabs .tabs']['width'] = '24% !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .woocommerce-tabs .tabs']['float'] = 'left !important';
+
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .woocommerce-tabs .panel']['float']   = 'right !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .woocommerce-tabs .panel']['width']   = '70% !important';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .woocommerce-tabs .panel']['padding'] = '4% !important';
+
+			$elements = array(
+				'.product .images #slider .flex-direction-nav',
+				'.product .images #carousel .flex-direction-nav',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['display'] = 'none !important';
+
+			$elements = array(
+				'.avada-myaccount-user span.msg',
+				'.avada-myaccount-user > span:last-child',
+			);
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['padding-left']  = '0 !important';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['padding-right'] = '0 !important';
+
+		}
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['body #small-nav']['visibility'] = 'visible !important';
+
+		$elements = array();
+		if ( class_exists( 'GFForms' ) ) {
+			$elements[] = '.gform_wrapper .ginput_complex .ginput_left';
+			$elements[] = '.gform_wrapper .ginput_complex .ginput_right';
+			$elements[] = '.gform_wrapper .gfield input[type="text"]';
+			$elements[] = '.gform_wrapper .gfield textarea';
+		}
+		if ( defined( 'WPCF7_PLUGIN' ) ) {
+			$elements[] = '.wpcf7-form .wpcf7-text';
+			$elements[] = '.wpcf7-form .wpcf7-quiz';
+			$elements[] = '.wpcf7-form .wpcf7-number';
+			$elements[] = '.wpcf7-form textarea';
+		}
+
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']      = 'none !important';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width']      = '100% !important';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['box-sizing'] = 'border-box';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#nav-uber #megaMenu']['width'] = '100%';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.fullwidth-box']['background-attachment'] = 'scroll';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#toTop']['bottom']        = '30px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#toTop']['border-radius'] = '4px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#toTop']['height']        = '40px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['#toTop']['z-index']       = '10000';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#toTop:before']['line-height'] = '38px';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#toTop:hover']['background-color'] = '#333333';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.no-mobile-totop .to-top-container']['display'] = 'none';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.no-mobile-slidingbar #slidingbar-area']['display'] = 'none';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.tfs-slider .slide-content-container .btn']['min-height']    = '0 !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.tfs-slider .slide-content-container .btn']['padding-left']  = '20px';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.tfs-slider .slide-content-container .btn']['padding-right'] = '20px !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.tfs-slider .slide-content-container .btn']['height']        = '26px !important';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.tfs-slider .slide-content-container .btn']['line-height']   = '26px !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-soundcloud iframe']['width'] = '100%';
+
+		$elements = array(
+			'.oxo-columns-2 .oxo-column',
+			'.oxo-columns-2 .oxo-flip-box-wrapper',
+			'.oxo-columns-4 .oxo-column',
+			'.oxo-columns-4 .oxo-flip-box-wrapper',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width'] = '50% !important';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float'] = 'left !important';
+
+		$elements = array(
+			'.oxo-columns-2 .oxo-column:nth-of-type(3n)',
+			'.oxo-columns-4 .oxo-column:nth-of-type(3n)',
+			'.oxo-columns-2 .oxo-flip-box-wrapper:nth-of-type(3n)',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['clear'] = 'both';
+
+		$elements = array(
+			'.oxo-columns-3 .oxo-column',
+			'.oxo-columns-3 .oxo-flip-box-wrapper',
+			'.oxo-columns-5 .oxo-column',
+			'.oxo-columns-5 .oxo-flip-box-wrapper',
+			'.oxo-columns-6 .oxo-column',
+			'.oxo-columns-6 .oxo-flip-box-wrapper',
+			'.oxo-columns-5 .col-lg-2',
+			'.oxo-columns-5 .col-md-2',
+			'.oxo-columns-5 .col-sm-2',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['width'] = '33.33% !important';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float'] = 'left !important';
+
+		$elements = array(
+			'.oxo-columns-3 .oxo-column:nth-of-type(4n)',
+			'.oxo-columns-3 .oxo-flip-box-wrapper:nth-of-type(4n)',
+			'.oxo-columns-5 .oxo-column:nth-of-type(4n)',
+			'.oxo-columns-5 .oxo-flip-box-wrapper:nth-of-type(4n)',
+			'.oxo-columns-6 .oxo-column:nth-of-type(4n)',
+			'.oxo-columns-6 .oxo-flip-box-wrapper:nth-of-type(4n)',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['clear'] = 'both';
+
+		$elements = array(
+			'.footer-area .oxo-column',
+			'#slidingbar .oxo-column',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '40px';
+
+		$elements = array(
+			'.oxo-layout-column.oxo-one-sixth',
+			'.oxo-layout-column.oxo-five-sixth',
+			'.oxo-layout-column.oxo-one-fifth',
+			'.oxo-layout-column.oxo-two-fifth',
+			'.oxo-layout-column.oxo-three-fifth',
+			'.oxo-layout-column.oxo-four-fifth',
+			'.oxo-layout-column.oxo-one-fourth',
+			'.oxo-layout-column.oxo-three-fourth',
+			'.oxo-layout-column.oxo-one-third',
+			'.oxo-layout-column.oxo-two-third',
+			'.oxo-layout-column.oxo-one-half',
+		);
+
+		if ( is_rtl() ) {
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['position']      = 'relative';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']         = 'right';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-left']   = '4%';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right']  = '0%';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '20px';
+		} else {
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['position']      = 'relative';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['float']         = 'left';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-right']  = '4%';
+			$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['margin-bottom'] = '20px';
+		}
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-sixth']['width']    = '13.3333%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-five-sixth']['width']   = '82.6666%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-fifth']['width']    = '16.8%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-two-fifth']['width']    = '37.6%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-three-fifth']['width']  = '58.4%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-four-fifth']['width']   = '79.2%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-fourth']['width']   = '22%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-three-fourth']['width'] = '74%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-third']['width']    = '30.6666%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-two-third']['width']    = '65.3333%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-half']['width']     = '48%';
+
+		// No spacing Columns.
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-spacing-no']['margin-left']  = '0';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-spacing-no']['margin-right'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-sixth.oxo-spacing-no']['width']    = '16.6666666667%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-five-sixth.oxo-spacing-no']['width']   = '83.333333333%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-fifth.oxo-spacing-no']['width']    = '20%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-two-fifth.oxo-spacing-no']['width']    = '40%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-three-fifth.oxo-spacing-no']['width']  = '60%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-four-fifth.oxo-spacing-no']['width']   = '80%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-fourth.oxo-spacing-no']['width']   = '25%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-three-fourth.oxo-spacing-no']['width'] = '75%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-third.oxo-spacing-no']['width']    = '33.33333333%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-two-third.oxo-spacing-no']['width']    = '66.66666667%';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-one-half.oxo-spacing-no']['width']     = '50%';
+
+		if ( is_rtl() ) {
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-column-last']['clear'] = 'left';
+		} else {
+			$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-column-last']['clear'] = 'right';
+		}
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-column-last']['zoom']         = '1';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-column-last']['margin-left']  = '0';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-layout-column.oxo-column-last']['margin-right'] = '0';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-column.oxo-spacing-no']['margin-bottom'] = '0';
+		$ipad_portrait[ $ipad_portrait_media_query ]['.oxo-column.oxo-spacing-no']['width']         = '100% !important';
+
+		$elements = array(
+			'.ua-mobile .page-title-bar',
+			'.ua-mobile .oxo-footer-widget-area',
+			'.ua-mobile body',
+			'.ua-mobile #main',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['background-attachment'] = 'scroll !important';
+
+		if ( get_post_meta( $c_page_id, 'pyre_fallback', true ) ) {
+			$ipad_portrait[ $ipad_portrait_media_query ]['#sliders-container']['display'] = 'none';
+			$ipad_portrait[ $ipad_portrait_media_query ]['#fallback-slide']['display'] = 'block';
+
+		}
+
+		$elements = array(
+			'.oxo-secondary-header .oxo-row',
+			'.oxo-header .oxo-row',
+			'.footer-area > .oxo-row',
+			'#footer > .oxo-row',
+			'#header-sticky .oxo-row',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['padding-left']  = '0px !important';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['padding-right'] = '0px !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['.error-message']['font-size'] = '130px';
+
+		$elements = array(
+			'.oxo-secondary-header .oxo-row',
+			'.oxo-header .oxo-row',
+			'.footer-area > .oxo-row',
+			'#footer > .oxo-row',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['padding-left']  = '0px !important';
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['padding-right'] = '0px !important';
+
+		$ipad_portrait[ $ipad_portrait_media_query ]['#wrapper .ei-slider']['width'] = '100%';
+		$elements = array(
+			'.fullwidth-box',
+			'.page-title-bar',
+			'.oxo-footer-widget-area',
+			'body',
+			'#main',
+		);
+		$ipad_portrait[ $ipad_portrait_media_query ][ aione_implode( $elements ) ]['background-attachment'] = 'scroll !important';
+
+		// Filter for editing the iPad Portrait Media Query Styles.
+		$ipad_portrait = apply_filters( 'avada_ipad_portrait_styles', $ipad_portrait );
+		$css = array_merge( $css, $ipad_portrait );
+
+		// End iPad Portrait Media Query Styles.
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	$h1_aione_font_option = Aione()->theme_options[ 'typography_h1' ];
 
@@ -4870,3124 +8201,7 @@ $image_rollover_opacity               = ( Aione()->theme_options[ 'image_gradien
 		$css['global'][aione_implode( $elements )]['color'] = Aione_Sanitize::color( Aione()->theme_options[ 'countdown_heading_text_color' ], Aione()->settings->get_default( 'countdown_heading_text_color' ) );
 	}
 
-	if ( Aione()->theme_options[ 'responsive' ] ) {
 
-		/* =================================================================================================
-		Media Queries
-		----------------------------------------------------------------------------------------------------
-			00 Side Width / Layout Responsive Styles
-				# General Styles
-				# Grid System
-			01 Side Header Responsive Styles
-			02 Top Header Responsive Styles
-			03 Mobile Menu Responsive Styles
-			04 @media only screen and ( max-width: $content_break_point )
-				# Layout
-				# General Styles
-				# Page Title Bar
-				# Blog Layouts
-				# Author Page - Info
-				# Shortcodes
-				# Events Calendar
-				# Woocommerce
-				# Not restructured mobile.css styles
-			05 @media only screen and ( min-width: $content_break_point )
-				# Shortcodes
-			06 @media only screen and ( max-width: 640px )
-				# Layout
-				# General Styles
-				# Page Title Bar
-				# Blog Layouts
-				# Footer Styles
-				# Filters
-				# Not restructured mobile.css styles
-			07 @media only screen and ( min-device-width: 320px ) and ( max-device-width: 640px )
-			08 @media only screen and ( max-width: 480px )
-			09 media.css CSS
-			10 iPad Landscape Responsive Styles
-				# Footer Styles
-			11 iPad Portrait Responsive Styles
-				# Layout
-				# Footer Styles
-		================================================================================================= */
-
-		$side_header_width = ( 'top' == Aione()->theme_options[ 'header_position' ] ) ? 0 : intval( Aione()->theme_options[ 'side_header_width' ] );
-
-
-		/* Side Width / Layout Responsive Styles
-		================================================================================================= */
-		if ( ! $site_width_percent ) {
-
-			// Site width without units (px)
-			$site_width_media_query = '@media only screen and (max-width: ' . $site_width_with_units . ')';
-
-			// Side Header + Site Width without units (px)
-			$side_header_width_without_units = Aione_Sanitize::size( Aione()->theme_options[ 'side_header_width' ] );
-			$side_header_fwc_breakpoint = $site_width_without_units + $side_header_width_without_units + 60;
-			$site_header_and_width_media_query = '@media only screen and (max-width: ' . $side_header_fwc_breakpoint . 'px)';
-
-			$hundred_perecent_width_padding = '';
-			if ( ( Aione()->theme_options[ 'hundredp_padding' ] || Aione()->theme_options[ 'hundredp_padding' ] == '0' ) && ! get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) && ! ( get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) == '0' ) ) {
-				$hundred_perecent_width_padding = Aione()->theme_options[ 'hundredp_padding' ];
-			}
-			if ( get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) || get_post_meta( $c_pageID, 'pyre_hundredp_padding', true ) == '0' ) {
-				$hundred_perecent_width_padding = get_post_meta( $c_pageID, 'pyre_hundredp_padding', true );
-			}
-
-			if ( $hundred_perecent_width_padding ) {
-				$elements = array(
-					'.width-100 .nonhundred-percent-fullwidth',
-					'.width-100 .oxo-section-separator'
-				);
-				$css[$site_width_media_query][aione_implode( $elements )]['padding-left']  = $hundred_perecent_width_padding . '!important';
-				$css[$site_width_media_query][aione_implode( $elements )]['padding-right'] = $hundred_perecent_width_padding . '!important';
-
-				$elements = array(
-					'.width-100 .fullwidth-box',
-					'.width-100 .oxo-section-separator'
-				);
-				$css[$site_width_media_query][aione_implode( $elements )]['margin-left']   = sprintf( '-%s!important', $hundred_perecent_width_padding );
-				$css[$site_width_media_query][aione_implode( $elements )]['margin-right']  = sprintf( '-%s!important', $hundred_perecent_width_padding );
-			}
-
-			// For header left and right, we need to apply padding at:
-			// Site width + side header width + 30px * 2 ( 30 extra for it not to jump so harshly )
-			if( Aione()->theme_options[ 'header_position' ] == 'left' || Aione()->theme_options[ 'header_position' ] == 'right' ) {
-				$elements = array(
-					'.width-100 .nonhundred-percent-fullwidth',
-					'.width-100 .oxo-section-separator'
-				);
-				$css[$site_header_and_width_media_query][aione_implode( $elements )]['padding-left']  = $hundred_perecent_width_padding . '!important';
-				$css[$site_header_and_width_media_query][aione_implode( $elements )]['padding-right'] = $hundred_perecent_width_padding . '!important';
-			}
-
-		}
-
-		// # Grid System
-
-		$main_break_point = (int) Aione()->theme_options[ 'grid_main_break_point' ];
-		if ( $main_break_point > 640 ) {
-			$breakpoint_range = $main_break_point - 640;
-		} else {
-			$breakpoint_range = 360;
-		}
-
-		$breakpoint_interval = $breakpoint_range / 5;
-
-		$six_columns_breakpoint = $main_break_point + $side_header_width;
-		$five_columns_breakpoint = $six_columns_breakpoint - $breakpoint_interval;
-		$four_columns_breakpoint = $five_columns_breakpoint - $breakpoint_interval;
-		$three_columns_breakpoint = $four_columns_breakpoint - $breakpoint_interval;
-		$two_columns_breakpoint = $three_columns_breakpoint - $breakpoint_interval;
-		$one_column_breakpoint = $two_columns_breakpoint - $breakpoint_interval;
-
-		$six_columns_media_query = '@media only screen and (min-width: ' . $five_columns_breakpoint . 'px) and (max-width: ' . $six_columns_breakpoint . 'px)';
-		$five_columns_media_query = '@media only screen and (min-width: ' . $four_columns_breakpoint . 'px) and (max-width: ' . $five_columns_breakpoint . 'px)';
-		$four_columns_media_query = '@media only screen and (min-width: ' . $three_columns_breakpoint . 'px) and (max-width: ' . $four_columns_breakpoint . 'px)';
-		$three_columns_media_query = '@media only screen and (min-width: ' . $two_columns_breakpoint . 'px) and (max-width: ' . $three_columns_breakpoint . 'px)';
-		$two_columns_media_query = '@media only screen and (max-width: ' . $two_columns_breakpoint . 'px)';
-		$one_column_media_query = '@media only screen and (max-width: ' . $one_column_breakpoint . 'px)';
-
-		$ipad_portrait_media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)';
-
-		// Six Column Breakpoint
-		$elements = array(
-			'.grid-layout-6 .oxo-post-grid',
-			'.oxo-portfolio-six .oxo-portfolio-post'
-		);
-		$css[$six_columns_media_query][aione_implode( $elements )]['width']  = '20% !important';
-
-		$elements = array(
-			'.oxo-blog-layout-grid-5 .oxo-post-grid',
-			'.oxo-portfolio-five .oxo-portfolio-post'
-		);
-		$css[$six_columns_media_query][aione_implode( $elements )]['width'] = '25% !important';
-
-		// Five Column Breakpoint
-		$elements = array(
-			'.oxo-blog-layout-grid-6 .oxo-post-grid',
-			'.oxo-portfolio-six .oxo-portfolio-post'
-		);
-		$css[$five_columns_media_query][aione_implode( $elements )]['width']  = '20% !important';
-
-		$elements = array(
-			'.oxo-blog-layout-grid-5 .oxo-post-grid',
-			'.oxo-portfolio-five .oxo-portfolio-post'
-		);
-		$css[$five_columns_media_query][aione_implode( $elements )]['width'] = '33.3333333333% !important';
-
-		$elements = array(
-			'.oxo-blog-layout-grid-4 .oxo-post-grid',
-			'.oxo-portfolio-four .oxo-portfolio-post'
-		);
-		$css[$five_columns_media_query][aione_implode( $elements )]['width'] = '33.3333333333% !important';
-
-		// Four Column Breakpoint
-		$elements = array(
-			'.oxo-blog-layout-grid-6 .oxo-post-grid',
-			'.oxo-portfolio-six .oxo-portfolio-post'
-		);
-		$css[$four_columns_media_query][aione_implode( $elements )]['width'] = '25% !important';
-
-		$elements = array(
-			'.oxo-blog-layout-grid-5 .oxo-post-grid',
-			'.oxo-blog-layout-grid-4 .oxo-post-grid',
-			'.oxo-blog-layout-grid-3 .oxo-post-grid',
-			'.oxo-portfolio-five .oxo-portfolio-post',
-			'.oxo-portfolio-four .oxo-portfolio-post',
-			'.oxo-portfolio-three .oxo-portfolio-post',
-			'.oxo-portfolio-masonry .oxo-portfolio-post'
-		);
-		$css[$four_columns_media_query][aione_implode( $elements )]['width'] = '50% !important';
-
-		// Three Column Breakpoint
-		$elements = array(
-			'.oxo-blog-layout-grid-6 .oxo-post-grid',
-			'.oxo-portfolio-six .oxo-portfolio-post'
-		);
-		$css[$three_columns_media_query][aione_implode( $elements )]['width'] = '33.33% !important';
-
-		$elements = array(
-			'.oxo-blog-layout-grid-5 .oxo-post-grid',
-			'.oxo-blog-layout-grid-4 .oxo-post-grid',
-			'.oxo-blog-layout-grid-3 .oxo-post-grid',
-			'.oxo-portfolio-five .oxo-portfolio-post',
-			'.oxo-portfolio-four .oxo-portfolio-post',
-			'.oxo-portfolio-three .oxo-portfolio-post',
-			'.oxo-portfolio-masonry .oxo-portfolio-post'
-		);
-		$css[$three_columns_media_query][aione_implode( $elements )]['width'] = '50% !important';
-
-		// Two Column Breakpoint
-		$elements = array(
-			'.oxo-blog-layout-grid .oxo-post-grid',
-			'.oxo-portfolio-post',
-		);
-		$css[$two_columns_media_query][aione_implode( $elements )]['width'] = '100% !important';
-
-		$elements = array(
-			'.oxo-blog-layout-grid-6 .oxo-post-grid',
-			'.oxo-portfolio-six .oxo-portfolio-post'
-		);
-		$css[$two_columns_media_query][aione_implode( $elements )]['width'] = '50% !important';
-
-		// One Column Breakpoint
-		$elements = array(
-			'.oxo-blog-layout-grid-6 .oxo-post-grid',
-			'.oxo-portfolio-six .oxo-portfolio-post'
-		);
-		$css[$one_column_media_query][aione_implode( $elements )]['width'] = '100% !important';
-
-		// iPad Portrait Column Breakpoint
-		$elements = array(
-			'.oxo-blog-layout-grid-6 .oxo-post-grid',
-			'.oxo-portfolio-six .oxo-portfolio-post'
-		);
-		$css[$ipad_portrait_media_query][aione_implode( $elements )]['width'] = '33.3333333333% !important';
-
-		$elements = array(
-			'.oxo-blog-layout-grid-5 .oxo-post-grid',
-			'.oxo-blog-layout-grid-4 .oxo-post-grid',
-			'.oxo-blog-layout-grid-3 .oxo-post-grid',
-			'.oxo-portfolio-five .oxo-portfolio-post',
-			'.oxo-portfolio-four .oxo-portfolio-post',
-			'.oxo-portfolio-three .oxo-portfolio-post',
-			'.oxo-portfolio-masonry .oxo-portfolio-post'
-		);
-		$css[$ipad_portrait_media_query][aione_implode( $elements )]['width'] = '50% !important';
-
-
-		/* Side Header Only Responsive Styles
-		================================================================================================= */
-		$side_header_media_query = '@media only screen and (max-width: ' . intval( Aione()->theme_options[ 'side_header_break_point' ] ) . 'px)';
-
-		if( Aione()->theme_options['layout'] == 'Boxed' ) {
-			$css[$side_header_media_query]['body.side-header #wrapper']['margin-left']  = 'auto !important';
-			$css[$side_header_media_query]['body.side-header #wrapper']['margin-right'] = 'auto !important';
-		} else {
-			$css[$side_header_media_query]['body.side-header #wrapper']['margin-left']  = '0 !important';
-			$css[$side_header_media_query]['body.side-header #wrapper']['margin-right'] = '0 !important';
-		}
-
-		$elements = array(
-			'#side-header',
-			'.layout-boxed-mode .side-header-wrapper',
-			'.side-header-background'
-		);
-		$css[$side_header_media_query][aione_implode( $elements )]['background-color'] = Aione_Sanitize::color( Aione()->theme_options[ 'mobile_header_bg_color' ], Aione()->settings->get_default( 'mobile_header_bg_color' ) );
-
-		$css[$side_header_media_query]['#side-header']['position'] = 'static';
-		$css[$side_header_media_query]['#side-header']['height']   = 'auto';
-		$css[$side_header_media_query]['#side-header']['width']    = '100% !important';
-		$css[$side_header_media_query]['#side-header']['padding']  = '20px 30px 20px 30px !important';
-		$css[$side_header_media_query]['#side-header']['margin']   = '0 !important';
-
-		$css[$side_header_media_query]['#side-header .side-header-background']['display']   = 'none';
-		$css[$side_header_media_query]['#side-header .side-header-border']['display']   = 'none';
-
-		$css[$side_header_media_query]['#side-header .side-header-wrapper']['padding-bottom'] = '0';
-		$css[$side_header_media_query]['#side-header .side-header-wrapper']['position'] = 'relative';
-
-		if ( is_rtl() ) {
-			$css[$side_header_media_query]['body.rtl #side-header']['position'] = 'static !important';
-		}
-
-		$elements = array(
-			'#side-header .header-social',
-			'#side-header .header-v4-content'
-		);
-		$css[$side_header_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$css[$side_header_media_query]['#side-header .oxo-logo']['margin'] = '0 !important';
-		$css[$side_header_media_query]['#side-header .oxo-logo']['float']  = 'left';
-
-		$css[$side_header_media_query]['#side-header .side-header-content']['padding'] = '0 !important';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-classic .oxo-logo']['float']      = 'none';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-classic .oxo-logo']['text-align'] = 'center';
-
-		$elements = array(
-			'body.side-header #wrapper #side-header.header-shadow .side-header-border:before',
-			'body #wrapper .header-shadow:after'
-		);
-		$css[$side_header_media_query][aione_implode( $elements )]['position']   = 'static';
-		$css[$side_header_media_query][aione_implode( $elements )]['height']     = 'auto';
-		$css[$side_header_media_query][aione_implode( $elements )]['box-shadow'] = 'none';
-
-		$elements = array(
-			'#side-header .oxo-main-menu',
-			'#side-header .side-header-content-1-2',
-			'#side-header .side-header-content-3'
-		);
-		$css[$side_header_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$css[$side_header_media_query]['#side-header .oxo-logo']['margin'] = '0';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-classic .oxo-main-menu-container .oxo-mobile-nav-holder']['display']    = 'block';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-classic .oxo-main-menu-container .oxo-mobile-nav-holder']['margin-top'] = '20px';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-classic .oxo-main-menu-container .oxo-mobile-sticky-nav-holder']['display'] = 'none';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo']['float']  = 'left';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo']['margin'] = '0';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-left']['float'] = 'left';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-right']['float'] = 'right';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-center']['float'] = 'left';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-mobile-menu-icons']['display'] = 'block';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons']['float'] = 'left';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons']['position'] = 'static';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons a']['float'] = 'left';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-right .oxo-mobile-menu-icons :first-child']['margin-left'] = '0';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-left .oxo-mobile-menu-icons']['float'] = 'right';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-logo-menu-left .oxo-mobile-menu-icons a:last-child']['margin-left'] = '0';
-
-
-		$elements = array(
-			'#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder',
-			'#side-header.oxo-mobile-menu-design-modern .side-header-wrapper > .oxo-secondary-menu-search'
-		);
-
-		$css[$side_header_media_query][aione_implode( $elements )]['padding-top']    = '20px';
-		$css[$side_header_media_query][aione_implode( $elements )]['margin-left']    = '-30px';
-		$css[$side_header_media_query][aione_implode( $elements )]['margin-right']   = '-30px';
-		$css[$side_header_media_query][aione_implode( $elements )]['margin-bottom']  = '-20px';
-
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['display']       = 'block';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['border-right']  = '0';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['border-left']   = '0';
-		$css[$side_header_media_query]['#side-header.oxo-mobile-menu-design-modern .oxo-main-menu-container .oxo-mobile-nav-holder > ul']['border-bottom'] = '0';
-
-
-		$css[$side_header_media_query]['#side-header.oxo-is-sticky.oxo-sticky-menu-1 .oxo-mobile-nav-holder']['display'] = 'none';
-
-		$css[$side_header_media_query]['#side-header.oxo-is-sticky.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder']['display'] = 'none';
-
-
-		/* Top Header Only Responsive Styles
-		================================================================================================= */
-		$mobile_header_media_query = '@media only screen and (max-width: ' . intval( Aione()->theme_options[ 'side_header_break_point' ] ) . 'px)';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-header']['padding'] = '0px';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-row']['padding-left']  = '0px';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-row']['padding-right'] = '0px';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['max-width']  = '100%';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['text-align'] = 'center';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['margin-top'] = '10px';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-social-links-header']['margin-bottom'] = '8px';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-social-links-header a']['margin-right']  = '20px';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-social-links-header a']['margin-bottom'] = '5px';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-alignleft']['border-bottom'] = '1px solid transparent';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern .oxo-alignleft',
-			'.oxo-mobile-menu-design-modern .oxo-alignright'
-		);
-		$css[$mobile_header_media_query][aione_implode( $elements )]['width']      = '100%';
-		$css[$mobile_header_media_query][aione_implode( $elements )]['float']      = 'none';
-		$css[$mobile_header_media_query][aione_implode( $elements )]['display']    = 'block';
-
-
-		$elements = array(
-			'.oxo-body .oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-alignleft',
-			'.oxo-body .oxo-mobile-menu-design-modern .oxo-secondary-header .oxo-alignright'
-		);
-		$css[$mobile_header_media_query][aione_implode( $elements )]['text-align'] = 'center';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu > ul > li']['display']    				= 'inline-block';
-		$css[$mobile_header_media_query]['.oxo-body .oxo-mobile-menu-design-modern .oxo-secondary-menu > ul > li']['float']      = 'none';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu > ul > li']['text-align'] 				= 'left';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-cart']['border-right'] = '0';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['background-color'] = 'transparent';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['padding-left']     = '10px';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['padding-right']    = '7px';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon']['min-width']        = '100%';
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon:after']['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern .oxo-secondary-menu .oxo-secondary-menu-icon',
-			'.oxo-mobile-menu-design-modern .oxo-secondary-menu .oxo-secondary-menu-icon:hover',
-			'.oxo-mobile-menu-design-modern .oxo-secondary-menu-icon:before'
-		);
-		$css[$mobile_header_media_query][aione_implode( $elements )]['color'] = Aione_Sanitize::color( Aione()->theme_options[ 'snav_color' ], Aione()->settings->get_default( 'snav_color' ) );
-
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-header-tagline']['margin-top']  = '10px';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-header-tagline']['float']       = 'none';
-		$css[$mobile_header_media_query]['.oxo-mobile-menu-design-modern .oxo-header-tagline']['line-height'] = '24px';
-
-		/* Mobile Menu Responsive Styles
-		================================================================================================= */
-		$mobile_menu_media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options[ 'side_header_break_point' ] ) ) . 'px)';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-header']['padding-left'] = '0 !important';
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-secondary-header']['padding-right'] = '0 !important';
-
-		$css[$mobile_menu_media_query]['.oxo-header .oxo-row']['padding-left']  = '0';
-		$css[$mobile_menu_media_query]['.oxo-header .oxo-row']['padding-right'] = '0';
-
-		$elements = array(
-			'.oxo-header-wrapper .oxo-header',
-			//'.oxo-header-wrapper .oxo-secondary-main-menu'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['background-color'] = Aione_Sanitize::color( Aione()->theme_options[ 'mobile_header_bg_color' ], Aione()->settings->get_default( 'mobile_header_bg_color' ) );
-
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-row']['padding-left']  = '0';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-row']['padding-right'] = '0';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-row']['max-width'] = '100%';
-
-		$elements = array(
-			'.oxo-footer-widget-area > .oxo-row',
-			'.oxo-footer-copyright-area > .oxo-row'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-left']  = '0';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-right'] = '0';
-
-		$css[$mobile_menu_media_query]['.oxo-secondary-header .oxo-row']['display'] = 'block';
-		$css[$mobile_menu_media_query]['.oxo-secondary-header .oxo-alignleft']['margin-right'] = '0';
-		$css[$mobile_menu_media_query]['.oxo-secondary-header .oxo-alignright']['margin-left'] = '0';
-		$css[$mobile_menu_media_query]['body.oxo-body .oxo-secondary-header .oxo-alignright > *']['float'] = 'none';
-		$css[$mobile_menu_media_query]['body.oxo-body .oxo-secondary-header .oxo-alignright .oxo-social-links-header .boxed-icons']['margin-bottom'] = '5px';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-header',
-			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-header',
-			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-header'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-top']    = '20px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-bottom'] = '20px';
-
-
-		$css[$mobile_menu_media_query]['.oxo-header-v4 .oxo-logo']['display']  = 'block';
-		$css[$mobile_menu_media_query]['.oxo-header-v4.oxo-mobile-menu-design-modern .oxo-logo .oxo-logo-link']['max-width']  = '75%';
-		$css[$mobile_menu_media_query]['.oxo-header-v4.oxo-mobile-menu-design-modern .oxo-mobile-menu-icons']['position'] = 'absolute';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-logo',
-			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-logo',
-			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-logo',
-			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-logo a',
-			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-logo a',
-			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-logo a'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['float']      = 'none';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['text-align'] = 'center';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin']     = '0 !important';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-main-menu',
-			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-main-menu',
-			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-main-menu'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-mobile-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display']    = 'block';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-top'] = '20px';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-classic .oxo-secondary-header']['padding'] = '10px';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-classic .oxo-secondary-header .oxo-mobile-nav-holder']['margin-top'] = '0';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-header',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-header'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-top']    = '20px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-bottom'] = '20px';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-secondary-main-menu',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-secondary-main-menu'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-top']    = '6px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-bottom'] = '6px';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-main-menu',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-main-menu'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-mobile-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'block';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-logo',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-logo',
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-logo a',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-logo a'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['float']      = 'none';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['text-align'] = 'center';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin']     = '0 !important';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .searchform',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .searchform'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display']    = 'block';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['float']      = 'none';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['width']      = '100%';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin']     = '0';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-top'] = '13px';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .search-table',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .search-table'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['width'] = '100%';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-logo a']['float'] = 'none';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-header-banner']['margin-top'] = '10px';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-secondary-main-menu .searchform']['display'] = 'none';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-classic .oxo-alignleft']['margin-bottom'] = '10px';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic .oxo-alignleft',
-			'.oxo-mobile-menu-design-classic .oxo-alignright'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['float']       = 'none';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['width']       = '100%';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['line-height'] = 'normal';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display']     = 'block';
-
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-contact-info']['text-align']  = 'center';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-contact-info']['line-height'] = 'normal';
-
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-secondary-menu']['display'] = 'none';
-
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header']['max-width']     = '100%';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header']['margin-top']    = '5px';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header']['text-align']    = 'center';
-
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-social-links-header a']['margin-bottom'] = '5px';
-
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['float']       = 'none';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['text-align']  = 'center';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['margin-top']  = '10px';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['line-height'] = '24px';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['margin-left'] = 'auto';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-tagline']['margin-right'] = 'auto';
-
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['float']      = 'none';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['text-align'] = 'center';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['margin']     = '0 auto';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['width']      = '100%';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['margin-top'] = '20px';
-		$css[$mobile_menu_media_query]['.oxo-header-wrapper .oxo-mobile-menu-design-classic .oxo-header-banner']['clear']      = 'both';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern .ubermenu-responsive-toggle',
-			'.oxo-mobile-menu-design-modern .ubermenu-sticky-toggle-wrapper'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['clear'] = 'both';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-main-menu',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-main-menu',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-main-menu',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-main-menu',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-main-menu'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-header',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-header',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-header',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-header',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-header'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-top']    = '20px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-bottom'] = '20px';
-
-		$elements = aione_map_selector( $elements, ' .oxo-row' );
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['width'] = '100%';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-logo'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin'] = '0 !important';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .modern-mobile-menu-expanded .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .modern-mobile-menu-expanded .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .modern-mobile-menu-expanded .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .modern-mobile-menu-expanded .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .modern-mobile-menu-expanded .oxo-logo'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-bottom'] = '20px !important';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-top']   = '20px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-left']   = '-30px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-right']  = '-30px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-bottom'] = 'calc(-20px - ' . Aione_Sanitize::get_value_with_unit( Aione()->theme_options[ 'margin_header_bottom' ] ) . ')';
-
-		$elements = aione_map_selector( $elements, ' > ul' );
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'block';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-sticky-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-menu-icons',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-menu-icons',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-menu-icons',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-menu-icons',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-menu-icons'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'block';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo a']['float'] = 'none';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo .searchform']['float']   = 'none';
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-logo .searchform']['display'] = 'none';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-header-banner']['margin-top'] = '10px';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-logo']['float'] = 'left';
-
-		if ( is_rtl() ) {
-			$css[$mobile_menu_media_query]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-logo']['float'] = 'right';
-
-			$css[$mobile_menu_media_query]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons']['float'] = 'left';
-
-			$css[$mobile_menu_media_query]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons a']['float']        = 'left';
-			$css[$mobile_menu_media_query]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons a']['margin-left']  = '0';
-			$css[$mobile_menu_media_query]['.rtl .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-logo-center .oxo-mobile-menu-icons a']['margin-right'] = '15px';
-		}
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-top']   = '0';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-left']   = '-30px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-right']  = '-30px';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-bottom'] = '0';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-secondary-main-menu',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-secondary-main-menu'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['position'] = 'static';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['border']   = '0';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-secondary-main-menu .oxo-mobile-nav-holder > ul',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-secondary-main-menu .oxo-mobile-nav-holder > ul'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['border'] = '0';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-secondary-main-menu .searchform',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-secondary-main-menu .searchform'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['float'] = 'none';
-
-		$elements = array(
-			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-sticky-header-wrapper',
-			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-sticky-header-wrapper'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['position'] = 'fixed';
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['width']    = '100%';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-logo-right.oxo-header-v4 .oxo-logo',
-			'.oxo-mobile-menu-design-modern.oxo-logo-right.oxo-header-v5 .oxo-logo'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['float'] = 'right';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-modern.oxo-sticky-menu-only.oxo-header-v4 .oxo-secondary-main-menu',
-			'.oxo-mobile-menu-design-modern.oxo-sticky-menu-only.oxo-header-v5 .oxo-secondary-main-menu'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['position'] = 'static';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic.oxo-header-v1 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-classic.oxo-header-v2 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-classic.oxo-header-v3 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-classic.oxo-header-v4 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-classic.oxo-header-v5 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v1 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v2 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v3 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v4 .oxo-mobile-sticky-nav-holder',
-			'.oxo-mobile-menu-design-modern.oxo-header-v5 .oxo-mobile-sticky-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v1.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v2.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v3.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v4.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v5.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v1.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v2.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v3.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v4.oxo-sticky-menu-1 .oxo-mobile-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-modern.oxo-header-v5.oxo-sticky-menu-1 .oxo-mobile-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic .oxo-mobile-nav-item',
-			'.oxo-mobile-menu-design-modern .oxo-mobile-nav-item',
-			'.oxo-mobile-menu-design-classic .oxo-mobile-selector',
-			'.oxo-mobile-menu-design-modern .oxo-mobile-selector'
-		);
-
-		if ( in_array( Aione()->theme_options[ 'mobile_menu_text_align' ], array( 'left', 'right', 'center' ) ) ) {
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['text-align'] = esc_attr( Aione()->theme_options[ 'mobile_menu_text_align' ] );
-		}
-
-		if ( 'right' == Aione()->theme_options[ 'mobile_menu_text_align' ] ) {
-
-			$elements = array(
-				'.oxo-mobile-menu-design-classic .oxo-selector-down',
-				'.oxo-mobile-menu-design-modern .oxo-selector-down'
-			);
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['left']               = '7px';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['right']              = '0px';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['border-left']        = '0px';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['border-right-width'] = '1px';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['border-right-style'] = 'solid';
-
-			$elements = aione_map_selector( $elements, ':before' );
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-left']  = '0';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-right'] = '12px';
-
-			$elements = array(
-				'.oxo-mobile-menu-design-classic .oxo-open-submenu',
-				'.oxo-mobile-menu-design-modern .oxo-open-submenu'
-			);
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['right'] = 'auto';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['left']  = '0';
-
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item .oxo-open-submenu']['padding-left']  = '30px';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item .oxo-open-submenu']['padding-right'] = '0';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item a']['padding-left']  = '30px';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item a']['padding-right'] = '30px';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li a']['padding-left']  = '0';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li a']['padding-right'] = '39px';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li a']['padding-left']  = '0';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li a']['padding-right'] = '48px';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li a']['padding-left']  = '0';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li a']['padding-right'] = '57px';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li li a']['padding-left']  = '0';
-			$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder .oxo-mobile-nav-item li li li li a']['padding-right'] = '66px';
-
-		}
-
-		if ( ( 'right' == Aione()->theme_options[ 'mobile_menu_text_align' ] && ! is_rtl() ) ||
-			 ( 'right' != Aione()->theme_options[ 'mobile_menu_text_align' ] && is_rtl() )
-		) {
-
-			$elements = array(
-				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item a:before',
-				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item a:before'
-			);
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-			$elements = array(
-				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li a',
-				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li a'
-			);
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-right'] = '39px';
-
-			$elements = aione_map_selector( $elements, ':after' );
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['content']      = '"-"';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-right'] = '0';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-left']  = '2px';
-
-			$elements = array(
-				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li a',
-				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li a'
-			);
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-right'] = '48px';
-
-			$elements = aione_map_selector( $elements, ':after' );
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['content']      = '"--"';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-right'] = '0';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-left']  = '2px';
-
-			$elements = array(
-				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li a',
-				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li a'
-			);
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-right'] = '57px';
-
-			$elements = aione_map_selector( $elements, ':after' );
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['content']      = '"---"';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-right'] = '0';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-left']  = '2px';
-
-			$elements = array(
-				'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li li a',
-				'.oxo-mobile-menu-design-modern .oxo-mobile-nav-holder li.oxo-mobile-nav-item li li li li a'
-			);
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['padding-right'] = '66px';
-
-			$elements = aione_map_selector( $elements, ':after' );
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['content']      = '"----"';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-right'] = '0';
-			$css[$mobile_menu_media_query][aione_implode( $elements )]['margin-left']  = '2px';
-		}
-
-		$elements = array(
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v1.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v2.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v3.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v4.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder',
-			'.oxo-is-sticky .oxo-mobile-menu-design-classic.oxo-header-v5.oxo-sticky-menu-1 .oxo-mobile-sticky-nav-holder'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'block';
-
-		$css[$mobile_menu_media_query]['.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder .oxo-secondary-menu-icon']['text-align'] = 'inherit';
-
-		$elements = array(
-			'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder .oxo-secondary-menu-icon:before',
-			'.oxo-mobile-menu-design-classic .oxo-mobile-nav-holder .oxo-secondary-menu-icon:after'
-		);
-		$css[$mobile_menu_media_query][aione_implode( $elements )]['display'] = 'none';
-
-
-		/* @media only screen and ( max-width: $content_break_point )
-		================================================================================================= */
-		$content_break_point_media_query = '@media only screen and (max-width: ' . intval( Aione()->theme_options[ 'content_break_point' ] ) . 'px)';
-		$content_media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options[ 'content_break_point' ] ) ) . 'px)';
-		$content_min_media_query = '@media only screen and (min-width: ' . ( intval( $side_header_width ) + intval( Aione()->theme_options[ 'content_break_point' ] ) ) . 'px)';
-
-		// # Layout
-		if ( ! Aione()->theme_options[ 'smooth_scrolling' ] ) {
-			if ( Aione()->theme_options[ 'responsive' ] ) {
-				$css[$content_min_media_query]['.no-overflow-y body']['padding-right'] = '9px';
-				$css[$content_min_media_query]['.no-overflow-y #slidingbar-area']['right'] = '9px';
-			}
-		}
-
-		$css[$content_media_query]['.no-overflow-y']['overflow-y'] = 'visible !important';
-
-		// #content, .sidebar widths
-		$css[$content_media_query]['#content']['width']       = '100% !important';
-		$css[$content_media_query]['#content']['margin-left'] = '0px !important';
-		$css[$content_media_query]['.sidebar']['width']       = '100% !important';
-		$css[$content_media_query]['.sidebar']['float']       = 'none !important';
-		$css[$content_media_query]['.sidebar']['margin-left'] = '0 !important';
-		$css[$content_media_query]['.sidebar']['clear']       = 'both';
-
-
-		$css[$content_media_query]['.oxo-layout-column']['margin-left']  = '0';
-		$css[$content_media_query]['.oxo-layout-column']['margin-right'] = '0';
-
-		$elements = array(
-			'.oxo-layout-column:nth-child(5n)',
-			'.oxo-layout-column:nth-child(4n)',
-			'.oxo-layout-column:nth-child(3n)',
-			'.oxo-layout-column:nth-child(2n)',
-		);
-		$css[$content_media_query][aione_implode( $elements )]['margin-left']  = '0';
-		$css[$content_media_query][aione_implode( $elements )]['margin-right'] = '0';
-
-		$css[$content_media_query]['.oxo-layout-column.oxo-spacing-no']['margin-bottom']	= '0';
-		$css[$content_media_query]['.oxo-body .oxo-layout-column.oxo-spacing-no']['width']         	= '100%';
-
-		$css[$content_media_query]['.oxo-body .oxo-layout-column.oxo-spacing-yes']['width'] 		= '100%';
-
-		$elements = array(
-			'.oxo-columns-5 .oxo-column:first-child',
-			'.oxo-columns-4 .oxo-column:first-child',
-			'.oxo-columns-3 .oxo-column:first-child',
-			'.oxo-columns-2 .oxo-column:first-child',
-			'.oxo-columns-1 .oxo-column:first-child'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['margin-left'] = '0';
-
-		$css[$content_media_query]['.oxo-columns .oxo-column']['width'] 	   = '100% !important';
-		$css[$content_media_query]['.oxo-columns .oxo-column']['float']      = 'none';
-		$css[$content_media_query]['.oxo-columns .oxo-column:not(.oxo-column-last)']['margin']     = '0 0 50px';
-		$css[$content_media_query]['.oxo-columns .oxo-column']['box-sizing'] = 'border-box';
-
-		if ( is_rtl() ) {
-			$css[$content_media_query]['.rtl .oxo-column']['float'] = 'none';
-		}
-
-		$elements = array(
-			'.col-sm-12',
-			'.col-sm-6',
-			'.col-sm-4',
-			'.col-sm-3',
-			'.col-sm-2',
-			'.oxo-columns-5 .col-lg-2',
-			'.oxo-columns-5 .col-md-2',
-			'.oxo-columns-5 .col-sm-2',
-			'.aione-container .columns .col',
-			'.footer-area .oxo-columns .oxo-column',
-			'#slidingbar-area .columns .col'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['float'] = 'none';
-		$css[$content_media_query][aione_implode( $elements )]['width'] = '100%';
-
-		// # General Styles
-		$css[$content_media_query]['.oxo-filters']['border-bottom'] = '0';
-
-		$css[$content_media_query]['.oxo-body .oxo-filter']['float']         = 'none';
-		$css[$content_media_query]['.oxo-body .oxo-filter']['margin']        = '0';
-		$css[$content_media_query]['.oxo-body .oxo-filter']['border-bottom'] = '1px solid #E7E6E6';
-
-		// Mobile Logo
-		$elements = array(
-			'.oxo-mobile-logo-1 .oxo-standard-logo',
-			'#side-header .oxo-mobile-logo-1 .oxo-standard-logo'
-		);
-		$css[$mobile_header_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-logo-1 .oxo-mobile-logo-1x',
-			'#side-header .oxo-mobile-logo-1 .oxo-mobile-logo-1x'
-		);
-		$css[$mobile_header_media_query][aione_implode( $elements )]['display'] = 'inline-block';
-
-		$css[$content_media_query]['.oxo-secondary-menu-icon']['min-width'] = '100%';
-
-
-		 // # Page Title Bar
-		if ( 'auto' != Aione()->theme_options[ 'page_title_mobile_height' ] ) {
-
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar']['padding-top']    = '5px';
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar']['padding-bottom'] = '5px';
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar']['min-height']     = intval( Aione()->theme_options[ 'page_title_mobile_height' ] ) - 10 . 'px';
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar']['height']         = 'auto';
-
-		} else {
-
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar']['padding-top']    = '10px';
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar']['padding-bottom'] = '10px';
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar']['height']         = 'auto';
-			$css[$content_media_query]['.oxo-page-title-row']['height'] = 'auto';
-
-		}
-
-		$elements = array(
-			'.oxo-page-title-bar-left .oxo-page-title-captions',
-			'.oxo-page-title-bar-right .oxo-page-title-captions',
-			'.oxo-page-title-bar-left .oxo-page-title-secondary',
-			'.oxo-page-title-bar-right .oxo-page-title-secondary'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['display']     = 'block';
-		$css[$content_media_query][aione_implode( $elements )]['float']       = 'none';
-		$css[$content_media_query][aione_implode( $elements )]['width']       = '100%';
-		$css[$content_media_query][aione_implode( $elements )]['line-height'] = 'normal';
-
-		$css[$content_media_query]['.oxo-page-title-bar-left .oxo-page-title-secondary']['text-align'] = 'left';
-
-		$css[$content_media_query]['.oxo-page-title-bar-left .searchform']['display']   = 'block';
-		$css[$content_media_query]['.oxo-page-title-bar-left .searchform']['max-width'] = '100%';
-
-		$css[$content_media_query]['.oxo-page-title-bar-right .oxo-page-title-secondary']['text-align'] = 'right';
-
-		$css[$content_media_query]['.oxo-page-title-bar-right .searchform']['max-width'] = '100%';
-
-		if ( ! Aione()->theme_options[ 'breadcrumb_mobile' ] ) {
-			$css[$content_media_query]['.oxo-body .oxo-page-title-bar .oxo-breadcrumbs']['display'] = 'none';
-		}
-
-		if ( 'auto' != Aione()->theme_options[ 'page_title_mobile_height' ] ) {
-
-			$css[$content_media_query]['.oxo-page-title-row']['display']    = 'table';
-			$css[$content_media_query]['.oxo-page-title-row']['width']      = '100%';
-			$css[$content_media_query]['.oxo-page-title-row']['min-height'] = intval( Aione()->theme_options[ 'page_title_mobile_height' ] ) - 20 . 'px';
-
-			$css[$content_media_query]['.oxo-page-title-bar-center .oxo-page-title-row']['width'] = 'auto';
-
-			$css[$content_media_query]['.oxo-page-title-wrapper']['display']        = 'table-cell';
-			$css[$content_media_query]['.oxo-page-title-wrapper']['vertical-align'] = 'middle';
-		}
-
-		// # Blog Layouts
-		// Blog medium alternate layout
-		$elements = array(
-			'.oxo-body .oxo-blog-layout-medium-alternate .oxo-post-content',
-			'.oxo-body .oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-content'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['float']       = 'none';
-		$css[$content_media_query][aione_implode( $elements )]['clear']       = 'both';
-		$css[$content_media_query][aione_implode( $elements )]['margin']      = '0';
-		$css[$content_media_query][aione_implode( $elements )]['padding-top'] = '20px';
-
-
-		// # Author Page - Info
-		$css[$content_media_query]['.oxo-author .oxo-social-networks']['display'] = 'block';
-		$css[$content_media_query]['.oxo-body .oxo-author .oxo-social-networks']['text-align'] = 'center';
-		$css[$content_media_query]['.oxo-author .oxo-social-networks']['margin-top'] = '10px';
-
-		$css[$content_media_query]['.oxo-author-tagline']['display']      = 'block';
-		$css[$content_media_query]['.oxo-author-tagline']['float']      = 'none';
-		$css[$content_media_query]['.oxo-author-tagline']['text-align'] = 'center';
-		$css[$content_media_query]['.oxo-author-tagline']['max-width']  = '100%';
-
-
-		// # Shortcodes
-		$elements = array(
-			'.oxo-content-boxes.content-boxes-clean-vertical .content-box-column',
-			'.oxo-content-boxes.content-boxes-clean-horizontal .content-box-column'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['border-right-width'] = '1px';
-
-		$elements = array(
-			'.oxo-content-boxes .content-box-shortcode-timeline'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-countdown',
-			'.oxo-countdown .oxo-countdown-heading-wrapper',
-			'.oxo-countdown .oxo-countdown-counter-wrapper',
-			'.oxo-countdown .oxo-countdown-link-wrapper'
-		);
-		 $css[$content_media_query][aione_implode( $elements )]['display'] = 'block';
-		 $css[$content_media_query]['.oxo-countdown .oxo-countdown-heading-wrapper']['text-align'] = 'center';
-		 $css[$content_media_query]['.oxo-countdown .oxo-countdown-counter-wrapper']['margin-top'] = '20px';
-		 $css[$content_media_query]['.oxo-countdown .oxo-countdown-counter-wrapper']['margin-bottom'] = '10px';
-		 $css[$content_media_query]['.oxo-countdown .oxo-dash-title']['display'] = 'block';
-		 $css[$content_media_query]['.oxo-body .oxo-countdown .oxo-dash-title']['padding'] = '0';
-		 $css[$content_media_query]['.oxo-countdown .oxo-dash-title']['font-size'] = '16px';
-		 $css[$content_media_query]['.oxo-countdown .oxo-countdown-link-wrapper']['text-align'] = 'center';
-		 
-
-		// Tagline Box
-		$css[$content_media_query]['.oxo-reading-box-container .reading-box.reading-box-center']['text-align'] = 'left';
-		$css[$content_media_query]['.oxo-reading-box-container .reading-box.reading-box-right']['text-align'] = 'left';
-
-		$css[$content_media_query]['.oxo-reading-box-container .oxo-desktop-button']['display'] = 'none';
-		$css[$content_media_query]['.oxo-reading-box-container .oxo-mobile-button']['display'] = 'block';
-		$css[$content_media_query]['.oxo-reading-box-container .oxo-mobile-button.continue-center']['display'] = 'block';		 
-
-
-		// # Events Calendar
-		if ( class_exists( 'Tribe__Events__Main' ) ) {
-			$css[$content_media_query]['.tribe-events-single ul.tribe-related-events li']['margin-right'] = '0';
-			$css[$content_media_query]['.tribe-events-single ul.tribe-related-events li']['width'] = '100%';
-			$css[$content_break_point_media_query]['.tribe-bar-collapse #tribe-bar-collapse-toggle']['width'] = '59%';
-		}
-
-		$retina_media_query = '@media only screen and (max-width: ' . ( intval( Aione()->theme_options[ 'side_header_break_point' ] ) ) . 'px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: ' . ( intval( Aione()->theme_options[ 'side_header_break_point' ] ) ) . 'px) and (min-resolution: 144dpi), only screen and (max-width: ' . ( intval( Aione()->theme_options[ 'side_header_break_point' ] ) ) . 'px) and (min-resolution: 1.5dppx)';
-
-		$elements = array(
-			'.oxo-mobile-logo-1 .oxo-mobile-logo-1x',
-			'#side-header .oxo-mobile-logo-1 .oxo-mobile-logo-1x'
-		);
-		$css[$retina_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$elements = array(
-			'.oxo-mobile-logo-1 .oxo-mobile-logo-2x',
-			'#side-header .oxo-mobile-logo-1 .oxo-mobile-logo-2x'
-		);
-		$css[$retina_media_query][aione_implode( $elements )]['display'] = 'inline-block';
-
-		// # WooCommerce
-		if ( class_exists( 'WooCommerce' ) ) {
-			if ( 'horizontal' == Aione()->theme_options[ 'woocommerce_product_tab_design' ] ) {
-
-
-				$elements = array(
-					'#wrapper .woocommerce-tabs .tabs',
-					'#wrapper .woocommerce-tabs .panel'
-				);
-
-
-				$css[$content_media_query][aione_implode( $elements )]['float']        = 'none';
-				$css[$content_media_query][aione_implode( $elements )]['margin-left']  = 'auto';
-				$css[$content_media_query][aione_implode( $elements )]['margin-right'] = 'auto';
-				$css[$content_media_query][aione_implode( $elements )]['width']        = '100% !important';
-
-				$elements = array(
-					'.woocommerce-tabs .tabs',
-					'.woocommerce-side-nav'
-				);
-				$css[$content_media_query][aione_implode( $elements )]['margin-bottom'] = '25px';
-				
-				$css[$content_media_query]['.woocommerce-tabs > .tabs']['border'] = 'none';
-				$css[$content_media_query]['.woocommerce-tabs > .wc-tab']['border-top'] = '1px solid';
-				
-				$css[$content_media_query]['.woocommerce-tabs > .tabs .active']['border-top'] = 'none';
-				$css[$content_media_query]['.woocommerce-tabs > .tabs .active']['border-left'] = 'none';
-				$css[$content_media_query]['.woocommerce-tabs > .tabs .active']['border-right'] = 'none';
-				$css[$content_media_query]['.woocommerce-tabs > .tabs .active a']['background-color'] = 'transparent';
-				$css[$content_media_query]['.woocommerce-tabs > .tabs li']['float'] = 'none';
-				$css[$content_media_query]['.woocommerce-tabs > .tabs li']['border-bottom'] = '1px solid';
-				$css[$content_media_query]['.woocommerce-tabs > .tabs li a']['padding'] = '10px 0';
-			}
-		}
-
-		// # Not restructured mobile.css styles
-		$css[$content_media_query]['#wrapper']['width'] = 'auto !important';
-
-		$css[$content_media_query]['.create-block-format-context']['display'] = 'none';
-
-		$css[$content_media_query]['.review']['float'] = 'none';
-		$css[$content_media_query]['.review']['width'] = '100%';
-
-		$elements = array(
-			'.oxo-copyright-notice',
-			'.oxo-body .oxo-social-links-footer'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['display']    = 'block';
-		$css[$content_media_query][aione_implode( $elements )]['text-align'] = 'center';
-
-		$css[$content_media_query]['.oxo-social-links-footer']['width'] = 'auto';
-
-		$css[$content_media_query]['.oxo-social-links-footer .oxo-social-networks']['display']    = 'inline-block';
-		$css[$content_media_query]['.oxo-social-links-footer .oxo-social-networks']['float']      = 'none';
-		$css[$content_media_query]['.oxo-social-links-footer .oxo-social-networks']['margin-top'] = '0';
-
-		$css[$content_media_query]['.oxo-copyright-notice']['padding'] = '0 0 15px';
-
-		$elements = array(
-			'.oxo-copyright-notice:after',
-			'.oxo-social-networks:after'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['content'] = '""';
-		$css[$content_media_query][aione_implode( $elements )]['display'] = 'block';
-		$css[$content_media_query][aione_implode( $elements )]['clear']   = 'both';
-
-		$elements = array(
-			'.oxo-social-networks li',
-			'.oxo-copyright-notice li'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['float']   = 'none';
-		$css[$content_media_query][aione_implode( $elements )]['display'] = 'inline-block';
-
-		$css[$content_media_query]['.oxo-title']['margin-top']    = '0px !important';
-		$css[$content_media_query]['.oxo-title']['margin-bottom'] = '20px !important';
-		$css[$content_media_query]['.tfs-slider .oxo-title']['margin-bottom'] = '0 !important';
-
-
-		$css[$content_media_query]['#main .cart-empty']['float']         = 'none';
-		$css[$content_media_query]['#main .cart-empty']['text-align']    = 'center';
-		$css[$content_media_query]['#main .cart-empty']['border-top']    = '1px solid';
-		$css[$content_media_query]['#main .cart-empty']['border-bottom'] = 'none';
-		$css[$content_media_query]['#main .cart-empty']['width']         = '100%';
-		$css[$content_media_query]['#main .cart-empty']['line-height']   = 'normal !important';
-		$css[$content_media_query]['#main .cart-empty']['height']        = 'auto !important';
-		$css[$content_media_query]['#main .cart-empty']['margin-bottom'] = '10px';
-		$css[$content_media_query]['#main .cart-empty']['padding-top']   = '10px';
-
-		$css[$content_media_query]['#main .return-to-shop']['float']          = 'none';
-		$css[$content_media_query]['#main .return-to-shop']['border-top']     = 'none';
-		$css[$content_media_query]['#main .return-to-shop']['border-bottom']  = '1px solid';
-		$css[$content_media_query]['#main .return-to-shop']['width']          = '100%';
-		$css[$content_media_query]['#main .return-to-shop']['text-align']     = 'center';
-		$css[$content_media_query]['#main .return-to-shop']['line-height']    = 'normal !important';
-		$css[$content_media_query]['#main .return-to-shop']['height']         = 'auto !important';
-		$css[$content_media_query]['#main .return-to-shop']['padding-bottom'] = '10px';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-
-			$css[$content_media_query]['.woocommerce .checkout_coupon']['-webkit-justify-content'] = 'center';
-			$css[$content_media_query]['.woocommerce .checkout_coupon']['-ms-justify-content'] = 'center';
-			$css[$content_media_query]['.woocommerce .checkout_coupon']['justify-content'] = 'center';
-			$css[$content_media_query]['.woocommerce .checkout_coupon']['-webkit-flex-wrap'] = 'wrap';
-			$css[$content_media_query]['.woocommerce .checkout_coupon']['-ms-flex-wrap'] = 'wrap';
-			$css[$content_media_query]['.woocommerce .checkout_coupon']['flex-wrap'] = 'wrap';
-
-			$css[$content_media_query]['.woocommerce .checkout_coupon .promo-code-heading']['margin-bottom'] = '5px';
-
-			$css[$content_media_query]['.woocommerce .checkout_coupon .coupon-contents']['margin']  = '0';
-		}
-
-		$css[$content_media_query]['#content.full-width']['margin-bottom'] = '0';
-
-		$css[$content_media_query]['.sidebar .social_links .social li']['width']        = 'auto';
-		$css[$content_media_query]['.sidebar .social_links .social li']['margin-right'] = '5px';
-
-		$css[$content_media_query]['#comment-input']['margin-bottom'] = '0';
-
-		$css[$content_media_query]['#comment-input input']['width']         = '100%';
-		$css[$content_media_query]['#comment-input input']['float']         = 'none !important';
-		$css[$content_media_query]['#comment-input input']['margin-bottom'] = '10px';
-
-		$css[$content_media_query]['#comment-textarea textarea']['width'] = '100%';
-
-		$css[$content_media_query]['.widget.facebook_like iframe']['width']     = '100% !important';
-		$css[$content_media_query]['.widget.facebook_like iframe']['max-width'] = 'none !important';
-
-		$css[$content_media_query]['.pagination']['margin-top'] = '40px';
-
-		$css[$content_media_query]['.portfolio-one .portfolio-item .image']['float']         = 'none';
-		$css[$content_media_query]['.portfolio-one .portfolio-item .image']['width']         = 'auto';
-		$css[$content_media_query]['.portfolio-one .portfolio-item .image']['height']        = 'auto';
-		$css[$content_media_query]['.portfolio-one .portfolio-item .image']['margin-bottom'] = '20px';
-
-		$css[$content_media_query]['h5.toggle span.toggle-title']['width'] = '80%';
-
-		$css[$content_media_query]['#wrapper .sep-boxed-pricing .panel-wrapper']['padding'] = '0';
-
-		$elements = array(
-			'#wrapper .full-boxed-pricing .column',
-			'#wrapper .sep-boxed-pricing .column'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['float']         = 'none';
-		$css[$content_media_query][aione_implode( $elements )]['margin-bottom'] = '10px';
-		$css[$content_media_query][aione_implode( $elements )]['margin-left']   = '0';
-		$css[$content_media_query][aione_implode( $elements )]['width']         = '100%';
-
-		$css[$content_media_query]['.share-box']['height'] = 'auto';
-
-		$css[$content_media_query]['#wrapper .share-box h4']['float']       = 'none';
-		$css[$content_media_query]['#wrapper .share-box h4']['line-height'] = '20px !important';
-		$css[$content_media_query]['#wrapper .share-box h4']['margin-top']  = '0';
-		$css[$content_media_query]['#wrapper .share-box h4']['padding']     = '0';
-
-		$css[$content_media_query]['.share-box ul']['float']          = 'none';
-		$css[$content_media_query]['.share-box ul']['overflow']       = 'hidden';
-		$css[$content_media_query]['.share-box ul']['padding']        = '0 25px';
-		$css[$content_media_query]['.share-box ul']['padding-bottom'] = '15px';
-		$css[$content_media_query]['.share-box ul']['margin-top']     = '0px';
-
-		$css[$content_media_query]['.project-content .project-description']['float'] = 'none !important';
-
-		$css[$content_media_query]['.single-aione_portfolio .portfolio-half .project-content .project-description h3']['margin-top'] = '24px';
-
-		$css[$content_media_query]['.project-content .oxo-project-description-details']['margin-bottom'] = '50px';
-
-		$elements = array(
-			'.project-content .project-description',
-			'.project-content .project-info'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['width'] = '100% !important';
-
-		$css[$content_media_query]['.portfolio-half .flexslider']['width'] = '100% !important';
-
-		$css[$content_media_query]['.portfolio-half .project-content']['width'] = '100% !important';
-
-		$css[$content_media_query]['#style_selector']['display'] = 'none';
-
-		$elements = array(
-			'.ls-aione .ls-nav-prev',
-			'.ls-aione .ls-nav-next'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['display'] = 'none !important';
-
-		$css[$content_media_query]['#footer .social-networks']['width']    = '100%';
-		$css[$content_media_query]['#footer .social-networks']['margin']   = '0 auto';
-		$css[$content_media_query]['#footer .social-networks']['position'] = 'relative';
-		$css[$content_media_query]['#footer .social-networks']['left']     = '-11px';
-
-		$css[$content_media_query]['.tab-holder .tabs']['height'] = 'auto !important';
-		$css[$content_media_query]['.tab-holder .tabs']['width']  = '100% !important';
-
-		$css[$content_media_query]['.shortcode-tabs .tab-hold .tabs li']['width'] = '100% !important';
-
-		$elements = array(
-			'body .shortcode-tabs .tab-hold .tabs li',
-			'body.dark .sidebar .tab-hold .tabs li'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['border-right'] = 'none !important';
-
-		$css[$content_media_query]['.error-message']['line-height'] = '170px';
-		$css[$content_media_query]['.error-message']['margin-top']  = '20px';
-
-		$css[$content_media_query]['.error_page .useful_links']['width']        = '100%';
-		$css[$content_media_query]['.error-page .useful_links']['padding-left'] = '0';
-
-		$css[$content_media_query]['.oxo-google-map']['width']         = '100% !important';
-
-		$css[$content_media_query]['.social_links_shortcode .social li']['width'] = '10% !important';
-
-		$css[$content_media_query]['#wrapper .ei-slider']['width'] = '100% !important';
-
-		$css[$content_media_query]['#wrapper .ei-slider']['height'] = '200px !important';
-
-		$css[$content_media_query]['.progress-bar']['margin-bottom'] = '10px !important';
-
-		$css[$content_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
-		$css[$content_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
-		$css[$content_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3%';
-		$css[$content_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3%';
-
-		$elements = array(
-			'#wrapper .content-boxes-icon-on-top .content-box-column',
-			'#wrapper .content-boxes-icon-boxed .content-box-column'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['margin-bottom'] = '55px';
-
-		$css[$content_media_query]['.oxo-counters-box .oxo-counter-box']['margin-bottom'] = '20px';
-		$css[$content_media_query]['.oxo-counters-box .oxo-counter-box']['padding']       = '0 15px';
-
-		$css[$content_media_query]['.oxo-counters-box .oxo-counter-box:last-child']['margin-bottom'] = '0';
-
-		$css[$content_media_query]['.popup']['display'] = 'none !important';
-
-		$css[$content_media_query]['.share-box .social-networks']['text-align'] = 'left';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-			$css[$content_media_query]['.oxo-body .products li']['width'] = '225px';
-
-			$elements = array(
-				'.products li',
-				'#wrapper .catalog-ordering > ul',
-				'#main .products li:nth-child(3n)',
-				'#main .products li:nth-child(4n)',
-				'#main .has-sidebar .products li',
-				'.aione-myaccount-data .addresses .col-1',
-				'.aione-myaccount-data .addresses .col-2',
-				'.aione-customer-details .addresses .col-1',
-				'.aione-customer-details .addresses .col-2'
-			);
-
-			$css[$content_media_query][aione_implode( $elements )]['float']        = 'none !important';
-			$css[$content_media_query][aione_implode( $elements )]['margin-left']  = 'auto !important';
-			$css[$content_media_query][aione_implode( $elements )]['margin-right'] = 'auto !important';
-
-			$elements = array(
-				'.aione-myaccount-data .addresses .col-1',
-				'.aione-myaccount-data .addresses .col-2',
-				'.aione-customer-details .addresses .col-1',
-				'.aione-customer-details .addresses .col-2'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['margin'] = '0 !important';
-			$css[$content_media_query][aione_implode( $elements )]['width']  = '100%';
-
-			$css[$content_media_query]['#wrapper .catalog-ordering']['margin-bottom'] = '50px';
-
-			$css[$content_media_query]['#wrapper .orderby-order-container']['display'] = 'block';
-
-			$css[$content_media_query]['#wrapper .order-dropdown > li:hover > ul']['display']  = 'block';
-			$css[$content_media_query]['#wrapper .order-dropdown > li:hover > ul']['position'] = 'relative';
-			$css[$content_media_query]['#wrapper .order-dropdown > li:hover > ul']['top']      = '0';
-
-			$css[$content_media_query]['#wrapper .orderby-order-container']['margin']        = '0 auto';
-			$css[$content_media_query]['#wrapper .orderby-order-container']['width']         = '225px';
-			$css[$content_media_query]['#wrapper .orderby-order-container']['float']         = 'none';
-
-			$css[$content_media_query]['#wrapper .orderby.order-dropdown']['width']        = '176px';
-
-			$css[$content_media_query]['#wrapper .sort-count.order-dropdown']['display'] = 'block';
-			$css[$content_media_query]['#wrapper .sort-count.order-dropdown']['width'] = '225px';
-
-			$css[$content_media_query]['#wrapper .sort-count.order-dropdown ul a']['width'] = '225px';
-
-			$css[$content_media_query]['#wrapper .catalog-ordering .order']['margin'] = '0';
-
-			$css[$content_media_query]['.catalog-ordering .oxo-grid-list-view']['display'] = 'block';
-			$css[$content_media_query]['.catalog-ordering .oxo-grid-list-view']['width'] = '78px';
-
-			$elements = array(
-				'.woocommerce #customer_login .login .form-row',
-				'.woocommerce #customer_login .login .lost_password'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['float'] = 'none';
-
-			$elements = array(
-				'.woocommerce #customer_login .login .inline',
-				'.woocommerce #customer_login .login .lost_password'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['display']     = 'block';
-			$css[$content_media_query][aione_implode( $elements )]['margin-left'] = '0';
-
-			$css[$content_media_query]['.aione-myaccount-data .my_account_orders .order-number']['padding-right'] = '8px';
-
-			$css[$content_media_query]['.aione-myaccount-data .my_account_orders .order-actions']['padding-left'] = '8px';
-
-			$css[$content_media_query]['.shop_table .product-name']['width'] = '35%';
-
-			$css[$content_media_query]['form.checkout .shop_table tfoot th']['padding-right'] = '20px';
-
-			$elements = array(
-				'#wrapper .product .images',
-				'#wrapper .product .summary.entry-summary',
-				'#wrapper .woocommerce-tabs .tabs',
-				'#wrapper .woocommerce-tabs .panel',
-				'#wrapper .woocommerce-side-nav',
-				'#wrapper .woocommerce-content-box',
-				'#wrapper .shipping-coupon',
-				'#wrapper .cart-totals-buttons',
-				'#wrapper #customer_login .col-1',
-				'#wrapper #customer_login .col-2',
-				'#wrapper .woocommerce form.checkout #customer_details .col-1',
-				'#wrapper .woocommerce form.checkout #customer_details .col-2'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['float']        = 'none';
-			$css[$content_media_query][aione_implode( $elements )]['margin-left']  = 'auto';
-			$css[$content_media_query][aione_implode( $elements )]['margin-right'] = 'auto';
-			$css[$content_media_query][aione_implode( $elements )]['width']        = '100% !important';
-
-			$elements = array(
-				'#customer_login .col-1',
-				'.coupon'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['margin-bottom'] = '20px';
-
-			$css[$content_media_query]['.shop_table .product-thumbnail']['float'] = 'none';
-
-			$css[$content_media_query]['.product-info']['margin-left'] = '0';
-			$css[$content_media_query]['.product-info']['margin-top']  = '10px';
-
-			$css[$content_media_query]['.product .entry-summary div .price']['float'] = 'none';
-
-			$css[$content_media_query]['.product .entry-summary .woocommerce-product-rating']['float']       = 'none';
-			$css[$content_media_query]['.product .entry-summary .woocommerce-product-rating']['margin-left'] = '0';
-
-			$elements = array(
-				'.woocommerce-tabs .tabs',
-				'.woocommerce-side-nav'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['margin-bottom'] = '25px';
-
-			$css[$content_media_query]['.woocommerce-tabs .panel']['width']   = '91% !important';
-			$css[$content_media_query]['.woocommerce-tabs .panel']['padding'] = '4% !important';
-
-			$css[$content_media_query]['#reviews li .avatar']['display'] = 'none';
-
-			$css[$content_media_query]['#reviews li .comment-text']['width']       = '90% !important';
-			$css[$content_media_query]['#reviews li .comment-text']['margin-left'] = '0 !important';
-			$css[$content_media_query]['#reviews li .comment-text']['padding']     = '5% !important';
-
-			$css[$content_media_query]['html .woocommerce .woocommerce-container .social-share']['display'] = 'block';
-			$css[$content_media_query]['.woocommerce-container .social-share']['overflow'] = 'hidden';
-
-			$css[$content_media_query]['.woocommerce-container .social-share li']['display']       = 'block';
-			$css[$content_media_query]['.woocommerce-container .social-share li']['float']         = 'left';
-			$css[$content_media_query]['.woocommerce-container .social-share li']['margin']        = '0 auto';
-			$css[$content_media_query]['.woocommerce-container .social-share li']['border-right']  = '0 !important';
-			$css[$content_media_query]['.woocommerce-container .social-share li']['border-left']   = '0 !important';
-			$css[$content_media_query]['.woocommerce-container .social-share li']['padding-left']  = '0 !important';
-			$css[$content_media_query]['.woocommerce-container .social-share li']['padding-right'] = '0 !important';
-			$css[$content_media_query]['.woocommerce-container .social-share li']['width']         = '50%';
-
-			$css[$content_media_query]['.has-sidebar .woocommerce-container .social-share li']['width'] = '50%';
-
-			$css[$content_media_query]['.myaccount_user_container span']['width']        = '100%';
-			$css[$content_media_query]['.myaccount_user_container span']['float']        = 'none';
-			$css[$content_media_query]['.myaccount_user_container span']['display']      = 'block';
-			$css[$content_media_query]['.myaccount_user_container span']['padding']      = '5px 0px';
-			$css[$content_media_query]['.myaccount_user_container span']['border-right'] = 0;
-
-			$css[$content_media_query]['.myaccount_user_container span.username']['margin-top'] = '10px';
-
-			$css[$content_media_query]['.myaccount_user_container span.view-cart']['margin-bottom'] = '10px';
-
-			if ( is_rtl() ) {
-				$css[$content_media_query]['.rtl .myaccount_user_container span']['border-left'] = '0';
-			}
-
-			$elements = array(
-				'.shop_table .product-thumbnail img',
-				'.shop_table .product-thumbnail .product-info',
-				'.shop_table .product-thumbnail .product-info p'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['float']   = 'none';
-			$css[$content_media_query][aione_implode( $elements )]['width']   = '100%';
-			$css[$content_media_query][aione_implode( $elements )]['margin']  = '0 !important';
-			$css[$content_media_query][aione_implode( $elements )]['padding'] = '0';
-
-			$css[$content_media_query]['.shop_table .product-thumbnail']['padding'] = '10px 0px';
-
-			$css[$content_media_query]['.product .images']['margin-bottom'] = '30px';
-
-			$css[$content_media_query]['#customer_login_box .button']['float']         = 'left';
-			$css[$content_media_query]['#customer_login_box .button']['margin-bottom'] = '15px';
-
-			$css[$content_media_query]['#customer_login_box .remember-box']['clear']   = 'both';
-			$css[$content_media_query]['#customer_login_box .remember-box']['display'] = 'block';
-			$css[$content_media_query]['#customer_login_box .remember-box']['padding'] = '0';
-			$css[$content_media_query]['#customer_login_box .remember-box']['width']   = '125px';
-			$css[$content_media_query]['#customer_login_box .remember-box']['float']   = 'left';
-
-			$css[$content_media_query]['#customer_login_box .lost_password']['float'] = 'left';
-
-		}
-
-		if ( defined( 'WPCF7_PLUGIN' ) ) {
-
-			$elements = array(
-				'.wpcf7-form .wpcf7-text',
-				'.wpcf7-form .wpcf7-quiz',
-				'.wpcf7-form .wpcf7-number',
-				'.wpcf7-form textarea'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['float']      = 'none !important';
-			$css[$content_media_query][aione_implode( $elements )]['width']      = '100% !important';
-			$css[$content_media_query][aione_implode( $elements )]['box-sizing'] = 'border-box';
-
-		}
-
-		if ( class_exists( 'GFForms' ) ) {
-			$elements = array(
-				'.gform_wrapper .right_label input.medium',
-				'.gform_wrapper .right_label select.medium',
-				'.gform_wrapper .left_label input.medium',
-				'.gform_wrapper .left_label select.medium'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['width'] = '35% !important';
-		}
-
-		$elements = array(
-			'.product .images #slider .flex-direction-nav',
-			'.product .images #carousel .flex-direction-nav'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['display'] = 'none !important';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-			$elements = array(
-				'.myaccount_user_container span.msg',
-				'.myaccount_user_container span:last-child'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['padding-left']  = '0 !important';
-			$css[$content_media_query][aione_implode( $elements )]['padding-right'] = '0 !important';
-		}
-
-		$css[$content_media_query]['.fullwidth-box']['background-attachment'] = 'scroll !important';
-
-		$css[$content_media_query]['#toTop']['bottom']        = '30px';
-		$css[$content_media_query]['#toTop']['border-radius'] = '4px';
-		$css[$content_media_query]['#toTop']['height']        = '40px';
-		$css[$content_media_query]['#toTop']['z-index']       = '10000';
-
-		$css[$content_media_query]['#toTop:before']['line-height'] = '38px';
-
-		$css[$content_media_query]['#toTop:hover']['background-color'] = '#333333';
-
-		$css[$content_media_query]['.no-mobile-totop .to-top-container']['display'] = 'none';
-
-		$css[$content_media_query]['.no-mobile-slidingbar #slidingbar-area']['display'] = 'none';
-
-		$css[$content_media_query]['.no-mobile-slidingbar.mobile-logo-pos-left .mobile-menu-icons']['margin-right'] = '0';
-
-		if ( is_rtl() ) {
-			$css[$content_media_query]['.rtl.no-mobile-slidingbar.mobile-logo-pos-right .mobile-menu-icons']['margin-left'] = '0';
-		}
-
-		$css[$content_media_query]['.tfs-slider .slide-content-container .btn']['min-height']    = '0 !important';
-		$css[$content_media_query]['.tfs-slider .slide-content-container .btn']['padding-left']  = '30px';
-		$css[$content_media_query]['.tfs-slider .slide-content-container .btn']['padding-right'] = '30px !important';
-		$css[$content_media_query]['.tfs-slider .slide-content-container .btn']['height']        = '26px !important';
-		$css[$content_media_query]['.tfs-slider .slide-content-container .btn']['line-height']   = '26px !important';
-
-		$css[$content_media_query]['.oxo-soundcloud iframe']['width'] = '100%';
-
-		$elements = array(
-			'.ua-mobile .oxo-page-title-bar',
-			'.ua-mobile .footer-area',
-			'.ua-mobile body',
-			'.ua-mobile #main'
-		);
-		$css[$content_media_query][aione_implode( $elements )]['background-attachment'] = 'scroll !important';
-
-		if ( class_exists( 'RevSliderFront' ) ) {
-			$css[$content_media_query]['.oxo-revslider-mobile-padding']['padding-left']  = '30px !important';
-			$css[$content_media_query]['.oxo-revslider-mobile-padding']['padding-right'] = '30px !important';
-		}
-
-		// # Events Calendar
-		if ( class_exists( 'Tribe__Events__Main' ) ) {
-			if ( ! is_rtl() ) {
-				$css[$content_media_query]['.tribe-events-single ul.tribe-related-events .tribe-related-events-thumbnail']['float'] = 'left';
-				$css[$content_media_query]['.tribe-events-single ul.tribe-related-events li .tribe-related-event-info']['padding-left'] = '10px';
-				$css[$content_media_query]['.tribe-events-single ul.tribe-related-events li .tribe-related-event-info']['padding-right'] = '0';
-			}
-
-			if ( ( Aione()->theme_options[ 'main_top_padding' ] || Aione()->theme_options[ 'main_top_padding' ] == '0' ) && ! get_post_meta( $c_pageID, 'pyre_main_top_padding', true ) && get_post_meta( $c_pageID, 'pyre_main_top_padding', true ) != '0') {
-				$css['global']['.tribe-mobile #main']['padding-top'] = Aione_Sanitize::size( Aione()->theme_options[ 'main_top_padding' ] );
-			} else 	if ( get_post_meta( $c_pageID, 'pyre_main_top_padding', true ) ) {
-				$css['global']['.tribe-mobile #main']['padding-top'] = get_post_meta( $c_pageID, 'pyre_main_top_padding', true );
-			} else {
-				$css['global']['.tribe-mobile #main']['padding-top'] = '55px';
-			}
-
-			// Filter
-			$elements = array(
-				'#tribe-events-bar #tribe-bar-views .tribe-bar-views-inner label',
-				'#tribe-events-bar #tribe-bar-views .tribe-bar-views-inner .tribe-bar-views-option a'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['padding-left'] = '15px';
-			$css[$content_media_query][aione_implode( $elements )]['padding-right'] = '15px';
-
-			$elements = array(
-				'#tribe-events-bar .tribe-bar-filters .tribe-bar-date-filter',
-				'#tribe-events-bar .tribe-bar-filters .tribe-bar-search-filter',
-				'#tribe-events-bar .tribe-bar-filters .tribe-bar-geoloc-filter',
-				'#tribe-events-bar .tribe-bar-filters .tribe-bar-submit'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['padding-left'] = '0';
-			$css[$content_media_query][aione_implode( $elements )]['padding-right'] = '0';
-			$css[$content_media_query][aione_implode( $elements )]['padding-top'] = '15px';
-			$css[$content_media_query][aione_implode( $elements )]['padding-bottom'] = '15px';
-
-			// Title and Navigation
-			$css[$content_media_query]['#tribe-events-content #tribe-events-header']['margin-bottom'] = '30px';
-
-			$elements = array(
-				'.tribe-events-list .oxo-events-before-title',
-				'.tribe-events-month .oxo-events-before-title',
-				'.tribe-events-week .oxo-events-before-title',
-				'.tribe-events-day .oxo-events-before-title',
-			);
-			$css[$content_media_query][aione_implode( $elements )]['height'] = '100px';
-			$css[$content_media_query]['.tribe-events-list.tribe-events-map .oxo-events-before-title']['height'] = 'auto';
-
-			$css[$content_media_query]['#tribe-events-content #tribe-events-header .tribe-events-sub-nav li']['margin-top'] = '-40px';
-
-			// Events Archive
-
-			// List View
-			$css[$content_media_query]['.tribe-events-loop .tribe-events-event-meta']['padding'] = '0';
-			$css[$content_media_query]['#tribe-events .tribe-events-list .tribe-events-event-meta .author > div']['display'] = 'block';
-			$css[$content_media_query]['#tribe-events .tribe-events-list .tribe-events-event-meta .author > div']['border-right'] = 'none';
-			$css[$content_media_query]['#tribe-events .tribe-events-list .tribe-events-event-meta .author > div']['width'] = '100%';
-
-			$elements = array(
-				'#tribe-events .tribe-events-list .oxo-tribe-primary-info',
-				'#tribe-events .tribe-events-list .oxo-tribe-secondary-info',
-				'#tribe-events .tribe-events-list .oxo-tribe-no-featured-image .oxo-tribe-events-headline'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['width'] = '100%';
-
-			$elements = array(
-				'.tribe-events-list .tribe-events-venue-details',
-				'.tribe-events-list .time-details'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['margin'] = '0';
-
-			// Month View
-			$css[$content_media_query]['.tribe-events-calendar td.tribe-events-past div[id*="tribe-events-daynum-"] > a']['background'] = 'none';
-
-			// Photo View
-			$css[$content_media_query]['.tribe-events-list .time-details']['padding'] = '0';
-
-
-			// Single Event Page
-			$elements = array(
-				'.oxo-events-featured-image .oxo-events-single-title-content h2',
-				'.oxo-events-featured-image .oxo-events-single-title-content .tribe-events-schedule'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['float'] = 'none';
-
-			$elements = array(
-				'#tribe-events .tribe-events-list .type-tribe_events .tribe-events-event-image'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['display'] = 'none';
-
-			$elements = array(
-				'#tribe-events .tribe-events-list .type-tribe_events .oxo-tribe-events-event-image-responsive'
-			);
-			$css[$content_media_query][aione_implode( $elements )]['display'] = 'block';
-		}
-
-		if( class_exists( 'WooCommerce') ) {
-			$css[$content_media_query]['.oxo-woo-slider .oxo-carousel-title-on-rollover .oxo-rollover-categories']['display'] = 'none';
-			$css[$content_media_query]['.oxo-woo-slider .oxo-carousel-title-on-rollover .price']['display'] = 'none';
-		}
-
-		/* @media only screen and ( max-width: 640px )
-		================================================================================================= */
-		$six_fourty_media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 640 ) . 'px)';
-
-
-		// # General
-
-
-		// # Page Title Bar
-		$css[$six_fourty_media_query]['.oxo-body .oxo-page-title-bar']['max-height'] = 'none';
-
-		$css[$six_fourty_media_query]['.oxo-body .oxo-page-title-bar h1']['margin'] = '0';
-
-		$css[$six_fourty_media_query]['.oxo-body .oxo-page-title-secondary']['margin-top'] = '2px';
-
-
-		// # Blog Layouts
-		// Blog general styles
-		$elements = array(
-			'.oxo-blog-layout-large .oxo-meta-info .oxo-alignleft',
-			'.oxo-blog-layout-medium .oxo-meta-info .oxo-alignleft',
-			'.oxo-blog-layout-large .oxo-meta-info .oxo-alignright',
-			'.oxo-blog-layout-medium .oxo-meta-info .oxo-alignright'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['display'] = 'block';
-		$css[$six_fourty_media_query][aione_implode( $elements )]['float']   = 'none';
-		$css[$six_fourty_media_query][aione_implode( $elements )]['margin']  = '0';
-		$css[$six_fourty_media_query][aione_implode( $elements )]['width']   = '100%';
-
-		// Blog medium layout
-		$css[$six_fourty_media_query]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['float']  = 'none';
-		$css[$six_fourty_media_query]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['margin'] = '0 0 20px 0';
-		$css[$six_fourty_media_query]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['height'] = 'auto';
-		$css[$six_fourty_media_query]['.oxo-body .oxo-blog-layout-medium .oxo-post-slideshow']['width']  = 'auto';
-
-		// Blog large alternate layout
-		$css[$six_fourty_media_query]['.oxo-blog-layout-large-alternate .oxo-date-and-formats']['margin-bottom'] = '55px';
-
-		$css[$six_fourty_media_query]['.oxo-body .oxo-blog-layout-large-alternate .oxo-post-content']['margin'] = '0';
-
-		// Blog medium alternate layout
-		$css[$six_fourty_media_query]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['display']      = 'inline-block';
-		$css[$six_fourty_media_query]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['float']        = 'none';
-		$css[$six_fourty_media_query]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['margin-right'] = '0';
-		$css[$six_fourty_media_query]['.oxo-blog-layout-medium-alternate .has-post-thumbnail .oxo-post-slideshow']['max-width']    = '197px';
-
-		// Blog grid layout
-		$css[$six_fourty_media_query]['.oxo-blog-layout-grid .oxo-post-grid']['position'] = 'static';
-		$css[$six_fourty_media_query]['.oxo-blog-layout-grid .oxo-post-grid']['width']    = '100%';
-
-		// # Footer Styles
-		if ( Aione()->theme_options[ 'footer_sticky_height' ] && ( in_array( Aione()->theme_options[ 'footer_special_effects' ], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
-			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
-			$css[$six_fourty_media_query][aione_implode( $elements )]['height']     = 'auto';
-			$css[$six_fourty_media_query]['.above-footer-wrapper']['min-height']    = 'none';
-			$css[$six_fourty_media_query]['.above-footer-wrapper']['margin-bottom'] = '0';
-			$css[$six_fourty_media_query]['.above-footer-wrapper:after']['height']  = 'auto';
-			$css[$six_fourty_media_query]['.oxo-footer']['height']               = 'auto';
-		}
-
-		// # Not restructured mobile.css styles
-		$elements = array(
-			'.wooslider-direction-nav',
-			'.wooslider-pauseplay',
-			'.flex-direction-nav'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		$css[$six_fourty_media_query]['.share-box ul li']['margin-bottom'] ='10px';
-		$css[$six_fourty_media_query]['.share-box ul li']['margin-right']  ='15px';
-
-		$css[$six_fourty_media_query]['.buttons a']['margin-right'] = '5px';
-
-		$elements = array(
-			'.ls-aione .ls-nav-prev',
-			'.ls-aione .ls-nav-next'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['display'] = 'none !important';
-
-		$css[$six_fourty_media_query]['#wrapper .ei-slider']['width']  = '100% !important';
-		$css[$six_fourty_media_query]['#wrapper .ei-slider']['height'] = '200px !important';
-
-		$css[$six_fourty_media_query]['.progress-bar']['margin-bottom'] = '10px !important';
-
-		$css[$six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
-		$css[$six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
-		$css[$six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3% !important';
-		$css[$six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3% !important';
-
-		$elements = array(
-			'#wrapper .content-boxes-icon-on-top .content-box-column',
-			'#wrapper .content-boxes-icon-boxed .content-box-column'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['margin-bottom'] = '55px';
-
-		$css[$six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-box-column .heading h2']['margin-top'] = '-5px';
-
-		$css[$six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-box-column .more']['margin-top'] = '12px';
-
-		$css[$six_fourty_media_query]['.page-template-contact-php .oxo-google-map']['height'] = '270px !important';
-
-		$css[$six_fourty_media_query]['.share-box .social-networks li']['margin-right'] = '20px !important';
-
-		$css[$six_fourty_media_query]['.timeline-icon']['display'] = 'none !important';
-
-		$css[$six_fourty_media_query]['.timeline-layout']['padding-top'] = '0 !important';
-
-		$css[$six_fourty_media_query]['.oxo-counters-circle .counter-circle-wrapper']['display']      = 'block';
-		$css[$six_fourty_media_query]['.oxo-counters-circle .counter-circle-wrapper']['margin-right'] = 'auto';
-		$css[$six_fourty_media_query]['.oxo-counters-circle .counter-circle-wrapper']['margin-left']  = 'auto';
-
-		$css[$six_fourty_media_query]['.post-content .wooslider .wooslider-control-thumbs']['margin-top'] = '-10px';
-
-		$css[$six_fourty_media_query]['body .wooslider .overlay-full.layout-text-left .slide-excerpt']['padding'] = '20px !important';
-
-		$css[$six_fourty_media_query]['.content-boxes-icon-boxed .col']['box-sizing'] = 'border-box';
-
-		$css[$six_fourty_media_query]['.social_links_shortcode li']['height'] = '40px !important';
-
-		$css[$six_fourty_media_query]['.products-slider .es-nav span']['transform'] = 'scale(0.5) !important';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-
-			$css[$six_fourty_media_query]['.shop_table .product-quantity']['display'] = 'none';
-
-			$css[$six_fourty_media_query]['.shop_table .filler-td']['display'] = 'none';
-
-			$css[$six_fourty_media_query]['.my_account_orders .order-status']['display'] = 'none';
-
-			$css[$six_fourty_media_query]['.my_account_orders .order-date']['display'] = 'none';
-
-			$css[$six_fourty_media_query]['.my_account_orders .order-number time']['display']     = 'block !important';
-			$css[$six_fourty_media_query]['.my_account_orders .order-number time']['font-size']   = '10px';
-			$css[$six_fourty_media_query]['.my_account_orders .order-number time']['line-height'] = 'normal';
-
-		}
-
-		$css[$six_fourty_media_query]['.portfolio-masonry .portfolio-item']['width'] = '100% !important';
-
-		if ( class_exists( 'bbPress' ) ) {
-
-			$css[$six_fourty_media_query]['#bbpress-forums #bbp-single-user-details #bbp-user-avatar img.avatar']['width']  = '80px !important';
-			$css[$six_fourty_media_query]['#bbpress-forums #bbp-single-user-details #bbp-user-avatar img.avatar']['height'] = '80px !important';
-
-			$css[$six_fourty_media_query]['#bbpress-forums #bbp-single-user-details #bbp-user-avatar']['width'] = '80px !important';
-
-			$css[$six_fourty_media_query]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation']['margin-left'] = '110px !important';
-
-			$css[$six_fourty_media_query]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation .first-col']['width'] = '47% !important';
-
-			$css[$six_fourty_media_query]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation .second-col']['margin-left'] = '53% !important';
-			$css[$six_fourty_media_query]['#bbpress-forums #bbp-single-user-details #bbp-user-navigation .second-col']['width']       = '47% !important';
-
-		}
-
-		$elements = array(
-			'.table-1 table',
-			'.tkt-slctr-tbl-wrap-dv table'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['border-collapse'] = 'collapse';
-		$css[$six_fourty_media_query][aione_implode( $elements )]['border-spacing']  = '0';
-		$css[$six_fourty_media_query][aione_implode( $elements )]['width']           = '100%';
-
-		$elements = array(
-			'.table-1 td',
-			'.table-1 th',
-			'.tkt-slctr-tbl-wrap-dv td',
-			'.tkt-slctr-tbl-wrap-dv th'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['white-space'] = 'nowrap';
-
-		$css[$six_fourty_media_query]['.table-2 table']['border-collapse'] = 'collapse';
-		$css[$six_fourty_media_query]['.table-2 table']['border-spacing']  = '0';
-		$css[$six_fourty_media_query]['.table-2 table']['width']           = '100%';
-
-		$elements = array(
-			'.table-2 td',
-			'.table-2 th'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['white-space'] = 'nowrap';
-
-		$elements = array(
-			'.page-title-bar',
-			'.footer-area',
-			'body',
-			'#main'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['background-attachment'] = 'scroll !important';
-
-		$css[$six_fourty_media_query]['.tfs-slider[data-animation="slide"]']['height'] = 'auto !important';
-
-		$css[$six_fourty_media_query]['#wrapper .share-box h4']['display']       = 'block';
-		$css[$six_fourty_media_query]['#wrapper .share-box h4']['float']         = 'none';
-		$css[$six_fourty_media_query]['#wrapper .share-box h4']['line-height']   = '20px !important';
-		$css[$six_fourty_media_query]['#wrapper .share-box h4']['margin-top']    = '0';
-		$css[$six_fourty_media_query]['#wrapper .share-box h4']['padding']       = '0';
-		$css[$six_fourty_media_query]['#wrapper .share-box h4']['margin-bottom'] = '10px';
-
-		$css[$six_fourty_media_query]['.oxo-sharing-box .oxo-social-networks']['float']      = 'none';
-		$css[$six_fourty_media_query]['.oxo-sharing-box .oxo-social-networks']['display']    = 'block';
-		$css[$six_fourty_media_query]['.oxo-sharing-box .oxo-social-networks']['width']      = '100%';
-		$css[$six_fourty_media_query]['.oxo-sharing-box .oxo-social-networks']['text-align'] = 'left';
-
-		$css[$six_fourty_media_query]['#content']['width']        = '100% !important';
-		$css[$six_fourty_media_query]['#content']['margin-left'] = '0px !important';
-
-		$css[$six_fourty_media_query]['.sidebar']['width']       = '100% !important';
-		$css[$six_fourty_media_query]['.sidebar']['float']       = 'none !important';
-		$css[$six_fourty_media_query]['.sidebar']['margin-left'] = '0 !important';
-		$css[$six_fourty_media_query]['.sidebar']['clear']       = 'both';
-
-		$css[$six_fourty_media_query]['.oxo-hide-on-mobile']['display'] = 'none';
-
-		// Blog timeline layout
-
-		$css[$six_fourty_media_query]['.oxo-blog-layout-timeline']['padding-top'] = '0';
-
-		$css[$six_fourty_media_query]['.oxo-blog-layout-timeline .oxo-post-timeline']['float'] = 'none';
-		$css[$six_fourty_media_query]['.oxo-blog-layout-timeline .oxo-post-timeline']['width'] = '100%';
-
-		$css[$six_fourty_media_query]['.oxo-blog-layout-timeline .oxo-timeline-date']['margin-bottom'] = '0';
-		$css[$six_fourty_media_query]['.oxo-blog-layout-timeline .oxo-timeline-date']['margin-top']    = '2px';
-
-		$elements = array(
-			'.oxo-timeline-icon',
-			'.oxo-timeline-line',
-			'.oxo-timeline-circle',
-			'.oxo-timeline-arrow'
-		);
-		$css[$six_fourty_media_query][aione_implode( $elements )]['display'] = 'none';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-			if ( Aione()->theme_options[ 'woocommerce_product_box_design' ] == 'clean' ) {
-				$css[$six_fourty_media_query]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons']['height'] = 'auto';
-				$css[$six_fourty_media_query]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons']['margin-top'] = '0';
-				$css[$six_fourty_media_query]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['display'] = 'block';
-				$css[$six_fourty_media_query]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['text-align'] = 'center';
-				$css[$six_fourty_media_query]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['float'] = 'none !important';
-				$css[$six_fourty_media_query]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['max-width'] = '100%';
-				$css[$six_fourty_media_query]['.oxo-woo-slider .oxo-clean-product-image-wrapper .oxo-product-buttons *']['margin-top'] = '0';
-			}
-		}
-
-		/* @media only screen and ( max-width: 480px )
-		================================================================================================= */
-		if ( class_exists( 'bbPress' ) ) {
-			$four_eigthy_media_query = '@media only screen and (max-width: 480px)';
-
-			$css[$four_eigthy_media_query]['#bbpress-forums .bbp-body div.bbp-reply-author']['width'] = '71% !important';
-			$css[$four_eigthy_media_query]['.bbp-arrow']['display'] = 'none';
-			$css[$four_eigthy_media_query]['div.bbp-submit-wrapper']['float'] = 'right !important';
-		}
-
-		if ( class_exists( 'GFForms' ) ) {
-			$four_eigthy_media_query = '@media all and (max-width: 480px), all and (max-device-width: 480px)';
-
-			$elements = array(
-				'body.oxo-body .gform_wrapper .ginput_container',
-				'body.oxo-body .gform_wrapper div.ginput_complex',
-				'body.oxo-body .gform_wrapper div.gf_page_steps',
-				'body.oxo-body .gform_wrapper div.gf_page_steps div',
-				'body.oxo-body .gform_wrapper .ginput_container input.small',
-				'body.oxo-body .gform_wrapper .ginput_container input.medium',
-				'body.oxo-body .gform_wrapper .ginput_container input.large',
-				'body.oxo-body .gform_wrapper .ginput_container select.small',
-				'body.oxo-body .gform_wrapper .ginput_container select.medium',
-				'body.oxo-body .gform_wrapper .ginput_container select.large',
-				'body.oxo-body .gform_wrapper .ginput_container textarea.small',
-				'body.oxo-body .gform_wrapper .ginput_container textarea.medium',
-				'body.oxo-body .gform_wrapper .ginput_container textarea.large',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="text"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="url"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="email"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="tel"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="number"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_right input[type="password"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="text"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="url"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="email"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="tel"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="number"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_left input[type="password"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="text"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="url"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="email"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="tel"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="number"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full input[type="password"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .ginput_full select',
-				'body.oxo-body .gform_wrapper input.gform_button.button',
-				'body.oxo-body .gform_wrapper input[type="submit"]',
-				'body.oxo-body .gform_wrapper .gfield_time_hour input',
-				'body.oxo-body .gform_wrapper .gfield_time_minute input',
-				'body.oxo-body .gform_wrapper .gfield_date_month input',
-				'body.oxo-body .gform_wrapper .gfield_date_day input',
-				'body.oxo-body .gform_wrapper .gfield_date_year input',
-				'.gfield_time_ampm .gravity-select-parent',
-				'body.oxo-body .gform_wrapper .ginput_complex input[type="text"]',
-				'body.oxo-body .gform_wrapper .ginput_complex input[type="url"]',
-				'body.oxo-body .gform_wrapper .ginput_complex input[type="email"]',
-				'body.oxo-body .gform_wrapper .ginput_complex input[type="tel"]',
-				'body.oxo-body .gform_wrapper .ginput_complex input[type="number"]',
-				'body.oxo-body .gform_wrapper .ginput_complex input[type="password"]',
-				'body.oxo-body .gform_wrapper .ginput_complex .gravity-select-parent',
-				'body.oxo-body .gravity-select-parent'
-			);
-			$css[$four_eigthy_media_query][aione_implode( $elements )]['width'] = '100% !important';
-			$elements = array(
-				'.gform_wrapper .gform_page_footer input[type="button"]',
-				'.gform_wrapper .gform_button',
-				'.gform_wrapper .button'
-			);
-			$css[$four_eigthy_media_query][aione_implode( $elements )]['-webkit-box-sizing']  = 'border-box';
-			$css[$four_eigthy_media_query][aione_implode( $elements )]['box-sizing'] = 'border-box';
-
-		}
-
-		/* @media only screen and (min-device-width: 320px) and (max-device-width: 640px)
-		================================================================================================= */
-		$three_twenty_six_fourty_media_query = '@media only screen and (min-device-width: 320px) and (max-device-width: 640px)';
-
-		// # Layout
-		$css[$three_twenty_six_fourty_media_query]['#wrapper']['width']      = 'auto !important';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper']['overflow-x'] = 'hidden !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.oxo-columns .oxo-column']['float']      = 'none';
-		$css[$three_twenty_six_fourty_media_query]['.oxo-columns .oxo-column']['width']      = '100% !important';
-		$css[$three_twenty_six_fourty_media_query]['.oxo-columns .oxo-column']['margin']     = '0 0 50px';
-		$css[$three_twenty_six_fourty_media_query]['.oxo-columns .oxo-column']['box-sizing'] = 'border-box';
-
-		$elements = array(
-			'.footer-area .oxo-columns .oxo-column',
-			'#slidingbar-area .oxo-columns .oxo-column'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['float'] = 'left';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['width'] = '98% !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.fullwidth-box']['background-attachment'] = 'scroll !important';
-		$css[$three_twenty_six_fourty_media_query]['.no-mobile-totop .to-top-container']['display'] = 'none';
-		$css[$three_twenty_six_fourty_media_query]['.no-mobile-slidingbar #slidingbar-area']['display'] = 'none';
-
-		$css[$three_twenty_six_fourty_media_query]['.review']['float'] = 'none';
-		$css[$three_twenty_six_fourty_media_query]['.review']['width'] = '100%';
-
-		$elements = array(
-			'.social-networks',
-			'.copyright'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['float']      = 'none';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['padding']    = '0 0 15px';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['text-align'] = 'center';
-
-		$elements = array(
-			'.copyright:after',
-			'.social-networks:after'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['content'] = '""';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['display'] = 'block';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['clear']   = 'both';
-
-		$elements = array(
-			'.social-networks li',
-			'.copyright li'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['float']   = 'none';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['display'] = 'inline-block';
-
-		$css[$three_twenty_six_fourty_media_query]['.continue']['display'] = 'none';
-
-		$css[$three_twenty_six_fourty_media_query]['.mobile-button']['display'] = 'block !important';
-		$css[$three_twenty_six_fourty_media_query]['.mobile-button']['float']   = 'none';
-
-		$css[$three_twenty_six_fourty_media_query]['.title']['margin-top']    = '0px !important';
-		$css[$three_twenty_six_fourty_media_query]['.title']['margin-bottom'] = '20px !important';
-
-		$css[$three_twenty_six_fourty_media_query]['#content']['width']         = '100% !important';
-		$css[$three_twenty_six_fourty_media_query]['#content']['float']         = 'none !important';
-		$css[$three_twenty_six_fourty_media_query]['#content']['margin-left']   = '0 !important';
-		$css[$three_twenty_six_fourty_media_query]['#content']['margin-bottom'] = '50px';
-
-		$css[$three_twenty_six_fourty_media_query]['#content.full-width']['margin-bottom'] = '0';
-
-		$css[$three_twenty_six_fourty_media_query]['.sidebar']['width'] = '100% !important';
-		$css[$three_twenty_six_fourty_media_query]['.sidebar']['float'] = 'none !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.sidebar .social_links .social li']['width']        = 'auto';
-		$css[$three_twenty_six_fourty_media_query]['.sidebar .social_links .social li']['margin-right'] = '5px';
-
-		$css[$three_twenty_six_fourty_media_query]['#comment-input']['margin-bottom'] = '0';
-
-		$css[$three_twenty_six_fourty_media_query]['#comment-input input']['width']         = '90%';
-		$css[$three_twenty_six_fourty_media_query]['#comment-input input']['float']         = 'none !important';
-		$css[$three_twenty_six_fourty_media_query]['#comment-input input']['margin-bottom'] = '10px';
-
-		$css[$three_twenty_six_fourty_media_query]['#comment-textarea textarea']['width'] = '90%';
-
-		$css[$three_twenty_six_fourty_media_query]['.widget.facebook_like iframe']['width']     = '100% !important';
-		$css[$three_twenty_six_fourty_media_query]['.widget.facebook_like iframe']['max-width'] = 'none !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.pagination']['margin-top'] = '40px';
-
-		$css[$three_twenty_six_fourty_media_query]['.portfolio-one .portfolio-item .image']['float']         = 'none';
-		$css[$three_twenty_six_fourty_media_query]['.portfolio-one .portfolio-item .image']['width']         = 'auto';
-		$css[$three_twenty_six_fourty_media_query]['.portfolio-one .portfolio-item .image']['height']        = 'auto';
-		$css[$three_twenty_six_fourty_media_query]['.portfolio-one .portfolio-item .image']['margin-bottom'] = '20px';
-
-		$css[$three_twenty_six_fourty_media_query]['h5.toggle span.toggle-title']['width'] = '80%';
-
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .sep-boxed-pricing .panel-wrapper']['padding'] = '0';
-
-		$elements = array(
-			'#wrapper .full-boxed-pricing .column',
-			'#wrapper .sep-boxed-pricing .column'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['float']         = 'none';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['margin-bottom'] = '10px';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['margin-left']   = '0';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['width']         = '100%';
-
-		$css[$three_twenty_six_fourty_media_query]['.share-box']['height'] = 'auto';
-
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .share-box h4']['float']       = 'none';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .share-box h4']['line-height'] = '20px !important';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .share-box h4']['margin-top']  = '0';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .share-box h4']['padding']     = '0';
-
-		$css[$three_twenty_six_fourty_media_query]['.share-box ul']['float']          = 'none';
-		$css[$three_twenty_six_fourty_media_query]['.share-box ul']['overflow']       ='hidden';
-		$css[$three_twenty_six_fourty_media_query]['.share-box ul']['padding']        = '0 25px';
-		$css[$three_twenty_six_fourty_media_query]['.share-box ul']['padding-bottom'] = '25px';
-		$css[$three_twenty_six_fourty_media_query]['.share-box ul']['margin-top']     = '0px';
-
-		$css[$three_twenty_six_fourty_media_query]['.project-content .project-description']['float'] = 'none !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.project-content .oxo-project-description-details']['margin-bottom'] = '50px';
-
-		$elements = array(
-			'.project-content .project-description',
-			'.project-content .project-info'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['width'] = '100% !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.portfolio-half .flexslider']['width'] = '100% !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.portfolio-half .project-content']['width'] = '100% !important';
-
-		$css[$three_twenty_six_fourty_media_query]['#style_selector']['display'] = 'none';
-
-		$elements = array(
-			'.ls-aione .ls-nav-prev',
-			'.ls-aione .ls-nav-next'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['display'] = 'none !important';
-
-		$css[$three_twenty_six_fourty_media_query]['#footer .social-networks']['width']    = '100%';
-		$css[$three_twenty_six_fourty_media_query]['#footer .social-networks']['margin']   = '0 auto';
-		$css[$three_twenty_six_fourty_media_query]['#footer .social-networks']['position'] = 'relative';
-		$css[$three_twenty_six_fourty_media_query]['#footer .social-networks']['left']     = '-11px';
-
-		$css[$three_twenty_six_fourty_media_query]['.recent-works-items a']['max-width'] = '64px';
-
-		$elements = array(
-			'.footer-area .flickr_badge_image img',
-			'#slidingbar-area .flickr_badge_image img'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['max-width'] = '64px';
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['padding']   = '3px !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.tab-holder .tabs']['height'] = 'auto !important';
-		$css[$three_twenty_six_fourty_media_query]['.tab-holder .tabs']['width']  = '100% !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.shortcode-tabs .tab-hold .tabs li']['width'] = '100% !important';
-
-		$elements = array(
-			'body .shortcode-tabs .tab-hold .tabs li',
-			'body.dark .sidebar .tab-hold .tabs li'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['border-right'] = 'none !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.error_page .useful_links']['width']        = '100%';
-		$css[$three_twenty_six_fourty_media_query]['.error_page .useful_links']['padding-left'] = '0';
-
-		$css[$three_twenty_six_fourty_media_query]['.oxo-google-map']['width']         = '100% !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.social_links_shortcode .social li']['width'] = '10% !important';
-
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .ei-slider']['width']  = '100% !important';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .ei-slider']['height'] = '200px !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.progress-bar']['margin-bottom'] = '10px !important';
-
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3% !important';
-		$css[$three_twenty_six_fourty_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3% !important';
-
-		$elements = array(
-			'#wrapper .content-boxes-icon-on-top .content-box-column',
-			'#wrapper .content-boxes-icon-boxed .content-box-column'
-		);
-		$css[$three_twenty_six_fourty_media_query][aione_implode( $elements )]['margin-bottom'] = '55px';
-
-		$css[$three_twenty_six_fourty_media_query]['.share-box .social-networks']['text-align'] = 'left';
-
-		$css[$three_twenty_six_fourty_media_query]['#content']['width']       = '100% !important';
-		$css[$three_twenty_six_fourty_media_query]['#content']['margin-left'] = '0px !important';
-
-		$css[$three_twenty_six_fourty_media_query]['.sidebar']['width']       = '100% !important';
-		$css[$three_twenty_six_fourty_media_query]['.sidebar']['float']       = 'none !important';
-		$css[$three_twenty_six_fourty_media_query]['.sidebar']['margin-left'] = '0 !important';
-
-
-		/* media.css CSS - to be split to the corresponding sections above
-		================================================================================================= */
-		$media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 1000 ) . 'px)';
-
-		$css[$media_query]['.no-csstransforms .sep-boxed-pricing .column']['margin-left'] = '1.5% !important';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-
-			$media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 965 ) . 'px)';
-
-
-			$css[$media_query]['.coupon .input-text']['width'] = '100% !important';
-
-			$css[$media_query]['.coupon .button']['margin-top'] = '20px';
-
-			$media_query = '@media only screen and (max-width: ' . ( intval( $side_header_width ) + 900 ) . 'px)';
-
-			$elements = array(
-				'.woocommerce #customer_login .login .form-row',
-				'.woocommerce #customer_login .login .lost_password'
-			);
-			$css[$media_query][aione_implode( $elements )]['float'] = 'none';
-
-			$elements = array(
-				'.woocommerce #customer_login .login .inline',
-				'.woocommerce #customer_login .login .lost_password'
-			);
-			$css[$media_query][aione_implode( $elements )]['display']      = 'block';
-			$css[$media_query][aione_implode( $elements )]['margin-left']  = '0';
-			$css[$media_query][aione_implode( $elements )]['margin-right'] = '0';
-
-		}
-
-		$media_query = '@media only screen and (min-width: ' . intval( Aione()->theme_options[ 'side_header_break_point' ] ) . 'px)';
-
-		$css[$media_query]['body.side-header-right.layout-boxed-mode #side-header']['position'] = 'absolute';
-		$css[$media_query]['body.side-header-right.layout-boxed-mode #side-header']['top']      = '0';
-
-		$css[$media_query]['body.side-header-right.layout-boxed-mode #side-header .side-header-wrapper']['position'] = 'absolute';
-
-
-
-		$media_query = '@media screen and (max-width: ' . intval( Aione()->theme_options[ 'side_header_break_point' ] - 18 ) . 'px)';
-		$elements = array(
-			'body.admin-bar #wrapper #slidingbar-area',
-			'body.layout-boxed-mode.side-header-right #slidingbar-area',
-			'.admin-bar p.demo_store'
-		);
-		$css[$media_query][aione_implode( $elements )]['top'] = '46px';
-		$css[$media_query]['body.body_blank.admin-bar']['top'] = '45px';
-		$css[$media_query]['html #wpadminbar']['z-index']  = '99999 !important';
-		$css[$media_query]['html #wpadminbar']['position'] = 'fixed !important';
-
-		$media_query = '@media screen and (max-width: ' . intval( Aione()->theme_options[ 'side_header_break_point' ] - 32 ) . 'px)';
-		$css[$media_query]['.oxo-tabs.vertical-tabs .tab-pane']['max-width'] = 'none !important';
-
-		$media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)';
-		$css[$media_query]['#wrapper .ei-slider']['width'] = '100%';
-
-		$media_query = '@media only screen and (min-device-width: 320px) and (max-device-width: 480px)';
-		$css[$media_query]['#wrapper .ei-slider']['width'] = '100%';
-
-
-		/* iPad Landscape Responsive Styles
-		================================================================================================= */
-		$ipad_landscape_media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape)';
-
-		// #Layout
-		$css[$ipad_landscape_media_query]['.fullwidth-box']['background-attachment'] = 'scroll !important';
-
-		if ( Aione()->theme_options[ 'mobile_nav_padding' ] ) {
-			$css[$ipad_landscape_media_query]['.oxo-main-menu > ul > li']['padding-right'] = intval( Aione()->theme_options[ 'mobile_nav_padding' ] ) . 'px';
-		}
-
-		$css[$ipad_landscape_media_query]['#wrapper .oxo-page-title-bar']['height'] = Aione_Sanitize::size( Aione()->theme_options[ 'page_title_height' ] ) . ' !important';
-
-		// # Footer Styles
-		if ( Aione()->theme_options[ 'footer_sticky_height' ] && ( in_array( Aione()->theme_options[ 'footer_special_effects' ], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
-			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
-			$css[$ipad_landscape_media_query][aione_implode( $elements )]['height']     = 'auto';
-			$css[$ipad_landscape_media_query]['.above-footer-wrapper']['min-height']    = 'none';
-			$css[$ipad_landscape_media_query]['.above-footer-wrapper']['margin-bottom'] = '0';
-			$css[$ipad_landscape_media_query]['.above-footer-wrapper:after']['height']  = 'auto';
-			$css[$ipad_landscape_media_query]['.oxo-footer']['height']               = 'auto';
-		}
-
-		if ( Aione()->theme_options[ 'footer_special_effects' ] == 'footer_area_bg_parallax' ) {
-
-			$css[$ipad_landscape_media_query]['.oxo-footer-widget-area']['background-attachment'] = 'static';
-			$css[$ipad_landscape_media_query]['.oxo-footer-widget-area']['margin']   = '0';
-
-			$css[$ipad_landscape_media_query]['#main']['margin-bottom']   = '0';
-		}
-
-
-		$css[$ipad_landscape_media_query]['#wrapper .ei-slider']['width'] = '100%';
-		$elements = array(
-			'.fullwidth-box',
-			'.page-title-bar',
-			'.oxo-footer-widget-area',
-			'body',
-			'#main'
-		);
-
-		$css[$ipad_landscape_media_query][aione_implode( $elements )]['background-attachment'] = 'scroll !important';
-		if ( Aione()->theme_options[ 'footerw_bg_image' ] && ( in_array( Aione()->theme_options[ 'footer_special_effects' ], array( 'footer_parallax_effect', 'footer_area_bg_parallax', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
-			$css[$ipad_landscape_media_query]['.oxo-body #wrapper']['background-color'] = 'transparent';
-		}
-
-		if ( Aione()->theme_options[ 'footer_sticky_height' ] && ( in_array( Aione()->theme_options[ 'footer_special_effects' ], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
-			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
-			$css[$ipad_landscape_media_query][aione_implode( $elements )]['height']     = 'auto';
-			$css[$ipad_landscape_media_query]['.above-footer-wrapper']['min-height']    = 'none';
-			$css[$ipad_landscape_media_query]['.above-footer-wrapper']['margin-bottom'] = '0';
-			$css[$ipad_landscape_media_query]['.above-footer-wrapper:after']['height']  = 'auto';
-			$css[$ipad_landscape_media_query]['.oxo-footer']['height']               = 'auto';
-		}
-
-		if ( Aione()->theme_options[ 'footer_special_effects' ] == 'footer_area_bg_parallax' ) {
-			$css[$ipad_landscape_media_query]['.oxo-footer-widget-area']['background-attachment'] = 'static';
-			$css[$ipad_landscape_media_query]['.oxo-footer-widget-area']['margin']   = '0';
-
-			$css[$ipad_landscape_media_query]['#main']['margin-bottom']   = '0';
-		}
-
-		/* iPad Portrait Responsive Styles
-		================================================================================================= */
-		$ipad_portrait_media_query = '@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait)';
-
-		// # Layout
-		if ( Aione()->theme_options[ 'footerw_bg_image' ] && ( in_array( Aione()->theme_options[ 'footer_special_effects' ], array( 'footer_parallax_effect', 'footer_area_bg_parallax', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
-			$css[$ipad_portrait_media_query]['.oxo-body #wrapper']['background-color'] = 'transparent';
-		}
-
-
-		if ( Aione()->theme_options[ 'footer_sticky_height' ] && ( in_array( Aione()->theme_options[ 'footer_special_effects' ], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
-			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
-			$css[$ipad_portrait_media_query][aione_implode( $elements )]['height']     = 'auto';
-			$css[$ipad_portrait_media_query]['.above-footer-wrapper']['min-height']    = 'none';
-			$css[$ipad_portrait_media_query]['.above-footer-wrapper']['margin-bottom'] = '0';
-			$css[$ipad_portrait_media_query]['.above-footer-wrapper:after']['height']  = 'auto';
-			$css[$ipad_portrait_media_query]['.oxo-footer']['height']               = 'auto';
-		}
-
-		if ( Aione()->theme_options[ 'footer_special_effects' ] == 'footer_area_bg_parallax' ) {
-			$css[$ipad_portrait_media_query]['.oxo-footer-widget-area']['background-attachment'] = 'static';
-			$css[$ipad_portrait_media_query]['.oxo-footer-widget-area']['margin']   = '0';
-
-			$css[$ipad_portrait_media_query]['#main']['margin-bottom']   = '0';
-		}
-
-		$elements = array(
-			'.oxo-columns-5 .oxo-column:first-child',
-			'.oxo-columns-4 .oxo-column:first-child',
-			'.oxo-columns-3 .oxo-column:first-child',
-			'.oxo-columns-2 .oxo-column:first-child',
-			'.oxo-columns-1 .oxo-column:first-child'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-left'] = '0';
-
-		$elements = array(
-			'.oxo-column:nth-child(5n)',
-			'.oxo-column:nth-child(4n)',
-			'.oxo-column:nth-child(3n)',
-			'.oxo-column:nth-child(2n)',
-			'.oxo-column'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper']['width']      = 'auto !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.create-block-format-context']['display'] = 'none';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.columns .col']['float']      = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.columns .col']['width']      = '100% !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.columns .col']['margin']     = '0 0 20px';
-		$ipad_portrait[$ipad_portrait_media_query]['.columns .col']['box-sizing'] = 'border-box';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.fullwidth-box']['background-attachment'] = 'scroll !important';
-
-		if ( Aione()->theme_options[ 'mobile_nav_padding' ] ) {
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-main-menu > ul > li']['padding-right'] = intval( Aione()->theme_options[ 'mobile_nav_padding' ] ) . 'px';
-		}
-
-		if ( ! Aione()->theme_options[ 'breadcrumb_mobile' ] ) {
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-body .oxo-page-title-bar .oxo-breadcrumbs']['display'] = 'none';
-		}
-
-		// # Footer Styles
-		if ( Aione()->theme_options[ 'footer_sticky_height' ] && ( in_array( Aione()->theme_options[ 'footer_special_effects' ], array( 'footer_sticky', 'footer_sticky_with_parallax_bg_image' ) ) ) ) {
-			$elements = array( 'html', 'body', '#boxed-wrapper', '#wrapper' );
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['height']     = 'auto';
-			$ipad_portrait[$ipad_portrait_media_query]['.above-footer-wrapper']['min-height']    = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['.above-footer-wrapper']['margin-bottom'] = '0';
-			$ipad_portrait[$ipad_portrait_media_query]['.above-footer-wrapper:after']['height']  = 'auto';
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-footer']['height']               = 'auto';
-		}
-
-		if ( Aione()->theme_options[ 'footer_special_effects' ] == 'footer_area_bg_parallax' ) {
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-footer-widget-area']['background-attachment'] = 'static';
-			$css[$ipad_portrait_media_query]['.oxo-footer-widget-area']['margin']   = '0';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#main']['margin-bottom']   = '0';
-		}
-
-		$ipad_portrait[$ipad_portrait_media_query]['.review']['float'] = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.review']['width'] = '100%';
-
-		$elements = array(
-			'.oxo-social-networks',
-			'.oxo-social-links-footer'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['display']    = 'block';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['text-align'] = 'center';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-links-footer']['width'] = 'auto';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-links-footer .oxo-social-networks']['display'] = 'inline-block';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-links-footer .oxo-social-networks']['float']   = 'none';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-networks']['padding'] = '0 0 15px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-author .oxo-author-ssocial .oxo-author-tagline']['float']      = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-author .oxo-author-ssocial .oxo-author-tagline']['text-align'] = 'center';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-author .oxo-author-ssocial .oxo-author-tagline']['max-width']  = '100%';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-author .oxo-author-ssocial .oxo-social-networks']['text-align'] = 'center';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-author .oxo-author-ssocial .oxo-social-networks .oxo-social-network-icon:first-child']['margin-left'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-networks:after']['content'] = '""';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-networks:after']['display'] = 'block';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-networks:after']['clear']   = 'both';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-networks li']['float']   = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-social-networks li']['display'] = 'inline-block';
-
-		$elements = array(
-			'.oxo-reading-box-container .reading-box.reading-box-center',
-			'.oxo-reading-box-container .reading-box.reading-box-right'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['text-align'] = 'left';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-reading-box-container .continue']['display'] = 'block';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-reading-box-container .mobile-button']['display'] = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-reading-box-container .mobile-button']['float']   = 'none';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-title']['margin-top']    = '0px !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-title']['margin-bottom'] = '20px !important';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['float']         = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['text-align']    = 'center';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['border-top']    = '1px solid';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['border-bottom'] = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['width']         = '100%';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['line-height']   = 'normal !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['height']        = 'auto !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['margin-bottom'] = '10px';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .cart-empty']['padding-top']   = '10px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['float']          = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['border-top']     = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['border-bottom']  = '1px solid';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['width']          = '100%';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['text-align']     = 'center';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['line-height']    = 'normal !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['height']         = 'auto !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#main .return-to-shop']['padding-bottom'] = '10px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .promo-code-heading']['display']       = 'block';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .promo-code-heading']['margin-bottom'] = '10px !important';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .promo-code-heading']['float']         = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .promo-code-heading']['text-align']    = 'center';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-contents']['display'] = 'block';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-contents']['float']   = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-contents']['margin']  = '0';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-input']['display']       = 'block';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-input']['width']         = 'auto !important';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-input']['float']         = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-input']['text-align']    = 'center';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-input']['margin-right']  ='0';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-input']['margin-bottom'] = '10px !important';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-button']['display']      = 'block';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-button']['margin-right'] = '0';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-button']['float']        = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce .checkout_coupon .coupon-button']['text-align']   = 'center';
-
-		}
-
-		// Page Title Bar
-
-		if ( 'auto' != Aione()->theme_options[ 'page_title_mobile_height' ] ) {
-
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-body .oxo-page-title-bar']['height'] = Aione_Sanitize::size( Aione()->theme_options[ 'page_title_mobile_height' ] );
-
-		} else {
-
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-body .oxo-page-title-bar']['padding-top']    = '10px';
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-body .oxo-page-title-bar']['padding-bottom'] = '10px';
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-body .oxo-page-title-bar']['height']         = 'auto';
-
-		}
-
-		$elements = array(
-			'.oxo-page-title-bar-left .oxo-page-title-captions',
-			'.oxo-page-title-bar-right .oxo-page-title-captions',
-			'.oxo-page-title-bar-left .oxo-page-title-secondary',
-			'.oxo-page-title-bar-right .oxo-page-title-secondary'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['display']     = 'block';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']       = 'none';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width']       = '100%';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['line-height'] = 'normal';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-bar-left .oxo-page-title-secondary']['text-align'] = 'left';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-bar-left .searchform']['display']   = 'block';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-bar-left .searchform']['max-width'] = '100%';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-bar-right .oxo-page-title-secondary']['text-align'] = 'right';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-bar-right .searchform']['max-width'] = '100%';
-
-		if ( 'auto' != Aione()->theme_options[ 'page_title_mobile_height' ] ) {
-
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-row']['display']    = 'table';
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-row']['width']      = '100%';
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-row']['height']     = '100%';
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-row']['min-height'] = intval( Aione()->theme_options[ 'page_title_mobile_height' ] ) - 20 . 'px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-wrapper']['display']        = 'table-cell';
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-page-title-wrapper']['vertical-align'] = 'middle';
-
-		}
-
-		if ( get_post_meta( $c_pageID, 'pyre_page_title_height', true ) ) {
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .oxo-page-title-bar']['height'] = Aione_Sanitize::size( get_post_meta( $c_pageID, 'pyre_page_title_height', true ) ) . ' !important';
-		}
-
-		$ipad_portrait[$ipad_portrait_media_query]['.products .product-list-view']['width']     = '100% !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.products .product-list-view']['min-width'] = '100% !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.sidebar .social_links .social li']['width']        = 'auto';
-		$ipad_portrait[$ipad_portrait_media_query]['.sidebar .social_links .social li']['margin-right'] = '5px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#comment-input']['margin-bottom'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#comment-input input']['width']         = '90%';
-		$ipad_portrait[$ipad_portrait_media_query]['#comment-input input']['float']         = 'none !important';
-		$ipad_portrait[$ipad_portrait_media_query]['#comment-input input']['margin-bottom'] = '10px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#comment-textarea textarea']['width'] = '90%';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.pagination']['margin-top'] = '40px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.portfolio-one .portfolio-item .image']['float']         = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.portfolio-one .portfolio-item .image']['width']         = 'auto';
-		$ipad_portrait[$ipad_portrait_media_query]['.portfolio-one .portfolio-item .image']['height']        = 'auto';
-		$ipad_portrait[$ipad_portrait_media_query]['.portfolio-one .portfolio-item .image']['margin-bottom'] = '20px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['h5.toggle span.toggle-title']['width'] = '80%';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .sep-boxed-pricing .panel-wrapper']['padding'] = '0';
-
-		$elements = array(
-			'#wrapper .full-boxed-pricing .column',
-			'#wrapper .sep-boxed-pricing .column'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']         = 'none';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-bottom'] = '10px';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-left']   = '0';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width']         = '100%';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.share-box']['height'] = 'auto';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .share-box h4']['float']       = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .share-box h4']['line-height'] = '20px !important';
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .share-box h4']['padding']     = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.share-box ul']['float']          = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.share-box ul']['overflow']       = 'hidden';
-		$ipad_portrait[$ipad_portrait_media_query]['.share-box ul']['padding']        = '0 25px';
-		$ipad_portrait[$ipad_portrait_media_query]['.share-box ul']['padding-bottom'] = '15px';
-		$ipad_portrait[$ipad_portrait_media_query]['.share-box ul']['margin-top']     = '0px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.project-content .project-description']['float'] = 'none !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.project-content .oxo-project-description-details']['margin-bottom'] = '50px';
-
-		$elements = array(
-			'.project-content .project-description',
-			'.project-content .project-info'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width'] = '100% !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.portfolio-half .flexslider']['width'] = '100%';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.portfolio-half .project-content']['width'] = '100% !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#style_selector']['display'] = 'none';
-
-		$elements = array(
-			'.portfolio-tabs',
-			'.faq-tabs'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['height']              = 'auto';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['border-bottom-width'] = '1px';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['border-bottom-style'] = 'solid';
-
-		$elements = array(
-			'.portfolio-tabs li',
-			'.faq-tabs li'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']         = 'left';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right']  = '30px';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['border-bottom'] = '0';
-
-		$elements = array(
-			'.ls-aione .ls-nav-prev',
-			'.ls-aione .ls-nav-next'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['display'] = 'none !important';
-
-		$elements = array(
-			'nav#nav',
-			'nav#sticky-nav'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#footer .social-networks']['width']    = '100%';
-		$ipad_portrait[$ipad_portrait_media_query]['#footer .social-networks']['margin']   = '0 auto';
-		$ipad_portrait[$ipad_portrait_media_query]['#footer .social-networks']['position'] = 'relative';
-		$ipad_portrait[$ipad_portrait_media_query]['#footer .social-networks']['left']     = '-11px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.tab-holder .tabs']['height'] = 'auto !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.tab-holder .tabs']['width']  = '100% !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.shortcode-tabs .tab-hold .tabs li']['width'] = '100% !important';
-
-		$elements = array(
-			'body .shortcode-tabs .tab-hold .tabs li',
-			'body.dark .sidebar .tab-hold .tabs li'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['border-right'] = 'none !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.error-message']['line-height'] = '170px';
-		$ipad_portrait[$ipad_portrait_media_query]['.error-message']['margin-top']  = '20px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.error_page .useful_links']['width']        = '100%';
-		$ipad_portrait[$ipad_portrait_media_query]['.error_page .useful_links']['padding-left'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-google-map']['width']         = '100% !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.social_links_shortcode .social li']['width'] = '10% !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .ei-slider']['width']  = '100% !important';
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .ei-slider']['height'] = '200px !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.progress-bar']['margin-bottom'] = '10px !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-blog-layout-medium-alternate .oxo-post-content']['float']      = 'none';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-blog-layout-medium-alternate .oxo-post-content']['width']      = '100% !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-blog-layout-medium-alternate .oxo-post-content']['margin-top'] = '20px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['min-height']     = 'inherit !important';
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-bottom'] = '20px';
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-left']   = '3%';
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .content-boxes-icon-boxed .content-wrapper-boxed']['padding-right']  = '3%';
-
-		$elements = array(
-			'#wrapper .content-boxes-icon-on-top .content-box-column',
-			'#wrapper .content-boxes-icon-boxed .content-box-column'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-bottom'] = '55px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-counters-box .oxo-counter-box']['margin-bottom'] = '20px';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-counters-box .oxo-counter-box']['padding']       = '0 15px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-counters-box .oxo-counter-box:last-child']['margin-bottom'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.popup']['display'] = 'none !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.share-box .social-networks']['text-align'] = 'left';
-
-		if ( class_exists( 'WooCommerce' ) ) {
-
-			$elements = array(
-				'.catalog-ordering .order',
-				'.aione-myaccount-data .addresses .col-1',
-				'.aione-myaccount-data .addresses .col-2',
-				'.aione-customer-details .addresses .col-1',
-				'.aione-customer-details .addresses .col-2',
-				'#wrapper .catalog-ordering > .oxo-grid-list-view'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']        = 'none !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-left']  = 'auto !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right'] = 'auto !important';
-
-			$elements = array(
-				'.aione-myaccount-data .addresses .col-1',
-				'.aione-myaccount-data .addresses .col-2',
-				'.aione-customer-details .addresses .col-1',
-				'.aione-customer-details .addresses .col-2'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin'] = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width']  = '100%';
-
-			$css[$ipad_portrait_media_query]['#wrapper .catalog-ordering']['margin-bottom'] = '50px';
-
-			$css[$ipad_portrait_media_query]['#wrapper .orderby-order-container']['display'] = 'block';
-
-			$css[$ipad_portrait_media_query]['#wrapper .order-dropdown > li:hover > ul']['display']  = 'block';
-			$css[$ipad_portrait_media_query]['#wrapper .order-dropdown > li:hover > ul']['position'] = 'relative';
-			$css[$ipad_portrait_media_query]['#wrapper .order-dropdown > li:hover > ul']['top']      = '0';
-
-			$css[$ipad_portrait_media_query]['#wrapper .orderby-order-container']['margin']        = '0 auto';
-			$css[$ipad_portrait_media_query]['#wrapper .orderby-order-container']['width']         = '225px';
-			$css[$ipad_portrait_media_query]['#wrapper .orderby-order-container']['float']         = 'none';
-
-			$css[$ipad_portrait_media_query]['#wrapper .orderby.order-dropdown']['width']        = '176px';
-
-			$css[$ipad_portrait_media_query]['#wrapper .sort-count.order-dropdown']['display'] = 'block';
-			$css[$ipad_portrait_media_query]['#wrapper .sort-count.order-dropdown']['width'] = '225px';
-
-			$css[$ipad_portrait_media_query]['#wrapper .sort-count.order-dropdown ul a']['width'] = '225px';
-
-			$css[$ipad_portrait_media_query]['#wrapper .catalog-ordering .order']['margin'] = '0';
-
-			$css[$ipad_portrait_media_query]['.catalog-ordering .oxo-grid-list-view']['display'] = 'block';
-			$css[$ipad_portrait_media_query]['.catalog-ordering .oxo-grid-list-view']['width'] = '78px';
-
-			$elements = array(
-				'.products-2 li:nth-child(2n+1)',
-				'.products-3 li:nth-child(3n+1)',
-				'.products-4 li:nth-child(4n+1)',
-				'.products-5 li:nth-child(5n+1)',
-				'.products-6 li:nth-child(6n+1)'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['clear'] = 'none !important';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#main .products li:nth-child(3n+1)']['clear'] = 'both !important';
-
-			$elements = array(
-				'.products li',
-				'#main .products li:nth-child(3n)',
-				'#main .products li:nth-child(4n)'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width']        = '32.3% !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']        = 'left !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right'] = '1% !important';
-
-			$elements = array(
-				'.woocommerce #customer_login .login .form-row',
-				'.woocommerce #customer_login .login .lost_password'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float'] = 'none';
-
-			$elements = array(
-				'.woocommerce #customer_login .login .inline',
-				'.woocommerce #customer_login .login .lost_password'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['display']     = 'block';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-left'] = '0';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.aione-myaccount-data .my_account_orders .order-number']['padding-right'] = '8px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.aione-myaccount-data .my_account_orders .order-actions']['padding-left'] = '8px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.shop_table .product-name']['width'] = '35%';
-
-			$elements = array(
-				'#wrapper .woocommerce-side-nav',
-				'#wrapper .woocommerce-content-box',
-				'#wrapper .shipping-coupon',
-				'#wrapper .cart_totals',
-				'#wrapper #customer_login .col-1',
-				'#wrapper #customer_login .col-2',
-				'#wrapper .woocommerce form.checkout #customer_details .col-1',
-				'#wrapper .woocommerce form.checkout #customer_details .col-2'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']        = 'none';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-left']  = 'auto';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right'] = 'auto';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width']        = '100% !important';
-
-			$elements = array(
-				'#customer_login .col-1',
-				'.coupon'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-bottom'] = '20px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.shop_table .product-thumbnail']['float'] = 'none';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.product-info']['margin-left'] = '0';
-			$ipad_portrait[$ipad_portrait_media_query]['.product-info']['margin-top']  = '10px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.product .entry-summary div .price']['float'] = 'none';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.product .entry-summary .woocommerce-product-rating']['float']       = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['.product .entry-summary .woocommerce-product-rating']['margin-left'] = '0';
-
-			$elements = array(
-				'.woocommerce-tabs .tabs',
-				'.woocommerce-side-nav'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-bottom'] = '25px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-tabs .panel']['width']   = '91% !important';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-tabs .panel']['padding'] = '4% !important';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#reviews li .avatar']['display'] = 'none';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#reviews li .comment-text']['width']       = '90% !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#reviews li .comment-text']['margin-left'] = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#reviews li .comment-text']['padding']     = '5% !important';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share']['overflow'] = 'hidden';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['display']       = 'block';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['float']         = 'left';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['margin']        = '0 auto';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['border-right']  = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['border-left']   = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['padding-left']  = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['padding-right'] = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query]['.woocommerce-container .social-share li']['width']         = '25%';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.has-sidebar .woocommerce-container .social-share li']['width'] = '50%';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.myaccount_user_container span']['width']        = '100%';
-			$ipad_portrait[$ipad_portrait_media_query]['.myaccount_user_container span']['float']        = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['.myaccount_user_container span']['display']      = 'block';
-			$ipad_portrait[$ipad_portrait_media_query]['.myaccount_user_container span']['padding']      = '10px 0px';
-			$ipad_portrait[$ipad_portrait_media_query]['.myaccount_user_container span']['border-right'] = '0';
-
-			if ( is_rtl() ) {
-				$ipad_portrait[$ipad_portrait_media_query]['.rtl .myaccount_user_container span']['border-left'] = '0';
-			}
-
-			$elements = array(
-				'.shop_table .product-thumbnail img',
-				'.shop_table .product-thumbnail .product-info',
-				'.shop_table .product-thumbnail .product-info p'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']   = 'none';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width']   = '100%';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin']  = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['padding'] = '0';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.shop_table .product-thumbnail']['padding'] = '10px 0px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['.product .images']['margin-bottom'] = '30px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .button']['float']         = 'left';
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .button']['margin-bottom'] = '15px';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .remember-box']['clear']   = 'both';
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .remember-box']['display'] = 'block';
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .remember-box']['padding'] = '0';
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .remember-box']['width']   = '125px';
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .remember-box']['float']   = 'left';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#customer_login_box .lost_password']['float'] = 'left';
-
-			$elements = array(
-				'#wrapper .product .images',
-				'#wrapper .product .summary.entry-summary'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width'] = '50% !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float'] = 'left !important';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .product .summary.entry-summary']['width']       = '48% !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .product .summary.entry-summary']['margin-left'] = '2% !important';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .woocommerce-tabs .tabs']['width'] = '24% !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .woocommerce-tabs .tabs']['float'] = 'left !important';
-
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .woocommerce-tabs .panel']['float']   = 'right !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .woocommerce-tabs .panel']['width']   = '70% !important';
-			$ipad_portrait[$ipad_portrait_media_query]['#wrapper .woocommerce-tabs .panel']['padding'] = '4% !important';
-
-			$elements = array(
-				'.product .images #slider .flex-direction-nav',
-				'.product .images #carousel .flex-direction-nav'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['display'] = 'none !important';
-
-			$elements = array(
-				'.myaccount_user_container span.msg',
-				'.myaccount_user_container span:last-child'
-			);
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['padding-left']  = '0 !important';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['padding-right'] = '0 !important';
-
-		}
-
-		$ipad_portrait[$ipad_portrait_media_query]['body #small-nav']['visibility'] = 'visible !important';
-
-		$elements = array();
-		if ( class_exists( 'GFForms' ) ) {
-			$elements[] = '.gform_wrapper .ginput_complex .ginput_left';
-			$elements[] = '.gform_wrapper .ginput_complex .ginput_right';
-			$elements[] = '.gform_wrapper .gfield input[type="text"]';
-			$elements[] = '.gform_wrapper .gfield textarea';
-		}
-		if ( defined( 'WPCF7_PLUGIN' ) ) {
-			$elements[] = '.wpcf7-form .wpcf7-text';
-			$elements[] = '.wpcf7-form .wpcf7-quiz';
-			$elements[] = '.wpcf7-form .wpcf7-number';
-			$elements[] = '.wpcf7-form textarea';
-		}
-
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']      = 'none !important';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width']      = '100% !important';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['box-sizing'] = 'border-box';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#nav-uber #megaMenu']['width'] = '100%';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.fullwidth-box']['background-attachment'] = 'scroll';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#toTop']['bottom']        = '30px';
-		$ipad_portrait[$ipad_portrait_media_query]['#toTop']['border-radius'] = '4px';
-		$ipad_portrait[$ipad_portrait_media_query]['#toTop']['height']        = '40px';
-		$ipad_portrait[$ipad_portrait_media_query]['#toTop']['z-index']       = '10000';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#toTop:before']['line-height'] = '38px';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#toTop:hover']['background-color'] = '#333333';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.no-mobile-totop .to-top-container']['display'] = 'none';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.no-mobile-slidingbar #slidingbar-area']['display'] = 'none';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.tfs-slider .slide-content-container .btn']['min-height']    = '0 !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.tfs-slider .slide-content-container .btn']['padding-left']  = '20px';
-		$ipad_portrait[$ipad_portrait_media_query]['.tfs-slider .slide-content-container .btn']['padding-right'] = '20px !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.tfs-slider .slide-content-container .btn']['height']        = '26px !important';
-		$ipad_portrait[$ipad_portrait_media_query]['.tfs-slider .slide-content-container .btn']['line-height']   = '26px !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-soundcloud iframe']['width'] = '100%';
-
-		$elements = array(
-			'.oxo-columns-2 .oxo-column',
-			'.oxo-columns-2 .oxo-flip-box-wrapper',
-			'.oxo-columns-4 .oxo-column',
-			'.oxo-columns-4 .oxo-flip-box-wrapper'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width'] = '50% !important';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float'] = 'left !important';
-
-		$elements = array(
-			'.oxo-columns-2 .oxo-column:nth-of-type(3n)',
-			'.oxo-columns-4 .oxo-column:nth-of-type(3n)',
-			'.oxo-columns-2 .oxo-flip-box-wrapper:nth-of-type(3n)'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['clear'] = 'both';
-
-		$elements = array(
-			'.oxo-columns-3 .oxo-column',
-			'.oxo-columns-3 .oxo-flip-box-wrapper',
-			'.oxo-columns-5 .oxo-column',
-			'.oxo-columns-5 .oxo-flip-box-wrapper',
-			'.oxo-columns-6 .oxo-column',
-			'.oxo-columns-6 .oxo-flip-box-wrapper',
-			'.oxo-columns-5 .col-lg-2',
-			'.oxo-columns-5 .col-md-2',
-			'.oxo-columns-5 .col-sm-2'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['width'] = '33.33% !important';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float'] = 'left !important';
-
-		$elements = array(
-			'.oxo-columns-3 .oxo-column:nth-of-type(4n)',
-			'.oxo-columns-3 .oxo-flip-box-wrapper:nth-of-type(4n)',
-			'.oxo-columns-5 .oxo-column:nth-of-type(4n)',
-			'.oxo-columns-5 .oxo-flip-box-wrapper:nth-of-type(4n)',
-			'.oxo-columns-6 .oxo-column:nth-of-type(4n)',
-			'.oxo-columns-6 .oxo-flip-box-wrapper:nth-of-type(4n)'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['clear'] = 'both';
-
-		$elements = array(
-			'.footer-area .oxo-column',
-			'#slidingbar .oxo-column'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-bottom'] = '40px';
-
-		$elements = array(
-			'.oxo-layout-column.oxo-one-sixth',
-			'.oxo-layout-column.oxo-five-sixth',
-			'.oxo-layout-column.oxo-one-fifth',
-			'.oxo-layout-column.oxo-two-fifth',
-			'.oxo-layout-column.oxo-three-fifth',
-			'.oxo-layout-column.oxo-four-fifth',
-			'.oxo-layout-column.oxo-one-fourth',
-			'.oxo-layout-column.oxo-three-fourth',
-			'.oxo-layout-column.oxo-one-third',
-			'.oxo-layout-column.oxo-two-third',
-			'.oxo-layout-column.oxo-one-half'
-		);
-
-		if( is_rtl() ) {
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['position']      = 'relative';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']         = 'right';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-left']   = '4%';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right']  = '0%';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-bottom'] = '20px';
-		} else {
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['position']      = 'relative';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['float']         = 'left';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-right']  = '4%';
-			$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['margin-bottom'] = '20px';
-		}
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-sixth']['width']    = '13.3333%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-five-sixth']['width']   = '82.6666%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-fifth']['width']    = '16.8%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-two-fifth']['width']    = '37.6%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-three-fifth']['width']  = '58.4%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-four-fifth']['width']   = '79.2%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-fourth']['width']   = '22%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-three-fourth']['width'] = '74%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-third']['width']    = '30.6666%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-two-third']['width']    = '65.3333%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-half']['width']     = '48%';
-
-		// No spacing Columns
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-spacing-no']['margin-left']  = '0';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-spacing-no']['margin-right'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-sixth.oxo-spacing-no']['width']    = '16.6666666667%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-five-sixth.oxo-spacing-no']['width']   = '83.333333333%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-fifth.oxo-spacing-no']['width']    = '20%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-two-fifth.oxo-spacing-no']['width']    = '40%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-three-fifth.oxo-spacing-no']['width']  = '60%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-four-fifth.oxo-spacing-no']['width']   = '80%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-fourth.oxo-spacing-no']['width']   = '25%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-three-fourth.oxo-spacing-no']['width'] = '75%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-third.oxo-spacing-no']['width']    = '33.33333333%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-two-third.oxo-spacing-no']['width']    = '66.66666667%';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-one-half.oxo-spacing-no']['width']     = '50%';
-
-		if( is_rtl() ) {
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-column-last']['clear'] = 'left';
-		} else {
-			$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-column-last']['clear'] = 'right';
-		}
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-column-last']['zoom']         = '1';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-column-last']['margin-left']  = '0';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-layout-column.oxo-column-last']['margin-right'] = '0';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-column.oxo-spacing-no']['margin-bottom'] = '0';
-		$ipad_portrait[$ipad_portrait_media_query]['.oxo-column.oxo-spacing-no']['width']         = '100% !important';
-
-		$elements = array(
-			'.ua-mobile .page-title-bar',
-			'.ua-mobile .oxo-footer-widget-area',
-			'.ua-mobile body',
-			'.ua-mobile #main'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['background-attachment'] = 'scroll !important';
-
-		$elements = array(
-			'.oxo-secondary-header .oxo-row',
-			'.oxo-header .oxo-row',
-			'.footer-area > .oxo-row',
-			'#footer > .oxo-row',
-			'#header-sticky .oxo-row'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['padding-left']  = '0px !important';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['padding-right'] = '0px !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['.error-message']['font-size'] = '130px';
-
-		$elements = array(
-			'.oxo-secondary-header .oxo-row',
-			'.oxo-header .oxo-row',
-			'.footer-area > .oxo-row',
-			'#footer > .oxo-row'
-		);
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['padding-left']  = '0px !important';
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['padding-right'] = '0px !important';
-
-		$ipad_portrait[$ipad_portrait_media_query]['#wrapper .ei-slider']['width'] = '100%';
-		$elements = array(
-			'.fullwidth-box',
-			'.page-title-bar',
-			'.oxo-footer-widget-area',
-			'body',
-			'#main'
-		);
-
-		$ipad_portrait[$ipad_portrait_media_query][aione_implode( $elements )]['background-attachment'] = 'scroll !important';
-
-		if ( get_post_meta( $c_pageID, 'pyre_fallback', true ) ) {
-			$ipad_portrait[$ipad_portrait_media_query]['#sliders-container']['display'] = 'none';
-			$ipad_portrait[$ipad_portrait_media_query]['#fallback-slide']['display'] = 'block';
-
-		}
-
-		// Filter for editing the iPad Portrait Media Query Styles
-		$ipad_portrait = apply_filters( 'aione_ipad_portrait_styles', $ipad_portrait );
-		$css = array_merge( $css, $ipad_portrait );
-
-		// End iPad Portrait Media Query Styles
-
-	}
 
 	if ( ! Aione()->theme_options[ 'responsive' ] ) {
 
