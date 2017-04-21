@@ -5707,69 +5707,6 @@ if ( Aione()->theme_options['responsive'] ) {
 	$css['global'][aione_implode( $elements )]['border-color'] = Aione_Sanitize::color( Aione()->theme_options[ 'footer_divider_color' ], Aione()->settings->get_default( 'footer_divider_color' ) );
 
 	$elements = array(
-		'.input-text',
-		'input[type="text"]',
-		'textarea',
-		'input.s',
-		'#comment-input input',
-		'#comment-textarea textarea',
-		'.comment-form-comment textarea',
-		'.post-password-form label input[type="password"]',
-		'.main-nav-search-form input',
-		'.search-page-search-form input',
-		'.chzn-container-single .chzn-single',
-		'.chzn-container .chzn-drop',
-		'.aione-select-parent select',
-		'.aione-select .select2-container .select2-choice',
-		'.aione-select .select2-container .select2-choice2',
-		'select',
-		'#wrapper .search-table .search-field input'
-	);
-	if ( defined( 'ICL_SITEPRESS_VERSION' || class_exists( 'SitePress' ) ) ) {
-		$elements[] = '#lang_sel_click a.lang_sel_sel';
-		$elements[] = '#lang_sel_click ul ul a';
-		$elements[] = '#lang_sel_click ul ul a:visited';
-		$elements[] = '#lang_sel_click a';
-		$elements[] = '#lang_sel_click a:visited';
-	}
-	if ( class_exists( 'GFForms' ) ) {
-		$elements[] = '.gform_wrapper .gfield input[type="text"]';
-		$elements[] = '.gform_wrapper .gfield input[type="email"]';
-		$elements[] = '.gform_wrapper .gfield input[type="tel"]';
-		$elements[] = '.gform_wrapper .gfield input[type="url"]';
-		$elements[] = '.gform_wrapper .gfield input[type="number"]';
-		$elements[] = '.gform_wrapper .gfield input[type="password"] input[type="number"]';
-		$elements[] = '.gform_wrapper .gfield input[type="password"]';
-		$elements[] = '.gform_wrapper .gfield_select[multiple=multiple]';
-		$elements[] = '.gform_wrapper .gfield select';
-		$elements[] = '.gform_wrapper .gfield textarea';
-	}
-	if ( defined( 'WPCF7_PLUGIN' ) ) {
-		$elements[] = '.wpcf7-form .wpcf7-text';
-		$elements[] = '.wpcf7-form .wpcf7-quiz';
-		$elements[] = '.wpcf7-form .wpcf7-number';
-		$elements[] = '.wpcf7-form textarea';
-		$elements[] = '.wpcf7-form .wpcf7-select';
-		$elements[] = '.wpcf7-captchar';
-		$elements[] = '.wpcf7-form .wpcf7-date';
-	}
-	if ( class_exists( 'bbPress' ) ) {
-		$elements[] = '#bbpress-forums .bbp-search-form #bbp_search';
-		$elements[] = '.bbp-reply-form input#bbp_topic_tags';
-		$elements[] = '.bbp-topic-form input#bbp_topic_title';
-		$elements[] = '.bbp-topic-form input#bbp_topic_tags';
-		$elements[] = '.bbp-topic-form select#bbp_stick_topic_select';
-		$elements[] = '.bbp-topic-form select#bbp_topic_status_select';
-		$elements[] = '#bbpress-forums div.bbp-the-content-wrapper textarea.bbp-the-content';
-		$elements[] = '.bbp-login-form input';
-	}
-	if( class_exists( 'Tribe__Events__Main' ) ) {
-		$elements[] = '#tribe-bar-form input[type=text]';
-		$elements[] = '.tribe-bar-disabled #tribe-bar-form .tribe-bar-filters input[type=text]';
-	}
-	$css['global'][aione_implode( $elements )]['background-color'] = Aione_Sanitize::color( Aione()->theme_options[ 'form_bg_color' ], Aione()->settings->get_default( 'form_bg_color' ) );
-
-	$elements = array(
 		'.aione-select-parent .select-arrow',
 		'#wrapper .select-arrow',
 	);
@@ -5780,6 +5717,9 @@ if ( Aione()->theme_options['responsive'] ) {
 
 	}
 	$css['global'][aione_implode( $elements )]['background-color'] = $select_arrow_bg;
+
+
+	/*
 
 
 	$elements = array(
@@ -5851,6 +5791,9 @@ if ( Aione()->theme_options['responsive'] ) {
 		'.input-text::-webkit-input-placeholder',
 		'.searchform .s::-webkit-input-placeholder',
 	);
+
+
+
 	if( class_exists( 'Tribe__Events__Main' ) ) {
 		$elements[] = '#tribe-bar-form input[type=text]::-webkit-input-placeholder';
 		$elements[] = '.tribe-bar-disabled #tribe-bar-form .tribe-bar-filters input[type=text]::-webkit-input-placeholder';
@@ -6072,6 +6015,7 @@ if ( Aione()->theme_options['responsive'] ) {
 	if ( 1 < $height_fraction ) {
 		$css['global']['.oxo-main-menu .oxo-main-menu-search .oxo-custom-menu-item-contents']['width'] = 250 + 50 * $height_fraction . 'px';
 	}
+	*/
 
 	if ( Aione()->theme_options[ 'aione_styles_dropdowns' ] ) {
 
