@@ -9,6 +9,10 @@ RESPONSIVE
 }
 /* Tabled Portrait */
 @media screen and (max-width: 768px) {
+    .oxo-footer .oxo-columns-4 .oxo-column,
+    .oxo-footer .oxo-columns-5 .oxo-column,
+    .oxo-footer .oxo-columns-6 .oxo-column,
+    .oxo-footer .oxo-columns-7 .oxo-column,
     .oxo-layout-column.oxo-one-fourth,
     .oxo-layout-column.three-fourth,
     .oxo-layout-column.oxo-one-fifth,
@@ -24,16 +28,38 @@ RESPONSIVE
         margin-right: 0 !important;
     }
 
+    .oxo-logo {
+        float: none;
+        text-align: center;
+    }
+    .oxo-mobile-nav-holder {
+        display: block;
+    }
+    .oxo-main-menu {
+        display: none;
+    }
+
 }
 
 /* Tabled Portrait */
 @media screen and (max-width: 640px) {
+    .oxo-footer .oxo-columns .oxo-column,
     .oxo-layout-column{
         float:none !important;
         display: block !important;
         width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+    }
+    .oxo-logo {
+        float: none;
+        text-align: center;
+    }
+    .oxo-mobile-nav-holder {
+        display: block;
+    }
+    .oxo-main-menu {
+        display: none;
     }
 }
 
