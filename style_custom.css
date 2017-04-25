@@ -32,8 +32,11 @@ RESPONSIVE
         float: none;
         text-align: center;
     }
+    .oxo-mobile-menu-icons{
+      display: block !important;
+    }
     .oxo-mobile-nav-holder {
-        display: block;
+        display: block !important;
     }
     .oxo-main-menu {
         display: none;
@@ -55,8 +58,11 @@ RESPONSIVE
         float: none;
         text-align: center;
     }
+    .oxo-mobile-menu-icons{
+      display: block !important;
+    }
     .oxo-mobile-nav-holder {
-        display: block;
+        display: block !important;
     }
     .oxo-main-menu {
         display: none;
@@ -105,6 +111,15 @@ label,
     line-height:28px;
     font-weight: 300;
     font-family:"Open Sans", Arial, Helvetica, sans-serif;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+.acf-checkbox-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 
