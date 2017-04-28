@@ -287,7 +287,7 @@ if ( 'modern' == Aione()->theme_options[ 'mobile_menu_design' ] ) {
 				<?php if($pagetop_content){ ?>
 					<!-- content above main container -->
 					<div class="pagetop-content">
-						<?php echo $pagetop_content; ?>
+						<?php echo do_shortcode($pagetop_content); ?>
 					</div>
 					<!-- end of content main container -->
 				<?php } ?>
