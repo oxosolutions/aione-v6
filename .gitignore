@@ -9,7 +9,7 @@ wp-content/upgrade/
 wp-content/uploads/
 wp-content/wp-cache-config.php
 wp-content/plugins/hello.php
-gulp1/
+gulp/ 
 
 /.htaccess
 /license.txt
@@ -17,3 +17,4 @@ gulp1/
 /sitemap.xml
 /sitemap.xml.gz
 
+ 
