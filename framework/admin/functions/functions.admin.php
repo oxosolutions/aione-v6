@@ -33,27 +33,6 @@ function of_option_setup()
 }
 
 /**
- * Change activation message
- *
- * @since 1.0.0
- */
-function optionsframework_admin_message() {
-
-	//Tweaked the message on theme activate
-	?>
-	<script type="text/javascript">
-	jQuery(function(){
-
-		var message = <?php echo json_encode('<p>'.sprintf(__('This theme comes with an %s to configure settings. This theme also supports widgets, please visit the %s widgets settings page to configure them.', 'Aione'), '<a href="'.admin_url('admin.php?page=optionsframework').'">'.__('options panel', 'Aione').'</a>', '<a href="'.admin_url('widgets.php').'"></a>').'</p>'); ?>;
-		jQuery('.themes-php #message2').html(message);
-
-	});
-	</script>
-	<?php
-
-}
-
-/**
  * Get header classes
  *
  * @since 1.0.0

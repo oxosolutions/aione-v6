@@ -1,4 +1,10 @@
-<?php global $theme_options; ?>
+<?php global $theme_options; 
+
+echo "AHEADER 3";
+
+?>
+
+
 <div class="header-v3">
     <?php get_template_part('framework/header/topbar'); ?>
 	<header id="header">

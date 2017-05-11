@@ -17,16 +17,27 @@
 					<?php endif; ?>
 				</a>
 			</div>
-			<?php if($theme_options['ubermenu']): ?>
-			<nav id="nav-uber">
-			<?php else: ?>
-			<nav id="nav" class="nav-holder" data-height="<?php echo $theme_options['nav_height']; ?>px">
-			<?php endif; ?>
-				<?php get_template_part('framework/headers/header-main-menu'); ?>
-			</nav>
-			<?php if(tf_checkIfMenuIsSetByLocation('main_navigation')): ?>
-			<div class="mobile-nav-holder main-menu"></div>
-			<?php endif; ?>
+			<?php 
+			$header_show_navigation =$theme_options[ 'header_show_navigation' ];
+
+			echo "header_show_navigation = ".$header_show_navigation;
+
+			if($header_show_navigation): ?>
+
+				<?php if($theme_options['ubermenu']): ?>
+				<nav id="nav-uber">
+				<?php else: ?>
+				<nav id="nav" class="nav-holder">
+				<?php endif; ?>
+					<?php get_template_part('framework/headers/header-main-menu'); ?>
+				</nav>
+				<?php if(tf_checkIfMenuIsSetByLocation('main_navigation')): ?>
+				<div class="mobile-nav-holder main-menu"></div>
+				<?php 
+				endif;
+
+			endif;
+			?>
 		</div>
 	</header>
 </div>
