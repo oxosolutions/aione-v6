@@ -372,6 +372,12 @@
   width: 45%;
   float: left;
 }
+.pyre_desc.code
+{
+  width:100%;
+  text-align:left;
+
+}
 
 #poststuff .pyre_metabox h3 {
   margin: 10px 0 5px 0;
@@ -395,6 +401,20 @@
 .pyre_field {
   width: 50%;
   float: right;
+}
+.pyre_field.code
+{
+  width:100%;
+}
+.pyre_field.code textarea#pyre_custom_css 
+{
+  background-color: #272822;
+  color:#fff;
+}
+.pyre_field.code textarea#pyre_custom_js
+{
+  background-color: #272822;
+  color:#fff;
 }
 
 .pyre_field input[type=text],.pyre_field select {

@@ -206,13 +206,7 @@ if ( ! function_exists( 'aione_header_1' ) ) {
 		<div class="oxo-header">
 			<div class="oxo-row">
 	
-				<div class="oxo-logo" data-margin-top="<?php echo intval( Aione()->theme_options[ 'margin_logo_top' ] ); ?>px" data-margin-bottom="<?php echo intval( Aione()->theme_options[ 'margin_logo_bottom' ] ); ?>px" data-margin-left="<?php echo intval( Aione()->theme_options[ 'margin_logo_left' ] ); ?>px" data-margin-right="<?php echo intval( Aione()->theme_options[ 'margin_logo_right' ] ); ?>px">
-					<?php aione_logo(); ?>
-				</div>
-				<!--<div id="logo_text">
-							<div id="site_title"><a id="site_name" href="<?php ?>"><?php //bloginfo( 'name' ); ?></a></div>
-							<div id="site_description"><?php  //bloginfo( 'description' ); ?></div>
-						</div>-->
+				<?php get_template_part('framework/header/logo'); ?>
 		
 				<?php aione_main_menu(); ?>
 			</div>

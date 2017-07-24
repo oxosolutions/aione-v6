@@ -710,13 +710,13 @@ Reset
     float:right;
 }
 
-#logo {
+.logo {
     display: inline-block;
     float: left;
     position: relative;
 }
 
-#logo_text {
+.logo-text {
     display: inline-block;
     float: left;
     margin: 0 0 0 20px;
@@ -724,12 +724,14 @@ Reset
     position: relative;
 }
 
-#site_name {
-    font-size: 48px;
-    line-height: 64px;
+.site-name {
+    font-size: 30px;
+    line-height: 50px;
+    font-weight: 400;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
-#site_description {
+.site-description {
     font-size: 18px;
     line-height: 18px;
 }

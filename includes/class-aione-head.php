@@ -9,8 +9,9 @@ class Aione_Head {
 		// add_filter( 'language_attributes', array( $this, 'add_opengraph_doctype' ) );
 		
 		add_filter( 'document_title_separator', array( $this, 'document_title_separator' ) );
+		add_filter( 'pre_get_document_title', array( $this, 'render_document_title' ) );
 	}
-	
+	  
 	/**
 	 * Adding the Open Graph in the Language Attributes
 	 */
@@ -79,6 +80,15 @@ class Aione_Head {
 	 */
 	public function document_title_separator() {
 		return '-';
+	}
+
+	public function render_document_title($title){
+		$c_pageID = Aione::c_pageID();
+		$pyre_title_tag = get_post_meta( $c_pageID, 'pyre_title_tag', true );
+		if($pyre_title_tag != "" && $pyre_title_tag != false){
+			$title = $pyre_title_tag;
+		} 
+		return $title;
 	}
 }
 

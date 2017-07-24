@@ -22,24 +22,29 @@ $this->textarea(
 printf( '<h3>%s</h3>', __( 'Social Networks Listing:', 'Aione' ) );
 
 $this->text(
-	'title',
+	'og_title',
 	__( 'Title', 'Aione' ),
 	__( '', 'Aione' )
 );
 
 $this->textarea(
-	'description',
+	'og_description',
 	__( 'Description', 'Aione' ),
 	__( '', 'Aione' )
 );
 
 $this->upload(
-	'image',
+	'og_image',
 	__( 'Image', 'Aione' ),
 	__( 'Select an image.', 'Aione' )
 );
+$this->text(
+	'og_url',
+	__( 'URL', 'Aione' ),
+	__( '', 'Aione' )
+);
 
-printf( '<h3>%s</h3>', __( 'Links:', 'Aione' ) );
+/*printf( '<h3>%s</h3>', __( 'Links:', 'Aione' ) );
 
 $this->textarea(
 	'inbound_autolink_anchors',
@@ -91,6 +96,6 @@ $this->select(
 		'no'      => __( 'No', 'Aione' )
 	),
 	__( ' Tell search engines not to spider links on this webpage.', 'Aione' )
-);
+);*/
 
 ?>

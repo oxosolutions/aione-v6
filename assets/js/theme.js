@@ -2187,7 +2187,7 @@ jQuery( document ).ready(function($) { // start document_ready_1
 		});
 	}
 
-	jQuery( '#wrapper .oxo-sharing-box' ).each( function() {
+	/*jQuery( '#wrapper .oxo-sharing-box' ).each( function() {
 		if( ! jQuery( 'meta[property="og:title"]' ).length ) {
 			jQuery( 'head title' ).after( '<meta property="og:title" content="' + jQuery( this ).data( 'title' )  + '"/>' );
 			jQuery( 'head title' ).after( '<meta property="og:description" content="' + jQuery( this ).data( 'description' )  + '"/>' );
@@ -2195,7 +2195,7 @@ jQuery( document ).ready(function($) { // start document_ready_1
 			jQuery( 'head title' ).after( '<meta property="og:url" content="' + jQuery( this ).data( 'link' )  + '"/>' );
 			jQuery( 'head title' ).after( '<meta property="og:image" content="' + jQuery( this ).data( 'image' )  + '"/>' );
 		}
-	});
+	});*/
 
 	// Remove title separators and padding, when there is not enough space
 	jQuery( '.oxo-title' ).oxo_responsive_title_shortcode();

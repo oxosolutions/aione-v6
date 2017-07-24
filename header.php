@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php global $woocommerce; ?>
+<?php global $woocommerce; 
+$c_pageID = Aione::c_pageID();
+?>
 <html class="<?php echo ( ! Aione()->theme_options[ 'smooth_scrolling' ] ) ? 'no-overflow-y' : ''; ?>" <?php language_attributes(); ?>>
 <head>
 	<?php if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( false !== strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) ) ) : ?>
@@ -8,16 +10,6 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-	<?php
-	if ( ! function_exists( '_wp_render_title_tag' ) ) {
-		function aione_render_title() {
-		?>
-			<title><?php wp_title( '' ); ?></title>
-		<?php
-		}
-		add_action( 'wp_head', 'aione_render_title' );
-	}
-	?>
 
 	<!--[if lte IE 8]>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/assets/js/html5shiv.js"></script>
@@ -36,34 +28,44 @@
 			$viewport .= '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />';
 		}
 	}
+	
+	if(get_post_meta( $c_pageID, 'pyre_meta_description', true ) != '' && get_post_meta( $c_pageID, 'pyre_meta_description', true ) != false){
+		$pyre_meta_description = get_post_meta( $c_pageID, 'pyre_meta_description', true );
+		$viewport .= '<meta name="description" content="'.$pyre_meta_description.'">';
+	}
+	if(get_post_meta( $c_pageID, 'pyre_meta_keywords', true ) != '' &&get_post_meta( $c_pageID, 'pyre_meta_keywords', true ) != false){
+		$pyre_meta_keywords = get_post_meta( $c_pageID, 'pyre_meta_keywords', true );
+		$viewport .= '<meta name="keywords" content="'.$pyre_meta_keywords.'">';
+	}
 
 	$viewport = apply_filters( 'aione_viewport_meta', $viewport );
 	echo $viewport;
 	?>
 
-	<?php if ( Aione()->theme_options[ 'favicon' ] ) : ?>
+	<?php if ( !empty(Aione()->theme_options[ 'favicon' ] )) : ?>
 		<link rel="shortcut icon" href="<?php echo Aione()->theme_options[ 'favicon' ]['url']; ?>" type="image/x-icon" />
 	<?php endif; ?>
 
-	<?php if ( Aione()->theme_options[ 'iphone_icon' ] ) : ?>
+	<?php if ( !empty(Aione()->theme_options[ 'iphone_icon' ] )) : ?>
 		<!-- For iPhone -->
 		<link rel="apple-touch-icon-precomposed" href="<?php echo Aione()->theme_options[ 'iphone_icon' ]['url']; ?>">
 	<?php endif; ?>
 
-	<?php if ( Aione()->theme_options[ 'iphone_icon_retina' ] ) : ?>
+	<?php if ( !empty(Aione()->theme_options[ 'iphone_icon_retina' ] )) : ?>
 		<!-- For iPhone 4 Retina display -->
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo Aione()->theme_options[ 'iphone_icon_retina' ]['url']; ?>">
 	<?php endif; ?>
 
-	<?php if ( Aione()->theme_options[ 'ipad_icon' ]['url'] ) : ?>
+	<?php if ( !empty(Aione()->theme_options[ 'ipad_icon' ]['url'] )) : ?>
 		<!-- For iPad -->
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo Aione()->theme_options[ 'ipad_icon' ]['url']; ?>">
 	<?php endif; ?>
 
-	<?php if ( Aione()->theme_options[ 'ipad_icon_retina' ] ) : ?>
+	<?php if ( !empty(Aione()->theme_options[ 'ipad_icon_retina' ] )) : ?>
 		<!-- For iPad Retina display -->
 		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo Aione()->theme_options[ 'ipad_icon_retina' ]['url']; ?>">
 	<?php endif; ?>
+	
 
 	<?php wp_head(); ?>
 
@@ -86,7 +88,7 @@
 	});
 	</script>
 
-	<script src="<?php echo get_template_directory_uri(); ?>/assets/js/excanvas.js"></script>
+	<script src="<?php //echo get_template_directory_uri(); ?>/assets/js/excanvas.js"></script>
 
 	<![endif]-->
 

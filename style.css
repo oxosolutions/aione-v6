@@ -8,6 +8,8 @@ Version: 6.4.3.5
 GitHub Theme URI: https://github.com/oxosolutions/aione
 GitHub Branch: master 
 -----------------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 @import url("style_custom.css");
 
 .group {
