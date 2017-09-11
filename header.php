@@ -32,6 +32,8 @@ $c_pageID = Aione::c_pageID();
 	if(get_post_meta( $c_pageID, 'pyre_meta_description', true ) != '' && get_post_meta( $c_pageID, 'pyre_meta_description', true ) != false){
 		$pyre_meta_description = get_post_meta( $c_pageID, 'pyre_meta_description', true );
 		$viewport .= '<meta name="description" content="'.$pyre_meta_description.'">';
+	} else {
+		$viewport .= '<meta name="description" content="'.get_the_title().'">';
 	}
 	if(get_post_meta( $c_pageID, 'pyre_meta_keywords', true ) != '' &&get_post_meta( $c_pageID, 'pyre_meta_keywords', true ) != false){
 		$pyre_meta_keywords = get_post_meta( $c_pageID, 'pyre_meta_keywords', true );

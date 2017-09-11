@@ -52,15 +52,61 @@ class Aione_Head {
 
 		?>
 
-		<meta property="og:title" content="<?php echo strip_tags( str_replace( array( '"', "'" ), array( '&quot;', '&#39;' ), $post->post_title ) ); ?>"/>
-		<meta property="og:type" content="article"/>
-		<meta property="og:url" content="<?php echo get_permalink(); ?>"/>
-		<meta property="og:site_name" content="<?php echo get_bloginfo( 'name' ); ?>"/>
-		<meta property="og:description" content="<?php echo Aione()->blog->get_content_stripped_and_excerpted( 55, $post->post_content ); ?>"/>
-
-		<?php if ( '' != $image ) : ?>
+		<?php
+		$c_pageID = Aione::c_pageID();
+		$pyre_title_tag = get_post_meta( $c_pageID, 'pyre_title_tag', true );
+		$pyre_og_title = get_post_meta( $c_pageID, 'pyre_og_title', true );
+		$pyre_og_description = get_post_meta( $c_pageID, 'pyre_og_description', true );
+		$pyre_og_image = get_post_meta( $c_pageID, 'pyre_og_image', true );
+		$pyre_og_url = get_post_meta( $c_pageID, 'pyre_og_url', true );
+		if($pyre_og_title != "" && $pyre_og_title != false){
+			?>
+			<meta property="og:title" content="<?php echo strip_tags( str_replace( array( '"', "'" ), array( '&quot;', '&#39;' ), $pyre_og_title ) ); ?>"/>
+			<?php
+		} else {
+			?>
+			<meta property="og:title" content="<?php echo strip_tags( str_replace( array( '"', "'" ), array( '&quot;', '&#39;' ), $post->post_title ) ); ?>"/>
+			<?php
+		}
+		if($pyre_og_description != "" && $pyre_og_description != false){
+			?>
+			<meta property="og:description" content="<?php echo Aione()->blog->get_content_stripped_and_excerpted( 55, $pyre_og_description ); ?>"/>
+			<?php
+		} else {
+			?>
+			<meta property="og:description" content="<?php echo Aione()->blog->get_content_stripped_and_excerpted( 55, $post->post_content ); ?>"/>
+			<?php
+		}
+		if($pyre_og_image != "" && $pyre_og_image != false){
+			?>
+			<meta property="og:image" content="<?php echo $pyre_og_image; ?>"/>
+			<?php
+		} else {
+			?>
 			<meta property="og:image" content="<?php echo $image; ?>"/>
-		<?php endif;
+			<?php
+		}
+		if($pyre_og_url != "" && $pyre_og_url != false){
+			?>
+			<meta property="og:url" content="<?php echo $pyre_og_url; ?>"/>
+			<?php
+		} else {
+			?>
+			<meta property="og:url" content="<?php echo get_permalink(); ?>"/>
+			<?php
+		}
+		if($pyre_title_tag != "" && $pyre_title_tag != false){
+			?>
+			<meta property="og:site_name" content="<?php echo $pyre_title_tag; ?>"/>
+			<?php
+		} else {
+			?>
+			<meta property="og:site_name" content="<?php echo get_bloginfo( 'name' ); ?>"/>
+			<?php
+		}
+		?>
+		<meta property="og:type" content="article"/>
+		<?php
 
 	}
 
