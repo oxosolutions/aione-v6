@@ -1,4 +1,6 @@
 *.log
+/make/
+make/
 make/*
  
 /.htaccess
