@@ -270,10 +270,7 @@ if($header_show_navigation == 1){
 	}
 }
 add_action( 'aione_header', 'aione_secondary_main_menu', 30 );
-
- ?>
- 
-	<?php if ( ! function_exists( 'aione_logo' ) ) {
+if ( ! function_exists( 'aione_logo' ) ) {
 		
 			function aione_logo() {
 				/**
@@ -283,9 +280,6 @@ add_action( 'aione_header', 'aione_secondary_main_menu', 30 );
 					return;
 				}
 				
-			?>
-				
-				<?php
 				/**
 				 * aione_logo_prepend hook
 				 */

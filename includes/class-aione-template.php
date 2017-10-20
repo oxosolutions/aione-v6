@@ -133,23 +133,6 @@ class Aione_Template {
 			$sidebar_2 = Aione()->theme_options[ 'search_sidebar_2' ];
 		}
 
-		if ( ( is_bbpress() || is_buddypress() ) && ! bbp_is_forum_archive() && ! bbp_is_topic_archive() && ! bbp_is_user_home() && ! bbp_is_search() ) {
-			$sidebar_1 = Aione()->settings->get( 'ppbress_sidebar' );
-			$sidebar_2 = Aione()->settings->get( 'ppbress_sidebar_2' );
-
-			if ( Aione()->settings->get( 'bbpress_global_sidebar' ) ) {
-				$sidebar_1 = Aione()->settings->get( 'ppbress_sidebar' );
-				$sidebar_2 = Aione()->settings->get( 'ppbress_sidebar_2' );
-			} else {
-				$sidebar_1 = get_post_meta( $c_pageID, 'sbg_selected_sidebar_replacement', true );
-				$sidebar_2 = get_post_meta( $c_pageID, 'sbg_selected_sidebar_2_replacement', true );
-			}
-		}
-
-		if ( ( is_bbpress() || is_buddypress() ) && ( bbp_is_forum_archive() || bbp_is_topic_archive() || bbp_is_user_home() || bbp_is_search() ) ) {
-			$sidebar_1 = Aione()->settings->get( 'ppbress_sidebar' );
-			$sidebar_2 = Aione()->settings->get( 'ppbress_sidebar_2' );
-		}
 
 		if ( class_exists( 'Tribe__Events__Main' ) && is_events_archive() ) {
 			$sidebar_1 = Aione()->settings->get( 'ec_sidebar' );
@@ -267,32 +250,7 @@ class Aione_Template {
 			}
 		}
 
-		if ( ( is_bbpress() || is_buddypress() ) && ! bbp_is_forum_archive() && ! bbp_is_topic_archive() && ! bbp_is_user_home() && ! bbp_is_search() ) {
-			if ( Aione()->settings->get( 'bbpress_global_sidebar' ) ) {
-				if ( 'None' != $sidebar_1 ) {
-					$classes[] = 'has-sidebar';
-				}
-				if ( 'None' != $sidebar_1 && 'None' != $sidebar_2 ) {
-					$classes[] = 'double-sidebars';
-				}
-			} else {
-				if ( is_array( $sidebar_1 ) && $sidebar_1[0] ) {
-					$classes[] = 'has-sidebar';
-				}
-				if ( is_array( $sidebar_1 ) && $sidebar_1[0] && is_array( $sidebar_2 ) && $sidebar_2[0] ) {
-					$classes[] = 'double-sidebars';
-				}
-			}
-		}
-
-		if ( ( is_bbpress() || is_buddypress() ) && ( bbp_is_forum_archive() || bbp_is_topic_archive() || bbp_is_user_home() || bbp_is_search() ) ) {
-			if ( 'None' != $sidebar_1 ) {
-				$classes[] = 'has-sidebar';
-			}
-			if ( 'None' != $sidebar_1 && 'None' != $sidebar_2 ) {
-				$classes[] = 'double-sidebars';
-			}
-		}
+		
 
 		if ( class_exists( 'Tribe__Events__Main' ) && is_events_archive() ) {
 			if ( 'None' != $sidebar_1 ) {

@@ -69,4 +69,3 @@ function the_slug_custom($echo){
   do_action('after_slug', $slug);
   return $slug;
 }
-?>
