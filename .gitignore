@@ -1,7 +1,6 @@
 *.log
-make/ 
-make1/ 
-
+make/*
+ 
 /.htaccess
 /license.txt
 /readme.html
